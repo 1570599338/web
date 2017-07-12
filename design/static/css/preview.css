@@ -1,0 +1,686 @@
+html,body,ul,li,ol,dl,dd,dt,p,
+h1,h2,h3,h4,h5,h6,form,
+fieldset,legend,img {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 12px;
+    font-family: '方正正纤黑简体', "Microsoft YaHei", sans-serif;
+    font-style: normal;
+    list-style: none;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+fieldset,
+img,
+input,
+button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+i {
+    font-style: normal;
+}
+
+/*input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}*/
+
+select,input {
+    vertical-align: middle;
+}
+
+select,input,textarea {
+    font-size: 12px;
+    margin: 0;
+    outline: none;
+    -webkit-appearance: none;
+}
+textarea{
+    border:1px solid #D9D9D9;
+}
+textarea {
+    resize: none;
+}
+
+/*防止拖动*/
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+/*  去掉图片低测默认的3像素空白缝隙*/
+
+table {
+    border-collapse: collapse;
+}
+a {
+    text-decoration: none;
+}
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE/7/6*/
+}
+/*end*/
+body {
+    background-color: #eee;
+    color:#333;
+    font-family: '方正正纤黑简体', "Microsoft YaHei", sans-serif;
+    font-size:14px;
+}
+@media (min-width: 767px) {
+    .preview{
+        width: 900px;
+        margin:0 auto;
+    }
+    .question-content {
+        margin:10px 0 25px;
+        background-color: #fff;
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+}
+/*问卷*/
+.template-name{
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    line-height: 40px;
+    text-align: center;
+    position:relative;
+}
+.template-name span{
+    font-size:17px;
+}
+.template-name i{
+    color:#FEBC21;
+    font-size:20px;
+}
+.template-name .phone-preview{
+    position: absolute;
+    top:0;
+    right:7px;
+    cursor: pointer;
+}
+.template-name #qrcode{
+    position: absolute;
+    top:30px;
+    right:-6px;
+    display: none;
+    z-index:2;
+    border:1px solid #d9d9d9;
+    line-height: 20px;
+    padding:8px 8px 3px;
+    background-color: #fff;
+}
+/*答题区*/
+.question-content {
+    width: 96%;
+    margin: 10px 2% 25px;
+    padding:10px 0;
+    /*margin:10px 0 25px;*/
+    background-color: #fff;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+.question-box {
+    padding: 0px 6px 20px;
+}
+/*单选、多选*/
+.options .option{
+    position: relative;
+    min-height:40px;
+    cursor: pointer;
+}
+.options .option-border{
+    border-left:1px solid #d9d9d9;
+    border-right:1px solid #D9D9D9;
+    border-top:1px solid #D9D9D9;
+}
+.option-border:last-child{
+    border-bottom:1px solid #D9D9D9;
+}
+.options .option-border .left,
+.options .option-border .right {
+    position: absolute;
+    top:0;
+    width: 50px;
+    padding:9px 0;
+    text-align: center;
+}
+.options .option-border .left {
+    left:0;
+}
+.options .option-border .right {
+    right:0;
+}
+.options .option-border .middle {
+    margin: 0 50px;
+
+}
+.options .option-title{
+    padding:10px 0px;
+    font-size:12px;
+}
+/*汽车与对勾*/
+.options .option .check-ele {
+    position: absolute;
+    color:#FE9121;
+}
+.options .option .car{
+    font-size:43px;
+    top:-8px;
+    left:-1730%;
+}
+.options .option .hook{
+    font-size:27px;
+    top:4px;
+    left:130%;
+}
+/*开放题*/
+.open .open-option{
+    width:100%;
+    border:1px solid #d9d9d9;
+}
+/*图片题*/
+ul.img-question{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -moz-column-gap:20px;
+    -webkit-column-gap:20px;
+    column-gap:20px;
+}
+ul.img-question img{
+    width:100% !important;
+}
+.question-box ul li{
+    margin:0 auto;
+    text-align: center;
+    margin-bottom:10px;
+}
+.question-box ul li .img-container{
+    min-height:160px;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /*background:url(../../../assets/img/stock/2.jpg) no-repeat center center;
+    background-size: contain;*/
+}
+.question-box ul li.checked .li-mask {
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+    text-align: center;
+    color: #FEBC21;
+    display: block;
+}
+.question-box ul li .li-mask i{
+    display:none;
+}
+.question-box ul li.checked .li-mask i{
+    font-size:30px;
+    display:block;
+    position: absolute;
+    top:32%;
+    left:0;
+    right:0;
+}
+
+.img-box {
+    padding-bottom: 0;
+}
+/*填空题*/
+.question-box .options .fill{
+    border:1px solid #d9d9d9;
+    width:99%;
+    height:20px;
+    padding:10px 2px;
+}
+/*打分题*/
+.question-box .tip .top-left,
+.question-box .score-title .score-title-left,
+.question-box .score-box .score-left
+{
+    float: left;
+    width:100px;
+}
+.question-box .tip .top-right,
+.question-box .score-title .score-title-right,
+.question-box .score-box .test-right{
+    float: right;
+    width:60px;
+}
+.question-box .tip .top-middle,
+.question-box .score-title .score-title-middle,
+.question-box .score-box .score-middle{
+    margin:0 60px 0 100px;
+    width:auto;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    text-align: center;
+}
+.question-box .top-middle .score-flex,
+.question-box .score-title-middle .score-flex,
+.question-box .score-middle .score-flex{
+    color:#333;
+    font-size:12px;
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    cursor:pointer;
+}
+.question-box .score-title .score-title-middle i {
+    padding:0 4px;
+    text-align: center;
+    font-size:12px;
+    background-color: #eee;
+}
+.question-box .score-box .score-middle i{
+    margin-right:10px;
+    color:#FEBC21;
+}
+.question-box .score-right,
+.question-box .top-right,
+.question-box .score-title .score-title-right{
+    float: left;
+    width: 36px;
+    font-size: 12px;
+    text-align: center;
+    font-size:12px;
+    padding-top:6px;
+}
+.question-box .top-right,
+.question-box .score-title .score-title-right{
+    width:62px;
+}
+/*矩阵选择题（展开）*/
+.question-box .fluid{
+    border-left:5px solid #f9f9f9;
+}
+.question-box .row-title i:not(:last-child){
+    width: 10px;
+    height: 10px;
+    background-color: #FE9121;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right:8px;
+    margin-left:5px;
+}
+.question-box .row-title{
+    height: auto;
+    width: 100%;
+    background-color: #FFF9F2;
+    font-size:14px;
+    line-height: 23px;
+    margin:14px 0 0 -5px;
+}
+.question-box .row-title .open-text{
+    height: 23px;
+    vertical-align: middle;
+    width: 54%;
+    border:1px solid #D9D9D9;
+    padding:2px 4px;
+}
+.question-box .fluid .col-options{
+    margin-left:20px;
+    margin-top:14px;
+}
+/*矩阵选择题（表格）*/
+.question-box{
+    padding: 0px 6px 20px;
+}
+.question-box .matrix-box{
+    border-top:1px solid #d9d9d9;
+    border-left:1px solid #d9d9d9;
+}
+.question-box .matrix-box .columns,
+.question-box .matrix-box .matrix-row-options{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.question-box .matrix-box .columns .option-title,
+.question-box .matrix-box .matrix-row-options .matrix-option,
+.question-box .matrix-box .matrix-row-options .option-title{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    border-right:1px solid #d9d9d9;
+    border-bottom:1px solid #d9d9d9;
+    font-size:12px;
+    text-align: center;
+}
+.question-box .matrix-box .matrix-row-options .matrix-open-option{
+    border:1px solid #d9d9d9;
+}
+.question-box .matrix-box .columns p{
+    padding:12px 0;
+}
+.question-box .matrix-box .matrix-row-options p{
+    /*line-height: 45px;*/
+}
+.question-box .matrix-box .matrix-row-options p i{
+    color:#eee;
+    font-size:28px;
+}
+.question-box .matrix-box .matrix-row-options p.checked i{
+    color:#FE9121;
+}
+.question-box .raty-box .options .label-border{
+    border-bottom:none;
+}
+.question-box .raty-box .options a:last-child .label-border{
+    border:1px solid #D9D9D9;
+}
+/*下一题*/
+.next-box {
+    text-align: center;
+    padding: 0 6px;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.next-box .btn{
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    height: 40px;
+    color:#fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top:0px;
+    margin-bottom:20px;
+    font-family: "方正正中黑简体", "Microsoft YaHei", "sans-serif";
+}
+.prev {
+    background-color: #FEBC21;
+    margin-right:6px;
+}
+.next {
+    background-color: #FE9121;
+}
+/*进度条*/
+.progress {
+    width: 94%;
+    height: 2px;
+    background-color: #FEBC21;
+    position: fixed;
+    left: 3%;
+    bottom: 12px;
+}
+
+.bar {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    cursor: pointer;
+    font-size: 30px;
+    color: #EF5752;
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #EF5752;
+    width: 0;
+    height: 100%;
+}
+/*红旗*/
+.flag{
+    width: 24px;
+    height: 25px;
+    background: url(../images/flag.png) no-repeat center center;
+    background-size: cover;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+/*必答题*/
+.mandatory{
+    width: 120px;
+    height: 18px;
+    line-height: 18px;
+    background-color: #EF5752;
+    border-radius: 10px;
+    text-align: center;
+    color:#fff;
+    position: relative;
+    left:-60px;
+    margin-top:4px;
+    font-size:10px;
+    -webkit-transform:scale(0.83333333);
+    -o-transform:scale(0.83333333);
+    -moz-transform:scale(0.83333333);
+    -ms-transform:scale(0.83333333);
+    transform: scale(0.83333333);
+
+    -webkit-transform-origin-x: 0;
+    -o-transform-origin-x:0;
+
+
+    margin-left:20%;
+    -webkit-animation: move 0.2s ease 3;
+    -o-animation: move 0.2s ease 3;
+
+    -webkit-animation-name:move;
+    -webkit-animation-duration:0.2s;
+    -webkit-animation-iteration-count:3;
+    -webkit-animation-timing-function:ease;
+
+    -moz-animation-name:move;
+    -moz-animation-duration:0.2s;
+    -moz-animation-iteration-count:3;
+    -moz-animation-timing-function:ease;
+
+    -ms-animation-name:move;
+    -ms-animation-duration:0.2s;
+    -ms-animation-iteration-count:3;
+    -ms-animation-timing-function:ease;
+
+    animation-name:move;
+    animation-duration:0.2s;
+    animation-iteration-count:3;
+    animation-timing-function:ease;
+}
+@-khtml-keyframes move {
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+}
+@-moz-keyframes move {
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+}
+@-ms-keyframes move {
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+}
+@-o-keyframes move {
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+}
+@-webkit-keyframes move {
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+}
+@keyframes move{
+    12.5%{
+        left:-26px;
+    }
+    25%{
+        left:-16px;
+    }
+    37.5%{
+        left:-26px;
+    }
+    50%{
+        left:-36px;
+    }
+    62.5%{
+        left:-46px;
+    }
+    75%{
+        left:-56px;
+    }
+    87.5%{
+        left:-46px;
+    }
+    100%{
+        left:-36px;
+    }
+
+}

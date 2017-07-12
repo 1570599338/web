@@ -1,0 +1,503 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#reward" data-toggle="tab">奖励明细</a></li>
+                    <li class="" style="display:none;"><a href="#consume" data-toggle="tab">使用记录</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="reward" class="tab-pane pn" tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">会员：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_memberName" class="form-control" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_projectID" class="field prepend-icon">
+                                                    <select data-id="cnd_projectID" class="form-control project">
+                                                    </select>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">问卷名称：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_template" class="field prepend-icon">
+                                                    <select data-id="cnd_templateID" class="form-control template">
+                                                        <option value="">请选择</option>
+                                                    </select>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">审核状态：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="" class="field prepend-icon">
+                                                        <select data-id="cnd_state" class="form-control">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">审核中</option>
+                                                            <option value="2">审核通过</option>
+                                                            <option value="3">审核未通过</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">礼品卡种类：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_project" class="field prepend-icon">
+                                                        <select data-id="cnd_giftType" class="form-control">
+                                                            <option value="">请选择卡类型</option>
+                                                            <option value="1">移动充值卡</option>
+                                                            <option value="2">联通充值卡</option>
+                                                            <option value="3">电信充值卡</option>
+                                                            <option value="4">中石化加油卡</option>
+                                                            <option value="5">中石油加油卡</option>
+                                                            <option value="6">京东购物卡</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_beginTime" class="form-control weui-datepicker weui-dateTimebegin" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_endTime" class="form-control weui-datepicker weui-dateTimebegin" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="submit" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                                    <table class="table table-striped table-hover" id="datatable_reward" cellspacing="0" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="consume" class="tab-pane pn" tabindex="2" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">会员：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_memberName" class="form-control" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_beginTime" class="form-control weui-datepicker weui-dateTimebegin" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_endTime" class="form-control weui-datepicker weui-dateTimebegin" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="submit" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                                    <table class="table table-striped table-hover" id="datatable_consume" cellspacing="0" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theRewardTable = null,
+        theRewardColumns = null,
+        theRewardCount = 0,
+        theRewardDummy = false,
+        theRewardOption = null;
+    var theConsumeTable = null,
+        theConsumeColumns = null,
+        theConsumeCount = 0,
+        theConsumeDummy = false,
+        theConsumeOption = null;
+
+    /*
+        奖励明细
+    */
+    $(function() {
+        //datatable
+        theRewardTable = $('#datatable_reward');
+        //columns
+        theRewardColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "会员",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "projectName",
+            "sTitle": "项目",
+            "sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "templateName",
+            "sTitle": "问卷",
+            //"sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "typeCode",
+            "sTitle": "来源",
+            "sWidth": "48px",
+            "mRender": function(data, type, full) {
+                return data == 1 ? "答卷" : "兑换";
+            }
+        }, {
+            "aTargets": [5],
+            "mData": "giftCardTypeName",
+            "sTitle": "礼品卡",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "giftCardAmount",
+            "sTitle": "面额",
+            "sWidth": "68px",
+            "mRender": function(data, type, full) {
+                return "￥" + data;
+            }
+        }, {
+            "aTargets": [7],
+            "mData": "dateTime",
+            "sTitle": "获取时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "auditedAt",
+            "sTitle": "审核时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [9],
+            "mData": "auditedBy",
+            "sTitle": "审核人",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [10],
+            "mData": "auditRemark",
+            "sTitle": "审核意见",
+            //"sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [11],
+            "mData": "auditState",
+            "sTitle": "审核状态",
+            "sWidth": "68px",
+            "mRender": function(data, type, full) {
+                if (data == 1)
+                    return '<span class="fa-stack text-alert"><i class="fa fa-pause fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核中</span>';
+                else if (data == 2)
+                    return '<span class="fa-stack text-success"><i class="fa fa-check fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核通过</span>';
+                else if (data == 3)
+                    return '<span class="fa-stack text-danger"><i class="fa fa-times fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核失败</span>';
+                else
+                    return '';
+            }
+        }];
+        //option
+        theRewardOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theRewardDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function(data, tr) {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 111, theRewardCount, "#reward");
+            },
+            setCountCallback: function(count) {
+                theRewardCount = count;
+            }
+        };
+
+        //礼金明细
+        $("#reward .action-query").unbind("click").bind("click", function() {
+            theRewardDummy = true;
+            theRewardTable.dataTable().fnDraw();
+        });
+    });
+
+    /*
+        使用记录
+    */
+    $(function() {
+
+        //datatable
+        theConsumeTable = $('#datatable_consume');
+        //columns
+        theConsumeColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "会员",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "giftCardTypeName",
+            "sTitle": "礼品卡",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "giftCardAmount",
+            "sTitle": "面额",
+            "sWidth": "68px",
+            "mRender": function(data, type, full) {
+                return "￥" + data;
+            }
+        }, {
+            "aTargets": [4],
+            "mData": "dateTime",
+            "sTitle": "获取时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "auditedAt",
+            "sTitle": "审核时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "auditedBy",
+            "sTitle": "审核人",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [7],
+            "mData": "auditRemark",
+            "sTitle": "审核意见",
+            //"sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "auditState",
+            "sTitle": "审核状态",
+            "sWidth": "68px",
+            "mRender": function(data, type, full) {
+                if (data == 1)
+                    return '<span class="fa-stack text-alert"><i class="fa fa-pause fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核中</span>';
+                else if (data == 2)
+                    return '<span class="fa-stack text-success"><i class="fa fa-check fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核通过</span>';
+                else if (data == 3)
+                    return '<span class="fa-stack text-danger"><i class="fa fa-times fa-stack-1x"></i><i class="fa fa-square-o fa-stack-2x"></i></span><span>审核失败</span>';
+                else
+                    return '';
+            }
+        }];
+        //option
+        theConsumeOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theConsumeDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function(data, tr) {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 101, theConsumeCount, "#consume");
+            },
+            setCountCallback: function(count) {
+                theConsumeCount = count;
+            }
+        };
+
+        //礼金明细
+        $("#consume .action-query").unbind("click").bind("click", function() {
+            theConsumeDummy = true;
+            theConsumeTable.dataTable().fnDraw();
+        });
+    });
+
+    /*
+     *   
+     */
+    $(function() {
+        Core.runWeUIElements();
+        // Manually activate tab page
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theRewardTable, theRewardColumns, theRewardOption);
+            } else if (index == 2) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theConsumeTable, theConsumeColumns, theConsumeOption);
+            }
+        }
+
+        // trigger
+        initTabs(activateTabPage);
+
+        //项目列表
+        refreshProjects(".project", 13);
+
+        //问卷列表
+        $('.project').change(function() {
+            var criteria = linkApiData(102);
+            criteria.cnd_projectID = $(this).val();
+            criteria.selCndIDs = "projectID";
+            AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", criteria, null, function(data) {
+                Core.fillSelect($(".template"), data.objs);
+            }, function(erro) {
+                alert(erro)
+            });
+        });
+    });
+
+    //@ sourceURL=dynamicScript-membership-giftcard.js
+</script>

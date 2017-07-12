@@ -1,0 +1,443 @@
+<div class="row">
+    <div class="bs-component">
+        <div class="panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">第一个Tab</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                        <div id="tab1" class="tab-pane active">
+                        <!--cnd start-->
+                             <div class="row">
+                            <div class="panel panel-visible" id="Div1">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">文本框：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                 <label for="datepicker1" class="field prepend-icon">
+                                                        <input type="text" class="form-control" placeholder="Amount">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <button type="submit" class="btn btn-primary btn-sm pull-right action-query">查询</button>
+                                            <!--<button type="submit" class="btn btn-default btn-sm pull-right action-create">添加</button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Model Modal -->
+<div class="modal fade" id="model-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">车型</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal admin-form">
+                    <div class="row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label for="brand" class="col-lg-2 col-md-4 col-sm-6 control-label">品牌：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <select name="brand" class="form-control brand"></select>
+                                    <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label for="name" class="col-lg-2 col-md-4 col-sm-6 control-label">名称：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <input type="text" class="form-control name">
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label for="description" class="col-lg-2 col-md-4 col-sm-6 control-label">描述：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <textarea rows="4" class="form-control description"> </textarea>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary btn-sm accept"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var theTable = $('#datatable');
+
+        // Model Modal
+        var ModelModal = function (view, brands, model, tr, accpet) {
+            // Cache
+            var theView = $(view);
+            var theBrands = brands;
+            var theModel = model;
+            var theTr = tr;
+            var theAccept = accpet;
+
+            // Initialize
+            var init = function () {
+                //
+                initModal();
+                //
+                wireUpEvent();
+            }
+
+            // Wireup event handlers
+            var wireUpEvent = function () {
+                // Accept
+                theView.find(".accept").unbind("click").click(function () {
+                    // Validate
+
+                    // Update model
+                    updateObject();
+                    // Accept
+                    if (theAccept) {
+                        theAccept(theModel, theTr);
+                        theView.modal("hide");
+                    } else {
+                        theView.modal("hide");
+                    }
+                });
+                // Changed
+                theView.find(".treeview input[type=checkbox]").change(function () {
+                });
+            }
+
+            // Initialize modal
+            var initModal = function () {
+                // Brand Select
+                var brandElement = theView.find('.brand');
+                brandElement.empty().append("<option value='xyz' disabled selected>请选择</option>");
+                for (var i in theBrands)
+                    brandElement.append("<option value='" + theBrands[i].ID + "'>" + theBrands[i].Name + "</option>");
+                //
+                if (theModel) {
+                    brandElement.val(theModel.BrandID);
+                    theView.find('.name').val(theModel.Name);
+                    theView.find('.description').val(theModel.Description);
+                    theView.find('.accept').text("更新");
+                    theView.find(".modal-title").text("修改车型");
+                } else {
+                    theView.find('.name').val("");
+                    theView.find('.description').val("");
+                    brandElement.val(theBrands[theBrands.length - 1].ID);
+                    theView.find('.accept').text("添加");
+                    theView.find(".modal-title").text("修改车型");
+                }
+            }
+
+            // Update object
+            var updateObject = function () {
+                if (theModel) {
+                    theModel.ID = -1;
+                    theModel.BrandID = theView.find(".brand").val();
+                    theModel.BrandName = theView.find(".brand option:selected").html();
+                    theModel.Name = theView.find(".name").val();
+                    theModel.Description = theView.find(".description").val() === "" ? null : theView.find(".description").val();
+                } else {
+                    theModel = {
+                        ID: -1,
+                        BrandID: theView.find(".number").val(),
+                        BrandName: theView.find(".brand option:selected").html(),
+                        Name: theView.find(".name").val(),
+                        Description: theView.find(".description").val() === "" ? null : theView.find(".description").val(),
+                    };
+                }
+            }
+
+            // Show modal
+            var showModal = function () {
+                theView.modal("show");
+            }
+
+            // Hide modal
+            var hideModal = function () {
+                theView.modal("hide");
+            }
+
+            // Initialize
+            init();
+
+            // Export
+            return {
+                show: showModal,
+                hide: hideModal,
+            };
+        };
+
+        //
+        Core.initDataTable(theTable,
+            // columns
+            [{
+                "aTargets": [0],
+                "mData": "ID",
+                "sTitle": "#",
+                "sWidth": "12px",
+                "bSortable": false,
+                "mRender": function (data, type, full) {
+                    return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+                }
+            },
+            {
+                "aTargets": [1],
+                "mData": "BrandName",
+                "sTitle": "品牌",
+                "sWidth": "88px",
+                "mRender": null
+            },
+            {
+                "aTargets": [2],
+                "mData": "Name",
+                "sTitle": "车型",
+                "sWidth": "128px",
+                "mRender": null
+            },
+            {
+                "aTargets": [3],
+                "mData": "Description",
+                "sTitle": "描述",
+                //"sWidth": "128px",
+                "mRender": null
+            },
+            {
+                "aTargets": [4],
+                "mData": "ID",
+                "sTitle": "操作",
+                "sWidth": "82px",
+                "mRender": function () {
+                    return '<span class="inline-action-container">' +
+                               '<a href="#"><span class="fa fa-edit fa-default action-update">更新</span></a> ' +
+                               '<a href="#"><span class="fa fa-exclamation-triangle fa-danger action-delete">删除</span></a>' +
+                           '</span>';
+                }
+            }],
+            // option
+            {
+                aButtons: ["sall", "asel", "add"],
+                preDrawCallback: null,
+                rowCallback: null,
+                drawCallback: null,
+                onCreate: function () {
+                    var modal = new ModelModal($("#model-modal"), brands, null, null, function (data) {
+                        Core.insertRow(theTable, data);
+                    });
+                    modal.show();
+                },
+                onUpdate: function (data, tr) {
+                    new ModelModal($("#model-modal"), brands, data, tr, function (data) {
+                        Core.updateRow(theTable, data, tr);
+                    }).show();
+                },
+                onDelete: function (data, tr) {
+                    Core.deleteRow(theTable, tr);
+                }
+            });
+
+        var data = [{
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马3系",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马5系",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马610i",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马5系 - 混动",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马X1",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马7系",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马X3",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马X5",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马Z4",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马6系",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马1系",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马X6",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马M3",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马M5",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马M6",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 8,
+            BrandName: "宝马",
+            Name: "宝马X5M",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "MINI CLUBMAN",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "MINI COUNTRYMAN",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "MINI CABRIO",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "MINI COUPE",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "MINI ROADSTER",
+            Description: "无"
+        }, {
+            ID: 1,
+            BrandID: 9,
+            BrandName: "MINI",
+            Name: "PACEMAN",
+            Description: "无"
+        }];
+
+        var brands = [{
+            ID: 8,
+            Name: "宝马",
+            Description: "宝马",
+        }, {
+            ID: 9,
+            Name: "MINI",
+            Description: "MINI",
+        }];
+
+        //fill_datatable(data);
+        Core.fillDataTable(theTable, data);
+    })
+
+    //@ sourceURL=dynamicScript-examples-datatable.js
+</script>

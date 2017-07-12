@@ -1,0 +1,172 @@
+<form>
+    <div class="logicsset" style="min-height: 200px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block;" id="loaddiv">
+                <div class="logics-box">
+                    <table width="100%;">
+                        <thead>
+                        <tr>
+                            <th style="width: 285px;">起始题目</th>
+                            <th style="width: 285px;">结束题目</th>
+                            <th style="width: 40px;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="add" style="margin-left:20px;"></div>
+            <div class="detail" style="padding:0 20px;display: none;">
+                <div class="start" style="margin:10px 0;">
+                    <label>起始题目：</label>
+                    <select name="" style="width:534px;"></select>
+                </div>
+                <div class="end">
+                    <label>结束题目：</label>
+                    <select name="" style="width:534px;"></select>
+                </div>
+            </div>
+            <div class="mtop alignr">
+                <div class="smallfontsize iconfont accept new" style="display: none;">&#xe626;</div>
+                <div class="WJButton wj_blue smallfontsize" id="save">确认</div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(function(){
+        var context = $('.logicsset');
+        var trs = [];
+
+        var updateControl = function (orders) {
+            var html = '';
+            for (var i = 0; i < orders.length; i++) {
+                html +='<tr>' +
+                        '<td class="q-start" qid="'+orders[i].startValue+'">' + orders[i].start + '</td>' +
+                        '<td class="q-end" qid="'+orders[i].endValue+'">' + orders[i].end + '</td>' +
+                        '<td><div class="delete"></div></td>'+
+                        '</tr>';
+            }
+            $('.logicsset table tbody').append(html);
+        }
+        //添加
+        $('.add', context).off('click').on('click', function(){
+            $('.detail', context).show();
+            $('.accept', context).show().removeClass('new').removeClass('edit').addClass('new').html('&#xe626;');
+        });
+        //添加或更新行
+        $('.accept', context).off('click').on('click', function(){
+            var start = $('.start select option:selected', context).text();
+            var startValue = $('.start select option:selected', context).val();
+            var end = $('.end select option:selected', context).text();
+            var endValue = $('.end select option:selected', context).val();
+            if (start == '请选择' || end == '请选择') {
+                alert('请选择题目');
+                return false;
+            }
+
+            if ($(this).hasClass('new')) {
+                var tr = '<tr>' +
+                        '<td class="q-start" qid="'+startValue+'">' + start + '</td>' +
+                        '<td class="q-end" qid="'+endValue+'">' + end + '</td>' +
+                        '<td>' +
+                        '<div class="delete"></div>' +
+                        //'<div class="edit"></div>' +
+                        '</td>' +
+                        '</tr>';
+                $('table tbody', context).append(tr);
+                //创建对象并附加到行上
+                var tr = {
+                    id:-1,
+                    templateID:myapp.template.id,
+                    startQuestionID:startValue,
+                    endQuestionID:endValue
+                }
+                trs.push(tr);
+                $('.logics-box tbody tr:last', context).data('tr', tr);
+                var trr = $('.logics-box tbody tr:last',context).data('tr');
+                $('.detail',context).hide();
+                $('.detail select',context).val('');
+            }
+        });
+        //删除行
+        $(context).off('click', 'tbody tr .delete').on('click', 'tbody tr .delete', function () {
+            var tr = $(this).parents('tr').data('tr');
+            //trs.remove(tr);
+            //删除选中行
+            $(this).parent().parent().remove();
+        });
+
+        function submitGroup(trs,callback){
+            if (debug_mode == false) {
+                AjaxPost(myapp.apiHost + 'questiongroup/create?templateid=' + myapp.template.id, trs, null, function (data) {
+                    logics = data.objs;
+                    if (callback) callback(logics);
+                }, function (err) {
+                    console.log(err);
+                });
+            } else {
+                if (callback) callback(logics);
+            }
+        }
+        //保存
+        $('#save', context).off('click').on('click', function(){
+            var trs = [];
+            $('.logics-box tbody tr').each(function(){
+               var tr = {
+                   id: -1,
+                   templateID:myapp.template.id,
+                   startQuestionID:$(this).find('.q-start').attr('qid'),
+                   endQuestionID:$(this).find('.q-end').attr('qid')
+               }
+                trs.push(tr);
+            });
+            
+            submitGroup(trs, function(){
+                console.log('submit success');
+                //移除编辑框和蒙蔽层
+                $('.zon-edit').remove();
+            });
+        });
+        //渲染题目列表
+        function initSelect(data) {
+            var option = '<option value="">请选择</option>';
+            for (var i = 0;i<data.length;i++) {
+                option += '<option value="'+data[i].id+'">'+data[i].number + data[i].title+'</option>';
+            }
+            $('.logicsset select').append(option);
+        }
+        //获取所有的题目
+        AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function(data){
+            var datas = data.objs;
+            initSelect(datas);
+            //获得已设置的题目组
+            AjaxGet(myapp.apiHost + 'questiongroup/search?templateid=' + myapp.template.id, function(data){
+                var data = data.objs;
+                var newQuestion = [];
+                for(var i = 0;i<datas.length;i++){
+                    for(var j = 0;j<data.length;j++){
+                        if(datas[i].id == data[j].startQuestionID){
+                            var obj = {};
+                            obj.startValue = data[j].startQuestionID;
+                            obj.start = datas[i].number + datas[i].title;
+                            obj.endValue = data[j].endQuestionID;
+                            obj.end = '';
+                            newQuestion.push(obj);
+                        }
+                    }
+                }
+                for(var i = 0;i<datas.length;i++){
+                    for(var j = 0;j<newQuestion.length;j++){
+                        if(datas[i].id == newQuestion[j].endValue){
+                            newQuestion[j].end = datas[i].number + datas[i].title;
+                        }
+                    }
+                }
+                updateControl(newQuestion);
+            });
+        });
+    });
+    //@ sourceURL=question_disordered.js
+</script>

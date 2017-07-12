@@ -1,0 +1,70 @@
+<form>
+    <div class="logicsset" style="min-height: 200px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block;" id="loaddiv">
+                <div class="logics-box">
+                    <table width="100%;">
+                        <thead>
+                        <tr>
+                            <th style="width: 68px;"><input class="choose none" type="checkbox"/></th>
+                            <th style="width: 530px;">题目</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mtop alignr">
+                <div class="WJButton wj_blue smallfontsize" id="save">确认</div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function(){
+        var context = $('.logicsset');
+        function initTable(data){
+            for(var i = 0;i<data.length;i++){
+                var tr = '<tr><td><input type="checkbox" qid="'+data[i].id+'"/></td><td>'+data[i].number+data[i].title+'</td></tr>';
+                $('.logics-box table tbody',context).append(tr);
+            }
+        }
+        //获取所有的题目
+        AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function(data){
+            var data = data.objs;
+            initTable(data);
+        });
+        //全选
+        $('.choose',context).on('click',function(){
+           if($(this).hasClass('all')){
+               $(this).removeClass('all').addClass('none').removeAttr('checked');
+               $(this).parents('thead').siblings('tbody').find('input').removeAttr('checked');
+           }else if($(this).hasClass('none')){
+               $(this).removeClass('none').addClass('all').attr('checked','true');
+               $(this).parents('thead').siblings('tbody').find('input').attr('checked','true');
+           }
+        });
+        //保存并删除
+        $('#save',context).off('click').on('click', function(){
+            var questions = [];
+            $('tbody input[type="checkbox"]:checked',context).each(function(){
+                questions.push($(this).attr('qid'));
+            });
+            $.each(questions,function(i,n){
+                var module = $('li[oid="'+n+'"]');
+                var question = module.data('model');
+                deleteQuestion(question, function (data) {
+                    module.remove();
+                    moveObjects(getDispIndex(), "question", function () {
+                        console.log('update orders success ...');
+                    });
+                });
+            });
+            //移除编辑框和蒙蔽层
+            $('.zon-edit').remove();
+        });
+    });
+    //@ sourceURL=batch_delete.js
+</script>

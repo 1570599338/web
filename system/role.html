@@ -1,0 +1,429 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav role-nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#roles" data-toggle="tab" num="1"><span class="fa fa-group"></span>角色管理</a> </li>
+                    <li class="" style="display:none;"><a href="#permission" data-toggle="tab" num="2"><span class="fa fa-sitemap"></span>权限管理</a></li>
+                </ul>
+            </div>
+            <div class="panel-body ">
+                <div class="tab-content pn br-n">
+                    <!-- tab roles start -->
+                    <div id="roles" class="tab-pane pn tabindex" tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="roleCnd">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_roleName" class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_roleName" id="cnd_roleName" name="cnd_roleName" class="form-control cnd-roleName" >
+                                                        <label class="field-icon"><i class="fa fa-group"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12" style="display:none;">
+                                                <label for="cnd_subsys" class="col-lg-4 col-md-4 col-sm-6 control-label">条件：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_subsys"  class="form-control" value="survey">
+                                                        <label class="field-icon"><i class="fa fa-group"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加角色</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_roles">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <!-- tab end -->
+                    <!-- tab permission start -->
+                    <div id="permission" class="tab-pane pn tabindex" tabindex="2" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="permissionCnd">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_roleName" class="col-lg-4 col-md-4 col-sm-6 control-label">角色：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_roleName" name="cnd_roleName" class="form-control cnd-roleName" >
+                                                        <label class="field-icon"><i class="fa fa-group"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12" style="display:none;">
+                                                <label for="" class="col-lg-4 col-md-4 col-sm-6 control-label">系统条件：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_subsys" name="" class="form-control cnd-roleName" value="survey" >
+                                                        <label class="field-icon"><i class="fa fa-group"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加项目</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_permission">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <!-- tab end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theRoleTable = null,
+        theRoleColumns = null,
+        theRoleCount = 0,
+        theRoleDummy = false,
+        theRoleOption = null;
+
+    var thePermissionTable = null,
+        thePermissionColumns = null,
+        thePermissionCount = 0,
+        thePermissionDummy = false,
+        thePermissionOption = null;
+    $(function() {
+        theRoleTable = $('#datatable_roles');
+        theRoleColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "roleName",
+            "sTitle": "名称",
+            "sWidth": "58px"
+        }, {
+            "aTargets": [2],
+            "mData": "state",
+            "sTitle": "状态",
+            "sWidth": "58px",
+            "mRender": function(data, type, full) {
+                var state;
+                if (full.state == 1) {
+                    state = "激活"
+                } else {
+                    state = "废除"
+                }
+                return state;
+            }
+        }, {
+            "aTargets": [3],
+            "mData": "roleDesc",
+            "sTitle": "描述",
+            "sClass": "text-align-left",
+            // "sWidth":"80px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "operation",
+            "sTitle": "操作",
+            "sWidth": "80px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-default"></span><span class="action-update">编辑</span></a><span class="text-divider">|</span> ' +
+                    '<a href="#"><span class="fa fa-chain fa-default"></span><span class="action-freeze">' + (full.state == 1 ? "废除" : "激活") + '</span></a>' +
+                    '</span>';
+            }
+        }];
+        theRoleOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }, "add"],
+            preDrawCallback: function() {
+                return theRoleDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                window.location = "#system/role_add.html?operateState=0";
+            },
+            onUpdate: function(tableData, tr) {
+                storage();
+                window.location = "#system/role_add.html?operateState=1&roleID=" + tableData.roleID;
+            },
+            onDelete: function(tableData, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 237, theRoleCount, "#roles");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                theRoleCount = count;
+            }
+        };
+        //角色查询
+        $("#roles .action-query").unbind("click").bind("click", function() {
+            theRoleDummy = true;
+            theRoleTable.dataTable().fnDraw();
+        });
+        //角色激活废除操作  
+        $('#datatable_roles').bind("click", function(e) {
+            var data = $(e.target).parents("tr").data();
+            AjaxGet2(myapp.apiHost2 + "survey.updRoleState.do?state=" + data.state + "&roleid=" + data.roleID, "text", "post", [], function(data) {
+                var url = myapp.apiHost2 + "sysmng.jsonreport.do?";
+                theRoleTable.dataTable().fnDraw();
+            });
+        });
+    })
+
+    $(function() {
+        thePermissionTable = $('#datatable_permission');
+        thePermissionColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "roleName",
+            "sTitle": "角色",
+            "sClass": "text-align-left",
+            "sWidth": "58px"
+        }, {
+            "aTargets": [2],
+            "mData": "roleDesc",
+            "sTitle": "描述",
+            "sClass": "text-align-left",
+            //"sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "operation",
+            "sTitle": "操作",
+            "sWidth": "80px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-hand-o-right fa-default"></span><span class="action-update">授权</span></a> ' +
+                    '</span>';
+            }
+        }];
+
+        thePermissionOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return thePermissionDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onUpdate: function(tableData, tr) {
+                storage();
+                window.location = "#system/permission_grant.html?operateState=1&roleID=" + tableData.roleID;
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 238, thePermissionCount, "#permission");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                thePermissionCount = count;
+            }
+
+        };
+
+        //权限查询
+        $("#permission .action-query").unbind("click").bind("click", function() {
+            thePermissionDummy = true;
+            thePermissionTable.dataTable().fnDraw();
+        });
+        //获取role查询条件
+        function roleCondition() {
+            selCndIDs = [];
+            $('#roleCnd .form-control').each(function() {
+                var cnd = $(this);
+                if (cnd.val() != '') {
+                    selCndIDs.push(cnd.attr('id').split("_")[1]);
+                    roleCatchData[cnd.attr('id')] = cnd.val();
+                }
+            });
+            return selCndIDs, roleCatchData;
+        }
+
+        //获取permission查询条件
+        function permissionCondition() {
+            selCndIDs = [];
+            $('#permissionCnd .form-control').each(function() {
+                var cnd = $(this);
+                if (cnd.val() != '') {
+                    selCndIDs.push(cnd.attr('id').split("_")[1]);
+                    permissionCatchData[cnd.attr('id')] = cnd.val();
+                }
+            });
+            return selCndIDs, permissionCatchData;
+        }
+    })
+
+    $(function() {
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theRoleTable, theRoleColumns, theRoleOption);
+                $('table tbody', container).html(tr);
+            } else if (index == 2) {
+                Core.initDataTable(thePermissionTable, thePermissionColumns, thePermissionOption);
+                $('table tbody', container).html(tr);
+            }
+        };
+
+        initTabs(activateTabPage);
+
+
+    });
+
+
+    (function() {
+        var getlocal = location.href.split("?");
+        if (getlocal.length > 1) {
+            var operateState = getlocal[1].split("&")[0].split("=")[1];
+            var sel = function() {
+                    AjaxGet2(myapp.apiHost2 + "sysmng.jsonreport.do?", "json", "post", Core.getPageCache(getlocal[0]).cnds, function(data) {
+                        Core.fillDataTable(theRoleTable, data.objs);
+                    }, function(error) {
+                        console.log("sss")
+                    });
+                }
+                //添加操作
+            if (operateState == "0") {
+                var index = getlocal[0].tabIndex
+                activateTabPage(index);
+                $(".nav li").eq(index).addClass("active").siblings().removeClass("active");
+
+                sel();
+            }
+            //编辑操作
+            else if (operateState == "1") {
+                sel();
+            }
+            //返回操作
+            else if (operateState == "2") {
+                var index = Core.getPageCache(getlocal[0]).tabIndex;
+                $(".role-nav li").eq(index - 1).addClass("active").siblings().removeClass("active");
+                $("#tab_panel .tabindex").eq(index - 1).addClass("active").siblings().removeClass("active");
+
+                activateTabPage(index);
+                AjaxGet2(myapp.apiHost2 + "sysmng.jsonreport.do?", "json", "post", Core.getPageCache(getlocal[0]).cnds, function(data) {
+                    if (activeNo == 2) {
+                        Core.fillDataTable(thePermissionTable, data.objs);
+                    } else {
+                        Core.fillDataTable(theRoleTable, data.objs);
+                    }
+                    console.log("success")
+
+
+                }, function(error) {
+
+                });
+
+                //activateTabPage(index);
+            }
+        }
+    })();
+    //@ sourceURL=dynamicScript-system-role.js
+</script>

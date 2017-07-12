@@ -1,0 +1,924 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#instrument_manage" data-toggle="tab" num="1">车主管理</a></li>
+                    <li class="" style="display:none;"><a href="#instrument_upload" data-toggle="tab" num="2">车主导入</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="instrument_manage" class="tab-pane pn" tabindex="1">
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_provinceCode" class="field prepend-icon">
+                                                        <select data-id="cnd_provinceCode"  id="cnd_provincecode"  name="select2" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_city" class="field prepend-icon">
+                                                        <select data-id="cnd_cityCode" id="cnd_citycode" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">品牌：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <select data-id="cnd_brand" id="cnd_brand" name="select2" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="" class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="" class="field prepend-icon">
+                                                        <select data-id="cnd_modelID" id="cnd_cartype" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">性别：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_color" class="field prepend-icon">
+                                                        <select data-id="cnd_gender" id="cnd_gender" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                            <option value="1">男</option>
+                                                            <option value="2">女</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">车身颜色：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_color" class="field prepend-icon">
+                                                        <select data-id="cnd_colorID" id="cnd_color" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                            <option value="1">红色</option>
+                                                            <option value="2">黄色</option>
+                                                            <option value="3">绿色</option>
+                                                            <option value="4">蓝色</option>
+                                                            <option value="5">紫色</option>
+                                                            <option value="6">黑色</option>
+                                                            <option value="7">白色</option>
+                                                            <option value="8">银色</option>
+                                                            <option value="9">金色</option>
+                                                            <option value="10">灰色</option>
+                                                            <option value="11">青色</option>
+                                                            <option value="12">棕色</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">箱体：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_city" class="field prepend-icon">
+                                                        <select data-id="cnd_van" id="" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                            <option value="2">2箱</option>
+                                                            <option value="3">3箱</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>-->
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_beginTime" class="col-lg-4 col-md-4 col-sm-6 control-label ">购车开始日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" id="cnd_begintime" data-id="cnd_beginTime" name="cnd_beginTime" class="form-control cnd-begin weui-datepicker weui-datebegin" >
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_endTime" class="col-lg-4 col-md-4 col-sm-6 control-label">购车结束日期：</label>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" id="cnd_endtime" data-id="cnd_endTime" name="cnd_endTime" class="form-control cnd-end weui-datepicker weui-dateend" >
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="button" class="btn btn-primary btn-sm pull-right action-export"><i class="fa fa-print"></i>导出</button>-->
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_manage">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <div id="instrument_upload" class="tab-pane pn" tabindex="2">
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <form name="messagecontent" id="messagecontent" method="post" enctype="multipart/form-data" action="" class="dropzone">
+                                                    <input type="hidden" value="wesurvey" id="impSubSys" name="impSubSys">
+                                                    <input type="hidden" value="3" id="impID" name="impID">
+                                                    <input type="hidden" id="cacleID" name="cacleID" value="">
+                                                    <!--                                                    <div class="fallback">
+                                                        &lt;!&ndash;<input name="impFile"  type="file" multiple />&ndash;&gt;
+                                                    </div>-->
+                                                </form>
+                                                <!-- <iframe id="id_messagecontent" name="tar_messagecontent" style="display:none;"></iframe>-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right upload-btn" disabled><i class="fa fa-upload"></i>上传</button>
+                                            <!--<button type="button" class="btn btn-primary btn-sm pull-right push-message"><i class="fa fa-location-arrow"></i>推送</button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_upload">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theManageTable = null,
+        theManageColumns = null,
+        theManageCount = 0,
+        theManageDummy = false,
+        theManageOption = null;
+    var thrUploadTable = null,
+        theUploadColumns = null,
+        theUploadCount = 0,
+        theUploadDummy = false,
+        theUploadOption = null;
+    $(function() {
+        //时间控件
+        Core.runWeUIElements();
+        theManageTable = $('#datatable_manage');
+        // columns
+        theManageColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "姓名",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "gender",
+            "sTitle": "性别",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "birthDate",
+            "sTitle": " 出生日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "homeNumber",
+            "sTitle": "家庭电话",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "phoneNumber1",
+            "sTitle": "联系电话1",
+            "sWidth": "88px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "phoneNumber2",
+            "sTitle": "联系电话2",
+            "sWidth": "88px",
+            "mRender": null
+        }, {
+            "aTargets": [7],
+            "mData": "cityName",
+            "sTitle": "城市",
+            "sWidth": "88px",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "email",
+            "sTitle": "电子邮件",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [9],
+            "mData": "postCode",
+            "sTitle": "邮编",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [10],
+            "mData": "address1",
+            "sTitle": "所住地址",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [11],
+            "mData": "kidsNumber",
+            "sTitle": "子女个数",
+            "sWidth": "68px",
+            "mRender": function(data, type, full) {
+                var numbers = "0";
+                if (full.kidsNumber < 6) {
+                    numbers = full.kidsNumber;
+                } else {
+                    numbers = "5个以上"
+                }
+                return numbers;
+
+            }
+        }, {
+            "aTargets": [12],
+            "mData": "incomeMax",
+            "sTitle": "家庭收入",
+            "sWidth": "78px",
+            "mRender": function(data, type, full) {
+                return full.incomeMax != "" ? (full.incomeMin + '~' + (full.incomeMax == -1 ? full.incomeMin + "+" : full.incomeMax)) : "";
+            }
+        }, {
+            "aTargets": [13],
+            "mData": "marriage",
+            "sTitle": "婚姻状况",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [14],
+            "mData": "driverLicenseID",
+            "sTitle": "驾驶证编号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [15],
+            "mData": "driverLicenseIssuedAt",
+            "sTitle": "驾驶证发证日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [16],
+            "mData": "driverLicenseIssueBy",
+            "sTitle": "驾驶证发证机构",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [17],
+            "mData": "plateNumber",
+            "sTitle": "车牌号码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [18],
+            "mData": "colorName",
+            "sTitle": "车身颜色",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [19],
+            "mData": "modelName",
+            "sTitle": "车辆型号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [20],
+            "mData": "modelEx",
+            "sTitle": "详细车辆型号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [21],
+            "mData": "van",
+            "sTitle": "厢体",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [22],
+            "mData": "volume",
+            "sTitle": "排量",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [23],
+            "mData": "engineNumber",
+            "sTitle": "发动机号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [24],
+            "mData": "vinNumber",
+            "sTitle": "车架号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [25],
+            "mData": "chassisNumber",
+            "sTitle": "底盘号码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [26],
+            "mData": "shipmentDate",
+            "sTitle": "出厂日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [27],
+            "mData": "boughtDate",
+            "sTitle": "购买日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [28],
+            "mData": "registeDate",
+            "sTitle": "登记日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [29],
+            "mData": "invoiceDate",
+            "sTitle": "开票日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [30],
+            "mData": "vehicleLicenseID",
+            "sTitle": "行驶证编号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [31],
+            "mData": "vehicleLicenseIssuedAt",
+            "sTitle": "行驶证发证日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [32],
+            "mData": "vehicleLicenseIssuedBy",
+            "sTitle": "行驶证发证机构",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [33],
+            "mData": "dealerName",
+            "sTitle": "所属经销商代码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [34],
+            "mData": "dealerNumber",
+            "sTitle": "所属经销商简称",
+            "sWidth": "68px",
+            "mRender": null
+                // }, {
+                //     "aTargets": [34],
+                //     "mData": "totalMeter",
+                //     "sTitle": "行驶公里数",
+                //     "sWidth": "68px",
+                //     "mRender": null
+                // }, {
+                //     "aTargets": [35],
+                //     "mData": "tripMeter",
+                //     "sTitle": "间隔公里数",
+                //     "sWidth": "68px",
+                //     "mRender": null
+                // }, {
+        }, {
+            "aTargets": [35],
+            "mData": "lastMaintainTime",
+            "sTitle": "最后维修日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [36],
+            "mData": "lastMaintainDealer",
+            "sTitle": "最后维修经销商",
+            //"sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [37],
+            "mData": "lastMaintainOperation",
+            "sTitle": "最后维修内容",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }];
+        theManageOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+             scrollX: true,
+            preDrawCallback: function() {
+                return theManageDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function(data, tr) {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 106, theManageCount, '#instrument_manage');
+            },
+            setCountCallback: function(count) {
+                theManageCount = count;
+            }
+        };
+        //车主管理查询
+        $("#instrument_manage .action-query").unbind("click").bind("click", function() {
+            theManageDummy = true;
+            theManageTable.dataTable().fnDraw();
+        });
+    });
+    $(function() {
+        thrUploadTable = $('#datatable_upload');
+        //thrUploadTable
+        theUploadColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "姓名",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "gender",
+            "sTitle": "性别",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "birthDate",
+            "sTitle": " 出生日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "homeNumber",
+            "sTitle": "家庭电话",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "mobileNumber1",
+            "sTitle": "联系电话1",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "mobileNumber2",
+            "sTitle": "联系电话2",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [7],
+            "mData": "cityCode",
+            "sTitle": "城市",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "email",
+            "sTitle": "电子邮件",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [9],
+            "mData": "postCode",
+            "sTitle": "邮编",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [10],
+            "mData": "address1",
+            "sTitle": "所住地址",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [11],
+            "mData": "kidsNumber",
+            "sTitle": "子女个数",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [12],
+            "mData": "incomeMin",
+            "sTitle": "家庭收入最小值",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [13],
+            "mData": "incomeMax",
+            "sTitle": "家庭收入最大值",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [14],
+            "mData": "marriage",
+            "sTitle": "婚姻状况",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [15],
+            "mData": "driverLicenseID",
+            "sTitle": "驾驶证编号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [16],
+            "mData": "driverLicenseIssuedAt",
+            "sTitle": "驾驶证发证日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [17],
+            "mData": "driverLicenseIssuedBy",
+            "sTitle": "驾驶证发证机构",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [18],
+            "mData": "plateNumber",
+            "sTitle": "车牌号码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [19],
+            "mData": "colorID",
+            "sTitle": "车身颜色",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [20],
+            "mData": "modelID",
+            "sTitle": "车辆型号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [21],
+            "mData": "modelEx",
+            "sTitle": "详细车辆型号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [22],
+            "mData": "van",
+            "sTitle": "厢体",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [23],
+            "mData": "volume",
+            "sTitle": "排量",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [24],
+            "mData": "engineNumber",
+            "sTitle": "发动机号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [25],
+            "mData": "vinNumber",
+            "sTitle": "车架号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [26],
+            "mData": "chassisNumber",
+            "sTitle": "底盘号码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [27],
+            "mData": "shipmentDate",
+            "sTitle": "出厂日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [28],
+            "mData": "boughtDate",
+            "sTitle": "购买日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [29],
+            "mData": "registeDate",
+            "sTitle": "登记日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [30],
+            "mData": "invoiceDate",
+            "sTitle": "开票日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [31],
+            "mData": "vehicleLicenseID",
+            "sTitle": "行驶证编号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [32],
+            "mData": "vehicleLicenseIssuedAt",
+            "sTitle": "行驶证发证日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [33],
+            "mData": "vehicleLicenseIssuedBy",
+            "sTitle": "行驶证发证机构",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [34],
+            "mData": "dealerName",
+            "sTitle": "所属经销商代码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [35],
+            "mData": "dealerNumber",
+            "sTitle": "所属经销商简称",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [36],
+            "mData": "totalMeter",
+            "sTitle": "行驶公里数",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [37],
+            "mData": "tripMeter",
+            "sTitle": "间隔公里数",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [38],
+            "mData": "lastMaintainTime",
+            "sTitle": "最后维修日期",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [39],
+            "mData": "lastMaintainDealer",
+            "sTitle": "最后维修经销商",
+            //"sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [40],
+            "mData": "lastMaintainOperation",
+            "sTitle": "最后维修内容",
+            "sWidth": "68px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }];
+        // thrUploadTable
+        theUploadOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theUploadDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                aoData.push({
+                    name: 'cnd_cacle',
+                    value: $('#cacleID').val()
+                });
+                aoData.push({
+                    name: 'selCndIDs',
+                    value: 'cacle'
+                });
+                basicData(aoData, 105, theUploadCount, '#audit_consume');
+            },
+            setCountCallback: function(count) {
+                theUploadCount = count;
+            }
+        };
+    });
+
+    $(function() {
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theManageTable, theManageColumns, theManageOption);
+                $('table tbody', container).html(tr);
+            } else if (index == 2) {
+                AjaxPost2(myapp.apiHost2 + "wesurvey.deltmpmessagingcontact.do", null, null, function(data) {}, function(errot) {});
+                Core.initDataTable(thrUploadTable, theUploadColumns, theUploadOption);
+                $('table tbody', container).html(tr);;
+            }
+        };
+        // trigger
+        initTabs(activateTabPage);
+
+        //上传
+        $('.upload-btn').off("click").click(function() {
+            var cacleID = $("#cacleID").val();
+            AjaxPost2(myapp.apiHost2 + "wesurvey.importinstruments.do?cacle=" + cacleID, null, null, function(data) {
+                //上传成功删除临时表数据
+                AjaxPost2(myapp.apiHost2 + "wesurvey.deltmpmessagingcontact.do", null, null, function(data) {}, function(errot) {});
+                new MessageModal($("#message-modal"), "上传成功", null, function() {}).error();
+            }, function(errot) {});
+        })
+
+        $("instrument_upload .action-query").unbind("click").bind("click", function() {
+            theUploadDummy = true;
+            thrUploadTable.dataTable().fnDraw();
+        });
+        //dropzone
+        //dropzone
+        var dropzone1;
+        $(".dropzone").dropzone({
+            url: myapp.apiHost2 + "wesurvey.importmessagecontent.do",
+            addRemoveLinks: true,
+            dictRemoveLinks: "x",
+            dictCancelUpload: "x",
+            maxFiles: 1,
+            maxFilesize: 50,
+            dictDefaultMessage: '<span class="text-center">' +
+                '<span class="font-md visible-xs-block visible-sm-block visible-lg-block">' +
+                '<span class="font-md"><i class="fa fa-paste text-danger"></i>' +
+                '请拖动报告文件 <span class="font-xs">到这里</span>' +
+                '</span>' +
+                '<span>&nbsp;&nbsp;<h5 class="display-inline">(或点击此处)</h5></span>' +
+                '</span>' +
+                '</span>',
+            dictResponseError: 'Error uploading file!',
+            acceptedFiles: ".xls,.xlsx",
+            uploadMultiple: false,
+            paramName: "impFile",
+            init: function() {
+                this.on("success", function(file) {
+                    theUploadDummy = true;
+                    console.log(file)
+                    thrUploadTable.dataTable().fnDraw();
+                    $('.upload-btn').removeAttr("disabled");
+                });
+                this.on("addedfile", function() {
+                    var cacleID = Date.parse(new Date());
+                    $('#cacleID').val(cacleID);
+
+                });
+                this.on("removedfile", function(file) {
+                    AjaxPost2(myapp.apiHost2 + "wesurvey.deltmpmessagingcontact.do", null, null, function(data) {}, function(errot) {});
+
+                });
+                this.on("complate", function(file) {});
+                this.on("error", function(file, error) {
+                    alert("数据有误请检查后重新上传");
+                });
+                dropzone1 = this; //添加引用
+
+            }
+        });
+
+        //车主导出
+        $('.action-export').off('click').on('click', function() {
+                var parameters = [];
+                $("#instrument_manage .admin-form .form-control").each(function(index, ele) {
+                    var key = $(ele).attr("data-id").split("_")[1];
+                    var val = $(ele).val();
+                    parameters.push(key + "=" + val);
+                })
+                var parameter = "";
+                for (var i = 1; i < parameters.length; i++) {
+                    parameter += "&" + parameters[i];
+                }
+                var url = myapp.apiHost + "survey/export?" + parameters[0] + parameter;
+                // window.location = url;
+            })
+            //城市联动
+        city("#cnd_provincecode", "#cnd_citycode");
+        //车辆联动
+        car("#cnd_brand", "#cnd_cartype");
+    });
+
+    //@ sourceURL=dynamicScript-owner-manage.js
+</script>

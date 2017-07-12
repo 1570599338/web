@@ -1,0 +1,120 @@
+<form action="#" id="option_set_form">
+    <div class="logicsset" style="min-height: 200px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block;">
+                <div class="logics-box">
+                    <div class="cnd-count">
+                        <span>将题目</span>
+                        <select id="questions" style="width: 399px;"></select>
+                        <span>的答案</span>
+                        <span id="referto" class="referto">引用到下文</span>
+                    </div>
+                    <textarea id="content"></textarea>
+                </div>
+            </div>
+            <div class="mtop alignr">
+                <div class="WJButton wj_blue smallfontsize" id="save">保存</div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        //上下文
+        var context = $('#maptss');
+        //获取对象
+        var question = $(".right-operate").data("model");
+
+        //引用到下文按钮
+        $('#referto', context).off('click').on('click', function () {
+            $('#content').insertContent('[' + $('#questions', context).val() + ']');
+        });
+
+        //保存
+        $('#save').on('click', function () {
+            var html = $('.add-edit').html();
+            var text = $('.add-edit').text();
+            var content = $('#content').val();
+            $('.add-edit').html(html.replace(text, content));
+        });
+
+        //更新界面
+        var updateControl = function (questions) {
+            //编辑内容
+            $("#content", context).text($('.add-edit').text());
+            //题目列表
+            var html = '', flag = false;
+            for (var i = 0; i < questions.length; i++) {
+                if (question.id == questions[i].id) {
+                    break;
+                } else {
+                    if (questions[i].type == QUESTION_TYPE_MULTIPLE ||
+                        questions[i].type == QUESTION_TYPE_IMAGE_MULTIPLE ||
+                        questions[i].type == QUESTION_TYPE_MATRIX_SINGLE ||
+                        questions[i].type == QUESTION_TYPE_MATRIX_MULTIPLE ||
+                        questions[i].type == QUESTION_TYPE_MULTIPLE_BLANK ||
+                        questions[i].type == QUESTION_TYPE_MATRIX_SCORE) {
+                        flag = false;
+                    } else {
+                        flag = true;
+                    }
+                    if (flag) {
+                        html += '<option value="' + questions[i].number + '">' + questions[i].number + '-' + questions[i].title + '</option>';
+                    }
+                }
+            }
+            $('#questions', context).append(html);
+        }
+
+        //
+        AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function (data) {
+            questions = data.objs;
+            updateControl(questions);
+        });
+    });
+
+    //在文本域鼠标位置处插入文本
+    (function ($) {
+        $.fn.extend({
+            insertContent: function (myValue, t) {
+                var $t = $(this)[0];
+                if (document.selection) { // ie
+                    this.focus();
+                    var sel = document.selection.createRange();
+                    sel.text = myValue;
+                    this.focus();
+                    sel.moveStart('character', -l);
+                    var wee = sel.text.length;
+                    if (arguments.length == 2) {
+                        var l = $t.value.length;
+                        sel.moveEnd("character", wee + t);
+                        t <= 0 ? sel.moveStart("character", wee - 2 * t - myValue.length) : sel.moveStart("character", wee - t - myValue.length);
+                        sel.select();
+                    }
+                } else if ($t.selectionStart || $t.selectionStart == '0') {
+                    var startPos = $t.selectionStart;
+                    var endPos = $t.selectionEnd;
+                    var scrollTop = $t.scrollTop;
+                    $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                    this.focus();
+                    $t.selectionStart = startPos + myValue.length;
+                    $t.selectionEnd = startPos + myValue.length;
+                    $t.scrollTop = scrollTop;
+                    if (arguments.length == 2) {
+                        $t.setSelectionRange(startPos - t,$t.selectionEnd + t);
+                        this.focus();
+                    }
+                } else {
+                    this.value += myValue;
+                    this.focus();
+                }
+            }
+        })
+    })(jQuery);
+
+    //@ sourceURL=reference.js
+</script>
+

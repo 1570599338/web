@@ -1,0 +1,858 @@
+a:active {
+	
+}
+a:focus {
+	-moz-outline: none;
+}
+button:focus {
+	-moz-outline: none;
+}
+:focus {
+	
+}
+body {
+	margin: 0px; padding: 0px;
+}
+div {
+	margin: 0px; padding: 0px;
+}
+dl {
+	margin: 0px; padding: 0px;
+}
+dt {
+	margin: 0px; padding: 0px;
+}
+dd {
+	margin: 0px; padding: 0px;
+}
+ul {
+	margin: 0px; padding: 0px;
+}
+ol {
+	margin: 0px; padding: 0px;
+}
+li {
+	margin: 0px; padding: 0px;
+}
+h1 {
+	margin: 0px; padding: 0px;
+}
+h2 {
+	margin: 0px; padding: 0px;
+}
+h3 {
+	margin: 0px; padding: 0px;
+}
+h4 {
+	margin: 0px; padding: 0px;
+}
+h5 {
+	margin: 0px; padding: 0px;
+}
+h6 {
+	margin: 0px; padding: 0px;
+}
+pre {
+	margin: 0px; padding: 0px;
+}
+form {
+	margin: 0px; padding: 0px;
+}
+fieldset {
+	margin: 0px; padding: 0px;
+}
+input {
+	margin: 0px; padding: 0px;
+}
+textarea {
+	margin: 0px; padding: 0px;
+}
+p {
+	margin: 0px; padding: 0px;
+}
+blockquote {
+	margin: 0px; padding: 0px;
+}
+th {
+	margin: 0px; padding: 0px;
+}
+td {
+	margin: 0px; padding: 0px;
+}
+img {
+	margin: 0px; padding: 0px;
+}
+area {
+	margin: 0px; padding: 0px;
+}
+param {
+	margin: 0px; padding: 0px;
+}
+html {
+	margin: 0px; padding: 0px; height: 100%; font-family: arial,����,sans-serif; -webkit-text-size-adjust: none;
+}
+body {
+	margin: 0px; padding: 0px; height: 100%; font-family: arial,����,sans-serif; -webkit-text-size-adjust: none;
+}
+select {
+	
+}
+ol {
+	list-style: none; padding-left: 0px;
+}
+ul {
+	list-style: none; padding-left: 0px;
+}
+img {
+	border: currentColor; vertical-align: top; display: inline-block;
+}
+th {
+	font-style: normal; font-weight: normal;
+}
+h1 {
+	font-size: 100%; font-weight: normal;
+}
+h2 {
+	font-size: 100%; font-weight: normal;
+}
+h3 {
+	font-size: 100%; font-weight: normal;
+}
+h4 {
+	font-size: 100%; font-weight: normal;
+}
+h5 {
+	font-size: 100%; font-weight: normal;
+}
+h6 {
+	font-size: 100%; font-weight: normal;
+}
+input {
+	vertical-align: middle; display: inline-block;
+}
+fieldset {
+	border: currentColor;
+}
+legend {
+	display: none;
+}
+input {
+	
+}
+textarea {
+	
+}
+table {
+	border-collapse: collapse;
+}
+.clear {
+	height: 0px; line-height: 0; clear: both; font-size: 0px;
+}
+.clearfix::after {
+	height: 0px; line-height: 0; clear: both; display: block; visibility: hidden; content: "\20";
+}
+.clearfix {
+	display: block; -ms-zoom: 1;
+}
+html[xmlns] .clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+body {
+	font-size: 12px;
+}
+.fl {
+	float: left; _display: inline;
+}
+.fr {
+	float: right; _display: inline;
+}
+body {
+	background: rgb(243, 243, 243); font-family: ΢���ź�; -ms-overflow-y: scroll;
+}
+a {
+	color: rgb(49, 51, 56); text-decoration: none;
+}
+a:hover {
+	color: rgb(83, 164, 244);
+}
+em {
+	font-style: normal;
+}
+.list_head {
+	background: rgb(72, 72, 72); padding: 0px 20px; height: 71px; position: relative;
+}
+.list_head h1 {
+	left: 20px; top: 18px; width: 83px; height: 42px; position: absolute;
+}
+.list_head .head_nav {
+	left: 50%; top: 0px; width: 330px; height: 71px; text-align: center; line-height: 71px; margin-left: -165px; position: absolute;
+}
+.list_head .head_nav a {
+	width: 110px; text-align: center; color: rgb(255, 255, 255); font-size: 16px; float: left; display: inline-block;
+}
+.list_head .head_nav a:hover {
+	background: rgb(80, 137, 193);
+}
+.list_head .head_nav a.active {
+	background: rgb(83, 164, 244);
+}
+.list_foot {
+	padding: 10px 30px 40px; text-align: center; line-height: 13px;
+}
+.list_foot a {
+	padding: 0px 10px; display: inline;
+}
+.list_ad {
+	width: 100%; height: 50px; text-align: center; position: relative; background-color: rgb(253, 249, 205);
+}
+.list_ad_img {
+	left: 50%; top: 10px; margin-left: -140px; position: absolute;
+}
+.list_ad .list_ad_imgR {
+	top: 10px; right: 60px; position: absolute;
+}
+.list_ad_con {
+	margin: 0px auto; height: 50px; color: rgb(51, 51, 51); line-height: 50px; font-size: 18px; display: inline-block;
+}
+.list_ad_hover {
+	color: rgb(0, 153, 255); display: inline-block;
+}
+.list_cont {
+	padding: 20px 0px 10px;
+}
+.list_check {
+	height: 30px; line-height: 30px; padding-top: 12px;
+}
+.list_check .list_tab {
+	border-radius: 4px; border: 1px solid rgb(220, 220, 220); overflow: hidden; float: left; -ms-behavior: url(../css/PIE.htc);
+}
+.list_check .list_tab a {
+	background: rgb(255, 255, 255); width: 36px; height: 28px; text-align: center; line-height: 28px; margin-left: -1px; border-left-color: rgb(220, 220, 220); border-left-width: 1px; border-left-style: solid; float: left; display: inline-block;
+}
+.list_check .list_tab a i {
+	width: 13px; height: 13px; margin-top: 7px; display: inline-block;
+}
+.list_check a.hdgc_lj {
+	background: url("../images/list/hdgc_lj.png") no-repeat left; height: 30px; color: rgb(124, 124, 124); line-height: 30px; padding-left: 30px; font-size: 14px; margin-left: 12px; float: left; display: inline-block;
+}
+.list_check a.hdgc_lj:hover {
+	color: rgb(83, 164, 244);
+}
+.list_tab a i.box_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -1px;
+}
+.list_tab a i.list_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -16px -1px;
+}
+.list_tab a:hover i.box_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -16px;
+}
+.list_tab a.active i.box_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -16px;
+}
+.list_tab a:hover i.list_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -16px -16px;
+}
+.list_tab a.active i.list_icon {
+	background: url("../images/list/cq_icon.png") no-repeat -16px -16px;
+}
+.list_check .list_sel {
+	height: 30px; line-height: 30px; margin-left: 8px; float: left;
+}
+.list_check .list_sel select {
+	border-radius: 4px; border: 1px solid rgb(220, 220, 220); height: 29px; font-family: ΢���ź�; margin-right: 8px; float: left;
+}
+.btn_midAutumn {
+	background: url("../images/midAutumn/btn_show2.png") no-repeat bottom; width: 118px; height: 30px; float: left; cursor: pointer;
+}
+.list_sear {
+	background: rgb(255, 255, 255); border-radius: 4px; border: 1px solid rgb(220, 220, 220); width: 281px; height: 28px; overflow: hidden; float: right; -ms-behavior: url(../css/PIE.htc);
+}
+.list_sear .txt {
+	padding: 5px 10px; border: currentColor; width: 233px; height: 18px; color: rgb(153, 153, 153); line-height: 18px; font-family: ΢���ź�; font-size: 12px; float: left;
+}
+.list_sear .btn {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -30px; border: currentColor; width: 18px; height: 18px; margin-top: 5px; margin-right: 10px; float: right; cursor: pointer;
+}
+.btn_recycle {
+	background: rgb(255, 255, 255); padding: 0px 15px; border-radius: 4px; border: 1px solid rgb(220, 220, 220); height: 28px; color: rgb(153, 153, 153); line-height: 28px; font-size: 12px; margin-right: 6px; float: right; cursor: pointer;
+}
+.btn_recycle i {
+	background: url("../images/list/cq_icon.png") no-repeat 0px -222px; width: 10px; height: 13px; margin-right: 8px; vertical-align: -2px; display: inline-block;
+}
+.list_nr {
+	padding-top: 20px; min-height: 380px;
+}
+.hzBox ul {
+	width: 105%; margin-top: -20px; margin-left: -20px;
+}
+.hzBox ul li {
+	background: rgb(255, 255, 255); padding: 15px; border-radius: 5px; border: 1px solid rgb(233, 233, 233); width: 258px; height: 128px; overflow: hidden; margin-top: 20px; margin-left: 20px; float: left; position: relative; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 6px #dcdcdc;
+}
+.hzBox ul li:hover {
+	cursor: pointer; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 20px #838383;
+}
+.hzBox ul li.create {
+	background: url("../images/index/create.png") no-repeat center; border: currentColor; width: 260px; height: 134px;
+}
+.hzBox ul li.create a {
+	height: 160px; line-height: 130px; letter-spacing: 3px; padding-left: 80px; font-size: 30px; display: block;
+}
+.hzBox ul li.create:hover a {
+	color: rgb(83, 164, 244);
+}
+.hzBox ul li a:hover {
+	color: rgb(67, 74, 93);
+}
+.hzBox ul li.create a i {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -49px; width: 28px; height: 31px; margin-top: 50px; margin-right: 10px; float: left; display: inline-block;
+}
+.hzBox ul li.create:hover i {
+	background: url("../images/list/cq_icon.png") no-repeat -30px -49px;
+}
+.hzBox ul li.survey {
+	border-top-color: rgb(83, 164, 244); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.form {
+	border-top-color: rgb(122, 204, 90); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.assess {
+	border-top-color: rgb(255, 204, 51); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.registration {
+	border-top-color: rgb(85, 186, 151); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.recruit {
+	border-top-color: rgb(70, 180, 193); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.vote {
+	border-top-color: rgb(108, 163, 219); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li.poster {
+	border-top-color: rgb(144, 157, 214); border-top-width: 5px; border-top-style: solid;
+}
+.hzBox ul li .bt {
+	width: 100%; line-height: 22px; overflow: hidden; font-size: 16px; display: block; position: relative; max-height: 66px;
+}
+.hzBox ul li .bt i {
+	background: rgb(255, 255, 255); padding: 0px 5px 1px 1px; right: 0px; bottom: 0px; font-style: normal; display: inline-block; position: absolute; z-index: 2;
+}
+.hzBox ul li span.edit_time {
+	color: rgb(173, 173, 173); margin-top: 5px; display: block;
+}
+.hzBox ul li .state {
+	padding: 0px 15px; left: 0px; width: 258px; height: 40px; bottom: 0px; line-height: 40px; border-top-color: rgb(242, 242, 242); border-top-width: 1px; border-top-style: solid; position: absolute;
+}
+.hzBox ul li .state span {
+	float: left; display: inline-block;
+}
+.hzBox ul li .state em {
+	color: rgb(143, 143, 143); float: right; display: inline-block;
+}
+.hzBox ul li .state span.closed_icon {
+	color: rgb(255, 166, 11);
+}
+.hzBox ul li .state span.closed_icon i {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -84px; width: 14px; height: 14px; margin-top: 13px; margin-right: 7px; float: left; display: inline-block;
+}
+.hzBox ul li .state span.collect_icon {
+	color: rgb(104, 187, 71);
+}
+.hzBox ul li .state span.collect_icon i {
+	background: url("../images/list/cq_icon.png") no-repeat -18px -84px; width: 14px; height: 14px; margin-top: 13px; margin-right: 7px; float: left; display: inline-block;
+}
+.hzBox ul li .state span.end_icon {
+	color: rgb(143, 143, 143);
+}
+.hzBox ul li .state span.end_icon i {
+	background: url("../images/list/cq_icon.png") no-repeat -35px -84px; width: 14px; height: 14px; margin-top: 13px; margin-right: 7px; float: left; display: inline-block;
+}
+.list_head .head_nr {
+	line-height: 71px; padding-left: 103px; float: left;
+}
+.list_head .head_nr h2 {
+	color: rgb(255, 255, 255); overflow: hidden; font-size: 18px; margin-right: 25px; float: left; white-space: nowrap; -ms-text-overflow: ellipsis; max-width: 450px;
+}
+.list_head .head_nr span {
+	color: rgb(161, 161, 161); line-height: 73px; font-size: 14px; margin-right: 25px; float: left; display: inline-block;
+}
+.list_head .back {
+	background: rgb(91, 91, 91); left: 0px; top: 0px; width: 76px; height: 71px; display: inline-block; position: absolute;
+}
+.list_head .back i {
+	background: url("../images/ceping.png") no-repeat -18px -9px; width: 40px; height: 40px; margin-top: 15px; margin-left: 18px; display: inline-block;
+}
+.list_head .back:hover {
+	background: rgb(30, 31, 35);
+}
+.state_cont {
+	padding: 25px 20px;
+}
+.state_collect {
+	background: rgb(255, 255, 255); padding: 20px 28px; border-radius: 3px; border: 1px solid rgb(233, 233, 233); margin-top: 16px; position: relative; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 6px #dcdcdc;
+}
+.state_table {
+	background: rgb(255, 255, 255); padding: 20px 28px; border-radius: 3px; border: 1px solid rgb(233, 233, 233); margin-top: 16px; position: relative; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 6px #dcdcdc;
+}
+.state_top {
+	background: rgb(255, 255, 255); border-radius: 3px; border: 1px solid rgb(233, 233, 233); height: 130px; padding-left: 156px; position: relative; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 6px #dcdcdc;
+}
+.state_top span.zt {
+	left: 0px; top: 0px; width: 108px; height: 130px; color: rgb(255, 255, 255); line-height: 130px; padding-left: 22px; font-size: 19px; display: block; position: absolute;
+}
+.state_top span.zt i {
+	width: 17px; height: 20px; margin-top: 54px; margin-right: 10px; float: left; display: inline-block;
+}
+.state_top span.closed_span {
+	background: rgb(255, 166, 11);
+}
+.state_top span.collect_span {
+	background: rgb(104, 187, 71);
+}
+.state_top span.end_span {
+	background: rgb(143, 143, 143);
+}
+.state_top span.closed_span i {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -101px;
+}
+.state_top span.collect_span i {
+	background: url("../images/list/cq_icon.png") no-repeat -18px -101px;
+}
+.state_top span.end_span i {
+	background: url("../images/list/cq_icon.png") no-repeat -36px -102px; margin-top: 56px;
+}
+.state_made {
+	padding-top: 27px; padding-right: 155px; position: relative;
+}
+.state_made .state_link {
+	line-height: 32px; position: relative;
+}
+.state_made .state_link span {
+	font-size: 14px; margin-right: 14px; float: left; display: inline-block;
+}
+.state_made .state_link .s {
+	background: rgb(250, 250, 250); padding: 0px 10px; border-radius: 4px; border: 1px solid rgb(220, 220, 220); width: 416px; height: 30px; color: rgb(156, 156, 156); line-height: 30px; font-family: ΢���ź�; float: left; -ms-behavior: url(../css/PIE.htc);
+}
+.state_made .state_link .ewm {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -152px; width: 26px; height: 26px; margin-top: 3px; margin-left: 20px; float: left; display: inline-block;
+}
+.state_made .state_link .more {
+	color: rgb(83, 164, 244); font-size: 14px; margin-left: 20px; float: left;
+}
+.state_made .state_link a.copy {
+	background: url("../images/list/cq_icon.png") no-repeat -1px -124px; width: 20px; height: 25px; margin-top: 3px; margin-left: 20px; float: left; display: inline-block;
+}
+.state_made .state_link a.hover.copy {
+	background: url("../images/list/cq_icon.png") no-repeat -24px -124px;
+}
+.state_made .contact_link {
+	border-radius: 5px; border: 1px solid rgb(83, 164, 244); top: 47px; width: 113px; height: 34px; text-align: center; right: 20px; color: rgb(83, 164, 244); line-height: 34px; font-size: 14px; display: block; position: absolute;
+}
+.made_btn {
+	line-height: 32px; padding-top: 16px;
+}
+.made_btn .btn {
+	padding: 0px 25px; border-radius: 4px; border: 1px solid rgb(220, 220, 220); height: 30px; color: rgb(164, 164, 164); line-height: 30px; font-size: 14px; margin-right: 20px; float: left; display: inline-block; -ms-behavior: url(../css/PIE.htc);
+}
+.made_btn .btn:hover {
+	border: 1px solid rgb(83, 164, 244); color: rgb(83, 164, 244);
+}
+.made_link {
+	padding-left: 30px; margin-left: 10px; border-left-color: rgb(220, 220, 220); border-left-width: 1px; border-left-style: solid; float: left;
+}
+.made_link a {
+	color: rgb(164, 164, 164); font-size: 14px; margin-right: 38px; float: left; display: inline-block;
+}
+.made_link a:hover {
+	color: rgb(83, 164, 244);
+}
+.bt_span {
+	height: 25px; color: rgb(43, 42, 42); line-height: 25px; padding-left: 17px; font-size: 18px; margin-bottom: 30px; margin-left: -28px; border-left-color: rgb(122, 204, 90); border-left-width: 4px; border-left-style: solid; display: block;
+}
+.collect_data {
+	overflow: hidden; padding-top: 45px; padding-bottom: 15px; border-top-color: rgb(242, 242, 242); border-top-width: 1px; border-top-style: solid;
+}
+.collect_data ul li {
+	background: url("../images/list/dian.png") no-repeat left; width: 20%; text-align: center; margin-left: -4px; float: left;
+}
+.collect_data ul li p {
+	line-height: 22px; font-size: 19px;
+}
+.collect_data ul li span {
+	color: rgb(122, 204, 90); line-height: 40px; font-size: 40px; margin-top: 15px; display: inline-block;
+}
+.collect_data ul li span.hui {
+	color: rgb(102, 102, 102);
+}
+.collect_data ul li span.hui_wz {
+	color: rgb(102, 102, 102); font-size: 14px;
+}
+.collect_data ul li span.red {
+	color: rgb(249, 124, 124);
+}
+.listBox {
+	display: none;
+}
+.listBox .no_project {
+	background: rgb(255, 255, 255); border-radius: 4px; border: 1px solid rgb(233, 233, 233); height: 322px; text-align: center; line-height: 322px; font-size: 16px; margin-top: 20px; display: none; box-shadow: 0px 0px 10px #dcdcdc;
+}
+.lbBox {
+	background: rgb(255, 255, 255); padding: 0px 20px 20px; border-radius: 4px; border: 1px solid rgb(233, 233, 233); -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 10px #dcdcdc;
+}
+.lbBox table {
+	border-collapse: collapse;
+}
+.lbBox table .thead_td {
+	color: rgb(69, 69, 69); font-size: 14px;
+}
+.lbBox table tr {
+	height: 51px; color: rgb(118, 118, 118); line-height: 51px; font-size: 13px; border-bottom-color: rgb(235, 235, 235); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.lbBox table .tr a {
+	color: rgb(118, 118, 118); line-height: 51px; float: left; display: inline-block;
+}
+.lbBox table tr a {
+	display: inline-block;
+}
+.lbBox table tr select.disabled {
+	background: rgb(238, 238, 238);
+}
+.lbBox table .tr a:hover {
+	color: rgb(83, 164, 244);
+}
+.lbBox table .tr a.color_gray {
+	color: rgb(194, 194, 194);
+}
+.lbBox table .last {
+	width: 280px;
+}
+.lbBox table .tc {
+	text-align: center;
+}
+.lbBox table .a {
+	margin-left: 12px;
+}
+.lbBox table tr .trc {
+	text-align: center;
+}
+.lbBox table tr .tdcj {
+	width: 150px; padding-left: 25px;
+}
+.lbBox table .tr .tl {
+	text-align: left;
+}
+.lbBox table .editor {
+	background: url("../images/list/cq_made.png") no-repeat -3px 0px; width: 23px; height: 23px; overflow: hidden; margin-top: 14px;
+}
+.lbBox table .collect_a {
+	background: url("../images/list/cq_made.png") no-repeat 0px -23px; width: 30px; height: 23px; margin-top: 14px; margin-left: 12px;
+}
+.lbBox table .analysis {
+	background: url("../images/list/cq_made.png") no-repeat -3px -46px; width: 23px; height: 23px; margin-top: 14px; margin-right: 8px; margin-left: 12px;
+}
+.lbBox table .first {
+	padding-left: 12px;
+}
+.lbBox table .last a:hover {
+	cursor: pointer;
+}
+.lbBox table .proj_title {
+	height: 51px; line-height: 51px; overflow: hidden; padding-left: 10px; margin-left: -12px; border-left-color: rgb(255, 255, 255); border-left-width: 2px; border-left-style: solid; display: block; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.lbBox table .proj_title:hover {
+	cursor: pointer;
+}
+.lbBox table .tr:hover {
+	background: rgb(236, 250, 255);
+}
+.lbBox table .tr:hover .proj_title {
+	color: rgb(54, 54, 54); border-left-color: rgb(83, 164, 244); border-left-width: 2px; border-left-style: solid;
+}
+.arrow-t {
+	left: 28px; top: -5px; width: 0px; height: 0px; border-right-color: transparent; border-bottom-color: rgb(0, 0, 0); border-left-color: transparent; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; display: block; position: absolute; opacity: 0.6;
+}
+.pagenum {
+	height: 21px; line-height: 21px; margin-top: 25px;
+}
+.pagenum .disabled {
+	display: none;
+}
+.pagenum span.current {
+	color: rgb(255, 255, 255); background-color: rgb(111, 197, 255);
+}
+.pagenum a:hover {
+	color: rgb(255, 255, 255); background-color: rgb(111, 197, 255);
+}
+.pagenum span {
+	margin: 0px 5px; padding: 0px 8px; color: rgb(130, 130, 130); font-size: 14px; float: left; display: block;
+}
+.pagenum a {
+	margin: 0px 5px; padding: 0px 8px; color: rgb(130, 130, 130); font-size: 14px; float: left; display: block;
+}
+#pagenum .prevPage {
+	padding: 0px; width: 24px; height: 24px; text-indent: -999px; overflow: hidden; display: block;
+}
+#pagenum .nextPage {
+	padding: 0px; width: 24px; height: 24px; text-indent: -999px; overflow: hidden; display: block;
+}
+.pagenum .prevPage {
+	background-image: url("../images/cpre.png"); background-repeat: no-repeat;
+}
+.pagenum .nextPage {
+	background-image: url("../images/cnext.png"); background-repeat: no-repeat;
+}
+.pagenum .prevPage:hover {
+	background: url("../images/cpre_active.png") no-repeat; cursor: pointer;
+}
+.pagenum .nextPage:hover {
+	background: url("../images/cnext_active.png") no-repeat; cursor: pointer;
+}
+.new_create {
+	background: rgb(83, 164, 244); border-radius: 4px; width: 110px; height: 28px; text-align: center; color: rgb(255, 255, 255); line-height: 28px; font-size: 14px; margin-top: 1px; margin-right: 8px; float: left; display: none; -ms-behavior: url(../css/PIE.htc);
+}
+.new_create:hover {
+	background: rgb(111, 197, 255); color: rgb(255, 255, 255);
+}
+.head_mem .loginMeun {
+	right: -10px;
+}
+.head_mem .wjNews {
+	background: url("../images/list/cq_icon.png") no-repeat 0px -181px;
+}
+.head_mem .util-nav .arrowupt {
+	border-color: rgb(164, 164, 164) transparent transparent;
+}
+.head_mem .util-nav .atop {
+	border-color: transparent transparent rgb(164, 164, 164);
+}
+.zjTable {
+	border-collapse: collapse;
+}
+.zjTable td {
+	border: 1px solid rgb(226, 226, 226); color: rgb(104, 104, 104); line-height: 36px; font-size: 14px;
+}
+.zjTable .th {
+	background: rgb(250, 250, 250);
+}
+.zjTable .th td:hover {
+	cursor: default;
+}
+.alertdiv {
+	padding: 20px 36px;
+}
+.alertdiv table td {
+	padding-top: 6px;
+}
+.alertdiv table td input {
+	margin: 0px; padding: 2px; border: 1px solid rgb(119, 165, 180); width: 200px; vertical-align: middle;
+}
+.alertdiv p {
+	padding: 3px 0px; font-size: 12px;
+}
+.largep {
+	font-size: 14px !important; margin-bottom: 10px;
+}
+.alertdiv select {
+	width: 206px;
+}
+.dropdown {
+	display: inline-block;
+}
+.dropdown h4 {
+	margin: 0px; padding: 0px; text-indent: 5px; cursor: default;
+}
+.dropdown * {
+	-moz-user-select: none;
+}
+.dropdown ul {
+	margin: 0px; padding: 0px; clear: both; float: left; display: none; position: absolute;
+}
+.dropdown ul li {
+	list-style: none; margin: 0px; padding: 0px; text-indent: 5px; display: block; cursor: default;
+}
+.dropselectbox {
+	float: left; display: inline;
+}
+.dropdown {
+	margin-right: 8px; float: left;
+}
+.dropdown h4 {
+	background: url("../images/sel_xl.png") no-repeat right rgb(255, 255, 255); padding: 0px 0px 0px 5px; border-radius: 4px; border: 1px solid rgb(220, 220, 220); height: 28px; color: rgb(114, 114, 114); line-height: 28px; font-family: ΢���ź�; font-size: 12px;
+}
+.dropdown ul {
+	background: rgb(255, 255, 255); border-radius: 0px 0px 4px 4px; border: 1px solid rgb(220, 220, 220); overflow: hidden; margin-top: -1px;
+}
+.dropdown ul li {
+	background: rgb(255, 255, 255); height: 24px; color: rgb(114, 114, 114); line-height: 24px; font-family: ΢���ź�; font-size: 12px;
+}
+.dropdown ul li.over {
+	background: rgb(220, 220, 220); color: rgb(102, 102, 102);
+}
+.old_ceng {
+	background: rgb(0, 0, 0); left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; color: rgb(255, 255, 255); line-height: 158px; font-size: 16px; display: none; position: absolute; z-index: 10; opacity: 0.5;
+}
+.ewm_hover {
+	background: rgb(255, 255, 255); padding: 6px; border-radius: 5px; border: 1px solid rgb(220, 220, 220); left: 596px; top: 38px; display: none; position: absolute; z-index: 100; -ms-behavior: url(../css/PIE.htc); box-shadow: 0px 0px 15px #d3d2d2;
+}
+.cq_report_btn {
+	top: 20px; right: 20px; position: absolute;
+}
+.cq_report_btn a {
+	padding: 0px 14px; border-radius: 3px; border: 1px solid rgb(220, 220, 220); height: 28px; color: rgb(114, 114, 114); line-height: 28px; margin-left: 12px; float: left; display: inline-block;
+}
+.cq_report_btn a:hover {
+	border: 1px solid rgb(83, 164, 244); color: rgb(83, 164, 244);
+}
+.cq_report_btn a.current {
+	border: 1px solid rgb(83, 164, 244); color: rgb(83, 164, 244);
+}
+.cq_report_btn a.current:hover {
+	background: rgb(83, 164, 244); color: rgb(255, 255, 255);
+}
+.nosj {
+	text-align: center; color: rgb(153, 153, 153); line-height: 280px; font-size: 20px;
+}
+#proj_list .tr select {
+	padding: 5px 2px; border: 1px solid rgb(219, 219, 219); height: 33px; margin-top: 6px; margin-bottom: 5px;
+}
+#proj_list tr .end.editor {
+	background: url("../images/wjsj_toolico_off.png") no-repeat -28px -268px; cursor: default;
+}
+#proj_list tr .end.collect_a {
+	background: url("../images/wjsj_toolico_off.png") no-repeat -65px -268px; cursor: default;
+}
+#proj_list tr .end.analysis {
+	background: url("../images/wjsj_toolico_off.png") no-repeat -107px -268px; cursor: default;
+}
+#appStatus_top {
+	height: 70px;
+}
+#appStatus_top span.zt {
+	border-radius: 3px 0px 0px 3px; width: 105px; height: 70px; line-height: 70px;
+}
+#appStatus_top span.zt i {
+	margin-top: 25px;
+}
+#appStatus_top .state_made {
+	padding-top: 19px;
+}
+#appStatus_top .made_link {
+	float: right;
+}
+#appStatus_top .made_btn {
+	padding-top: 0px; float: right;
+}
+.table_auto {
+	width: 100%; -ms-overflow-x: auto;
+}
+.f_bottom_tip {
+	background: rgb(117, 175, 34); padding: 0px 50px; border-radius: 5px 5px 0px 0px; left: 50%; bottom: 0px; color: rgb(255, 255, 255); line-height: 40px; font-size: 14px; display: none; position: fixed;
+}
+.recycle_dialog {
+	
+}
+.recycle_dialog .recycle_bg {
+	background: rgb(0, 0, 0); left: 0px; top: 0px; width: 100%; height: 100%; position: fixed; z-index: 900; opacity: 0.3;
+}
+.recycle_dialog .recycle_content {
+	background: rgb(255, 255, 255); padding: 0px 1px; border-radius: 5px; left: 50%; top: 50%; width: 850px; margin-top: -245px; margin-left: -425px; position: absolute; z-index: 901;
+}
+.popup_recycle_wrap {
+	padding: 20px;
+}
+.popup_recycle_wrap .table_wrap {
+	height: 355px;
+}
+.popup_recycle_wrap .bottom_wrap {
+	padding: 20px 0px 0px; height: 30px; overflow: auto; border-top-color: rgb(226, 226, 226); border-top-width: 1px; border-top-style: solid;
+}
+.popup_recycle_wrap .pagenum {
+	width: 500px; margin-top: 0px; float: left;
+}
+.popup_recycle_wrap .btn_restore {
+	padding: 0px 20px; border-radius: 4px; border: 1px solid rgb(214, 214, 214); height: 28px; color: rgb(85, 85, 85); line-height: 28px; margin-left: 10px; float: right;
+}
+.popup_recycle_wrap .btn_remove {
+	padding: 0px 20px; border-radius: 4px; border: 1px solid rgb(214, 214, 214); height: 28px; color: rgb(85, 85, 85); line-height: 28px; margin-left: 10px; float: right;
+}
+.popup_recycle_wrap .table_wrap table {
+	table-layout: fixed;
+}
+.popup_recycle_wrap .table_wrap table thead {
+	background: rgb(250, 250, 250); border: 1px solid rgb(226, 226, 226); color: rgb(44, 44, 44); font-size: 14px;
+}
+.popup_recycle_wrap .table_wrap table thead tr {
+	
+}
+.popup_recycle_wrap .table_wrap table thead th {
+	text-align: left; line-height: 35px;
+}
+.popup_recycle_wrap .table_wrap table tbody {
+	color: rgb(104, 104, 104); font-size: 12px;
+}
+.popup_recycle_wrap .table_wrap table tbody tr {
+	
+}
+.popup_recycle_wrap .table_wrap table tbody td {
+	line-height: 35px; overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.popup_recycle_wrap .table_wrap table .checkbox_wrap {
+	width: 34px; text-align: center;
+}
+.popup_recycle_wrap .table_wrap table .checkbox {
+	margin: 0px auto; border: 1px solid rgb(226, 226, 226); width: 14px; height: 14px; display: block;
+}
+.dialog_midAutumn_mark {
+	background: rgb(0, 0, 0); left: 0px; top: 0px; width: 100%; height: 1000px; position: fixed; z-index: 1001; opacity: 0.6;
+}
+.dialog_midAutumn {
+	background: url("../images/midAutumn/dialog_bg.png") no-repeat; left: 50%; top: 50%; width: 596px; height: 441px; margin-top: -220px; margin-left: -298px; display: none; position: fixed; z-index: 1002; box-shadow: 0px 0px 10px rgba(0,0,0,0.5); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.dialog_midAutumn .close {
+	background: url("../images/midAutumn/close.png") no-repeat; left: 610px; top: -21px; width: 21px; height: 21px; position: relative;
+}
+.dialog_midAutumn .link {
+	background: rgba(0, 0, 0, 0); margin: 346px auto 0px; width: 210px; height: 45px; display: block;
+}
+.dialog_weihu {
+	background: url("../images/midAutumn/ss.png") no-repeat; left: 50%; top: 50%; width: 710px; height: 383px; margin-top: -192px; margin-left: -355px; display: none; position: fixed; z-index: 1002;
+}
+.dialog_weihu .close {
+	background: url("../images/midAutumn/close.png") no-repeat; top: 0px; width: 21px; height: 21px; right: 0px; position: absolute;
+}
+.bg_mark {
+	background: rgb(0, 0, 0); left: 0px; top: 0px; width: 100%; height: 1000px; position: fixed; z-index: 1001; opacity: 0.6;
+}
+.sd_theme {
+	background: url("../images/midAutumn/sd_theme.png") no-repeat center; left: 50%; top: 50%; width: 596px; height: 637px; margin-top: -318px; margin-left: -298px; display: none; position: fixed; z-index: 1002;
+}
+.sd_theme .close {
+	background: url("../images/midAutumn/close.png") no-repeat; top: 149px; width: 21px; height: 21px; right: -38px; position: absolute;
+}
+.sd_theme .clearfix {
+	overflow: hidden;
+}
+.sd_theme ul {
+	margin: 0px auto; width: 520px; padding-top: 335px;
+}
+.sd_theme ul li {
+	border-radius: 4px; width: 130px; height: 130px; text-align: center; overflow: hidden; padding-top: 14px; float: left;
+}
+.sd_theme ul li .img {
+	margin: 0px auto; width: 90px; height: 90px; overflow: hidden; position: relative;
+}
+.sd_theme ul li .img .hover {
+	background: rgba(0, 0, 0, 0.6); left: 0px; top: 0px; width: 90px; height: 90px; text-align: center; line-height: 90px; display: none; position: absolute; z-index: 2;
+}
+.sd_theme ul li:hover .hover {
+	display: block;
+}
+.sd_theme ul li p {
+	height: 28px; color: rgb(255, 255, 255); line-height: 28px; margin-top: 7px;
+}
+.sd_theme ul li p a {
+	color: rgb(255, 255, 255); font-size: 14px;
+}

@@ -1,0 +1,40 @@
+{
+    "status":"200",
+    "page_id":"5710baa9a320fc76813b1670",
+    "user_online":true,
+    "question":{"has_open_option":false,
+        "_id":{"$oid":"5710bc71a320fc75ced3127d"},
+        "can_edit":true,
+        "jumpconstraint_id_list":[],
+        "option_id_list":["5710bc71a320fc75ced3127e", "5710bc71a320fc75ced3127f"],
+        "cid":"Q2",
+        "questionpage_id":"5710baa9a320fc76813b1670",
+        "title":"单选题",
+        "updated":{"$date":1460743409552},
+        "matrixrow_list":[],
+        "matrixrow_id_list":[],
+        "option_list":[
+            {"updated":{"$date":1460743409645},
+                "cid":"A1",
+                "title":"选项1",
+                "is_open":false,
+                "_id":{
+                    "$oid":"5710bc71a320fc75ced3127e"
+                },
+                "custom_attr":{},
+                "question_id":"5710bc71a320fc75ced3127d"
+            },
+            {
+                "updated":{"$date":1460743409696},
+                "cid":"A2",
+                "title":"选项2",
+                "is_open":false,
+                "_id":{"$oid":"5710bc71a320fc75ced3127f"},
+                "custom_attr":{},
+                "question_id":"5710bc71a320fc75ced3127d"}
+        ],
+        "question_type":2,
+        "project_id":"5710baa9a320fc76813b166f",
+        "custom_attr":{}
+    }
+}

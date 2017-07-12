@@ -1,0 +1,500 @@
+<!--<div class="animated fadeIn">-->
+<style>
+.push-button ul li {
+        float: left;
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        margin-left: 5px;
+        text-align: center;
+        list-style: none;
+        border: 1px solid #999;
+        cursor: pointer;
+    }
+}
+</style>
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#templates" data-toggle="tab"><span class="fa fa-file-text"></span>模板管理</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="templates" class="tab-pane pn" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="template">
+                                <!-- Condition panel -->
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_tpl_type" class="col-lg-4 col-md-4 col-sm-6 control-label">模板类型：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id ="cnd_type" id="cnd_type" name="cnd_type" class="form-control cnd-type">
+                                                            <option value="" selected="selected">请选择</option>
+                                                            <option value="1">短信模板</option>
+                                                            <option value="2">微信模板</option>
+                                                            <option value="3">邮件模板</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_name" class="col-lg-4 col-md-4 col-sm-6 control-label">模板名称：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input data-id="cnd_name" type="text" id="cnd_name" name="cnd_name" class="form-control cnd-name">
+                                                        <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加模板</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_templates" style="width:1920px;">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Model Modal -->
+<div class="modal fade" id="model_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span></h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <form id="project_form" method="post" class="weui-form">
+                    <div class="modal-body">
+                        <div class="form-group col-md-12">
+                            <label for="col_type" class="col-lg-2 col-md-4 col-sm-6 control-label">类型：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <select name="type" class="form-control col_type gui-input" weuifieldcode="type" weuifieldname="type" weuifieldclass="col_type" required>
+                                        <option value="" disabled="disabled">请选择</option>
+                                        <option value="1">短信模板</option>
+                                        <option value="2">微信模板</option>
+                                        <option value="3">邮件模板</option>
+                                    </select>
+                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="col_name" class="col-lg-2 col-md-4 col-sm-6 control-label">模板名称：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <input type="text" name="name" class="form-control col_name gui-input" weuifieldname="name" weuifieldclass="col_name" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group push-note col-md-12" style="display:none">
+                            <label for="col_vendortemplateid" class="col-lg-2 col-md-4 col-sm-6 control-label">模板ID：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <input type="text" name="vendorTemplateID" class="form-control col_vendortemplateid gui-input" weuifieldname="vendorTemplateID" weuifieldclass="col_vendortemplateid" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row push-emial" style="display:none">
+                            <div class="form-group col-md-12">
+                                <label for="col_smtpserver" class="col-lg-2 col-md-4 col-sm-6 control-label">服务器地址：</label>
+                                <div class="col-lg-10 col-md-8 col-sm-6">
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="smtpServer" class="form-control col_smtpserver gui-input" weuifieldname="smtpServer" weuifieldclass="col_smtpserver" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="col_smtpport" class="col-lg-2 col-md-4 col-sm-6 control-label">服务器端口：</label>
+                                <div class="col-lg-10 col-md-8 col-sm-6">
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="smtpPort" class="form-control col_smtpport gui-input" weuifieldname="smtpPort" weuifieldclass="col_smtpport" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="col_mailfrom" class="col-lg-2 col-md-4 col-sm-6 control-label">发件人邮箱：</label>
+                                <div class="col-lg-10 col-md-8 col-sm-6">
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="mailFrom" class="form-control col_mailfrom gui-input" weuifieldname="mailFrom" weuifieldclass="col_mailfrom" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="col_fromname" class="col-lg-2 col-md-4 col-sm-6 control-label">发件人姓名：</label>
+                                <div class="col-lg-10 col-md-8 col-sm-6">
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="fromName" class="form-control col_fromname gui-input" weuifieldname="fromName" weuifieldclass="col_fromname" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="col_frompassword" class="col-lg-2 col-md-4 col-sm-6 control-label">发件人密码：</label>
+                                <div class="col-lg-10 col-md-8 col-sm-6">
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="fromPassword" class="form-control col_frompassword gui-input" weuifieldname="fromPassword" weuifieldclass="col_frompassword" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="form-group col-md-12">
+                            <label for="col_subject" class="col-lg-2 col-md-4 col-sm-6 control-label">模板主题：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <input type="text" name="subject" class="form-control col_subject gui-input" weuifieldname="subject" weuifieldclass="col_subject" required>
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>-->
+                        <div class="form-group col-md-12">
+                            <label for="col_director" class="col-lg-2 col-md-4 col-sm-6 control-label">模板内容：</label>
+                            <div class="col-lg-10 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <textarea type="text" rows="8" name="content" class="form-control col_content gui-input pt5" weuifieldname="content" weuifieldclass="col_content" required />
+                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row push-button">
+                            <label for="col_director" class="col-lg-2 col-md-4 col-sm-6 control-label"></label>
+                            <ul class="col-lg-10 col-md-8 col-sm-6">
+                                <li class="w-name">姓名</li>
+                                <li class="w-gender">性别</li>
+                                <li class="w-project-name">项目名称</li>
+                                <li class="w-project-url">答卷地址</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                        <button type="submit" class="btn btn-primary btn-sm accept submit"><i class="fa fa-save"></i><span class="caption"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var theTemplateTable = null,
+        theTemplateColumns = null,
+        theTemplateCount = 0,
+        theTemplateDummy = false,
+        theTemplateOption = null;
+
+    /*
+        模板管理
+    */
+    $(function() {
+        // datatable
+        theTemplateTable = $('#datatable_templates');
+        // columns
+        theTemplateColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "type",
+            "sTitle": "类型",
+            "sWidth": "58px",
+            "mRender": function(data, type, full) {
+                if (data == 1)
+                    return "短信模板";
+                else if (data == 2)
+                    return "微信模板";
+                else if (data == 3)
+                    return "邮件模板";
+                else
+                    return "";
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "name",
+            "sTitle": "名称",
+            "sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "vendorTemplateID",
+            "sTitle": "模板ID",
+            "sWidth": "48px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "smtpServer",
+            "sTitle": "邮件服务器",
+            "sWidth": "108px",
+            "mRender": function(data, type, full) {
+                if (full.smtpServer && full.smtpPort)
+                    return full.smtpServer + ':' + full.smtpPort;
+                else
+                    return '';
+            }
+        }, {
+            "aTargets": [5],
+            "mData": "mailFrom",
+            "sTitle": "发件人邮箱",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "fromName",
+            "sTitle": "发件人姓名",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [7],
+            "mData": "subject",
+            "sTitle": "标题",
+            "sClass": "text-align-left",
+            //"sWidth": "168px",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "content",
+            "sTitle": "内容",
+            "sClass": "text-align-left",
+            "sWidth": "480px",
+            "mRender": function(type, type, full) {
+                return '<span style="display:block;width:480px;overflow:hidden;text-overflow:ellipsis" title="' + full.content + '">' + full.content + '</span>'
+            }
+        }, {
+            "aTargets": [9],
+            "mData": "updatedAt",
+            "sTitle": "修改时间",
+            "sWidth": "96px",
+            "mRender": null
+        }, {
+            "aTargets": [10],
+            "mData": "id",
+            "sTitle": "操作",
+            "sWidth": "88px",
+            "bSortable": false,
+            "mRender": function() {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-default"></span><span class="action-update">编辑</span></a>' +
+                    '<span class="text-divider">|</span> ' +
+                    '<a href="#"><span class="fa fa-exclamation-triangle fa-danger"></span><span class="action-delete">删除</span></a> ' +
+                    '</span>';
+            }
+        }];
+        // option
+        theTemplateOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }, "add"],
+            preDrawCallback: function() {
+                return theTemplateDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                var modal = new Modal($("#model_modal"), null, null, function(theTabledata) {
+                    var url = myapp.apiHost2 + "wesurvey.senttemplate.do?op=create";
+                    AjaxGet2(url, "json", "post", theTabledata, function(data) {
+                        theTemplateTable.dataTable().fnDraw();
+                    }, function(error) {
+
+                    });
+                }, {
+                    Entity: "模板"
+                });
+                modal.show();
+            },
+            onUpdate: function(data, tr) {
+                if (data.type == 1) {
+                    $('.push-note').show();
+                    $('.push-emial').hide();
+                } else if (data.type == 3) {
+                    $('.push-emial').show();
+                    $('.push-note').hide();
+                } else {
+                    $('.push-note').hide();
+                    $('.push-emial').hide();
+                }
+                var modal = new Modal($("#model_modal"), data, tr, function(messagedata) {
+                    var url = myapp.apiHost2 + "wesurvey.senttemplate.do?op=update";
+                    AjaxGet2(url, "json", "post", data, function(messagedata) {
+                        theTemplateTable.dataTable().fnDraw();
+                    }, function(error) {
+
+                    });
+                }, {
+                    Entity: "模板"
+                });
+                modal.show();
+            },
+            onDelete: function(data, tr) {
+                new MessageModal($("#message-modal"), "确定要删除选中的模板吗？", tr, function(tmpdata) {
+                    var url = myapp.apiHost2 + "wesurvey.senttemplate.do?op=delete";
+                    AjaxGet2(url, "json", "post", data, function(data) {
+                        Core.deleteRow(theTemplateTable, tr);
+                    }, function(error) {
+
+                    });
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 82, theTemplateCount, "#template");
+            },
+            setCountCallback: function(count) {
+                theTemplateCount = count;
+            }
+        };
+
+        //查询
+        $("#templates .action-query").unbind("click").bind("click", function() {
+            theTemplateDummy = true;
+            theTemplateTable.dataTable().fnDraw();
+        });
+    });
+    /*
+     * 
+     */
+    $(function() {
+
+        //时间控件
+        Core.runWeUIElements();
+
+        //
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theTemplateTable, theTemplateColumns, theTemplateOption);
+                $('table tbody', container).html(tr);
+            }
+        };
+
+        initTabs(activateTabPage);
+        $('.push-note').show();
+        $('.col_type').change(function() {
+            if ($(this).val() == 1) {
+                $('.push-note').show();
+                $('.push-note').val('');
+            } else {
+                $('.push-note').hide();
+            }
+            if ($(this).val() == 3) {
+                $('.push-emial').show();
+                $('.push-emial input').val('');
+            } else {
+                $('.push-emial').hide();
+            }
+        });
+
+        $('.push-button').unbind('click').bind('click', function(e) {
+            var cur = $(e.target);
+            if (cur.hasClass('w-name'))
+                $('.col_content').insertContent("[%=name%]");
+            if (cur.hasClass('w-gender'))
+                $('.col_content').insertContent("[%=gender%]");
+            if (cur.hasClass('w-project-name'))
+                $('.col_content').insertContent("[%=projectName%]");
+            if (cur.hasClass('w-project-url'))
+                $('.col_content').insertContent("[%=url%]");
+        });
+
+        //项目列表
+        //refreshProjects(".cnd-project", 13);
+    });
+    (function($) {
+        $.fn.extend({
+            insertContent: function(myValue, t) {
+                var $t = $(this)[0];
+                if (document.selection) { //ie
+                    this.focus();
+                    var sel = document.selection.createRange();
+                    sel.text = myValue;
+                    this.focus();
+                    sel.moveStart('character', -l);
+                    var wee = sel.text.length;
+                    if (arguments.length == 2) {
+                        var l = $t.value.length;
+                        sel.moveEnd("character", wee + t);
+                        t <= 0 ? sel.moveStart("character", wee - 2 * t - myValue.length) : sel.moveStart("character", wee - t - myValue.length);
+
+                        sel.select();
+                    }
+                } else if ($t.selectionStart || $t.selectionStart == '0') {
+                    var startPos = $t.selectionStart;
+                    var endPos = $t.selectionEnd;
+                    var scrollTop = $t.scrollTop;
+                    $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                    this.focus();
+                    $t.selectionStart = startPos + myValue.length;
+                    $t.selectionEnd = startPos + myValue.length;
+                    $t.scrollTop = scrollTop;
+                    if (arguments.length == 2) {
+                        $t.setSelectionRange(startPos - t, $t.selectionEnd + t);
+                        this.focus();
+                    }
+                } else {
+                    this.value += myValue;
+                    this.focus();
+                }
+            }
+        })
+    })(jQuery);
+    //@ sourceURL=dynamicScript-messaging-template.js
+</script>

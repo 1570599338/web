@@ -1,0 +1,471 @@
+.media-author {
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.navbar-search input.form-control {
+    width: 280px;
+}
+
+.breadcrumbbar h1,
+.breadcrumbbar h2,
+.breadcrumbbar h3,
+.breadcrumbbar h4,
+.breadcrumbbar h5,
+.breadcrumbbar h6 {
+    display: inline-block;
+    text-indent: 8px;
+    border-left: 2px solid #88B7E0;
+    /*margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 8px;*/
+}
+
+#topbar>h5 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+table.dataTable {
+    margin-top: 0px !important;
+}
+
+.admin-form .col-xs-1,
+.admin-form .col-sm-1,
+.admin-form .col-md-1,
+.admin-form .col-lg-1,
+.admin-form .col-xl-1,
+.admin-form .col-xs-2,
+.admin-form .col-sm-2,
+.admin-form .col-md-2,
+.admin-form .col-lg-2,
+.admin-form .col-xl-2,
+.admin-form .col-xs-3,
+.admin-form .col-sm-3,
+.admin-form .col-md-3,
+.admin-form .col-lg-3,
+.admin-form .col-xl-3,
+.admin-form .col-xs-4,
+.admin-form .col-sm-4,
+.admin-form .col-md-4,
+.admin-form .col-lg-4,
+.admin-form .col-xl-4,
+.admin-form .col-xs-5,
+.admin-form .col-sm-5,
+.admin-form .col-md-5,
+.admin-form .col-lg-5,
+.admin-form .col-xl-5,
+.admin-form .col-xs-6,
+.admin-form .col-sm-6,
+.admin-form .col-md-6,
+.admin-form .col-lg-6,
+.admin-form .col-xl-6,
+.admin-form .col-xs-7,
+.admin-form .col-sm-7,
+.admin-form .col-md-7,
+.admin-form .col-lg-7,
+.admin-form .col-xl-7,
+.admin-form .col-xs-8,
+.admin-form .col-sm-8,
+.admin-form .col-md-8,
+.admin-form .col-lg-8,
+.admin-form .col-xl-8,
+.admin-form .col-xs-9,
+.admin-form .col-sm-9,
+.admin-form .col-md-9,
+.admin-form .col-lg-9,
+.admin-form .col-xl-9,
+.admin-form .col-xs-10,
+.admin-form .col-sm-10,
+.admin-form .col-md-10,
+.admin-form .col-lg-10,
+.admin-form .col-xl-10,
+.admin-form .col-xs-11,
+.admin-form .col-sm-11,
+.admin-form .col-md-11,
+.admin-form .col-lg-11,
+.admin-form .col-xl-11,
+.admin-form .col-xs-12,
+.admin-form .col-sm-12,
+.admin-form .col-md-12,
+.admin-form .col-lg-12,
+.admin-form .col-xl-12 {
+    padding-left: 0px;
+    padding-right: 4px;
+}
+
+.action-container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.action-container .btn {
+    min-width: 72px;
+    margin-left: 12px;
+}
+
+.action-container .form-group {
+    margin-bottom: 0px !important;
+}
+
+.prepend-icon select.form-control {
+    padding-left: 32px;
+}
+
+
+/*.prepend-icon .select2 {
+    padding-left: 32px;
+}*/
+
+.admin-form .field-icon i {
+    color: #3498db !important;
+}
+
+.dt-panelmenu .DTTT,
+.dt-panelmenu .dataTables_filter {
+    float: right !important;
+}
+
+.dt-panelmenu .dataTables_filter {
+    margin-left: 12px;
+}
+
+tbody>tr:hover .inline-action-container {
+    display: block;
+}
+
+tbody>tr:not(hover) .inline-action-container {
+    display: none;
+}
+
+.inline-action-container a span.fa-default {
+    color: #4A89DC;
+}
+
+.inline-action-container a span.fa-danger {
+    color: #E9573F;
+}
+
+.inline-action-container a span.fa {
+    margin-right: 4px;
+}
+
+.inline-action-container .text-divider {
+    color: #CCC !important;
+    font-weight: normal !important;
+    margin: 0px 4px !important;
+}
+
+td span.fa-stack {
+    margin-right: 4px;
+    font-size: 9px;
+    margin-top: 4px;
+}
+
+.bg-info .navbar-branding {
+    background-color: #0087b4;
+}
+
+.panel {
+    font-size: 12px;
+}
+
+.panel-tabs>li>a>.fa {
+    margin-right: 4px;
+}
+
+.action-container .btn>.fa,
+.modal-footer>.btn>.fa,
+.modal-header .fa {
+    margin-right: 8px;
+}
+
+.modal-body .modal-message {
+    margin-left: 24px;
+}
+
+
+/*#sidebar_left {
+    background-color: #3bafda;
+}*/
+
+.admin-form .gui-input,
+.admin-form .gui-textarea {
+    padding: 0px;
+}
+
+.admin-form input,
+.admin-form select {
+    height: 34px !important;
+}
+
+.quota-quotas .admin-grid .panel-body {
+    height: 369px;
+    /*overflow: auto;*/
+}
+
+.jstree-default .jstree-wholerow-clicked {
+    background: none !important;
+}
+
+.jstree {
+    overflow: auto;
+    /*border: 1px solid #DDD;*/
+    /*border-radius: 3px;*/
+    height: 100%;
+}
+
+.template .temp-style {
+    height: 400px !important;
+    display: block !important;
+    border: dashed 4px #fff!important;
+    border-radius: 4px !important;
+    background-color: #e8f1f2;
+    color: #3498db!important;
+    text-decoration: none;
+    cursor: default;
+}
+
+.template .temp-style:hover {
+    box-shadow: 0px 0px 20px #838383;
+}
+
+.template .temp-icon {
+    display: none;
+    font-size: 36px !important;
+    vertical-align: initial;
+}
+
+.template .temp-active {
+    background-color: #1b98e0 !important;
+    color: #fff !important;
+}
+
+.template .temp-style h1 {
+    height: 246px;
+    padding: 88px 0;
+}
+
+.template .operation .new,
+.template .operation .delete {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.template .operation .delete {
+    display: none;
+    margin-left: 28px;
+}
+
+.template .row .release {
+    cursor: pointer;
+}
+
+.template .temp-style hr {
+    margin: 10px 0 !important;
+}
+
+.template .temp-style div {
+    font-size: 16px !important;
+}
+
+.temp-panel .temp-erro {
+    animation: erro 5s infinite !important;
+    background: #FEE9EA;
+    border-color: #DE888A;
+    -moz-animation: mymove 5s infinite !important;
+}
+
+.quota-save {
+    margin-top: 15px !important;
+}
+
+.section-divider {
+    height: 0;
+    border-top: 1px solid #DDD;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.section-divider span {
+    display: inline-block;
+    position: relative;
+    padding: 0 17px;
+    background: #e9e9e9;
+    color: #999;
+    top: -11px;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+input[type='radio'] {
+    border-radius: 100%;
+    height: 0px;
+    position: relative;
+    vertical-align: middle;
+    width: 15px;
+}
+
+input[type='checkbox'] {
+    border-radius: 100%;
+    height: 0px;
+    position: relative;
+    vertical-align: middle;
+    width: 15px;
+}
+
+.admin-form .w135 {
+    width: 135px;
+}
+
+.server-information {
+    font-size: 14px;
+}
+
+.server-information>div {
+    height: 30px;
+}
+
+.server-information>div>span {
+    text-align: right;
+}
+
+.server-information>div>span:nth-child(2) {
+    padding-left: 20px;
+}
+
+.dropzone {
+    border: none !important;
+}
+
+.admin-form .input-error {
+    background: #FEE9EA;
+    border-color: #DE888A
+}
+
+
+/*当前选中tab*/
+
+#sidebar_menu>li>ul>li>.active:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: #AAA;
+    background: #3498db!important;
+}
+
+th,
+td {
+    white-space: nowrap;
+}
+
+.dataTables_wrapper {
+    width: 100%;
+    margin: 0 auto!important;
+}
+
+
+/*quota*/
+
+.checkbox-custom label:before {
+    width: 14px!important;
+    height: 14px!important;
+    margin-left: 10px;
+    top: 4px!important;
+    border-radius: 0!important;
+    background-color: #eee!important;
+    border-width: 1px;
+}
+
+.checkbox-custom label {
+    padding-left: 45px!important;
+    font-size: 14px;
+}
+
+.radio-custom.radio-primary label:before,
+.checkbox-custom.checkbox-primary label:before {
+    border-color: #999!important;
+}
+
+.checkbox-custom input[type=checkbox]:checked+label:after,
+.checkbox-custom input[type=radio]:checked+label:after {
+    left: 10px;
+}
+
+.color-e {
+    color: #999;
+}
+
+
+/*verification-detail*/
+
+#tab1>.tab-content {
+    background: #ccc;
+}
+
+.driving-licence .licence-img,
+.driving-licence .permit-img,
+.driving-licence .person-licence {
+    background: #fff;
+    overflow: hidden;
+    border: 1px dashed #ccc;
+}
+
+.driving-licence textarea {
+    background: #fff;
+    border: 1px solid #ccc;
+    height: 60px;
+    margin: 10px 0 0 0px;
+}
+
+.img-hint-box {
+    height: 80px;
+    width: 100px;
+    margin: 160px auto 0;
+}
+
+.hint-img {
+    padding-bottom: 20px;
+}
+
+.hint-title {
+    color: #999;
+}
+
+table.dataTable tr.danger {
+    background-color: darkred;
+}
+
+table>tbody>tr>td.text-align-left {
+    text-align: left;
+}
+
+table>tbody>tr>td.text-align-right {
+    text-align: right;
+}
+
+table>tbody>tr>td.text-align-center {
+    text-align: center;
+}
+
+.fl {
+    float: left;
+}
+
+
+/*.dataTables_scrollHead {
+    overflow: auto!important;
+}*/
+
+
+/*.jstree-one>.jstree{*/
+
+
+/*height: 200px !important;*/
+
+
+/*}*/

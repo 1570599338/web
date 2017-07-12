@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title>WeSurvey - Online survey system</title>
+    <!--<meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />-->
+    <meta name="description" content="WeSurvey - Online survey system">
+    <meta name="author" content="600">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+
+    <!-- Font CSS (Via CDN) -->
+    <!--<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>-->
+    <link rel="stylesheet" type="text/css" href="assets/fonts/icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/glyphicons-pro/glyphicons-pro.css">
+    <!-- FullCalendar Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/fullcalendar/fullcalendar.min.css">
+    <!--Admin-form-->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/media/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/extensions/Editor/css/dataTables.editor.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/fancytree/skin-win8/ui.fancytree.min.css" />
+    <!-- Select 2 CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/select2/css/core.css">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <!-- Summernote CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/summernote/summernote.css">
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <!-- Multiselect CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/multiselect/pickList.css">
+    <!-- jsTree CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/jstree/themes/default/style.min.css" />
+    <!-- Magnific popup CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/magnific/magnific-popup.css">
+    <!-- WeSurvey CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/wesurvey.css">
+    <!-- Dropzone-->
+    <link rel="stylesheet" type="text/css" href="assets/dropzone/dropzone.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/logo.fw.png">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body class="dashboard-page">
+
+    <!-------------------------------------------------------------+ 
+  <body> Helper Classes: 
+---------------------------------------------------------------+ 
+  '.sb-l-o' - Sets Left Sidebar to "open"
+  '.sb-l-m' - Sets Left Sidebar to "minified"
+  '.sb-l-c' - Sets Left Sidebar to "closed"
+
+  '.sb-r-o' - Sets Right Sidebar to "open"
+  '.sb-r-c' - Sets Right Sidebar to "closed"
+---------------------------------------------------------------+
+ Example: <body class="example-page sb-l-o sb-r-c">
+ Results: Sidebar left Open, Sidebar right Closed
+--------------------------------------------------------------->
+
+    <!-- Start: Main -->
+    <div id="main">
+
+        <!-----------------------------------------------------------------+ 
+       ".navbar" Helper Classes: 
+    -------------------------------------------------------------------+ 
+       * Positioning Classes: 
+        '.navbar-static-top' - Static top positioned navbar
+        '.navbar-static-top' - Fixed top positioned navbar
+
+       * Available Skin Classes:
+         .bg-dark    .bg-primary   .bg-success   
+         .bg-info    .bg-warning   .bg-danger
+         .bg-alert   .bg-system 
+    -------------------------------------------------------------------+
+      Example: <header class="navbar navbar-fixed-top bg-primary">
+      Results: Fixed top navbar with blue background 
+    ------------------------------------------------------------------->
+
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top navbar-shadow bg-info">
+
+            <div class="navbar-branding">
+                <a class="navbar-brand" href="dashboard.html">
+                    <span style="display: inline-block; height: 20px; width: 20px;">
+                        <img src="assets/img/logo.fw.png" style="width: 100%;" /></span>
+                    <b>在线调研平台</b>
+                </a>
+                <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+            </div>
+            <!--<ul class="nav navbar-nav navbar-left">
+                <li class="dropdown menu-merge hidden-xs">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
+                    <span class="caret caret-tp"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>-->
+            <!--<form class="navbar-form navbar-left navbar-search alt" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search..." value="Search...">
+                </div>
+            </form>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown menu-merge">
+                    <div class="navbar-btn btn-group">
+                        <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
+                            <span class="fa fa-bell-o fs14 va-m"></span>
+                            <!--<span class="badge badge-danger">9</span>-->
+                        </button>
+                        <div class="dropdown-menu dropdown-persist w350 animated animated-shorter fadeIn" role="menu">
+                            <div class="panel mbn">
+                                <div class="panel-menu">
+                                    <span class="panel-icon"><i class="fa fa-clock-o"></i></span>
+                                    <span class="panel-title fw600">最新通知</span>
+                                    <button class="btn btn-default light btn-xs pull-right" type="button"><i class="fa fa-refresh"></i></button>
+                                </div>
+                                <div class="panel-body panel-scroller scroller-navbar scroller-overlay scroller-pn pn">
+                                    <ol class="timeline-list">
+                                        <!--<li class="timeline-item">
+                                            <div class="timeline-icon bg-dark light">
+                                                <span class="fa fa-tags"></span>
+                                            </div>
+                                            <div class="timeline-desc">
+                                                <b>Michael</b> Added to his store:
+                                                <a href="#">Ipod</a>
+                                            </div>
+                                            <div class="timeline-date">1:25am</div>
+                                        </li>-->
+                                    </ol>
+
+                                </div>
+                                <div class="panel-footer text-center p7">
+                                    <a href="#" class="link-unstyled">View All </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown menu-merge">
+                    <div class="navbar-btn btn-group">
+                        <button data-toggle="dropdown" class="btn btn-sm request-fullscreen toggle-active">
+                            <span class="fa fa-desktop fs14 va-m"></span>
+                            <!--<span class="badge badge-danger">9</span>-->
+                        </button>
+                    </div>
+                </li>
+                <li class="menu-divider hidden-xs">
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li class="dropdown menu-merge">
+                    <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
+                        <img src="assets/img/avatars/placeholder.png" alt="avatar" class="mw30 br64">
+                        <span class="hidden-xs pl15">用户名 </span>
+                        <span class="caret caret-tp hidden-xs"></span>
+                    </a>
+                    <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+                        <!--<li class="list-group-item">
+                            <a href="#" class="animated animated-short fadeInUp">
+                                <span class="fa fa-envelope"></span>Messages
+                                <span class="label label-warning">2</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="animated animated-short fadeInUp">
+                                <span class="fa fa-user"></span>Friends
+                                <span class="label label-warning">6</span>
+                            </a>
+                        </li>-->
+                        <li class="dropdown-footer">
+                            <a href="system/password.html" class="">
+                                <span class="fa fa-lock pr5"></span>修改密码</a>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="login.html" class="">
+                                <span class="fa fa-power-off pr5"></span>退出登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <!-- End: Header -->
+
+        <!-----------------------------------------------------------------+ 
+           "#sidebar_left" Helper Classes: 
+        -------------------------------------------------------------------+ 
+           * Positioning Classes: 
+            '.affix' - Sets Sidebar Left to the fixed position 
+
+           * Available Skin Classes:
+             .sidebar-dark (default no class needed)
+             .sidebar-light  
+             .sidebar-light.light   
+        -------------------------------------------------------------------+
+           Example: <aside id="sidebar_left" class="affix sidebar-light">
+           Results: Fixed Left Sidebar with light/white background
+        ------------------------------------------------------------------->
+
+        <!-- Start: Sidebar -->
+        <aside id="sidebar_left" class="nano nano-light affix">
+
+            <!-- Start: Sidebar Left Content -->
+            <div class="sidebar-left-content nano-content">
+
+                <!-- Start: Sidebar Header -->
+                <header class="sidebar-header">
+
+                    <!-- Sidebar Widget - Author -->
+                    <div class="sidebar-widget author-widget">
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img src="assets/img/avatars/placeholder.png" class="img-responsive">
+                            </a>
+                            <div class="media-body">
+                                <div class="media-author">用户名</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Widget - Search (hidden) -->
+                    <div class="sidebar-widget search-widget hidden">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" id="sidebar-search" class="form-control" placeholder="Search...">
+                        </div>
+                    </div>
+
+                </header>
+                <!-- End: Sidebar Header -->
+
+                <!-- Start: Sidebar Menu -->
+                <ul id="sidebar_menu" class="nav sidebar-menu">
+                    <!-- Menu content -->
+                </ul>
+                <!-- End: Sidebar Menu -->
+
+                <!-- Start: Sidebar Collapse Button -->
+                <div class="sidebar-toggle-mini">
+                    <a href="#">
+                        <span class="fa fa-sign-out"></span>
+                    </a>
+                </div>
+                <!-- End: Sidebar Collapse Button -->
+
+            </div>
+            <!-- End: Sidebar Left Content -->
+
+        </aside>
+        <!-- End: Sidebar Left -->
+
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper" style="right: -17px">
+
+            <!-- Start: Topbar -->
+            <!--<header id="topbar" class="alt breadcrumbbar">
+                <h5>会员管理</h5>
+                <div class="topbar-left"></div>
+                <div class="topbar-right"></div>
+            </header>-->
+            <!-- End: Topbar -->
+
+            <!-- Begin: Content -->
+            <section id="content" class="table-layout animated fadeIn">
+
+                <!-- begin: .tray-center -->
+                <div class="tray tray-center">
+
+                    <!-- Admin-panels -->
+                    <div id="content-container" class="fade-onload">
+
+                        <!-- Content -->
+
+                    </div>
+
+                </div>
+                <!-- end: .tray-center -->
+
+                <!-- begin: .tray-right -->
+                <aside class="tray tray-right tray270 pn hidden" data-tray-height="match">
+
+                    <!-- Content -->
+
+                </aside>
+                <!-- end: .tray-right -->
+
+            </section>
+            <!-- End: Content -->
+
+            <!-- Begin: Page Footer -->
+            <footer id="content-footer" class="affix">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="footer-legal">© 2015 MaxInsight</span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <!--<span class="footer-meta">60GB of <b>350GB</b> Free</span>
+                        <a href="#content" class="footer-return-top">
+                            <span class="fa fa-arrow-up"></span>
+                        </a>-->
+                    </div>
+                </div>
+            </footer>
+            <!-- End: Page Footer -->
+
+        </section>
+        <!-- End: Content-Wrapper -->
+
+        <!-- Start: Right Sidebar -->
+        <aside id="sidebar_right" class="nano affix">
+
+            <!-- Start: Sidebar Right Content -->
+            <div class="sidebar-right-content nano-content">
+
+                <div class="tab-block sidebar-block br-n">
+                    <ul class="nav nav-tabs tabs-border nav-justified hidden">
+                        <li class="active">
+                            <a href="#sidebar-right-tab1" data-toggle="tab">Tab 1</a>
+                        </li>
+                        <li>
+                            <a href="#sidebar-right-tab2" data-toggle="tab">Tab 2</a>
+                        </li>
+                        <li>
+                            <a href="#sidebar-right-tab3" data-toggle="tab">Tab 3</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content br-n">
+                        <div id="sidebar-right-tab1" class="tab-pane active">
+
+                            <h5 class="title-divider text-muted mb20">Server Statistics
+                                <span class="pull-right">2013
+                                    <i class="fa fa-caret-down ml5"></i>
+                                </span>
+                            </h5>
+                            <div class="progress mh5">
+                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 44%">
+                                    <span class="fs11">DB Request</span>
+                                </div>
+                            </div>
+                            <div class="progress mh5">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 84%">
+                                    <span class="fs11 text-left">Server Load</span>
+                                </div>
+                            </div>
+                            <div class="progress mh5">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 61%">
+                                    <span class="fs11 text-left">Server Connections</span>
+                                </div>
+                            </div>
+
+                            <h5 class="title-divider text-muted mt30 mb10">Traffic Margins</h5>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <h3 class="text-primary mn pl5">132</h3>
+                                </div>
+                                <div class="col-xs-7 text-right">
+                                    <h3 class="text-success-dark mn">
+                                        <i class="fa fa-caret-up"></i>13.2% </h3>
+                                </div>
+                            </div>
+
+                            <h5 class="title-divider text-muted mt25 mb10">Database Request</h5>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <h3 class="text-primary mn pl5">212</h3>
+                                </div>
+                                <div class="col-xs-7 text-right">
+                                    <h3 class="text-success-dark mn">
+                                        <i class="fa fa-caret-up"></i>25.6% </h3>
+                                </div>
+                            </div>
+
+                            <h5 class="title-divider text-muted mt25 mb10">Server Response</h5>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <h3 class="text-primary mn pl5">82.5</h3>
+                                </div>
+                                <div class="col-xs-7 text-right">
+                                    <h3 class="text-danger mn">
+                                        <i class="fa fa-caret-down"></i>17.9% </h3>
+                                </div>
+                            </div>
+
+                            <h5 class="title-divider text-muted mt40 mb20">Server Statistics
+                                <span class="pull-right text-primary fw600">USA</span>
+                            </h5>
+
+
+                        </div>
+                        <div id="sidebar-right-tab2" class="tab-pane"></div>
+                        <div id="sidebar-right-tab3" class="tab-pane"></div>
+                    </div>
+                    <!-- end: .tab-content -->
+                </div>
+
+            </div>
+            <!-- End: Sidebar Right Content -->
+
+        </aside>
+        <!-- End: Right Sidebar -->
+
+        <!-- Message modal -->
+        <!--<div id="message-modal">-->
+        <div class="modal fade" id="message-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="fa fa-question"></i>提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-message"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>取消</button>
+                        <button type="button" class="btn btn-primary btn-sm accept"><i class="fa fa-save"></i>确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+
+        <!-- Panel popup -->
+        <div style="display: none;">
+            <div id="modal2" class="popup-basic bg-none mfp-with-anim mfp-hide">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span class="panel-icon">
+                            <i class="fa fa-pencil"></i>
+                        </span>
+                        <span class="panel-title"></span>
+                    </div>
+                    <div class="panel-body">
+                        <h3 class="mt5"></h3>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <button class="btn btn-primary accept" type="button">确认</button>
+                        <button class="btn btn-primary cancel" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End: Main -->
+
+    <!-- BEGIN: PAGE SCRIPTS -->
+
+    <!-- jQuery -->
+    <script src="assets/jquery/jquery-1.11.1.min.js"></script>
+    <script src="assets/jquery/jquery_ui/jquery-ui.min.js"></script>
+    <script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
+    <script src="assets/jquery/jquery_ui/datepicker-zh-CN.js" charset="utf-8"></script>
+    <script src="assets/jquery/jquery_ui/timepicker-zh-CN.js" charset="utf-8"></script>
+
+    <!-- HighCharts Plugin -->
+    <script src="assets/plugins/highcharts/highcharts.js"></script>
+
+    <!-- JvectorMap Plugin + US Map (more maps in plugin/assets folder) -->
+    <script src="assets/plugins/jvectormap/jquery.jvectormap.min.js"></script>
+    <script src="assets/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
+
+    <!-- Bootstrap Tabdrop Plugin -->
+    <script src="assets/plugins/tabdrop/bootstrap-tabdrop.js"></script>
+
+    <!-- FullCalendar Plugin + moment Dependency -->
+    <script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+    <!-- Select2 -->
+    <script src="assets/plugins/select2/select2.min.js"></script>
+
+    <!-- Datatables jQuery -->
+    <script src="assets/plugins/datatables/media/js/jquery.dataTables.js"></script>
+    <!-- Datatables Tabletools addon -->
+    <script src="assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.js" charset="utf-8"></script>
+    <!-- Datatables ColReorder addon -->
+    <script src="assets/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <!-- Datatables Bootstrap Modifications  -->
+    <script src="assets/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+    <!-- Datatables Responsive addon -->
+    <script src="assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <!--Admin-forms-->
+    <script src="assets/admin-tools/admin-forms/js/jquery.validate.js"></script>
+    <script src="assets/admin-tools/admin-forms/js/messages_zh.min.js"></script>
+    <!-- Dropzone -->
+    <script src="assets/dropzone/dropzone.js"></script>
+    <!-- Modal -->
+    <script src="assets/js/utility/bootstrap/source/modal.js"></script>
+    <!-- Multiselect plugin -->
+    <script src="assets/plugins/multiselect/pickList.js"></script>
+    <!-- jsTree plugin -->
+    <script src="assets/plugins/jstree/jstree.min.js"></script>
+    <!-- Magnific popup Plugin -->
+    <script src="assets/plugins/magnific/jquery.magnific-popup.js"></script>
+    <!--summernote js-->
+    <script src="assets/plugins/summernote/summernote.min.js"></script>
+    <!--ajaxForm-->
+    <script src="design/static/js/jquery.form_3.25.js"></script>
+    <!-- DatePicker + moment -->
+    <!--<script src="assets/plugins/moment/moment.js"></script> 
+    <script src="assets/plugins/moment/moment_zh-CN.js" charset="UTF-8"></script> 
+    <script src="assets/plugins/datepicker/js/bootstrap-datetimepicker.js"></script>-->
+
+    <script type="text/javascript">
+        var myapp = {
+            //apiHost: "http://192.168.0.107:8002/api/",
+            //apiHost2: "http://192.168.0.105:8001/wenjuan/",
+            //resHost: "http://192.168.0.105:8001/mobile/imageres/",
+            //            apiHost: "http://192.168.0.247:8002/api/",
+            //            apiHost2: "http://192.168.0.247:8001/wenjuan/",
+            //            resHost: "http://192.168.0.247:8001/mobile/imageres/",
+            apiHost: "http://123.56.64.236:80/api/api/",
+            apiHost2: "http://123.56.64.236:80/wesurvey/",
+            resHost: "http://123.56.64.236:80/mobile/imageres/"
+        };
+
+        // Message modal
+        var MessageModal = function(view, message, tr, accpet) {
+            // Cache
+            var theView = $(view);
+            var theTr = tr;
+            var theAccept = accpet;
+            // Initialize
+            var init = function() {
+                    //
+                    theView.find('.modal-message').text(message);
+                    //
+                    theView.find(".accept").unbind("click").click(function() {
+                        if (theAccept) {
+                            theAccept(theTr);
+                            theView.modal("hide");
+                        } else {
+                            theView.modal("hide");
+                        }
+                    });
+                }
+                // Show info
+            var showInfo = function() {
+                    theView.find(".modal-title>i").removeClass().addClass("fa fa-info");
+                    theView.modal("show");
+                }
+                // Show warning
+            var showWarning = function() {
+                    theView.find(".modal-title>i").removeClass().addClass("fa fa-warning");
+                    theView.modal("show");
+                }
+                // Show error
+            var showError = function() {
+                    theView.find(".modal-title>i").removeClass().addClass("fa fa-close");
+                    theView.modal("show");
+                }
+                // Show confirm
+            var showConfirm = function() {
+                    theView.find(".modal-title>i").removeClass().addClass("fa fa-question");
+                    theView.modal("show");
+                }
+                // Hide modal
+            var hideModal = function() {
+                    theView.modal("hide");
+                }
+                // Initialize 
+            init();
+            // Export
+            return {
+                info: showInfo,
+                warn: showWarning,
+                error: showError,
+                confirm: showConfirm,
+                hide: hideModal,
+            };
+        };
+
+        var features = [{
+            id: 'project',
+            text: '项目管理',
+            icon: 'fa-cubes',
+            open: true,
+            children: [{
+                id: 'project-emoney',
+                text: '礼金管理',
+                url: 'project/emoney.html',
+                icon: 'fa-cny',
+            }, {
+                id: 'project-point',
+                text: '积分管理',
+                url: 'project/point.html',
+                icon: 'fa-flask',
+            }, {
+                id: 'project-giftcard',
+                text: '礼品卡管理',
+                url: 'project/giftcard.html',
+                icon: 'fa-credit-card',
+            }, {
+                id: 'project-template',
+                text: '问卷设计',
+                url: 'project/template.html',
+                icon: 'fa-pencil-square-o',
+            }, {
+                id: 'project-sample',
+                text: '问卷管理',
+                url: 'project/sample.html',
+                icon: 'fa-stack-exchange',
+            }, {
+                id: 'project-quota',
+                text: '配额管理',
+                url: 'project/quota.html',
+                icon: 'fa-glass',
+            }, {
+                id: 'project-panel',
+                text: '信息发布',
+                url: 'project/panel.html',
+                icon: 'fa-external-link',
+            }, {
+                id: 'project-dashboard',
+                text: '项目看板',
+                url: 'project/dashboard.html',
+                icon: 'fa-glass',
+            }, {
+                id: 'project-setting',
+                text: '项目设置',
+                url: 'project/setting.html',
+                icon: 'fa-cogs',
+            }]
+        }, {
+            id: 'membership',
+            text: '会员中心',
+            icon: 'fa-group',
+            open: false,
+            children: [{
+                id: 'membership-member',
+                text: '会员管理',
+                url: 'membership/member.html',
+                icon: 'fa-user',
+            }, {
+                id: 'membership-emoney',
+                text: '礼金管理',
+                url: 'membership/emoney.html',
+                icon: 'fa-cny',
+            }, {
+                id: 'membership-point',
+                text: '积分管理',
+                url: 'membership/point.html',
+                icon: 'fa-flask',
+            }, {
+                id: 'membership-giftcard',
+                text: '礼品卡管理',
+                url: 'membership/giftcard.html',
+                icon: 'fa-credit-card',
+            }, {
+                id: 'membership-verification',
+                text: '车主认证',
+                url: 'membership/verification.html',
+                icon: 'fa-certificate',
+            }]
+        }, {
+            id: 'instrument',
+            text: '车主中心',
+            icon: 'fa-dashboard',
+            open: false,
+            children: [{
+                id: 'manage',
+                text: '车主管理',
+                url: 'instrument/manage.html',
+                icon: 'fa-user',
+            }]
+        }, {
+            id: 'messaging',
+            text: '消息中心',
+            icon: 'fa-comment-o',
+            open: false,
+            children: [{
+                id: 'messaging-sms',
+                text: '短信推送',
+                url: 'messaging/sms.html',
+                icon: 'fa-comments-o',
+            }, {
+                id: 'messaging-wechat',
+                text: '微信推送',
+                url: 'messaging/wechat.html',
+                icon: 'fa-wechat',
+            }, {
+                id: 'messaging-contact',
+                text: '名单管理',
+                url: 'messaging/contact.html',
+                icon: 'fa-newspaper-o',
+            }, {
+                id: 'messaging-template',
+                text: '消息模板',
+                url: 'messaging/template.html',
+                icon: 'fa-newspaper-o',
+            }]
+        }, {
+            id: 'system',
+            text: '系统管理',
+            icon: 'fa-wrench',
+            open: false,
+            children: [{
+                id: 'system-project',
+                text: '项目管理',
+                url: 'system/project.html',
+                icon: 'fa-cubes',
+            }, {
+                id: 'system-account',
+                text: '用户管理',
+                url: 'system/account.html',
+                icon: 'fa-user',
+            }, {
+                id: 'system-role',
+                text: '角色管理',
+                url: 'system/role.html',
+                icon: 'fa-group',
+            }, {
+                id: 'system-log',
+                text: '日志管理',
+                url: 'system/log.html',
+                icon: 'fa-align-justify',
+            }, {
+                id: 'system-setting',
+                text: '系统设置',
+                url: 'system/setting.html',
+                icon: 'fa-cogs',
+            }]
+        }];
+
+        var init_menu = function(features) {
+            var container = $('#sidebar_menu');
+            for (var i in features) {
+                var html = '';
+                for (var j in features[i].children) {
+                    html = html + create_level2(features[i].children[j]);
+                }
+                container.append(create_level1(features[i], html));
+            }
+        }
+
+        var create_level1 = function(feature, html) {
+            return '<li>' +
+                '<a class="accordion-toggle' + (feature.open ? ' menu-open' : '') + '" href="#">' +
+                '<span class="fa ' + feature.icon + '"></span>' +
+                '<span class="sidebar-title">' + feature.text + '</span>' +
+                '<span class="caret"></span>' +
+                '</a>' +
+                '<ul class="nav sub-nav">' + html +
+                '</ul>' +
+                '</li>';
+        }
+
+        var create_level2 = function(feature) {
+            return '<li>' +
+                '<a class="accordion-toggle" href="' + feature.url + '">' +
+                '<span class="fa fa ' + feature.icon + '"></span>' + feature.text +
+                //'<span class="caret"></span>' +
+                '</a>' +
+                '</li>';
+        }
+
+        init_menu(features);
+
+        //$('.nano-pane').attr('display', 'block');
+        //当前tab
+        $('#sidebar_menu > li > ul > li a').click(function() {
+            $(this).addClass("active").parent("li").siblings().find("a").removeClass("active");
+            $(this).addClass("active").parent("li").parents("li").siblings().find("a").removeClass("active");
+        })
+    </script>
+
+    <!-- Theme Javascript -->
+    <script src="assets/js/utility/utility.js"></script>
+    <script src="assets/js/demo/demo.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- Widget Javascript -->
+    <script src="assets/js/demo/widgets.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+            "use strict";
+
+            // Init Demo JS  
+            Demo.init();
+
+            // Init Theme Core    
+            Core.init();
+
+            function reSetContainerHeight() {
+                var winH = $(window).outerHeight();
+                //$('#content-container').css("height", winH - 60);
+            }
+
+            reSetContainerHeight();
+
+        });
+    </script>
+    <!-- END: PAGE SCRIPTS -->
+
+    <script type="text/javascript">
+        //刷新项目列表
+        var refreshProjects = function(ui, repID) {
+            var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+            var projectName = {
+                subSys: 'wesurvey',
+                repID: repID,
+                isQuery: '1',
+                dispType: '12',
+                perRows: '2000'
+            };
+            AjaxPost2(url, projectName, null, function(data) {
+                Core.fillSelect($(ui), data.objs);
+            }, function(error) {
+                alert(error);
+            })
+        };
+
+        //后台API所需数据
+        var linkApiData = function(repID) {
+            data = {
+                subSys: 'wesurvey',
+                repID: repID,
+                isQuery: '1',
+                dispType: '12',
+                perRows: '2000'
+
+            }
+            return data;
+        };
+
+        //var showConfirm = function (title, content, acceptText, accept, cancelText, cancel) {
+        //    $('#modal2 .accept').html(acceptText);
+        //    cancelText ? $('#modal2 .cancel').html(cancelText).show() : $('#modal2 .cancel').html('').hide();
+        //    $.magnificPopup.open({
+        //        removalDelay: 500, //delay removal by X to allow out-animation,
+        //        items: { src: '#modal2' },
+        //        // overflowY: 'hidden', // 
+        //        callbacks: {
+        //            beforeOpen: function (e) {
+        //                this.st.mainClass = 'mfp-zoomIn';
+        //            }
+        //        },
+        //        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        //    });
+        //}
+
+        //
+        $(function() {
+
+            $(document).on('click', 'a[href="#"]', function(e) {
+                e.preventDefault();
+            });
+
+            $(window).on('hashchange', function() {
+                //get the url by removing the hash
+                var url = location.hash.replace(/^#/, '');
+                //
+                //container = $('#content');
+                // Do this if url exists (for page refresh, etc...)
+                if (url) {
+                    // remove all active class
+                    //$('nav li.active').removeClass("active");
+                    // match the url and add the active class
+                    //$('nav li:has(a[href="' + url + '"])').addClass("active");
+                    //var title = ($('nav a[href="' + url + '"]').attr('title'))
+                    // change page title from global var
+                    //document.title = (title || document.title);
+                    //console.log("page title: " + document.title);
+                    // parse url to jquery
+                    Core.loadURL(url + location.search, $('#content-container'));
+                    $('#content-container iframe').css('height', $(window).outerHeight() - 60 - 44);
+                    //loadURL(url + location.search, $('#content-container'));
+                } else {
+                    // grab the first URL from nav
+                    //var $this = $('nav > ul > li:first-child > a[href!="#"]');
+                    //update hash
+                    //window.location.hash = $this.attr('href');
+                    alert('error');
+                }
+            });
+
+        });
+
+        //@ sourceURL=dynamicScript-index.js
+    </script>
+
+</body>
+
+</html>

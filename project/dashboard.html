@@ -1,0 +1,357 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="bs-component">
+            <div class="panel" id="tab_panel">
+                <div class="panel-heading">
+                    <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                        <li class="" style="display: none;">
+                            <a href="#quota" data-toggle="tab">配额完成情况</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content pn br-n">
+                        <!-- tab start -->
+                        <div id="quota" class="tab-pane pn" style="display: none;" tabindex="1">
+                            <!--cnd start-->
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <select name="cnd-project" class="form-control cnd-project">
+                                                            </select>
+                                                            <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button type="submit" class="btn btn-primary btn-sm pull-right action-query">
+                                                    <i class="fa fa-search"></i>查询
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--cnd end-->
+                            <!--data start-->
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="quota-container admin-panels">
+                                        <!--  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--data end-->
+                        </div>
+                        <!-- tab end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Start of quota template-->
+    <div class="row hidden quota-template">
+        <div class="col-md-12 admin-grid">
+            <div class="panel sort-disable panel-colorbox-open" id="{{apid}}" data-panel-title="false" data-panel-color="false" data-panel-fullscreen="false" data-panel-title="true" data-panel-remove="false" data-panel-collapse="true">
+                <div class="panel-heading">
+                    <span class="panel-title hidden-xs hidden"></span>
+                    <ul class="nav panel-tabs panel-tabs-left">
+                    </ul>
+                </div>
+                <div class="panel-body pn" style="display: block;">
+                    <div class="tab-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of quota template-->
+</div>
+
+<script>
+    jQuery.fn.rowspan = function(colIdx) { //封装的一个JQuery小插件
+        return this.each(function() {
+            var that;
+            $('tr', this).each(function(row) {
+                //.filter(':visible')
+                $('td:eq(' + colIdx + ')', this).each(function(col) {
+                    if (that != null && $(this).html() == $(that).html()) {
+                        rowspan = $(that).attr("rowSpan");
+                        if (rowspan == undefined) {
+                            $(that).attr("rowSpan", 1);
+                            rowspan = $(that).attr("rowSpan");
+                        }
+                        rowspan = Number(rowspan) + 1;
+                        $(that).attr("rowSpan", rowspan);
+                        $(this).hide();
+                    } else {
+                        that = this;
+                    }
+                });
+            });
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    // Quota Controller
+
+    jQuery(document).ready(function() {
+
+        var container = "#quota";
+
+        "use strict";
+
+        var getId = function(prefix, oid) {
+            return prefix + '_' + oid;
+        }
+
+        var renderChart = function(chart, quota, index) {
+            var highColors = [bgSystem, bgWarning, bgPrimary, bgSuccess];
+            var categories = [];
+            var value = {},
+                doneCount = {},
+                flag = [];
+            var seriesData = [{
+                name: '配额数',
+                data: []
+            }, {
+                name: '完成数',
+                data: []
+            }];
+            //构造图表数据
+            for (var j = 0; j < quota.quotaRows.length; j++) {
+                var obj = quota.quotaRows[j];
+                if ($.inArray(quota.quotaRows[j].items[index], flag) != -1) {
+                    value[quota.quotaRows[j].items[index]] += obj.value;
+                    doneCount[quota.quotaRows[j].items[index]] += obj.doneCount;
+                } else {
+                    categories.push(quota.quotaRows[j].items[index]);
+                    flag.push(quota.quotaRows[j].items[index]);
+                    value[quota.quotaRows[j].items[index]] = obj.value;
+                    doneCount[quota.quotaRows[j].items[index]] = obj.doneCount;
+                }
+            }
+            for (var k = 0; k < categories.length; k++) {
+                seriesData[0].data.push(value[categories[k]]);
+                seriesData[1].data.push(doneCount[categories[k]]);
+            }
+            console.log(chart.selector);
+            console.log(seriesData[0]);
+            console.log(seriesData[1]);
+            //构造图表
+            chart.highcharts({
+                credits: false,
+                colors: highColors,
+                chart: {
+                    backgroundColor: 'transparent',
+                    className: '',
+                    type: 'line',
+                    zoomType: 'x',
+                    panning: true,
+                    panKey: 'shift',
+                    marginTop: 45,
+                    marginRight: 1,
+                    spacingTop: 0,
+                    spacingBottom: 0,
+                    spacingLeft: 0,
+                    spacingRight: 0
+                },
+                title: {
+                    text: null
+                },
+                xAxis: {
+                    gridLineColor: '#EEE',
+                    lineColor: '#EEE',
+                    tickColor: '#EEE',
+                    categories: categories
+                },
+                yAxis: {
+                    min: 0,
+                    tickInterval: 5,
+                    gridLineColor: '#EEE',
+                    title: {
+                        text: null,
+                    }
+                },
+                plotOptions: {
+                    spline: {
+                        lineWidth: 3,
+                    },
+                    area: {
+                        fillOpacity: 0.2
+                    }
+                },
+                legend: {
+                    enabled: true,
+                    floating: false,
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -15
+                },
+                series: seriesData
+            });
+        }
+
+        var renderTable = function(template, quota, index) {
+            //表头
+            var th = '';
+            for (var i = 0; i < quota.quotaFields.length; i++) {
+                th += '<th>' + quota.quotaFields[i].text + '</th>';
+            }
+            th += '<th>配额数</th><th>完成数</th>';
+            $('thead tr', template).append(th);
+            //表体
+            var tr = '';
+            for (var j = 0; j < quota.quotaRows.length; j++) {
+                tr += '<tr>';
+                for (var i = 0; i < quota.quotaRows[j].items.length; i++) {
+                    tr += '<td>' + quota.quotaRows[j].items[i] + '</td>';
+                } {
+                    tr += '<td>' + quota.quotaRows[j].value + '</td>';
+                    tr += '<td>' + quota.quotaRows[j].doneCount + '</td>';
+                }
+                tr += '</tr>';
+            }
+            $('tbody', template).append(tr);
+        }
+
+        var initQuotaGrid = function(container, quota) {
+            //克隆quota模板，并插入到最后
+            var template = $('.quota-template').clone().removeClass('quota-template').removeClass('hidden').addClass('quota')[0].outerHTML;
+            template = template.replace('{{apid}}', 'panel_' + quota.id);
+            $(container).append(template);
+            //添加tab、panel
+            for (var j = 0; j < quota.quotaFields.length; j++) {
+                var tabLi =
+                    '<li>' +
+                    '<a href="#' + getId('tab', quota.quotaFields[j].id) + '" data-toggle="tab" aria-expanded="true">' + quota.quotaFields[j].text + '</a>' +
+                    '</li>';
+                var tabPane =
+                    '<div class="tab-pane p15" id="' + getId('tab', quota.quotaFields[j].id) + '" role="tabpanel">' +
+                    '<div class="row">' +
+                    '<div class="col-md-8 pln br-r mvn15">' +
+                    '<div class="chart" id="' + getId('chart', quota.quotaFields[j].id) + '" style="height: 300px;" data-highcharts-chart="2">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div style="height:300px;overflow-y:auto;" class="col-md-4">' +
+                    '<table class="table mbn tc-med-1 tc-bold-last tc-fs13-last" id="' + getId('table', quota.quotaFields[j].id) + '" style="border-top:1px solid #eee;">' +
+                    '<thead>' +
+                    '<tr>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                    '</tbody>' +
+                    '</table>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                $('#panel_' + quota.id + ' .nav').append(tabLi);
+                $('#panel_' + quota.id + ' .tab-content').append(tabPane);
+                //Render table
+                renderTable($(getId('#table', quota.quotaFields[j].id)), quota, j);
+                //Render chart
+                renderChart($(getId('#chart', quota.quotaFields[j].id)), quota, j);
+            }
+            //设置active状态
+            $('#panel_' + quota.id + ' .nav li:first-child').addClass('active');
+            $('#panel_' + quota.id + ' .tab-pane:first-child').addClass('active');
+            //合并相同行，最后3列无需合并
+            for (var k = 0; k < quota.quotaFields.length; k++) {
+                for (var l = 0; l < quota.quotaFields.length - 1; l++) {
+                    $(getId('#table', quota.quotaFields[k].id)).rowspan(l);
+                }
+            }
+        }
+
+        var initAdminGrids = function(container) {
+            $('.admin-panels', container).adminpanel({
+                grid: '.admin-grid',
+                draggable: false,
+                preserveGrid: false,
+                //mobile: true,
+                onStart: function() {
+                    // Do something before AdminPanels runs
+                },
+                onFinish: function() {
+                    $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onload');
+                    // Init the rest of the plugins now that the panels
+                    // have had a chance to be moved and organized.
+                    // It's less taxing to organize empty panels
+                    //demoHighCharts.init();
+                    //runVectorMaps(); // function below
+                    //$(window).trigger('resize');
+                },
+                onSave: function() {
+                    $(window).trigger('resize');
+                }
+            });
+        }
+
+        //查询配额
+        $('.action-query', container).off("click").on("click", function() {
+            //criteria
+            var projectId = $(".cnd-project", container).val();
+            var dashQuota = linkApiData(31);
+            dashQuota["selCndIDs"] = 'projectID';
+            dashQuota["cnd_projectID"] = projectId;
+            //清空panel
+            $(container + ' .quota-container').empty();
+            //获取配额完成情况
+            AjaxGet(myapp.apiHost + "dashboard/quota/search?projectid=" + projectId, function(data) {
+                for (var i = 0; i < data.objs.length; ++i) {
+                    var quota = data.objs[i];
+                    for (var j = 0; j < quota.quotaRows.length; j++)
+                        quota.quotaRows[j].doneCount = Math.floor(Math.random() * quota.quotaRows[j].value);
+                    initQuotaGrid(container + ' .quota-container', quota);
+                }
+                initAdminGrids(container);
+            }, function(error) {
+                alert(error);
+            });
+            // AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", dashQuota, null, function(data) {
+            //     var quotas = data.objs,
+            //         guarder = data.objs[data.objs.length - 1].id;
+            //     for (var i = 0; i < quotas.length; i++) {
+            //         AjaxGet(myapp.apiHost + "dashboard/search?quotaid=" + quotas[i].id + "&projectid=" + quotas[i].projectID, function(data) {
+            //             for (var m = 0; m < data.objs[0].quotaRows.length; m++)
+            //                 data.objs[0].quotaRows[m].doneCount = Math.floor(Math.random() * data.objs[0].quotaRows[m].value);
+            //             initQuotaGrid(container + ' .quota-container', data.objs[0]);
+            //             if (guarder == data.objs[0].id)
+            //                 initAdminGrids(container);
+            //         }, function(error) {
+            //             alert(error);
+            //         });
+            //     }
+            // }, function(erro) {
+            //     alert(erro);
+            // });
+        });
+
+        var activateTabPage = function(index) {
+            $('.panel-tabs li:first-child').css('display', 'block').addClass('active');
+        }
+
+        initTabs(activateTabPage);
+        //刷新项目列表
+        refreshProjects(".cnd-project", 13);
+    });
+
+    //@ sourceURL=dynamicScript-project-dashboard.js
+</script>

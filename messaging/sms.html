@@ -1,0 +1,747 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#sms" data-toggle="tab"><span class="fa fa-envelope"></span>短信推送</a></li>
+                    <li style="display:none;"><a href="#status" data-toggle="tab"><span class="fa fa-files-o" style="padding-right:6px;"></span>发送状态</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="sms" class="tab-pane pn" tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <!-- Condition panel -->
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_tpl_name" class="col-lg-4 col-md-4 col-sm-6 control-label">数据来源：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id="cnd_source" id="cnd_source" name="cnd_source" class="form-control cnd-source">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">车主库</option>
+                                                            <option value="2">名字库</option>
+                                                        </select>
+                                                        <label class="field-icon"><i
+                                                                class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12 cnd-groups">
+                                                <label for="cnd_tpl_name" class="col-lg-4 col-md-4 col-sm-6 control-label">组名：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                         <select data-id="cnd_groupName" id="cnd_groupName" type="text"  name="groupname"  class="form-control cnd-group">
+                                                             <option value="">请选择</option>
+                                                         </select>
+                                                        <label class="field-icon"><i
+                                                                class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12 member-car">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">姓名：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input data-id="cnd_name" data-val="m_shortname" id="cnd_name" type="text"  name="username" class="form-control cnd-user str">
+                                                        <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row member-car">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">性别：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-val="m_gender" data-id="cnd_gender" name="gender" class="form-control cnd-source">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">男</option>
+                                                            <option value="2">女</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">电话：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input data-val="m_mobileNumber1" data-id="cnd_phoneNumber" type="text"  name="phone" class="form-control cnd-phone str">
+                                                        <label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row member-car">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_province" class="field prepend-icon">
+                                                        <select data-val="p_postcode" data-id="cnd_provinceCode" id="cnd_provincecode" name="select2" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_city" class="field prepend-icon">
+                                                        <select  data-val="c_postcode" data-id="cnd_cityCode" id="cnd_citycode" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row member-car">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">品牌：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_province" class="field prepend-icon">
+                                                        <select data-id="cnd_brand" data-val="b_id" id="cnd_brand" name="select2" class="form-control car-brand">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_city" class="field prepend-icon">
+                                                        <select data-id="cnd_modelID" data-val="mo_id" id="cnd_cartype" name="select3" class="form-control car-type">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <button type="button" class="btn btn-primary btn-sm pull-right push-message"><i class="fa fa-location-arrow"></i>推送</button>
+                                            <!--                                             <button type="button" class="btn btn-default btn-sm pull-right create-account">短信推送</button>
+                                            <button type="button" class="btn btn-default btn-sm pull-right create-account">批量推送</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_sms">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd">
+                                                <td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="status" class="tab-pane pn" tabindex="2" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="panel panel-visible">
+                                            <div class="panel-body">
+                                                <div class="form-horizontal admin-form weui-form">
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">发送状态：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <select data-id="cnd_sent" type="text" name="start_time" class="form-control" placeholder="">
+                                                                <option value="">请选择</option>
+                                                                <option value="0">未发送</option>
+                                                                <option value="1">已发送</option>
+                                                            </select>
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row panel-footer action-container">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="panel">
+                                            <div class="panel-body pn">
+                                                <table class="table table-striped table-hover" id="datatable_status">
+                                                    <thead>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Model Modal -->
+<div class="modal fade" id="model_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span></h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <div class="modal-body">
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="projectname" class="form-control col_projectName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">问卷名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="col_questionName" class="form-control col_questionName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">模板名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="tplName" class="form-control col_tplName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">推送名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <input type="text"  name="phone" class="form-control col_title">                                      
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_type" class="col-lg-4 col-md-4 col-sm-6 control-label">立即推送：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class=" switch switch-primary">
+                                        <input class="instant-push" type="checkbox" name="features" checked id="f5" data-eventtype="2" value="popups" class="mt20">
+                                        <label for="f5" data-on="启用" data-off="禁用"></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12 delay-push hide">
+                            <label for="col_type" class="col-lg-4 col-md-4 col-sm-6 control-label ">延时推送：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <input data-id="cnd_typeegintime" type="text" name="start_time" class="form-control weui-datepicker weui-dateTimebegin gui-input push-date" placeholder="" required/>
+                                         <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                    <button type="submit" class="btn btn-primary btn-sm get-push"><i class="fa fa-save"></i><span class="">推送</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Model Modal -->
+<div class="modal fade" id="group_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id=""><span class="fa fa-edit"></span><span class="caption"></span></h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <div class="modal-body">
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">模板组：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <input  type="text"  name="username" class="form-control  col_group">
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                    <button type="submit" class="btn btn-primary btn-sm group-save"><i class="fa fa-save"></i><span class="">保存</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var theSmsTable = null,
+        theSmsColumns = null,
+        theSmsCount = 0,
+        theSmsDummy = false,
+        theSmsOption = null;
+
+    var theExTable = null,
+        theExColumns = null,
+        theExDummy = false,
+        theExOption = null,
+        theExCount = 0;
+
+    var theStatusTable = null,
+        theStatusColumns = null,
+        theStatusDummy = false,
+        theStatusCount = 0,
+        theStatusOption = null;
+
+    $(function() {
+        theSmsTable = $('#datatable_sms');
+        theSmsColumns = [{
+            "aTargets": [0],
+            "mData": "ID",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "groupName",
+            "sTitle": "组名",
+            "sClass": "text-align-left",
+            "sWidth": "128px"
+        }, {
+            "aTargets": [2],
+            "mData": "shortName",
+            "sClass": "text-align-left",
+            "sTitle": "姓名",
+            "sWidth": "128px"
+        }, {
+            "aTargets": [3],
+            "mData": "gender",
+            "sTitle": "性别",
+            "sWidth": "68px",
+        }, {
+            "aTargets": [4],
+            "mData": "phoneNumber1",
+            "sTitle": "手机号码1",
+            "sWidth": "68px",
+        }, {
+            "aTargets": [5],
+            "mData": "phoneNumber2",
+            "sTitle": "手机号码2",
+            // "sWidth": "68px"
+
+        }];
+        smsRepID = 83;
+        theSmsOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theSmsDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function(data, tr) {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, smsRepID, theSmsCount, "#sms");
+            },
+            setCountCallback: function(count) {
+                theSmsCount = count;
+            }
+        };
+        //短信推送查询
+        $("#sms .action-query").unbind("click").bind("click", function() {
+            if ($("#cnd_source option:selected").val() != " ") {
+                if ($("#cnd_source option:selected").val() == 1) {
+                    smsRepID = 106;
+                }
+                if ($("#cnd_source option:selected").val() == 2) {
+                    smsRepID = 83;
+                }
+                theSmsDummy = true;
+                theSmsTable.dataTable().fnDraw();
+            }
+        });
+    });
+
+
+    //发送状态
+    $(function() {
+        theStatusTable = $('#datatable_status');
+        theStatusColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "name",
+            "sTitle": "姓名",
+            "sWidth": "88px",
+            "mRender": function(mData, type, full) {
+                return '<a href="javascript:;"> ' + mData + '</a>';
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "phoneNumber1",
+            "sTitle": "联系电话",
+            "sWidth": "160px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "createdAt",
+            "sTitle": "发送时间",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "sent",
+            "sTitle": "发送状态",
+            "sWidth": "108px",
+            "mRender": function(data, type, full) {
+                return '<span>' + (full.sent == "true" ? "已发送" : "未发送") + '</span>'
+            }
+        }, {
+            "aTargets": [5],
+            "mData": "content",
+            "sClass": "text-align-left",
+            "sTitle": "发送内容",
+            //"sWidth": "128px",
+            "mRender": null
+        }];
+
+        theStatusOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theStatusDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                aoData.push({
+                    name: 'selCndID',
+                    value: 'type'
+                });
+                aoData.push({
+                    name: 'cnd_type',
+                    value: 1
+                });
+                basicData(aoData, 200, theStatusCount, "#status");
+            },
+            setCountCallback: function(count) {
+                theStatusCount = count;
+            }
+        };
+        //发送状态查询
+        $("#status .action_query").click(function() {
+            theStatusDummy = true;
+            theStatusTable.dataTable().fnDraw();
+        })
+    });
+
+    $(function() {
+        //初始化表格
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theSmsTable, theSmsColumns, theSmsOption);
+                $('table tbody', container).html(tr);
+            } else if (index == 2) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theStatusTable, theStatusColumns, theStatusOption);
+            }
+        };
+        initTabs(activateTabPage);
+
+        //设置数据源对应的切换
+        $(".member-car").hide();
+        $(".cnd-groups").hide();
+        $("#cnd_source").on('change', function() {
+            $("#cnd_groupName").val("");
+            $(".member-car select,.member-car input").val("");
+            if ($(this).val() == 1) {
+                $(".cnd-groups").hide();
+                $(".member-car").show();
+            } else if ($(this).val() == 2) {
+                intGroup($('#cnd_groupName'));
+                $(".member-car").hide();
+                $(".cnd-groups").show();
+            }
+        });
+
+        //禁用及时推送时延时推送显示
+        $('.instant-push').on('change', function() {
+            var status = $('.instant-push').prop("checked");
+            if (status == true) {
+                $('.delay-push').addClass("hide");
+            } else {
+                $('.delay-push').removeClass("hide");
+            }
+        })
+
+        //信息推送数据
+        var smsmodal = new Modal($("#model_modal"), null, null, function(data) {}, {
+            Entity: "推送"
+        });
+        $("#sms .push-message").off("click").on("click", function() {
+            if ($('#cnd_source option:selected').val() == 2 && $('#cnd_groupName').val() != "") {
+                smsmodal.show();
+            } else if ($('#cnd_source option:selected').val() == 1) {
+                smsmodal.show();
+            }
+        });
+
+        //导入数上传modal设置
+        var groupmodal = new Modal($("#group_modal"), null, null, function(data) {}, {
+            Entity: "推送"
+        });
+        $("#uploadex .upload").unbind("click").click(function(event) {
+            groupmodal.show();
+        });
+        //导入数据点击保存将模板组存入body data 在直接推送时取用
+        $(".group-save").click(function() {
+            var data = {
+                cacleID: $('#cacleID').val(),
+                groupName: $(".col_group").val(),
+            }
+            var url = myapp.apiHost2 + "wesurvey.messagecontent.do?";
+            AjaxPost2(url, data, null, function(data) {
+                $("body").data("groupValue", $(".col_group").val());
+                groupmodal.hide();
+            }, function(erro) {
+
+            });
+        });
+
+        //modal推送设置
+        $(".get-push").unbind("click").bind("click", function() {
+            if ($('.col_tplName option:selected').val() != '' && $('.col_projectName option:selected').val() != '') {
+                var data = {};
+                var condition = [];
+                if ($('#cnd_source option:selected').val() == 1) {
+                    $('.member-car .form-control').each(function(i, ele) {
+                        var cnd = $(this);
+                        if (cnd.val() != '') {
+                            var val = cnd.val();
+                            var strSql = '';
+                            var key = cnd.attr('data-val').split("_").join('.');
+                            if (cnd.attr('data-val') == "m_shortname" || cnd.attr('data-val') == "m_mobileNumber1") {
+                                strSql = key + " like " + "'%" + val + "%'";
+                            } else {
+                                strSql = key + "='" + val + "'";
+                            }
+                            condition.push(strSql);
+                        };
+                        data.source = 1;
+                    })
+                    data.condition = " where " + condition.join(' and ')
+                } else if ($('#cnd_source option:selected').val() == 2) {
+                    data.source = 2;
+                    condition = [];
+                    var groupName = $('#cnd_groupName').val();
+                    data.groupName = groupName;
+                };
+
+                var projectID = $('.col_projectName').val();
+                var projectName = $('.col_projectName option:selected').text();
+                //模板
+                var messagingTemplateID = $('.col_tplName').val();
+                //问卷
+                var templateID = $('.col_questionName').val();
+                //推送名称
+                var title = $('.col_title').val();
+                data.projectID = projectID;
+                data.projectName = projectName;
+                data.templateID = templateID;
+                data.messagingTemplateID = messagingTemplateID;
+                data.title = title;
+                //启用状态
+                if ($('.instant-push').prop("checked") == true) {
+                    var myDate = new Date();
+                    var year = myDate.getFullYear(),
+                        month = (myDate.getMonth() + 1),
+                        date = myDate.getDate(),
+                        hours = myDate.getHours(),
+                        minutes = myDate.getMinutes();
+                    var date = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":00";
+                    data.scheduledAt = date;
+
+                    //禁用状态
+                } else if ($('.instant-push').prop("checked") == false) {
+                    var dateDate = $(".push-date").val();
+                    data.scheduledAt = dateDate;
+                };
+
+                var url = myapp.apiHost2 + "wesurvey.messagetask.do?";
+                AjaxGet2(url, 'json', 'post', data, function(data) {
+                    // Exmodal.hide();
+                    smsmodal.hide();
+                }, function(error) {
+                    alert(error)
+                });
+            } else {
+                $('.col_tplName,.col_projectName').addClass("input-error");
+            }
+
+        });
+
+        //
+        $('.col_tplName,.col_projectName').change(function() {
+            if ($(this).val() == "") {
+                $(this).addClass("input-error");
+                smsmodal.show();
+            } else {
+                $(this).removeClass("input-error");
+            }
+        })
+        $('.col_projectName').change(function() {
+            var projectid = $(this).val();
+            AjaxGet(myapp.apiHost + 'template/search?projectID=' + projectid, function(data) {
+                var html = "";
+                for (var i = 0; i < data.objs.length; i++) {
+                    html += '<option value=' + data.objs[i].id + '>' + data.objs[i].name + '</option>'
+                }
+                $(".col_questionName").html('').append(html);
+            }, function(error) {});
+        });
+
+        Core.runWeUIElements();
+        $('.cnd-writedate').datepicker($.datepicker.regional["zh-CN"]);
+        $('.push-date').datepicker($.datepicker.regional["zh-CN"]);
+        //初始化模板列表
+        refreshtemplates(".col_tplName", 82, 1);
+        //初始化城市列表
+        city("#cnd_provincecode", "#cnd_citycode");
+        //车辆品牌
+        car(".car-brand", ".car-type");
+        //初始化项目
+        refreshProjects(".col_projectName", 13);
+        //初始化组名
+        var intGroup = function(select) {
+            var data = linkApiData(133);
+            AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", data, null, function(data) {
+                select.empty().append("<option value=''>请选择</option>");
+                for (var i in data.objs)
+                    select.append("<option value='" + data.objs[i].name + "'>" + data.objs[i].name + "</option>");
+                if (data.length > 0)
+                    select.val(data[data.length]);
+            }, function(erro) {
+
+            });
+        };
+
+    });
+    //@ sourceURL=dynamicScript-messaging-sms.js
+</script>

@@ -1,0 +1,697 @@
+<!--  -->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active"><a href="#tab1" data-toggle="tab">修改配额</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <!--tab start-->
+                    <div id="tab1" class="tab-pane active">
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible col-lg-9" id="dat">
+                                <div class="panel-heading">
+                                    <span class="panel-title">配额数据</span>
+                                </div>
+                                <div class="panel-body pn datatable_data" idx="1">
+                                    <table class="table table-striped table-hover" id="datatable_data">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel panel-visible col-lg-3" id="pnl">
+                                <div class="row">
+                                    <div class="panel-heading">
+                                        <span class="panel-title">配额字段</span>
+                                    </div>
+                                    <div class="panel-body pn">
+                                        <table class="table table-striped table-hover" id="datatable_field">
+                                        </table>
+                                    </div>
+                                    <div class="row" style="margin-top: 20px;">
+                                        <div class="col-md-10">
+                                            <select id="metafields" name="metafields" class="form-control"></select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <span class="btn btn-sm glyphicon glyphicon-plus add-field"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt20">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary pull-right form-control back-quota" style="line-height:1.2;"><span>返回</span></button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary pull-right form-control save-quota" style="line-height:1.2;"><span>保存</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <!--tab end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var quotaid = getParameterByName("quotaid", window.location.href);
+    quotaid = quotaid || -1;
+    var projectid = getParameterByName("projectid", window.location.href);
+    var METAFIELD_PROVINCE = 1, METAFIELD_CITY = 2, METAFIELD_BRAND = 3, METAFIELD_MODEL = 4, METAFIELD_AGE = 5, METAFIELD_LEVEL = 6, METAFIELD_GENDER = 7;
+
+    /*
+     *    修改配额
+     */
+    $(function() {
+
+        // datatable
+        var theDataTable = $('#datatable_data');
+        // columns
+        var theDataColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "id",
+            "sTitle": "配额",
+            "sWidth": "32px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<input type="number" value="' + data + '"/>'
+            }
+        }];
+        // option
+        var theDataOption = {
+            aButtons: [],
+            preDrawCallback: null,
+            rowCallback: null,
+            drawCallback: null,
+            bLengthChange: false,
+            ordering: false,
+        };
+        // data
+        var theQuotaData = [],
+            theMetaFields = [];
+
+        //
+        Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+        //
+        Core.fillDataTable(theDataTable, theQuotaData);
+
+        // datatable
+        var theFieldTable = $('#datatable_field');
+        // columns
+        var theFieldColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '';
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "title",
+            "sTitle": "配额字段",
+            //"sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "operate",
+            "sTitle": "操作",
+            "sWidth": "96px",
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-arrow-up action-up"></span></a><span class="text-divider">|</span>' +
+                    '<a href="#"><span class="fa fa-arrow-down action-down"></span></a><span class="text-divider">|</span>' +
+                    '<a href="#"><span class="fa fa-close fa-danger action-delete"></span></a>' +
+                    '</span>';
+            }
+        }];
+        // option
+        var theFieldOption = {
+            aButtons: [],
+            preDrawCallback: null,
+            rowCallback: null,
+            drawCallback: null,
+            bLengthChange: false,
+            info: false,
+            paging: false,
+            ordering: false,
+            searching: false,
+            tabletools: false,
+        };
+
+        //
+        Core.initDataTable(theFieldTable, theFieldColumns, theFieldOption);
+        //
+        Core.fillDataTable(theFieldTable, []);
+
+        // Initialize select
+        AjaxGet(myapp.apiHost + 'metafield/searchex?projectid=' + projectid, function(data) {
+            theMetaFields = data.objs;
+            fillSelect(theMetaFields);
+            //fillDataTable(quotaid);
+        });
+
+        // Initialize datatable (quota fields)
+        if (quotaid >= 0) {
+            AjaxGet(myapp.apiHost + 'quota/get?id=' + quotaid, function(data) {
+                var quotaData = data.objs[0];
+                var quotaFields = fillFieldDataTable(quotaData);
+                fillQuotaDataTable(quotaData, quotaFields);
+            }, function(error) {
+                alert(error)
+            });
+        }
+
+        //
+        var fillFieldDataTable = function(quotaData) {
+            var quotaFields = [];
+            // hide 'used' metafield
+            for (var i in quotaData.quotaFields) {
+                var field = getMetaFieldByID(quotaData.quotaFields[i].metaFieldID, theMetaFields);
+                quotaFields.push(field);
+                $("#metafields").find("option[value=" + field.id + "]").hide();
+            }
+            // initialize field datatable
+            Core.fillDataTable(theFieldTable, quotaFields);
+            //
+            return quotaFields;
+        }
+
+        //
+        var fillQuotaDataTable = function(quotaData, quotaFields) {
+            // re-initialize quota columns - quota fields
+            theDataColumns = [{
+                "aTargets": [0],
+                "mData": "id",
+                "sTitle": "#",
+                "sWidth": "12px",
+                "bSortable": false,
+                "mRender": function(data, type, full) {
+                    return "";
+                }
+            }];
+            for (var i in quotaFields) {
+                var field = quotaFields[i];
+                theDataColumns.push({
+                    "aTargets": [theDataColumns.length],
+                    "mData": field.name,
+                    "sTitle": field.title,
+                });
+            }
+            // re-initialize quota columns - last column
+            theDataColumns.push({
+                "aTargets": [theDataColumns.length],
+                "mData": "value",
+                "sTitle": "配额",
+                "sWidth": "32px",
+                "bSortable": false,
+                "mRender": function(data, type, full) {
+                    return '<input type="number" class="quota-value" value="' + data + '"/>'
+                }
+            });
+            // generate quota data
+            theQuotaData = quotaFields.length <= 0 ? [] : generateQuotaData(quotaFields);
+            // copy value
+            for (var i in quotaData.quotaRows) {
+                if (theQuotaData[i])
+                    theQuotaData[i].value = quotaData.quotaRows[i].value;
+            }
+            // destroy quota datatable
+            theDataTable.dataTable().fnClearTable();
+            theDataTable.dataTable().fnDestroy(false);
+            theDataTable.find("thead").html('');
+            // re-initialize quota datatable
+            Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+            //
+            Core.fillDataTable(theDataTable, theQuotaData);
+        }
+
+        //
+        var generateQuotaData = function(quotaFields) {
+            //
+            var newQuotaData = [];
+            // generate quota for first quota field (as template)
+            var field = quotaFields[0];
+            for (var i in field.children) {
+                var q = {
+                    id: -1,
+                    value: 10
+                };
+                q[field.name] = field.children[i].title;
+                newQuotaData.push(q);
+            }
+            // iterate remain quota fields
+            for (var k = 1; k < quotaFields.length; k++) {
+                field = quotaFields[k];
+                var tmpQuotaData = [];
+                for (var i = 0; i < newQuotaData.length; i++) {
+                    for (var j in field.children) {
+                        var q = jQuery.extend({}, newQuotaData[i]);
+                        q[field.name] = field.children[j].title;
+                        tmpQuotaData.push(q);
+                    }
+                }
+                newQuotaData = tmpQuotaData;
+            }
+            //
+            return newQuotaData;
+        }
+
+        // Initialize field select (metafield)
+        var fillSelect = function(quotaFields) {
+            $("#metafields").empty().append("<option value='xyz' disabled selected>请选择</option>");
+            for (var i = 0; i < quotaFields.length; ++i) {
+                // quotaFields[i].type = i + 1; // for testing
+                $("#metafields").append("<option value='" + quotaFields[i].id + "' type='" + quotaFields[i].type + "'>" + quotaFields[i].title + "</option>");
+                $("#metafields option:last").data(quotaFields[i]);
+            }
+            if (quotaFields.length > 0) $("#metafields").val(quotaFields[0].id);
+        }
+
+        // Action handlers for field datatable
+        theFieldTable.find("tbody").unbind("click").click(function(event) {
+            var theLink = $(event.target);
+            if (theLink.hasClass("action-up")) {
+                var index = theLink.parents("tr")[0].rowIndex;
+                if (index > 1) {
+                    // Sort filed datatable - rows
+                    var fieldtable = theFieldTable.dataTable();
+                    var quotaFields = fieldtable.fnGetData();
+                    var quotatable = theDataTable.dataTable();
+                    //quotaFields.splice((index - 1), 0, quotaFields.splice(index, 1)[0]);
+                    var zeroindex = index - 1;
+                    var temp = quotaFields[zeroindex];
+                    quotaFields[zeroindex] = quotaFields[zeroindex - 1];
+                    quotaFields[zeroindex - 1] = temp;
+                    fieldtable.fnClearTable();
+                    fieldtable.fnAddData(quotaFields);
+                    // Sort data datatable - columns
+                    //quotatable.oApi.fnColReorder(quotatable.fnSettings(), index, index - 1);
+                    var columns = theDataColumns; // important! the first column is #
+                    var tempx = columns[index];
+                    columns[index] = columns[index - 1];
+                    columns[index - 1] = tempx;
+                    var cix = columns[index].aTargets[0];
+                    columns[index].aTargets[0] = columns[index - 1].aTargets[0];
+                    columns[index - 1].aTargets[0] = cix;
+                    // Sort data datatable - rows
+                    quotaFields = fieldtable.fnGetData(); // important - refresh reordered fields
+                    var params = [];
+                    for (var i in quotaFields)
+                        params.push(quotaFields[i].name);
+                    theQuotaData.sort(dynamicSortMultiple.apply(this, params));
+                    // Re-initialize datatable
+                    quotatable.fnClearTable();
+                    quotatable.fnDestroy(false);
+                    theDataTable.find('thead').html('');
+                    Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+                    Core.fillDataTable(theDataTable, theQuotaData);
+                }
+            } else if (theLink.hasClass("action-down")) {
+                var index = theLink.parents("tr")[0].rowIndex;
+                var fieldtable = theFieldTable.dataTable();
+                var quotaFields = fieldtable.fnGetData();
+                var quotatable = theDataTable.dataTable();
+                if (index < quotaFields.length) {
+                    // Sort filed datatable - rows
+                    //quotaFields.splice((index + 1), 0, quotaFields.splice(index, 1)[0]);
+                    var zeroindex = index - 1;
+                    var temp = quotaFields[zeroindex];
+                    quotaFields[zeroindex] = quotaFields[zeroindex + 1];
+                    quotaFields[zeroindex + 1] = temp;
+                    fieldtable.fnClearTable();
+                    fieldtable.fnAddData(quotaFields);
+                    // Sort data datatable - columns
+                    //quotatable.oApi.fnColReorder(quotatable.fnSettings(), index-1, index);
+                    var columns = theDataColumns; // important! the first column is #
+                    var tempx = columns[index + 1];
+                    columns[index + 1] = columns[index];
+                    columns[index] = tempx;
+                    var cix = columns[index + 1].aTargets[0];
+                    columns[index + 1].aTargets[0] = columns[index].aTargets[0];
+                    columns[index].aTargets[0] = cix;
+                    // Sort quota datatable - rows
+                    quotaFields = fieldtable.fnGetData(); // important - refresh reordered fields
+                    var params = [];
+                    for (var i in quotaFields)
+                        params.push(quotaFields[i].name);
+                    theQuotaData.sort(dynamicSortMultiple.apply(this, params));
+                    // Re-initialize datatable
+                    quotatable.fnClearTable();
+                    quotatable.fnDestroy(false);
+                    theDataTable.find('thead').html('');
+                    Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+                    Core.fillDataTable(theDataTable, theQuotaData);
+                }
+            } else if (theLink.hasClass("action-delete")) {
+                var tr = theLink.parents("tr")[0];
+                var index = tr.rowIndex;
+                var fieldtable = theFieldTable.dataTable();
+                var field = fieldtable.fnGetData(tr);
+                var quotatable = theDataTable.dataTable();
+                // Merge quota data
+                theQuotaData = mergeQuotaData(index, field, fieldtable);
+                // Delete from quota datatable
+                theDataColumns.splice(index, 1);
+                for (var ci in theDataColumns)
+                    theDataColumns[ci].aTargets[0] = parseInt(ci); // important! should be number
+                // Re-initialize datatable
+                quotatable.fnClearTable();
+                quotatable.fnDestroy(false);
+                theDataTable.find('thead').html('');
+                Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+                Core.fillDataTable(theDataTable, theQuotaData);
+                // Show deleted field in select
+                if (field.type == METAFIELD_PROVINCE || field.type == METAFIELD_CITY) {
+                    $("#metafields").find("option[type='" + METAFIELD_PROVINCE + "']").show();
+                    $("#metafields").find("option[type='" + METAFIELD_CITY + "']").show();
+                } else if (field.type == METAFIELD_BRAND || field.type == METAFIELD_MODEL) {
+                    $("#metafields").find("option[type='" + METAFIELD_BRAND + "']").show();
+                    $("#metafields").find("option[type='" + METAFIELD_MODEL + "']").show();
+                } else {
+                    $("#metafields").find('option[value="' + field.id + '"]').show();
+                }
+                // Delete from field datatable
+                Core.deleteRow(theFieldTable, tr);
+            }
+        });
+
+        // Action handlers for quota datatable
+        theDataTable.find("tbody").unbind("change").change(function(event) {
+            var theLink = $(event.target);
+            if (theLink.hasClass("quota-value")) {
+                var datatable = theDataTable.dataTable();
+                var index = theLink.parents("tr")[0].rowIndex - 1;
+                var quota = datatable.fnGetData(index);
+                quota.value = theLink.val();
+            }
+        });
+
+        //
+        $('#tab1 .add-field').unbind("click").bind("click", function(e) {
+            if ($("#metafields").find("option:selected").val() != "xyz") {
+                var field = $("#metafields").find("option:selected").data();
+                // Add column into field table
+                var fields = $("#datatable_field").dataTable().fnGetData();
+                if (fields.length == 0)
+                    theFieldTable.dataTable().fnClearTable();
+                Core.insertRow($("#datatable_field"), field);
+                // Add column into data table
+                theDataColumns.splice(theDataColumns.length - 1, 1);
+                theDataColumns.push({
+                    "aTargets": [theDataColumns.length],
+                    "mData": field.name,
+                    "sTitle": field.title
+                });
+                theDataColumns.push({
+                    "aTargets": [theDataColumns.length],
+                    "mData": "value",
+                    "sTitle": "配额",
+                    "sWidth": "32px",
+                    "bSortable": false,
+                    "mRender": function(data, type, full) {
+                        return '<input type="number" class="quota-value" value="' + data + '"/>'
+                    }
+                });
+                // Clear quota datatable
+                theDataTable.dataTable().fnClearTable();
+                // Update quota data
+                var newQuotaData = [];
+                if (theQuotaData.length == 0) {
+                    for (var i in field.children) {
+                        var q = {
+                            id: -1,
+                            value: 10 // default
+                        };
+                        q[field.name] = field.children[i].title;
+                        newQuotaData.push(q);
+                    }
+                } else {
+                    for (var i in theQuotaData) {
+                        for (var j in field.children) {
+                            var q = jQuery.extend({}, theQuotaData[i]);
+                            q[field.name] = field.children[j].title;
+                            newQuotaData.push(q);
+                        }
+                    }
+                }
+                theQuotaData = newQuotaData;
+                // Re-initialize datatable
+                //theDataTable.dataTable().fnDestroy(false);
+                var newCloumns = [{
+                    "aTargets": [theDataColumns.length],
+                    "mData": "value1",
+                    "sTitle": "配额1",
+                    "sWidth": "32px",
+                    "bSortable": false,
+                    "mRender": function(data, type, full) {
+                        return '<input type="number" class="quota-value" value="' + data + '"/>'
+                    }
+                }];
+                theDataTable.dataTable().fnDestroy(false);
+                theDataTable.find('thead').html('');
+                Core.initDataTable(theDataTable, theDataColumns, theDataOption);
+                Core.fillDataTable(theDataTable, theQuotaData);
+                // Hide selected quota field, brand/model and province/city
+                if (field.type == METAFIELD_PROVINCE || field.type == METAFIELD_CITY) {
+                    $("#metafields").find("option[type='" + METAFIELD_PROVINCE + "']").hide();
+                    $("#metafields").find("option[type='" + METAFIELD_CITY + "']").hide();
+                } else if (field.type == METAFIELD_BRAND || field.type == METAFIELD_MODEL) {
+                    $("#metafields").find("option[type='" + METAFIELD_BRAND + "']").hide();
+                    $("#metafields").find("option[type='" + METAFIELD_MODEL + "']").hide();
+                } else {
+                    $("#metafields").find("option:selected").hide();
+                }                
+                $("#metafields").val('xyz');
+            }
+        });
+
+        //
+        $("#tab1 .save-quota").unbind("click").bind("click", function() {
+            //
+            var quotaFields = $("#datatable_field").dataTable().fnGetData();
+            //
+            var dbQuotaData = {
+                id: quotaid,
+                projectID: projectid,
+                name: '',
+                remark: '',
+                quotaRows: [],
+                quotaFields: []
+            };
+            // denorm quotadata
+            var names = [];
+            for (var i in quotaFields) {
+                names.push(quotaFields[i].title);
+                denormQuotaData(dbQuotaData, quotaFields[i]);
+            }
+            dbQuotaData.name = names.join("_");
+            dbQuotaData.remark = names.join("_");
+            // copy value
+            for (var i = 0; i < theQuotaData.length; i++) {
+                dbQuotaData.quotaRows[i].value = theQuotaData[i].value;
+            }
+            // submit
+            var url = myapp.apiHost + 'quota/' + (quotaid >= 0 ? "update" : "create");
+            AjaxPost(url, dbQuotaData, null, function(data) {
+                var messageModel = new MessageModal($("#message-modal"), "保存成功！", null, function() {}).error();
+            }, function(error) {
+                alert(error);
+            });
+        });
+
+        //
+        $('.back-quota').unbind('click').bind('click', function() {
+            window.location = "#project/quota.html";
+        });
+        //
+        var mergeQuotaData = function(index, field, fieldtable) {
+            var newQuotaData = [];
+            if (index == 1) { // first column
+                if (theDataColumns.length > 3) {
+                    // based on first block (size = count)
+                    var count = theQuotaData.length / field.children.length;
+                    for (var i = 0; i < count; ++i) {
+                        var q = jQuery.extend({}, theQuotaData[i]);
+                        for (var j = 1; j < field.children.length; ++j) {
+                            q.value = q.value + theQuotaData[j * count].value;
+                        }
+                        newQuotaData.push(q);
+                    }
+                }
+            } else if (index == theDataColumns.length - 2) { // last column - important! the first column is #  
+                var newQuotaData = [];
+                if (theDataColumns.length > 3) {
+                    // merge block by block (size = field.children.length)
+                    for (var i = 0; i < theQuotaData.length;) {
+                        var q = jQuery.extend({}, theQuotaData[i]);
+                        for (var j = 1; j < field.children.length; ++j)
+                            q.value = q.value + theQuotaData[i + j].value;
+                        newQuotaData.push(q);
+                        i = i + field.children.length; // next block
+                    }
+                }
+            } else { // middle columns
+                var prevfield = fieldtable.fnGetData(index - 1 - 1);
+                var nextfield = fieldtable.fnGetData(index + 1 - 1);
+                for (var i = 0; i < theQuotaData.length;) {
+                    for (var j = 0; j < nextfield.children.length; ++j) {
+                        var q = jQuery.extend({}, theQuotaData[i + j]);
+                        for (var k = 1; k < field.children.length; ++k) {
+                            q.value = q.value + theQuotaData[i + j + k * nextfield.children.length].value;
+                        }
+                        newQuotaData.push(q);
+                    }
+                    i += field.children.length * nextfield.children.length;
+                }
+            }
+            return newQuotaData;
+        }
+
+        //
+        var cheatDataTable = function(pc, dataTable) {
+            dataTable.fnClearTable();
+            dataTable.fnDestroy(true);
+            var panel = '.' + pc;
+            var html =
+                '<table class="table table-striped table-hover" id="">' +
+                '<thead>' +
+                '</thead>' +
+                '<tbody>' +
+                '</tbody>' +
+                '</table>';
+            $(panel).append(html);
+            var idx = parseInt($(panel).attr('idx'));
+            $(panel).attr('idx', idx + 1);
+            $(panel + ' table').attr('id', pc + idx);
+            return $('#' + pc + idx);
+        }
+
+        //
+        var denormQuotaData = function(dbQuotaData, field) {
+            // quotaFields
+            var ordinal = dbQuotaData.quotaFields.length;
+            dbQuotaData.quotaFields.push({
+                id: -1,
+                quotaID: quotaid,
+                ordinal: ordinal,
+                metaFieldID: field.id
+            });
+            // quotaRows
+            var newQuotaRows = [];
+            // generate quota rows
+            if (dbQuotaData.quotaRows.length == 0) {
+                for (var i in field.children) {
+                    var tmpQuotaRow = {
+                        id: -1,
+                        quotaID: quotaid,
+                        value: "",
+                        quotaItems: []
+                    };
+                    tmpQuotaRow.quotaItems.push({
+                        id: -1,
+                        quotaRowID: -1,
+                        metaDomainID: field.children[i].id
+                    });
+                    newQuotaRows.push(tmpQuotaRow);
+                }
+            } else {
+                for (var i in dbQuotaData.quotaRows) {
+                    for (var j in field.children) {
+                        // create new row
+                        var tmpQuotaRow = {
+                            id: -1,
+                            quotaID: quotaid,
+                            value: "",
+                            quotaItems: []
+                        };
+                        // copy quota items
+                        var oldQuotaItems = dbQuotaData.quotaRows[i].quotaItems;
+                        for (var k = 0; k < oldQuotaItems.length; k++) {
+                            tmpQuotaRow.quotaItems.push(oldQuotaItems[k]);
+                        }
+                        // insert new item
+                        tmpQuotaRow.quotaItems.push({
+                            id: -1,
+                            quotaRowID: -1,
+                            metaDomainID: field.children[j].id
+                        });
+                        //
+                        newQuotaRows.push(tmpQuotaRow);
+                    }
+                }
+            }
+            // update quotaRows
+            dbQuotaData.quotaRows = newQuotaRows;
+        };
+
+        //
+        var getMetaFieldByID = function(id, metaFields) {
+            for (var i in metaFields) {
+                if (metaFields[i].id == id) {
+                    return metaFields[i];
+                }
+            }
+            return null;
+        }
+
+        //
+        var dynamicSort = function(property) {
+            var sortOrder = 1;
+            if (property[0] === "-") {
+                sortOrder = -1;
+                property = property.substr(1);
+            }
+            return function(a, b) {
+                var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                return result * sortOrder;
+            }
+        }
+
+        //
+        var dynamicSortMultiple = function() {
+            /*
+             * save the arguments object as it will be overwritten
+             * note that arguments object is an array-like object
+             * consisting of the names of the properties to sort by
+             */
+            var props = arguments;
+            return function(obj1, obj2) {
+                var i = 0,
+                    result = 0,
+                    numberOfProperties = props.length;
+                /* try getting a different result from 0 (equal)
+                 * as long as we have extra properties to compare
+                 */
+                while (result === 0 && i < numberOfProperties) {
+                    result = dynamicSort(props[i])(obj1, obj2);
+                    i++;
+                }
+                return result;
+            }
+        }
+    });
+
+    //@ sourceURL=dynamicScript-project-quota-detail.js
+</script>

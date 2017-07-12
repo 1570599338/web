@@ -1,0 +1,241 @@
+<div class="topicset" style="width: 487px; overflow: hidden;">
+    <form action="/edit/q_options/57342dfba320fc49ee63bb0d/" id="op_form" method="post" onsubmit="return false;">
+        <div class="poplayer">
+            <dl class="way">
+                <dd class="clear choose-way">
+                    <label for="number">编号：</label>
+                    <input type="text" class="number" placeholder="请输入题目编号" style="padding-left:4px;" />
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear choose-way">
+                    <a href="javascript:;" class="layout fluid active" val="fluid">展开</a>
+                    <a href="javascript:;" class="layout tabular " val="tabular">矩阵</a>
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear">
+                    <a href="javascript:;" class="chart pie active" val="">饼图</a>
+                    <a href="javascript:;" class="chart line" val="">折线</a>
+                    <a href="javascript:;" class="chart histogram" val="">柱状</a>
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear">
+                    <input type="checkbox" name="optional" class="optional" />
+                    <label for="optional">该题可跳过不回答</label>
+                </dd>
+                <dd class="clear">
+                    <input type="checkbox" name="row-reverse" class="row-reverse" id="row_reverse"/>
+                    <label for="row_reverse">行选项倒序</label>
+                </dd>
+                <dd class="clear">
+                    <input type="checkbox" name="col-reverse" class="col-reverse" id="col_reverse"/>
+                    <label for="col_reverse">列选项倒序</label>
+                </dd>
+                <dd class="clear">
+                    <input type="checkbox" name="row_disordered" class="row-disordered" />
+                    <label for="row_disordered">矩阵行随机排列</label>
+                </dd>
+                <dd style="padding-left: 20px; display: none;">
+                    <input type="checkbox" name="last_row_fixed" class="last-row-fixed">
+                    <label for="last_row_fixed">固定最后一行</label>
+                </dd>
+                <!--<dd class="clear" style="display: none;">
+                    <input type="checkbox" name="col_disordered" class="col-disordered">
+                    <label for="col_disordered">矩阵列随机排列</label>
+                </dd>
+                <dd style="padding-left: 20px; display: none;">
+                    <input type="checkbox" name="last-col-fixed" class="last-col-fixed">
+                    <label for="last_col_fixed">固定最后一列</label>
+                </dd>
+                <dd class="clear" style="display:none;">
+                    <input type="checkbox" name="pivot" class="pivot">
+                    <label for="pivot">矩阵行列交换</label>
+                </dd>-->
+            </dl>
+        </div>
+    </form>
+    <input type="hidden" name="change_qtype" value="" id="change_qtype">
+</div>
+
+<script type="text/javascript">
+
+    function validate(){
+        return true;
+    }
+
+    function saveForm(){
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新对象
+        updateObject(context, question);
+        //更新扩展信息
+        updateQuestionEx(question, function (data) {
+            console.log("update question extension success");
+        });
+        //更新逻辑
+        //var logic = context.data('logic');
+        //if(logic != null && logic != undefined && logic.changed == true) {
+        //    var data = [];
+        //    data = data.concat(logic.simple);
+        //    data = data.concat(logic.complex);
+        //    data = data.concat(logic.count);
+        //    data = data.concat(logic.uncond);
+        //    //
+        //    submitLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, question.id, data, function (data) {
+        //        console.log("submit logics success");
+        //    });
+        //}
+    }
+
+    var updateObject = function(context, question){
+        //题目编号
+        question.number = $('.number', context).val();
+        //可答
+        question.optional = $('.optional', context)[0].checked;
+        //行随机排列
+        question.rowDisordered = $('.row-disordered', context)[0].checked;
+        //固定最后一行
+        question.rowLastFixed = question.rowDisordered ? $('.last-row-fixed', context)[0].checked : false;
+        //列随机排列
+        question.colDisordered = false;
+        //question.colDisordered = $('.col-disordered', context)[0].checked;
+        //固定最后一列
+        question.colLastFixed = false;
+        //question.colLastFixed = question.colDisordered ? $('.last-col-fixed', context)[0].checked : false;
+        //行选项倒序
+        question.rowReverse = $('.row-reverse', context)[0].checked;
+        //列选项倒序
+        question.colReverse = $('.col-reverse', context)[0].checked;
+        //矩阵行列交换
+        question.matrixPivot = false;
+        //question.matrixPivot = $('.pivot', context)[0].checked;
+        //选项布局
+        var layout = $('.layout.active', context);
+        if (layout.hasClass('fluid')) {
+            question.layout = QUESTION_LAYOUT_FLUID;
+        } else if (layout.hasClass('tabular')) {
+            question.layout = QUESTION_LAYOUT_TABULAR;
+        }
+        //题图形选择
+        var chartType = $('.chart.active', context);
+        if (chartType.hasClass('pie')) {
+            question.chartType = QUESTION_CHART_PIE;
+        } else if (chartType.hasClass('histogram')) {
+            question.chartType = QUESTION_CHART_HISTOGRAM;
+        } else if (chartType.hasClass('line')) {
+            question.chartType = QUESTION_CHART_LINE;
+        }
+    }
+
+    jQuery(document).ready(function($) {
+
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+
+        //点击“行随机排列”后出现“固定最后一个选项”
+        $(".row-disordered", context).off('change').on('change', function () {
+            if ($(this).attr("checked")) {
+                $(".last-row-fixed", context).parent().show();
+            } else {
+                $(".last-row-fixed", context).parent().hide();
+            }
+        });
+
+        //题图形切换
+        $('.chart', context).off('click').on('click', function () {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        });
+
+        //点击“列随机排列”后出现“固定最后一个选项”
+        $(".col-disordered", context).off('change').on('change', function () {
+            if ($(this).attr("checked")) {
+                $(".last-col-fixed", context).parent().show();
+            } else {
+                $(".last-col-fixed", context).parent().hide();
+            }
+        });
+
+        //选项布局样式切换
+        $(".layout", context).off('click').on('click', function () {
+            $(this).addClass('active');
+            $(".layout", context).not($(this)).removeClass('active');
+        });
+
+        var updateControl = function (context, question) {
+            //题目编号
+            $('.number', context).val(question.number || '');
+            //布局
+            $('.layout', context).removeClass('active');
+            if (question.layout == QUESTION_LAYOUT_TABULAR)
+                $('.tabular', context).addClass('active');
+            else if(question.layout == QUESTION_LAYOUT_FLUID)
+                $('.fluid', context).addClass('active');
+            //该题可跳过不回答
+            $('.optional', context)[0].checked = question.optional;
+            //行随机排列
+            $('.row-disordered', context)[0].checked = question.rowDisordered;
+            //行选项倒序
+            $('.row-reverse', context)[0].checked = question.rowReverse;
+            //列选项倒序
+            $('.col-reverse', context)[0].checked = question.colReverse;
+            //固定最后一行
+            if ($('.row-disordered', context)[0].checked) {
+                $('.last-row-fixed', context).parent().show();
+                $('.last-row-fixed', context)[0].checked = question.rowLastFixed;
+            } else {
+                $('.last-row-fixed', context).parent().hide();
+                $('.last-row-fixed', context)[0].checked = false;
+            }
+            //题形显示图
+            $('.chart', context).removeClass('active');
+            if (question.chartType == QUESTION_CHART_HISTOGRAM)
+                $('.histogram', context).addClass('active');
+            else if (question.chartType == QUESTION_CHART_LINE)
+                $('.line', context).addClass('active');
+            else if (question.chartType == QUESTION_CHART_PIE)
+                $('.pie', context).addClass('active');
+            //列随机排列
+            //$('.col-disordered', context)[0].checked = question.colDisordered;
+            //固定最后一列
+            //if ($('.col-disordered', context)[0].checked) {
+            //    $('.last-col-fixed', context).parent().show();
+            //    $('.last-col-fixed', context)[0].checked = question.colLastFixed;
+            //} else {
+            //    $('.last-col-fixed', context).parent().hide();
+            //    $('.last-col-fixed', context)[0].checked = false;
+            //}
+            //矩阵行列交换
+            //$('.pivot', context)[0].checked = question.matrixPivot;
+            //取得逻辑后的个数渲染到小tip上
+            var renderLogics = function(logicType, data) {
+                if(data.length>0){
+                    var logic = $(".right-operate").data('logic');
+                    if (logic == null || logic == undefined) {
+                        logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                        $(".right-operate").data('logic', logic);
+                    }
+                    //添加逻辑
+                    logic[logicType].splice(0, logic[logicType].length);
+                    logic[logicType] = logic[logicType].concat(data);
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','block').html(logic[logicType].length);
+                }else{
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','none');
+                }
+            }
+            //获取无条件跳转
+            searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, function (data) {
+                renderLogics('uncond', data);
+            });
+        }
+
+        //更新界面
+        updateControl(context, question);
+    });
+
+    //@ sourceURL=matrix-single.js
+</script>

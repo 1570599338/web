@@ -1,0 +1,867 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>问卷设计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link rel="stylesheet" href="static/css/iconfont/myfont.css"/>
+    <link href="static/css/public_v2.css?v=fd7bd8d5d1601bb68fa1f2e095f52510" rel="stylesheet"/>
+
+    <link href="static/css/public_v2.css?v=fd7bd8d5d1601bb68fa1f2e095f52510" rel="stylesheet"/>
+    <link href="static/css/style_v2.css?v=13585b263ec5f21771933fb432bb8db4" rel="stylesheet"/>
+    <link href="static/css/button.css?v=91b96c3b8a9d8a98b5bc2b309744413d" rel="stylesheet"/>
+    <link href="static/css/popuplayer_v2.css?v=3a8c949ff408530b097074beb34f1cab" rel="stylesheet"/>
+
+    <!--<link href="static/css/edit_cq_v2.css" id="css_url" rel="stylesheet">-->
+
+    <style type="text/css">
+        .q-title {
+        }
+
+        .T-edit-min,
+        .T-edit-td {
+        }
+
+        .p-title {
+        }
+
+        .welcome {
+            /*text-align: center;*/
+        }
+
+        .closing {
+        }
+
+        /*让内部滚动条隐藏*/
+
+        /*::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+            background-color: #F3F3F3;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #F3F3F3;
+            border-radius: 4px;
+        }*/
+
+        body {
+            overflow-x: hidden !important;
+        }
+    </style>
+
+    <!--script src="static/js/jquery.js?v=b8e88e87301643b74f0df01461582202"></script-->
+    <script type="text/javascript" src="static/js/jquery_1.10.2.min.js?v=b62fe6d31abbd18c3f7eb34ddf470d63"></script>
+    <script type="text/javascript" src="static/js/jquery-migrate-1.2.1.js?v=26d9dd4e5632fdfef65c62330faabb9f"></script>
+    <script type="text/javascript" src="static/js/jquery.cookie.js?v=d5528dde0006c78be04817327c2f9b6f"></script>
+    <script type="text/javascript" src="static/js/jquery-ui-1.10.min.js?v=e13757288f6bcc9706b65e95710c0467"></script>
+    <script type="text/javascript" src="static/js/jquery.form_3.25.js?v=e13757288f6bcc9706b65e95710c0467"></script>
+    <script type="text/javascript" src="static/js/json.js?v=2ba3e68501985816b26089f135e5b718"></script>
+    <script type="text/javascript" src="static/js/base_utils.js?v=36add629fbd63df8c1c93cdf160e3c5a"></script>
+    <script type="text/javascript" charset="utf-8" src="../assets/plugins/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../assets/plugins/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../assets/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+
+<body>
+<div class="zon-v2 clear">
+    <!--top end-->
+    <div class="rows1">
+        <div class="well sidebar-nav affix-top" id="accordion1">
+            <div class="accordion-group">
+                <h4 class="tc">
+                    <a href="javascript:;">常用题型
+                        <i class="icon-on"></i>
+                    </a>
+                </h4>
+                <ul class="ul-tool collapse">
+                    <li class="moduleL" type="2">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe605;</i> 单选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="3">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe60a;</i> 多选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="12">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe61a;</i> 图片单选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="13">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe612;</i> 图片多选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="6">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe601;</i> 单行填空题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="11">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe607;</i> 多行填空题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="95">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe608;</i> 多项填空题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="50">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe600;</i> 打分题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="4">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe606;</i> 矩阵单选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="5">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe60b;</i> 矩阵多选题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="7">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe618;</i> 矩阵打分题
+                        </a>
+                    </li>
+                    <li class="moduleL" type="70">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe60e;</i> 描述说明
+                        </a>
+                    </li>
+                    <!--<li class="moduleL" type="page">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe60f;</i> 分组
+                        </a>
+                    </li>-->
+                </ul>
+            </div>
+            <div class="accordion-group">
+                <h4 class="tc">
+                    <a href="javascript:;">甄别题型
+                        <i class="icon-on"></i>
+                    </a>
+                </h4>
+                <ul class="ul-tool collapse">
+                    <li class="moduleL" type="2" bintype="101">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe619;</i> 性别
+                        </a>
+                    </li>
+                    <li class="moduleL" type="6" bintype="102">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe616;</i> 姓名
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="103">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe61c;</i> 年龄
+                        </a>
+                    </li>
+                    <li class="moduleL" type="6" bintype="104">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe623;</i> 出生日期
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="105">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe61b;</i> 城市
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="106">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe617;</i> 车型
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="107">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe610;</i> 车系
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="108">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe614;</i> 婚姻状况
+                        </a>
+                    </li>
+                    <li class="moduleL" type="2" bintype="109">
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe615;</i> 教育程度
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="wjContent">
+        <!--wentop-->
+        <div class="wentop wentop-cq">
+            <ul id="myTab" class="nav1 nav2-tabs">
+                <li>
+                    <a href="#" onclick="preview(this);" target="_blank">
+                        <i class="design-set4-icon"></i> 预览问卷
+                    </a>
+                </li>
+                <li class="release-cq">
+                    <a target="_blank" onclick="releaseTemplate();return false;" href="#">
+                        <i class="design-set5-icon"></i> 发布问卷
+                    </a>
+                </li>
+            </ul>
+            <h4 class="h4st1">
+                <div class="h4Title project-name"></div>
+            </h4>
+        </div>
+        <!--/.wentop-->
+        <div id="cq_content" class="cq-content clear">
+            <div class="row-fluid clear">
+                <!-- right-operate -->
+                <div class="rows2 well2 Tj">
+                    <div class="cq-title template-box">
+                        <!--<h4 name="template" class="h4-bg T-edit template">问卷</h4>-->
+                        <table style="border:none;">
+                            <tr>
+                                <td class="rb template-rank" style="width:41px;border:none;border-right:1px solid #e9e9e9;"></td>
+                                <td style="border:none !important;">
+                                    <div name="template" class="h4-bg T-edit template">问卷</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="table1 bg-m">
+                        <tr>
+                            <td class="rb">&nbsp;</td>
+                            <td style="padding-right:50px;">
+                                <div name="welcome" class="th4 T-edit welcome" id="welcome">欢迎参加本次答题</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table1 bg-m">
+                        <tr>
+                            <td class="rb">&nbsp;</td>
+                            <td style="padding-right:50px;">
+                                <div name="guide" class="th4 T-edit guide" id="guide">问卷简介</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <ul class="dragwen" id="question_box">
+                        <!-- 题目的html放这里 -->
+                    </ul>
+                    <table class="table1 bg-m">
+                        <tr>
+                            <td class="rb"></td>
+                            <td>
+                                <div class="closing-type-box">
+                                    <select id="closing_type">
+                                        <option value="complete" selected="selected">正常完成</option>
+                                        <option value="exception">提前结束（不计入结果）</option>
+                                    </select>
+                                    <span>时显示</span>
+                                </div>
+                                <h4 name='closing' class="th4 T-edit closing" id="closing">您已完成本次问卷，感谢您的帮助与支持</h4>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="jt"></div>
+                <div class="right-operate">
+                    <a href="javascript:;" class="close"></a>
+                    <h4 class="bt"></h4>
+
+                    <div class="operate-nr">
+                        <div class="panel-box">
+                            <!-- 其它配置放这里 -->
+                        </div>
+                        <dl class="way jump-box">
+                            <dd class="clear choose-way logic-box">
+                                <a href="javascript:;" class="jump-btn question simple"><i></i><span>条件跳转</span></a>
+                                <a href="javascript:;" class="jump-btn question complex"><i></i><span>条件跳转</span></a>
+                                <a href="javascript:;" class="jump-btn question count"><i></i><span>计数跳转</span></a>
+                                <a href="javascript:;" class="jump-btn question uncond"><i></i><span>无条件跳转</span></a>
+                                <a href="javascript:;" class="jump-btn option simple"><i></i><span>条件跳转</span></a>
+                                <a href="javascript:;" class="jump-btn option complex"><i></i><span>条件跳转</span></a>
+                                <a href="javascript:;" class="jump-btn option count"><i></i><span>计数跳转</span></a>
+                                <a href="javascript:;" class="jump-btn option uncond"><i></i><span>无条件跳转</span></a>
+                            </dd>
+                        </dl>
+                        <div class="btn-a ref-box">
+                            <p>
+                                <a href="javascript:;" class="ref-btn">引用设置</a>
+                                <!--<a href="javascript:;" class="init-btn">初始化设置</a>-->
+                            </p>
+                        </div>
+                        <div class="btn">
+                            <a href="javascript:;" class="save">保存</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="test"></div>
+                <!--/.rows2-->
+            </div>
+            <!--/.row-fluid-->
+        </div>
+        <!--/container-fluid-->
+    </div>
+    <!-- 未知 -->
+    <form id="change_project_status_form" action="/design/edit/ajax/update_project_status/" method="POST" callback="change_project_status_callback">
+        <input type="hidden" name="proj_id"/>
+        <input type="hidden" name="status"/>
+        <input type="hidden" name="is_shared"/>
+        <input type="hidden" name="_xsrf" value="1216b71c299342b291da373a9c84953b"/>
+    </form>
+    <script type="text/javascript" src="static/js/cq_edit.js?v=901974fc76de1c57b971a6edff9d5c66"></script>
+    <script type="text/javascript" src="static/js/common.js?v=e8875fda72a500e8b56b4103dcaaa5d0"></script>
+    <!--日期组件-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/date/css/zebra_datepicker_metallic.css?v=9d049d6833070cc0a5e39ab16e81f21f"/>
+    <script type="text/javascript" src="static/js/plug-in/date/javascript/zebra_datepicker.js?v=7774bd0c8db8c364764d10de89666558"></script>
+    <!--  -->
+    <script type="text/javascript">
+      /*  var myappx = {
+            apiHost: parent.myapp.apiHost,
+            apiHost2: parent.myapp.apiHost2,
+            resHost: parent.myapp.resHost,
+            ticket: parent.myapp.ticket,
+            template: null,
+            questions: []
+        }*/
+         var myapp = {
+
+            apiHost: "http://101.200.128.84:80/api/api/",
+            apiHost2: "http://101.200.128.84:80/wesurvey/",
+            resHost: "http://101.200.128.84:80/imageres/",
+            ticket:"21232F297A57A5A743894A0E4A801FC3",
+            myweb:"http://192.168.207.131:8080/Survey/",
+            // apiHost: parent.myapp.apiHost,
+            //  apiHost2: parent.myapp.apiHost2,
+            // resHost: parent.myapp.resHost,
+            /// ticket: parent.myapp.ticket,
+            template: null,
+            questions: []
+        }
+        var debug_mode = false;
+
+        $(function () {
+            fallback();
+            /* No clues */
+            $('#wjContent_close, #wjContent_closeT').click(function () {
+                $('.wjContent-tc').hide()
+            })
+            // $("div:not(.welcome)").click(function(){
+            // $(backspace).keypress(function(){
+            // $('.wjContent-tc').css('display','block');
+            // })
+            // });
+            /* 逻辑帮助 */
+            idyC.hoverTip($('.lj-tip'), {
+                text: '点击查看帮助',
+                dir: 'left',
+                offsetX: -12,
+                offsetY: 26
+            });
+            /* 逻辑帮助和引用帮助 */
+            idyC.hoverTip($('.lj-tip2, .ref-tip'), {
+                text: '点击查看帮助'
+            });
+            /* 移除 */
+            $('#lightBox').remove();
+            // loadMack({off:'on',Limg:0,text:'加载中...',set:0});
+            /* 逻辑设置 */
+            $('.logicset').click(function () {
+                ajax_loads(920, 256, '逻辑设置', '/design/edit/ajax/logic_set/56efb1e5a320fc2ec88cc557/?v=' + new Date().getTime());
+            });
+            /* 外观设置 */
+            $('#appearset').click(function () {
+                location.href = '/design/edit/appearset/56efb1e5a320fc2ec88cc557/?v=' + new Date().getTime();
+                //mapsets(918,600,'外观设置','/design/edit/appearset/56efb1e5a320fc2ec88cc557/?v=' + new Date().getTime());
+            });
+            /* 收集设置 */
+            $('#ansrest').click(function () {
+                ajax_loads(640, 380, '收集设置', '/design/edit/ansrest/56efb1e5a320fc2ec88cc557/?pre_page=design&v=' + new Date().getTime());
+            });
+            /*  */
+            var new_rspd_count = 0;
+            if (new_rspd_count > 0) {
+                jsAlert({
+                    content: "<p style='text-align:left;'>您的问卷已收集0份数据，修改问卷可能影响收集到的数据。如需修改问卷请至问卷列表分组，请点击编辑按钮。</p>",
+                    obj: function () {
+                        window.location.href = "/mysurvey";
+                    }
+                });
+            }
+            /* 移除 */
+            $().Tjj('.operation-up a', {
+                'widthType': false,
+                'Top': 2
+            });
+            /* 移除 */
+            loadMack({
+                off: 'off'
+            });
+        });
+
+        function ajax_loads(w, h, title, url) {
+            var wbs = new jsbox({
+                onlyid: "maptss",
+                title: title,
+                conw: w,
+                //conh:h,
+                FixedTop: 170,
+                loads: true,
+                url: url,
+                range: false,
+                mack: true
+            }).show();
+        }
+        //弹出框打包配置
+        function mapsets(w, h, title, url) {
+            var wbs = new jsbox({
+                onlyid: "maptss",
+                title: title,
+                conw: w,
+                conh: h,
+                FixedTop: 170,
+                iframe: true,
+                url: url,
+                range: false,
+                mack: true
+            }).show();
+        }
+
+        function ajax_loads(w, h, title, url) {
+            var wbs = new jsbox({
+                onlyid: "maptss",
+                title: title,
+                conw: w,
+                //conh:h,
+                FixedTop: 170,
+                loads: true,
+                url: url,
+                range: false,
+                mack: true
+            }).show();
+        }
+
+        function close_pop_window() {
+            $("#maptss").remove();
+            $('#lightBox').remove();
+        }
+
+        function flush_after_close_window() {
+            $("#maptss").remove();
+            $('#lightBox').remove();
+            window.location.href = "/design/edit/survey/56efb1e5a320fc2ec88cc557/";
+        }
+
+        function publish_proj_confirm() {
+            $(".question").each(function () {
+                verify_question_option.hide($(this).attr("oid"));
+            })
+            $.ajax({
+                url: '/design/edit/ajax/publish_check/' + get_oid(project) + '/',
+                dataType: 'JSON',
+                success: function (ret) {
+                    if (ret.invalid_qid_list.length === 0) {
+                        var confirm_popup_win = Object();
+                        confirm_popup_win.title = "确认发布";
+                        var content = "是否发布问卷?";
+                        if (project.share_status == 0 && (project.copy_from_pid == undefined || project.copy_from_pid == null || project.copy_from_pid == '')) {
+                            content += "<br><label><input style='vertical-align:middle;margin-left:0px!important;' type='checkbox' checked='checked' id='checkbox_selector'/>共享到模板库</label><i class='tips' title='选中该选项，本问卷经审核合格后会添加到模板库中，供其他会员制作问卷时参考。'></i>";
+                        }
+                        confirm_popup_win.content = content;
+                        confirm_popup_win.obj = publish_proj;
+                        confirm_popup_win.close_obj = cancle_publish_proj;
+                        jsConfirm(confirm_popup_win);
+                    } else {
+                        for (var i = 0; i < ret.invalid_qid_list.length; i++) {
+                            var qid = ret.invalid_qid_list[i];
+                            var qmodel = get_qmodel(qid);
+                            qmodel.show_edit_error_msg();
+                        }
+                        ;
+                        scroll_to($(".question[oid=" + ret.invalid_qid_list[0] + "]"));
+                    }
+                }
+            })
+        }
+
+        function publish_proj() {
+            var proj_id = project._id.$oid;
+            $("#change_project_status_form input[name='proj_id']").val(proj_id);
+            $("#change_project_status_form input[name='status']").val(1);
+            $("#change_project_status_form input[name='is_shared']").val($("#checkbox_selector").attr("checked"));
+            loadMack({
+                off: 'on',
+                text: '发布中',
+                set: 10000
+            });
+            ajaxSubmit($("#change_project_status_form"));
+        }
+
+        function cancle_publish_proj() {
+
+        }
+
+        function change_project_status_callback(info) {
+            setTimeout(function () {
+                var url = "/collect/urllink/56efb1e5a320fc2ec88cc557/?fp=" + info.first_publish;
+                location.href = url;
+            }, 3000);
+        }
+
+        var client_uuid = "1b6c77e2-ef42-11e5-8549-44a8420c559c";
+
+        //矩阵题宽度调整保存回调
+        function matrixWidth_callback(qid, col_width_array, new_question) {
+            var table_width = 0;
+            var objPadding = 0;
+            update_question(new_question);
+            $("li[oid='" + qid + "'] .table tbody tr").each(function (m) {
+                table_width = 0;
+                $(this).children("td").each(function (i) {
+                    objPadding = parseFloat($(this).css('paddingLeft')) + parseFloat($(this).css('paddingRight')) + 1;
+                    if (col_width_array[i] == undefined) {
+                        col_width_array[i] = col_width_array[i - 1]
+                    }
+                    ;
+                    $(this).width(col_width_array[i] + "px");
+                    if (m > 0 && i > 0) {
+                        if ($(this).children(".div").length > 0) {
+                            $(this).find(".div").width(col_width_array[i] + "px");
+                        } else {
+                            $(this).wrapInner('<div class="div" style="width:' + (col_width_array[i]) + 'px"></div>');
+                        }
+                    }
+                    table_width += col_width_array[i] + objPadding;
+                });
+            });
+            $("li[oid='" + qid + "'] .table").width(table_width);
+            $(".jsbox-close").click();
+        }
+        //@ sourceURL=design-first.js
+    </script>
+    <!--<script type="text/javascript" src="static/js/init.js?v=47fc34af0d82efef75c9539845a69f3b"></script>-->
+    <script type="text/javascript" src="static/js/public.js?v=bb0f59eae5588b017aa6eb66f907425b"></script>
+    <script type="text/javascript" src="static/js/modernizr.custom.js?v=f440f3d67a8d3f76dae0d92d4d41deb8"></script>
+    <script type="text/javascript" src="static/js/enums.js?v=eda736236f64d9cd783a93495b825edf"></script>
+    <script type="text/javascript" src="static/js/edit/model.js?v=3f63988c4025e63fa8ae7b06d8c2f561"></script>
+    <script type="text/javascript" src="static/js/juicer.js?v=eddf2482fed75dc11f602a5f519435cb"></script>
+    <script type="text/javascript" src="static/js/survey_utils.js?v=427dcd5a8de1ca294d641d5f9402d5af"></script>
+    <!--加载提示-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/load/load.css?v=bf1fb60788943f2da66cad2f1a021043"/>
+    <script type="text/javascript" src="static/js/plug-in/load/load.js?v=db6435ff6788556e3da9571729b55431"></script>
+    <!--气泡弹框-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/JsBubble/JsBubble.css?v=eed4fcdf3e595d6a300f97047ef97edf"/>
+    <script type="text/javascript" src="static/js/plug-in/JsBubble/JsBubble.js?v=47e069d076dbea5fa3d4810bbc5cbc48"></script>
+    <!--弹出框-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/jsbox/jsbox.css?v=4035923231bc3a0bbbb53af7ecb87eb6"/>
+    <script type="text/javascript" src="static/js/plug-in/jsbox/jsbox.js?v=f31741afdbff3d1fee6d4c4faac6d2c7"></script>
+    <!--汽包弹出框-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/tjj/tjj.css?v=ca69d9a3b23906d4cbc93b4cac549306"/>
+    <script type="text/javascript" src="static/js/plug-in/tjj/jquery.zn.js?v=9e3913e79bef7021cc23e41ba6d4c868"></script>
+    <!--FCK编辑器-->
+    <script type="text/javascript" src="static/js/plug-in/ckeditor/ckeditor.js?v=d92ce8a4c44188b7494639c228f3804a"></script>
+    <script type="text/javascript" src="static/js/edit/edit.js?v=4577841832dcefe70b9c4ca3b0cfc054"></script>
+    <script type="text/javascript" src="static/js/edit/edit_utils.js?v=0febccd488fa195393f5a4263b31825e"></script>
+    <script type="text/javascript" src="static/js/edit/object.js?v=f9cbd3e0908f97f5a3f429015c6d736a"></script>
+    <script type="text/javascript" src="static/js/edit/template.js?v=d0878613731ed28af32ce66cafdfb369"></script>
+    <script type="text/javascript" src="static/js/ssq.js?v=c031edecdcd1997c5ecdfccd4f85381c"></script>
+    <script type="text/javascript">
+        var active_index = 0;
+        var found = 0;
+        $(".main-nav li a").each(function () {
+            if ($(this).text() == '问卷')
+                found = 1;
+            if (found == 0)
+                active_index += 1;
+        });
+        set_active_head_v2(active_index);
+        var first_edit = false;
+        if (first_edit) {
+            //新手帮助
+            //Help_up();
+        }
+        // window.onbeforeunload = function(){
+        // syncPost('/design/edit/ajax/exit_edit/'+get_oid(project)+"/", {});
+        // }
+    </script>
+    <!--图片裁剪-->
+    <link type="text/css" rel="stylesheet" href="static/js/plug-in/Jcrop/Jcrop.css?v=2a61f7faff119e5744dc109b5703a4f4"/>
+    <script type="text/javascript" src="static/js/plug-in/Jcrop/Jcrop.js?v=ca085df991950e38b677641c5bf9c1ee"></script>
+    <script type="text/javascript"
+            src="static/js/plug-in/dmuploader/demo.min.js?v=ad801ed3f3b781a587f5ed2f1090cdbd"></script>
+    <script type="text/javascript"
+            src="static/js/plug-in/dmuploader/dmuploader.min.js?v=1e1a33dcf610d401a4885e715fb4d5a6"></script>
+
+</div>
+<!--  -->
+<script type="text/javascript">
+
+    $(function () {
+        $().top_hj();
+        $('.left-Menu li.gz-wx').hover(function () {
+            $(this).find('.gz-weixin-ewm').stop(true, true).fadeIn(150);
+        }, function () {
+            $(this).find('.gz-weixin-ewm').stop(true, true).fadeOut(150);
+        });
+        $(".loginBox").mouseup(function () {
+            return false;
+        });
+        $('body').mouseup(function () {
+            $(".loginBox").fadeOut("slow");
+            $('.username').find('.loginMeun').hide();
+            $('.username').find('.arrowupt').removeClass('atop');
+        });
+        $("a img[src='http://eiv.baidu.com/hmt/icon/21.gif']").hide();
+    });
+
+    //var templateId = getParameterByName('templateid', window.parent.location.href) || 1000000157;
+	var templateId = 1004609606;
+   // $('.project-name').text(getParameterByName('projectname', window.parent.location.href));
+   $('.project-name').text("模拟测试001");
+
+    //结束语切换事件
+    $("#closing_type").change(function () {
+        var type = $(this).val();
+        var statement = $('#closing_type option:selected').data('model');
+        $('#closing').text(statement != null ? statement.title : (type == "complete" ? CLOSING_COMPLETE_TITLE : CLOSING_EXCEPTION_TITLE));
+    });
+
+    console.log("*********开始加载***********");
+    //获取template
+    if (debug_mode == false) {
+        AjaxGet(myapp.apiHost + 'template/get?id=' + templateId, function (data) {
+            myapp.template = data.objs[0];
+            //获取题目列表
+            AjaxGet(myapp.myweb + 'question1/search?templateid=' + myapp.template.id, function (data) {
+                initQuestionPanel(data.objs);
+                $('.template').html(myapp.template.name || ("问卷" + myapp.template.alias));
+                $('.guide').html(myapp.template.guide);
+                $('.template-rank').html(myapp.template.rank);
+            }, function (err) {
+                alert(err);
+            });
+            //获取欢迎语/结束语
+            AjaxGet(myapp.apiHost + 'statement/search?templateid=' + myapp.template.id, function (data) {
+                myapp.statements = data.objs;
+                //附加数据
+                for (var i = 0; i < myapp.statements.length; i++) {
+                    var statement = myapp.statements[i];
+                    if (statement.type == 1) {
+                        $('#welcome').html(statement.title);
+                        $('#welcome').data('model', statement);
+                    } else {
+                        if (statement.subType == 1) {
+                            $('#closing_type option[value="complete"]').data('model', statement);
+                        } else {
+                            $('#closing_type option[value="exception"]').data('model', statement);
+                        }
+                    }
+                }
+                //默认选中
+                var closing = $('#closing_type option[value="complete"]').data('model');
+                $('#closing').html(closing != null ? closing.title : CLOSING_COMPLETE_TITLE);
+            }, function (err) {
+                alert(err);
+            });
+        }, function (err) {
+            alert(err);
+        });
+    } else {
+        myapp.template = {
+            ID: 1,
+            Name: "",
+        };
+    }
+    function preview(that){
+        var templateId = getParameterByName('templateid', window.parent.location.href);
+        var projectname = getParameterByName('projectname', window.parent.location.href);
+        $(that).attr('href','preview.html?templateid='+templateId+'&projectname='+projectname+'&dispIndex=0');
+    }
+    function releaseTemplate() {
+        AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function (data) {
+            var templateQuestions = data.objs;
+            if (templateQuestions.length > 0){
+                if (myapp.template) {
+                    var dialog = Object();
+                    dialog.title = "确认发布";
+                    var content = "是否发布问卷?";
+                    //if (project.share_status == 0 && (project.copy_from_pid == undefined || project.copy_from_pid == null || project.copy_from_pid == '')) {
+                    //    content += "<br><label><input style='vertical-align:middle;margin-left:0px!important;' type='checkbox' checked='checked' id='checkbox_selector'/>共享到模板库</label><i class='tips' title='选中该选项，本问卷经审核合格后会添加到模板库中，供其他会员制作问卷时参考。'></i>";
+                    //}
+                    dialog.content = content;
+                    dialog.accept = function () {
+                        loadMack({
+                            off: 'on',
+                            text: '发布中',
+                            set: 10000
+                        });
+                        myapp.template.state = 2; //released
+                        AjaxPost(myapp.apiHost + 'template/update', myapp.template, null, function (data) {
+                            //
+                        }, function (error) {
+                            alert(error);
+                        })
+                    };
+                    dialog.cancel = function () {
+                        //
+                    };
+                    jsConfirm(dialog);
+                }
+            }else{
+                var dialog = Object();
+                dialog.title = "提示信息";
+                var content = "不可以发布空的问卷！";
+                dialog.content = content;
+                dialog.accept = function () {};
+                dialog.cancel = function () {};
+                jsConfirm(dialog);
+            }
+
+        }, function (err) {
+            alert(err);
+        });
+    }
+
+    var designScroll;
+
+    (function ($) {
+        designScroll = function () {
+            $("body").css('overflow', 'hidden');
+        }
+        $.fn.extend({
+            "top_hj": function (Obj) {
+                if (!Obj) {
+                    Obj = {}
+                }
+                var Tinfo = {
+                    parent: Obj.parent || ".Tj",
+                    url: Obj.url || "/about/zxzx/"
+                };
+                var Zonw = 0;
+                var str = 'edit';
+                /*if(location.href.indexOf(str)<0){
+                 $('body').prepend('<div class="GoBack ie6fixedBR" style="right:' + Zonw + 'px" ><a class="top-hj" title="置顶" href="javascript:;"></a><a title="关注问卷网微信" class="top-weixin" href="javascript:;"></a><a class="top-feedback" target="_blank" href="' + Tinfo.url + '"></a></div>');
+                 } */
+                fu_scroll($(window));
+                $(window).scroll(function () {
+                    $('.gzweixin').hide();
+                    fu_scroll($(this));
+
+                });
+
+                $('.top-hj').live('click', function () {
+                    $('html,body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+                });
+                $('.top-weixin').die().live('click', function () {
+                    var gzweixin = $('.gzweixin:visible');
+                    if (gzweixin.length > 0) {
+                        gzweixin.hide()
+                    } else {
+                        addGzTip($(this));
+                    }
+                    return
+                });
+
+                function fu_scroll(_this) {
+                    var scrollT = _this.scrollTop();
+                    if (scrollT > 300) {
+                        $('.top-hj').show();
+                    } else {
+                        $('.top-hj').hide();
+                    }
+                }
+
+                function addGzTip(obj) {
+                    var x = obj.offset().left - 160;
+                    var y = obj.offset().top - 123;
+                    var gzweixin = $('gzweixin');
+                    if (gzweixin.length > 0) {
+                        gzweixin.css({
+                            'top': y + 'px',
+                            'left': x + 'px'
+                        });
+                    } else {
+                        var con = '<div style="top:' + y + 'px;left:' + x + 'px;" class="gzweixin"></div>';
+                        $('body').append(con);
+                    }
+                }
+            }
+        })
+    })(jQuery);
+    //@ sourceURL=design-second.js
+</script>
+<script type="text/javascript" src="static/js/third_party_stat.js?v=11bf46cfb11df5a3f1b4eb31d6f75526"></script>
+<!--  -->
+<script type="text/javascript">
+    //
+    $(function () {
+        autoheight();
+        var resizeTimer1 = null;
+        $(window).resize(function () {
+            if (resizeTimer1) clearTimeout(resizeTimer1);
+            resizeTimer1 = setTimeout("autoheight()", 100);
+        });
+    });
+    //
+    function autoheight() {
+        if (($(document).height() - $('body').innerHeight()) > 0) {
+            $('.footer-w').css('margin-top', '0px');
+            $('.footer-w').css('margin-top', ($(document).height() - $('body').innerHeight()) + 'px')
+        }
+        ;
+    }
+    //
+    (function ($) {
+        $.fn.extend({
+            "MenuFixed_top": function (obj, top, as) {
+                function Mf() {
+                    var scrollT = $(this).scrollTop();
+                    if (scrollT > top) {
+                        //obj.attr('style','position:absolute; top:'+(scrollT-80)+'px;');
+                        var h = obj.height();
+                        obj.attr('style', 'position:fixed; top:0px;');
+                        obj.addClass('this-fixed');
+                        obj.parent().css({
+                            paddingTop: h + 'px'
+                        });
+                        //$('<div class="fixed-next" style="width:1px;height:'+h+'+px"></div>').insertAfter(obj);
+                    } else {
+                        obj.parent().css({
+                            paddingTop: '0px'
+                        });
+                        obj.attr('style', '');
+                        obj.removeClass('this-fixed');
+                        // obj.next().remove();
+                    }
+                }
+
+                //
+                Mf();
+                //
+                $(window).scroll(function () {
+                    Mf();
+                });
+            }
+        });
+    })(jQuery);
+    //@ sourceURL=design-third.js
+</script>
+</body>
+
+</html>

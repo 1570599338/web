@@ -1,0 +1,147 @@
+<form>
+    <div class="logicsset" style="min-height: 133px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block; min-height: 80px; overflow-y: hidden;" id="loaddiv">
+                <div class="logics-box">
+                    <div class="detail" style="margin-top:30px;border: none;">
+                        <div class="target-box">
+                            <span class="target-box-title">跳转：</span>
+                            <select class="target"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mtop alignr">
+                <div class="WJButton wj_blue smallfontsize" id="save">保存</div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        //上下文
+        var context = $('.logicsset')
+        var question = $(".right-operate").data("model");
+
+        //跳转
+        $('.target', context).off('change').on('change', function () {
+            //获取上下文
+            var logic = $('.target').data('logic');
+            //
+            if (logic == null) {
+                //创建对象
+                var logic = {
+                    id: -1,
+                    type: LOGIC_TYPE_JUMP,
+                    subjectType: LOGIC_SUBJECT_TYPE_QUESTION,
+                    expType: LOGIC_EXP_TYPE_UNCONDITIONAL,
+                    templateID: question.templateID,
+                    questionID: question.id,
+                    optionID: null,
+                    expression: null,
+                    target: $('.target').val(),
+                };
+                $(".target", context).data("logic", logic);
+            } else {
+                //更新对象
+                logic.target = $('.target').val();
+            }
+            //更新状态
+            $(".right-operate").data("logic").changed = true;
+        });
+
+        //确定并关闭对话框
+        $('#save', context).off('click').on('click', function () {
+            //获取逻辑对象
+            var logic = $(".right-operate").data("logic");
+            //如果有修改，则附加数据到.right-operate
+            if (logic.changed == true) {
+                //获取对象
+                var temp = $('.target', context).data('logic');
+                //清除
+                var before = logic.uncond.length;
+                logic.uncond.splice(0, logic.uncond.length);
+                //附加逻辑对象
+                if (temp.target != "") {
+                    logic.uncond.push(temp);
+                }
+                var after = logic.uncond.length;
+                var difference = before - after;
+                //更新逻辑
+                submitLogics2(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, logic.uncond, function (data) {
+                    console.log("submit logics success");
+
+                });
+                //本身上的提示
+                if(logic.uncond.length>0){
+                    $(".right-operate .logic-box .uncond i").css('display','block').html(logic.uncond.length);
+                }else{
+                    $(".right-operate .logic-box .uncond i").css('display','none');
+                }
+                //给题目逻辑设置提示框设值
+                $('li[oid="'+question.id+'"] .tip-box').css('display','block');
+                var tip_count = 0;
+                if(question.type == QUESTION_TYPE_SINGLE || question.type == QUESTION_TYPE_IMAGE_SINGLE){
+                    tip_count = logic.uncond.length + logic.simple.length;
+                }else if (question.type == QUESTION_TYPE_MULTIPLE || question.type == QUESTION_TYPE_IMAGE_MULTIPLE){
+                    tip_count = logic.uncond.length + logic.complex.length + logic.count.length;
+                }else if (question.type == QUESTION_TYPE_SINGLE_BLANK || question.type == QUESTION_TYPE_MULTIPLE_LINE_BLANK || question.type == QUESTION_TYPE_MULTIPLE_BLANK || question.type == QUESTION_TYPE_SCORE ){
+                    tip_count = logic.uncond.length;
+                }else if (question.type == QUESTION_TYPE_MATRIX_SINGLE || question.type == QUESTION_TYPE_MATRIX_MULTIPLE || question.type == QUESTION_TYPE_MATRIX_SCORE){
+                    tip_count = $('li[oid="'+question.id+'"] .tip-box span').html() - difference;
+                }
+                if(tip_count == 0){
+                    $('li[oid="'+question.id+'"] .tip-box').css('display','none');
+                }else{
+                    $('li[oid="'+question.id+'"] .tip-box span').html(tip_count);
+                }
+            }
+
+        });
+
+        //刷新界面
+        var updateControl = function (context, question, logics) {
+            //题目列表
+            var html = '';
+            $(".dragwen .question").each(function (index, element) {
+                var temp = $(element).data('model');
+                html += '<option value="' + temp.number + '">' + temp.number + ' - ' + temp.title + '</option>'
+            });
+            //结束语
+            var complete = $('#closing_type option[value="complete"]').data('model');
+            if (complete != null)
+                html += '<option value="' + complete.number + '">' + complete.title + '</option>'
+            var exception = $('#closing_type option[value="exception"]').data('model');
+            if (exception != null)
+                html += '<option value="' + exception.number + '">' + exception.title + '</option>'
+            $('.target', context).html('').append('<option value="">不跳转</option>').append(html);
+            //跳转
+            if (logics.length > 0) {
+                $('.target').val(logics[0].target);
+                $('.target').data('logic', logics[0]);
+            } else {
+                //$('.target').val($('.target option:first').attr('value'));
+            }
+        }
+
+        //获取逻辑
+        searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, function (data) {
+            //如果还没有附加逻辑，则构造对象并附加
+            var logic = $(".right-operate").data('logic');
+            if (logic == null || logic == undefined) {
+                logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                $(".right-operate").data('logic', logic);
+            }
+            //添加逻辑
+            logic.uncond.splice(0, logic.uncond.length);
+            logic.uncond = logic.uncond.concat(data);
+            //刷新界面
+            updateControl(context, question, logic.uncond);
+        });
+    })
+
+    //@ sourceURL=jump-uncond.js
+</script>

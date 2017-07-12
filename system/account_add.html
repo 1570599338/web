@@ -1,0 +1,302 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab_accounts" data-toggle="tab"><span class="fa fa-user"></span>用户管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="tab_accounts" class="tab-pane pn active" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <div class="form-horizontal admin-form">
+                                    <form id="admin_form" method="post" action="" class="weui-valide">
+                                        <!-- Condition panel -->
+                                        <div class="panel-body">
+
+                                            <div class="row">
+                                                <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_userType" class="col-lg-4 col-md-4 col-sm-6 control-label">类型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<select id="col_userType" name="col_userType" class="form-control col_userType gui-input">
+																<option value="" >请选择</option>
+																<option value="1" >系统用户</option>
+																<option value="2" >业务用户</option>
+															</select>
+															<label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_dept" class="col-lg-4 col-md-4 col-sm-6 control-label">部门：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<select id="col_dept" name="col_dept" class="form-control col_dept gui-input">
+																<!--<option value="">请选择</option>
+																<option value="0001" >IT部</option>
+																<option value="0002" >研究部</option>
+																<option value="0003" >数据部</option>-->
+															</select>
+															<label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">用户名：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="text" id="col_userID" name="col_userID" class="form-control col_userID gui-input remote"  weuifieldclass="col_userID"  weuiremotemessage="用户已存在" required>
+															<label class="field-icon"><i class="fa fa-user"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_userName" class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="text" id="col_userName" name="col_userName" class="form-control col_userName gui-input" required>
+															<label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_full_Name_En" class="col-lg-4 col-md-4 col-sm-6 control-label">全名（英文）：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="text" id="col_fullNameEn" name="col_fullNameEn" class="form-control col_fullNameEn gui-input" weuilangue="true" weuifieldclass="col_full_name_en" weuimessage="请输入英文名字" required >
+															<label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_email" class="col-lg-4 col-md-4 col-sm-6 control-label">电子邮箱：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="text" id="col_email" name="col_email" class="form-control col_email gui-input">
+															<label class="field-icon"><i class="fa fa-envelope-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_mobile1" class="col-lg-4 col-md-4 col-sm-6 control-label">联系电话1：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="tel" id="col_mobile1" name="col_mobile1" class="form-control col_mobile1 gui-input" required>
+															<label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_mobile2" class="col-lg-4 col-md-4 col-sm-6 control-label">联系电话2：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<input type="tel" id="col_mobile2" name="col_mobile2" class="form-control col_mobile2 gui-input">
+															<label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">角色授权：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <div id="treeFn" class="jstree" style="height:200px;border:1px solid #ddd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">数据授权：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <div id="treeProject" class="jstree" style="height:200px;border:1px solid #ddd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="col_remark" class="col-lg-4 col-md-4 col-sm-6 control-label">备注：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+															<textarea type="text" rows="4" id="col_remark" name="col_remark" class="form-control col_Remark" />
+															<label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Control panel -->
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right action-save"><i class="fa fa-save"></i>保存</button>
+                                                    <a id="reset-password" class="btn btn-primary btn-sm pull-right"><i class="fa fa-wrench"></i>初始化密码</a>
+                                                    <a href="#system/account.html" class="btn btn-primary btn-sm pull-right"><i class="fa fa-reply"></i>返回</a>
+                                                    <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加用户</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+            var userID = getParameterByName("userID", window.location.href);
+            var operateState = getParameterByName("operateState", window.location.href);
+
+            //编辑时用户名不能修改
+            var addEditDiferent = function() {
+                if (operateState == '1') {
+                    $("#col_userID").attr("disabled", "true");
+
+                }
+            };
+            var initTree = function(id, data) {
+                $(id).jstree({
+                    'plugins': ["wholerow", "checkbox"],
+                    'core': {
+                        'data': data
+                    }
+                });
+            };
+            //提交时获得选中的roleid
+            var setTreeRoleIdArr = function(treeName) {
+                var json = $("#" + treeName).jstree(true).get_json()[0];
+                var setId = [];
+                for (var i = 0; i < json.children.length; ++i) {
+                    if (json.children[i].state.selected) {
+                        setId.push(json.children[i]["id"]);
+                    }
+                }
+                console.log(setId);
+                return setId;
+            };
+            //提交数据
+            Core.runWeUIValidate(function(form) {
+                    var dataform = $(form);
+                    var saveData = "";
+                    dataform.find('.form-control').each(function(i) {
+                        var input = $(this);
+                        saveData += input.attr('id') + "=" + input.val() + "&";
+                    });
+                    var roleArr = setTreeRoleIdArr("treeFn");
+                    var roleProjectArr = setTreeRoleIdArr("treeProject");
+                    var url = myapp.apiHost2 + "survey.adduser.do?operateState=" + operateState;
+                    AjaxGet2(url, "text", "post", saveData + "roleID=" + roleArr.join("&roleID=") + "&projectID=" + roleProjectArr.join("&projectID="), function(data) {
+                        new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                    }, function(error) {
+
+                    });
+
+                })
+                //FnTreeData
+            var userID = getParameterByName("userID", window.location.href);
+            var treeData = undefined;
+            var userData = undefined;
+            //编辑时初始化数据
+            AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=136", "json", "get", [], function(data) {
+                treeProjectData = data;
+                data.text = "全部";
+                AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=103", "json", "get", [], function(data) {
+                    treeData = data;
+                    data.text = "全部";
+                    var tmpData = {};
+                    tmpData.userID = userID;
+                    AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=93", "json", "post", tmpData, function(data) {
+                        userData = data;
+                        //
+                        for (var i in treeData.children) {
+                            var exist = false;
+                            for (var j in userData.objs[0].userRole) {
+                                if (treeData.children[i].id == userData.objs[0].userRole[j]) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            treeData.children[i]["state"] = {
+                                opended: true,
+                                selected: exist
+                            }
+                        }
+                        for (var i in treeProjectData.children) {
+                            var exist = false;
+                            for (var j in userData.objs[0].userProject) {
+                                if (treeProjectData.children[i].id == userData.objs[0].userProject[j]) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            treeProjectData.children[i]["state"] = {
+                                opended: true,
+                                selected: exist
+                            }
+                        }
+                        var col_dept = $('#col_dept');
+                        var allDept = userData.objs[0]['allDept'];
+                        //$("#col_userid").attr("weui-remote","sysmng.initTemplate.do?subSys=survey&tplID=110");
+                        col_dept.empty().append("<option value='0000' disabled selected>请选择部门</option>");
+                        for (var i = 0; i < allDept.length - 1; ++i) {
+                            col_dept.append("<option value='" + allDept[i].deptID + "'>" + allDept[i].deptName + "</option>");
+                        }
+                        var forms = $('#admin_form .form-control');
+                        var id;
+                        for (var i = 0; i < forms.length; i++) {
+                            name = forms[i].id.substr(4);
+                            forms[i].value = userData.objs[0][name];
+                        }
+                        addEditDiferent();
+                        $("#treeFn").jstree('destroy');
+                        $("#treeProject").jstree('destroy');
+                        initTree('#treeFn', [treeData]);
+                        initTree('#treeProject', [treeProjectData]);
+                    }, function(error) {
+                        // error
+                    });
+                }, function(error) {
+                    // error
+                });
+            }, function(error) {});
+
+            //初始化密码
+            $('#reset-password').click(function() {
+                var data = {};
+                data.userID = $('#col_userID').val();
+                var url = myapp.apiHost2 + 'sysmng.restpassword.do?';
+                AjaxPost2(url, data, null, function(data) {
+                    new MessageModal($("#message-modal"), "密码重置成功", null, function(tmpdata) {}).error();
+                }, function(error) {
+                    alert(error);
+                });
+            })
+        })
+        //@ sourceURL=dynamicScript-system-account_add.js
+</script>

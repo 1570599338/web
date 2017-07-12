@@ -1,0 +1,138 @@
+<form>
+    <div class="logicsset" style="min-height: 200px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block;" id="loaddiv">
+                <div class="logics-box">
+                    <table width="100%;">
+                        <thead>
+                            <tr>
+                                <th style="width: 68px;">
+                                    <input class="choose none" type="checkbox" /></th>
+                                <th style="width: 530px;">题目</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="copy" style="margin: 10px 0 0 18px;">
+                复制
+                <input type="number" style="width: 40px;" min="1" />
+                次
+            </div>
+            <div class="mtop alignr">
+                <div class="WJButton wj_blue smallfontsize" id="save">确认</div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(function () {
+
+        var context = $('.logicsset');
+
+        //
+        function initTable(data) {
+            for (var i = 0; i < data.length; i++) {
+                var tr = '<tr><td><input type="checkbox" qid="' + data[i].id + '"/></td><td>' + data[i].number + data[i].title + '</td></tr>';
+                $('.logics-box table tbody', context).append(tr);
+            }
+        }
+
+        // 获取所有的题目
+        AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function (data) {
+            var data = data.objs;
+            initTable(data);
+        });
+
+        // 题目全选/不选
+        $('.choose', context).on('click', function () {
+            if ($(this).hasClass('all')) {
+                $(this).removeClass('all').addClass('none').removeAttr('checked');
+                $(this).parents('thead').siblings('tbody').find('input').removeAttr('checked');
+            } else if ($(this).hasClass('none')) {
+                $(this).removeClass('none').addClass('all').attr('checked', 'true');
+                $(this).parents('thead').siblings('tbody').find('input').attr('checked', 'true');
+            }
+        });
+
+        // 刷新题目列表
+        var renderQuestions = function (questions, oid) {
+            for (var i = 0; i < questions.length; i++) {
+                //获取model
+                var model = ModelFactory.getModel(questions[i], myapp.resHost);
+                //生成html
+                var html = model.genEditTemplate();
+                //插入新题目
+                $('.question[oid=' + oid + ']').after($(html));
+                //获取新插入的module
+                var module = $('.dragwen .question[oid="' + questions[i].id + '"]');
+                //附加数据
+                attachData(module, model.question);
+                //图片题型需要创建dmUploader
+                if (questions[i].type == QUESTION_TYPE_IMAGE_SINGLE || questions[i].type == QUESTION_TYPE_IMAGE_MULTIPLE) {
+                    imageOption.createUploader(module);
+                }
+                //更新插入位置
+                oid = questions[i].id;
+                //动画效果
+                //$("html, body").animate({
+                //    scrollTop: $("body").height() - 50
+                //}, 'slow');
+            }
+            //移除编辑框和蒙蔽层
+            $('.zon-edit').remove();
+        }
+
+        //保存并复制题目
+        $('#save', context).off('click').on('click', function () {
+            // 检查拷贝次数
+            var times = $('.copy input', context).val();
+            if (times == undefined || times == '') {
+                alert('请填写题目需要复制的次数');
+                return false;
+            }
+            // 缓存拷贝题目
+            var questions = [];
+            $('tbody input[type="checkbox"]:checked', context).each(function (i, e) {
+                var module = $('li[oid="' + $(this).attr('qid') + '"]');
+                questions.push(module.data('model'));
+            });
+            // 检查拷贝题目
+            if (questions.length < 0) {
+                alert('请选择要复制的题目');
+                return false;
+            }
+
+            times = parseInt(times);
+
+            // 复制题目
+            var temp = [];
+            $.each(questions, function (i, q) {
+                for (var i = 0; i < times; ++i) {
+                    var question2 = $.extend(true, {}, q);
+                    question2.id = -1;
+                    question2.number += '_' + i;
+                    for (var j = 0; j < question2.options.length; ++j) {
+                        question2.options[j].questionID = -1;
+                    }
+                    temp.push(question2);
+                }
+            });
+
+            // 调用API
+            createQuestions(temp, function (data) {
+                renderQuestions(data, questions[questions.length - 1].id);
+                moveObjects(getDispIndex(), "question", function (data) {
+                    //
+                });
+            }, function (error) {
+                alert(error);
+            });
+
+        });
+    });
+
+    //@ sourceURL=dynamicScript-batch-copy.js
+</script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <!-- Font CSS -->
+    <link rel="stylesheet" href="design/static/css/iconfont/myfont.css"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/img/logo.fw.png">
+    <link rel="stylesheet" href="assets/skin/default_skin/css/login.css"/>
+</head>
+<body>
+<div class="container">
+    <form method="post" action="../sysmng.logon.do" id="contact">
+        <p class="title"><span class="login-img"></span>在线调研平台</p>
+        <div class="section user">
+            <label for="username" >
+                <label for="username" class="field-icon">
+                    <i class="iconfont">&#xe60d;</i>
+                </label>
+                <input type="text" name="userID" id="userID"  placeholder="用户名">
+            </label>
+        </div>
+        <div class="section">
+            <label for="password">
+                <label for="password" class="field-icon">
+                    <i class="iconfont">&#xe60c;</i>
+                </label>
+                <input type="password" name="password" id="password" placeholder="密码">
+            </label>
+        </div>
+        <div class="footer">
+            <div class="intro">
+                <input type="checkbox" id="remember"/>
+                <label for="remember">记住密码</label>
+                <p><a href="forgotpwd.html" >忘记密码？</a></p>
+            </div>
+
+            <button class="login" type="button" id="submit_data">登录</button>
+        </div>
+    </form>
+</div>
+
+<script src="assets/jquery/jquery-1.11.1.min.js"></script>
+
+<script>
+
+    $(function () {
+
+        var setCookie = function (key, value, expires) {
+            var index = -1;
+            if (window.document.cookie != document.cookie)
+                index = window.document.cookie.indexOf(key);
+            if (index == -1) {
+                var _date = new Date();
+                _date.setMinutes(_date.getMinutes() + expires);
+                window.document.cookie = key + "=" + value + ";expires=" + _date.toGMTString();
+            }
+        }
+
+       $('input').on('focus',function(){
+          $(this).parent().find('.iconfont').css('color','#14A6EC');
+       }).on('blur', function(){
+           $(this).parent().find('.iconfont').css('color','#999');
+       });
+
+       $('.login').off('click').on('click', function () {
+           var url = "http://192.168.0.201:8001/wenjuan/sysmng.ajaxLogon.do";
+           var credential = {
+               userID: $("#userID").val(),
+               password: $("#password").val()
+           };
+           $.ajax({
+               url: url,
+               dataType: "json",
+               type: "post",
+               data: credential,
+               success: function (data, status, xhr) {
+                   if (data.isValid) {
+                       setCookie('wetoken', data.token, 2 * 60); // 2 hours
+                       setCookie('username', credential.userID, 2 * 60); // 2 hours
+                       window.location.href = "index.html";
+                   } else {
+                       alert("用户名或用户密码不匹配!")
+                   }
+               }
+           });
+       });
+    });
+
+</script>
+
+</body>
+</html>

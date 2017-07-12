@@ -1,0 +1,187 @@
+<div class="row panel-edit">
+    <div class="panel mb25 mt5">
+        <div class="panel-heading">
+            <span class="panel-title hidden-xs">文章标题</span>
+        </div>
+        <div class="panel-body p10" style="overflow:hidden">
+            <div class="form-horizontal admin-form edit-title col-md-6 col-md-offset-4">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label class="col-lg-1 col-md-1 col-sm-1 control-label">图片：</label>
+                    <div class="fileupload fileupload-new col-lg-8 col-md-8 col-sm-6 " data-provides="fileupload"><input type="hidden">
+                        <div class="fileupload-preview thumbnail mb20" style="line-height: 150px;">
+                            <form name="origin_image">
+                                <input name="origin_image" class="" type="file" style="display:none">
+                            </form>
+                            <img data-src="holder.js/100%x140" class="header-img" alt="100%x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjk2IiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDI5NiAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjk2IiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjExMS42Nzk2ODc1IiB5PSI3MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxNHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjI5NngxNDA8L3RleHQ+PC9nPjwvc3ZnPg=="
+                                data-holder-rendered="true" style="height: 100%; width: 100%; display: block;" data-url="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <label class="col-lg-1 col-md-1 col-sm-1 control-label">标题：</label>
+                    <div class="col-lg-8 col-md-8 col-sm-6">
+                        <label class="field prepend-icon">
+                        <input type="text" data-id="title-name" class="form-control cnd-membername header-title" placeholder="">
+                        <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 mt10 pt10">
+                    <label class="col-lg-1 col-md-1 col-sm-1 control-label">内容：</label>
+                    <div class="summclone" style="display:none"> </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6">
+                        <label class="field prepend-icon">
+                        <!--<label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>-->
+                        <div id="summernote"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row panel-footer action-container" style="margin-bottom:45px;">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                </div>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <button type="submit" class="btn btn-primary btn-sm action-save pull-right"><i class="fa fa-save"></i>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var paneledit = getParameterByName("edit", window.location);
+    var articleid = getParameterByName("articleid", window.location);
+    var type = getParameterByName("type", window.location);
+
+    $(document).ready(function() {
+        var data = linkApiData(117);
+        data.cnd_articleid = articleid;
+        data.cnd_type = type;
+        data.cnd_memberid = '';
+        data.selCndIDs = "type|articleid|memberid"
+        var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+        AjaxGet2(url, "json", "get", data, function(data) {
+                if (data.objs[0]) {
+                    $('.panel-edit .header-title').val(data.objs[0].title);
+                    $('.panel-edit .header-img').attr('src', data.objs[0].url);
+                    var content = data.objs[0].content
+                    $('.panel-edit .summclone').html(content);
+                    $('#summernote').html($('.summclone').text()).summernote({
+                        height: 500,
+                    });
+                } else {
+                    $('#summernote').summernote({
+                        height: 500,
+                    }).find('.note-editor');
+                }
+
+                // $('#summernote').code(content);
+                // $('#summernote').summernote('code', content);
+                // $('#summernote').summernote('editor.insertText', content);
+            },
+            function(error) {
+                console.log(error);
+            });
+        // $('#summernote').summernote({
+        //     callbacks: {
+        //         onImageUpload: function(image) {
+        //             uploadImage(image[0]);
+        //         }
+        //     }
+        // });
+
+        // function uploadImage(image) {
+        //     var data = new FormData();
+        //     data.append("image", image);
+        //     $.ajax({
+        //         url: myapp.apiHost2 + "wesurvey.upload2.do",
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         data: data,
+        //         type: "post",
+        //         success: function(url) {
+        //             var image = $('<img>').attr('src', 'http://' + url);
+        //             $('#summernote').summernote("insertNode", image[0]);
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
+
+        //点击保存按钮获取文本编辑器内容存入数据库
+        $('.action-save').off('click').on('click', function() {
+            var title = $('.header-title').val();
+            var sHTML = $('#summernote').code();
+            var Infdata = {
+                type: type,
+                titleUrl: $(".header-img").attr("src"),
+                title: title,
+                content: sHTML
+            };
+            if (title != "") {
+                $('.action-save').attr('disabled', 'disabled');
+                var url = myapp.apiHost2 + "wesurvey.information.do?articleid=" + articleid;
+                AjaxPost2(url, Infdata, null, function(result) {
+                        bootbox.alert("保存成功", function() {});
+                    },
+                    function(error) {
+                        console.log(error);
+                    });
+            } else {
+                alert("标题不能为空");
+            }
+        })
+
+        //初始化页面
+
+    });
+
+    //标题图片上传
+    $(function() {
+        $('.header-img').on('click', function() {
+            var _this = this
+            $('.panel-edit input[name=origin_image]').click()
+            imageOption.createAjaxForm(_this);
+        })
+
+        function ImageOption(view) {
+            //form提交
+            this.events = function() {
+                //点击替换图片
+                $('.panel-edit input[name=origin_image]').on('change', function() {
+                    $('.panel-edit input[name=origin_image]').submit();
+                });
+            }
+            this.createAjaxForm = function(view, option) {
+                $('.panel-edit form[name=origin_image]').ajaxForm({
+                    url: myapp.apiHost2 + "wesurvey.upload1.do",
+                    type: "POST ",
+                    dataType: 'text',
+                    success: function(data) {
+                        $('.panel-edit .header-img').attr("src", myapp.resHost + "article/" + data).css("width", "100%");
+                    },
+                    error: function(data) {
+                        console.log('error');
+                    },
+                    beforeSend: function(request) {
+                        $('.panel-edit .header-img').attr("src", myapp.resHost + "/article/loading.gif").css("width", "100px")
+                    },
+                    beforeSubmit: function(data, form, options) {
+                        console.log(data);
+                    }
+                });
+            }
+        };
+        var imageOption = new ImageOption();
+        imageOption.events();
+    });
+    //@ sourceURL=dynamicScript-panel-edit.js
+</script>

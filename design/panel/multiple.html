@@ -1,0 +1,306 @@
+﻿<div class="topicset" style="width: 487px; height: ; overflow: hidden;">
+    <form action="#" id="op_form" method="post" onsubmit="return false;">
+        <div class="poplayer">
+            <dl class="way">
+                <dd class="clear choose-way">
+                    <label for="number">编号：</label>
+                    <input type="text" class="number" placeholder="请输入题目编号" style="padding-left:4px;" />
+                </dd>
+            </dl>
+            <!--<dl class="way">
+                <dd class="clear choose-way">
+                    <a href="javascript:;" class="layout vertical active" val="vertical">竖排</a>
+                    <a href="javascript:;" class="layout transverse " val="transverse">横排</a>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="layout column" val="column">按列</a>
+                    <div class="lie columns" style="display:none;">
+                        <input type="text" value="2" name="columns">列
+                    </div>
+                </dd>
+            </dl>-->
+            <dl class="way">
+                <dd class="choose">
+                    最少选<input class="min" type="number" min="0" name="selection_min" id="selection_min" min="0" value="">项
+                    <p class="options-tip"></p>
+                </dd>
+                <dd class="choose">
+                    最多选<input class="max" type="number" name="selection_max" id="selection_max" min = "1" value="">项
+                    <p class="options-tip"></p>
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear">
+                    <a href="javascript:;" class="chart pie active" val="">饼图</a>
+                    <a href="javascript:;" class="chart line" val="">折线</a>
+                    <a href="javascript:;" class="chart histogram" val="">柱状</a>
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear">
+                    <input type="checkbox" name="optional" class="optional" id="optional" />
+                    <label for="optional">该题可跳过不回答</label>
+                </dd>
+                <dd class="clear">
+                    <input type="checkbox" name="row-reverse" class="row-reverse" id="row_reverse"/>
+                    <label for="row_reverse">选项倒序</label>
+                </dd>
+                <dd class="clear">
+                    <input type="checkbox" name="disordered" class="disordered" id="disordered" />
+                    <label for="disordered">选项随机排列</label>
+                </dd>
+                <dd style="padding-left: 20px;display:none;" class="last-fixed">
+                    <input type="checkbox" name="last-fixed" id="last_fixed">
+                    <label for="last_fixed">固定最后一个选项</label>
+                </dd>
+            </dl>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    function validate() {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //
+        if (parseInt($("#selection_max", context).val()) < 0) {
+            $("#selection_max", context).parent().find(".options-tip", context).show().text("不能填写负数");
+            $("#selection_max", context).focus();
+            return false;
+        } else if (parseInt($("#selection_min", context).val()) < 0) {
+            $("#selection_min", context).parent().find(".options-tip").show().text("不能填写负数");
+            $("#selection_min", context).focus();
+            return false;
+        } else if (parseInt($("#selection_max", context).val()) < parseInt($("#selection_min", context).val())) {
+            $("#selection_max", context).parent().find(".options-tip").show().text("最多选择数不能小于最少选择数");
+            return false;
+        } else if (parseInt($("#selection_max", context).val()) > question.options.length) {
+            $("#selection_max", context).parent().find(".options-tip", context).show().text("最多选择数不能超过选项数量");
+            return false;
+        } else {
+            $("#selection_max", context).parent().find(".options-tip", context).text("").hide();
+            $("#selection_min", context).parent().find(".options-tip", context).text("").hide();
+        }
+        //
+        return true;
+    }
+
+    function saveForm() {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新question对象
+        updateObject(context, question);
+        //调用API
+        updateQuestionEx(question, function(data) {
+            //找到module
+            var module = $('.module[oid=' + question.id + ']');
+            //设置选项显示方式
+            if (question.layout == QUESTION_LAYOUT_TRANSVERSE) //横排
+                module.find('.unstyled').removeClass("columns").addClass("columns");
+            else
+                module.find('.unstyled').removeClass("columns");
+            //
+            console.log("update question extension success");
+        });
+        //更新逻辑
+        //var logic = context.data('logic');
+        //if (logic != null && logic != undefined && logic.changed == true) {
+        //    var data = [];
+        //    data = data.concat(logic.simple);
+        //    data = data.concat(logic.complex);
+        //    data = data.concat(logic.count);
+        //    data = data.concat(logic.uncond);
+        //    //
+        //    submitLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, question.id, data, function (data) {
+        //        console.log("submit logics success");
+        //    });
+        //}
+    }
+
+    var updateObject = function(context, question) {
+        //题目编号
+        question.number = $('.number', context).val();
+        //选项布局
+        var layout = $('.layout.active', context);
+        if (layout.hasClass('vertical')) {
+            question.layout = QUESTION_LAYOUT_VERTICAL;
+        } else if (layout.hasClass('transverse')) {
+            question.layout = QUESTION_LAYOUT_TRANSVERSE;
+        } else if (layout.hasClass('column')) {
+            question.layout = QUESTION_LAYOUT_COLUMN;
+        } else if (layout.hasClass('dropdown')) {
+            question.layout = QUESTION_LAYOUT_DROPDOWN;
+        }
+        //列
+        if (question.layout == QUESTION_LAYOUT_COLUMN) {
+            question.columnCount = $('.columns input').val();
+        } else {
+            question.columnCount = 1;
+        }
+        //该题可跳过不回答
+        question.optional = $('.optional', context)[0].checked;
+        //选项随机排列
+        question.rowDisordered = $('.disordered', context)[0].checked;
+        //选项倒序
+        question.rowReverse = $('.row-reverse', context)[0].checked;
+        //固定最后一个选项
+        if (question.rowDisordered) {
+            question.rowLastFixed = $('.last-fixed input', context)[0].checked;
+        } else {
+            question.rowLastFixed = false;
+        }
+        //最少项、最多项
+        question.selectionMin = $('#selection_min', context).val();
+        question.selectionMax = $('#selection_max', context).val();
+
+        //题图形选择
+        var chartType = $('.chart.active', context);
+        if (chartType.hasClass('pie')) {
+            question.chartType = QUESTION_CHART_PIE;
+        } else if (chartType.hasClass('histogram')) {
+            question.chartType = QUESTION_CHART_HISTOGRAM;
+        } else if (chartType.hasClass('line')) {
+            question.chartType = QUESTION_CHART_LINE;
+        }
+    }
+
+    var updateControl = function(context, question) {
+        //题目编号
+        $('.number', context).val(question.number || '');
+        //选项布局
+        $('.layout', context).removeClass('active');
+        if (question.layout == QUESTION_LAYOUT_VERTICAL)
+            $('.vertical', context).addClass('active');
+        else if (question.layout == QUESTION_LAYOUT_TRANSVERSE)
+            $('.transverse', context).addClass('active');
+        else if (question.layout == QUESTION_LAYOUT_COLUMN)
+            $('.column', context).addClass('active');
+        else if (question.layout == QUESTION_LAYOUT_DROPDOWN)
+            $('.dropdown', context).addClass('active');
+        //列显示
+        if (question.layout == QUESTION_LAYOUT_COLUMN) {
+            $('.columns', context).show();
+            $('.columns input', context).val(question.columnCount);
+        } else {
+            $('.columns', context).hide();
+            $('.columns input', context).val();
+        }
+        //该题可跳过不回答
+        $('.optional', context)[0].checked = question.optional;
+        //选项随机排列
+        $('.disordered', context)[0].checked = question.rowDisordered;
+        //选项倒序
+        $('.row-reverse', context)[0].checked = question.rowReverse;
+        //固定最后一个选项
+        if ($('.disordered', context)[0].checked) {
+            $('.last-fixed', context).show();
+            $('.last-fixed', context)[0].checked = question.rowLastFixed;
+        } else {
+            $('.last-fixed', context).hide();
+            $('.last-fixed', context)[0].checked = 'false';
+        }
+        //最少选&最多选
+        $('#selection_min', context).val(question.selectionMin || 1);
+        if (question.selectionMax == 0) {
+            $('#selection_max', context).val(question.options.length);
+        } else {
+            $('#selection_max', context).val(question.selectionMax);
+        }
+
+        //题形显示图
+        $('.chart', context).removeClass('active');
+        if (question.chartType == QUESTION_CHART_HISTOGRAM)
+            $('.histogram', context).addClass('active');
+        else if (question.chartType == QUESTION_CHART_LINE)
+            $('.line', context).addClass('active');
+        else if (question.chartType == QUESTION_CHART_PIE)
+            $('.pie', context).addClass('active');
+        //取得逻辑后的个数渲染到小tip上
+        var renderLogics = function(logicType, data) {
+            if(data.length>0){
+                var logic = $(".right-operate").data('logic');
+                if (logic == null || logic == undefined) {
+                    logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                    $(".right-operate").data('logic', logic);
+                }
+                //添加逻辑
+                logic[logicType].splice(0, logic[logicType].length);
+                logic[logicType] = logic[logicType].concat(data);
+                $(".right-operate .logic-box ."+logicType+" i").css('display','block').html(logic[logicType].length);
+            }else{
+                $(".right-operate .logic-box ."+logicType+" i").css('display','none');
+            }
+        }
+        //获取无条件跳转
+        searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, function (data) {
+            renderLogics('uncond', data);
+        });
+        //复杂跳转
+        searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_COMPLEX, question.id, function (data) {
+            renderLogics('complex', data);
+        });
+        //计数跳转
+        searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_COUNT, question.id, function (data) {
+            renderLogics('count', data);
+        });
+    }
+
+    jQuery(document).ready(function($) {
+
+        var context = $('.right-operate');
+        var question = context.data('model');
+
+        //最少、最多选几项只能填数字
+        $("#min_answer_num, #max_answer_num").keyup(function() {
+            $(this).val($(this).val().replace(/\D/g, ""));
+        });
+
+        //“列”填写范围
+        $('.columns input', context).off().on('blur', function() {
+            if ($(this).val() > QUESTION_COLUMNS_MAX) {
+                $(this).val(QUESTION_COLUMNS_MAX);
+            } else if ($(this).val() < QUESTION_COLUMNS_MIN) {
+                $(this).val(QUESTION_COLUMNS_MIN);
+            }
+        });
+
+        //选项布局样式切换
+        $(".layout", context).off("click").on("click", function () {
+            //var model = $('.right-operate').data('model');
+            var context = $('.right-operate');
+            $(this).addClass('active');
+            $(".layout", context).not($(this)).removeClass('active');
+            //如果点击“按列”则显示出“列”
+            if ($(this).attr("val") == "column") {
+                $(".columns", context).show();
+            } else {
+                $(".columns", context).hide();
+            }
+        });
+
+        //最多选择个数
+        $(".selection_max").attr("max", question.options.length)
+
+        //点击“随机排列”后出现“固定最后一个选项”
+        $(".disordered", context).off('change').on('change', function () {
+            if ($(this).attr("checked")) {
+                $(".last-fixed", context).show();
+            } else {
+                $(".last-fixed", context).hide();
+            }
+        });
+
+        //题图形切换
+        $('.chart', context).off('click').on('click', function () {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        });
+
+        updateControl(context, question);
+    });
+
+    //@ sourceURL=multiple.js
+</script>

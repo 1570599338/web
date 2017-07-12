@@ -1,0 +1,290 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab_rule" data-toggle="tab">合并规则</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <!--tab_rule-start-->
+                    <div id="tab_rule" class="tab-pane active" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_projectID" class="field prepend-icon">
+                                                        <input type="text" name="" value="" class="form-control project-name" disabled>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">合并名称：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_projectID" class="field prepend-icon">
+                                                        <input type="text"  name="" value="" class="form-control merge-name" disabled>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-visible" id="spy3">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_rule" cellspacing="0" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row col-md-2 pull-right">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <a href="#" class="form-control  btn btn-primary btn-sm mergerule-back" style="margin-top: 20px;"><i class="fa fa-reply"></i>&nbsp;返回</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--tab_rule-end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Rule Modal -->
+<div class="modal fade" id="merge_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span>
+                </h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <form method="post" class="weui-form">
+                    <div class="modal-body">
+                        <div class="row">
+                            <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">选择：</label>
+
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <label for="col_name" class="field prepend-icon">
+                                        <select  type="text" id="col_name" name="template" class="form-control col_name" weuifieldcode="tempIDS" weuifieldname="template" weuifieldclass="col_template" required >
+                                        </select>
+                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label for="col_begin_qu" class="col-lg-4 col-md-4 col-sm-6 control-label">开始题号：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <label for="col_begin_qu" class="field prepend-icon">
+                                        <select  type="text" id="col_begin_qu" name="start" class="form-control col_begin_qu" weuifieldcode="startID" weuifieldname="start" weuifieldclass="col_begin_qu" required>
+                                        </select>
+                                        <!--<label class="field-icon"><i class="fa fa-check-square-o"></i></label>-->
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <label for="col_end_qu" class="col-lg-4 col-md-4 col-sm-6 control-label">结束题号：</label>
+
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <label for="col_end_qu" class="field prepend-icon">
+                                        <select type="text" id="col_end_qu" name="Qend" class="form-control col_end_qu" weuifieldcode="endID"  weuifieldname="end" weuifieldclass="col_end_qu" required></select>
+                                        <!--<label class="field-icon"><i class="fa fa-check-square-o"></i></label>-->
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                        <button type="submit" class="btn btn-primary btn-sm accept"><i class="fa fa-save"></i><span class="caption"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--RuleModal-end-->
+<script type="text/javascript">
+    $(function() {
+        var projectID = getParameterByName("projectid", window.location);
+        var projectName = getParameterByName("projectname", window.location);
+        var mergeName = getParameterByName("mergename", window.location);
+        var id = getParameterByName("id", window.location);
+        var template = '';
+        $('.project-name').val(projectName);
+        $('.merge-name').val(mergeName);
+
+
+        //select赋值
+        AjaxGet(myapp.apiHost + 'template/search?projectID=' + projectID, function(data) {
+            Core.fillSelect2($("#col_name"), data.objs);
+        }, function(error) {
+            alert(error);
+        });
+        //开始与结束选择框填充
+        var fillQuestionNum = function(select, data) {
+                select.empty().append("<option value=''>请选择</option>");
+                for (var i in data)
+                    select.append("<option value='" + data[i].id + "'>" + "第" + data[i].dispIndex + "题" + "</option>");
+                if (data.length > 0)
+                    select.val(data[data.length]);
+            }
+            //开始与结束题号
+        var selectID = $("#col_name option:checked").val();
+        $("#col_name").change(function() {
+            selectID = $("#col_name option:checked").val();
+            AjaxGet(myapp.apiHost + 'question/search?templateid=' + selectID, function(data) {
+                fillQuestionNum($("#col_begin_qu"), data.objs);
+                fillQuestionNum($("#col_end_qu"), data.objs);
+            }, function(error) {
+                alert(error);
+            });
+        });
+        //添加
+        var mergeData = [];
+        $(".modal-footer .caption").on('click', function() {
+            mergeData = [{
+                "id": id,
+                // "template": $('#col_name option:checked').text(),
+                // "start": $('#col_begin_qu option:checked').text(),
+                // "end": $('#col_end_qu option:checked').text(),
+                "template": $('#col_name option:checked').val(),
+                "start": $('#col_begin_qu option:checked').val(),
+                "end": $('#col_end_qu option:checked').val(),
+            }];
+        });
+
+        var theRuleTable = $('#datatable_rule');
+        var theRuleTableColums = [{
+            "aTargets": [0],
+            "mData": "",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "template",
+            "sTitle": "问卷",
+            "sClass": "text-align-left",
+            "sWidth": "60px"
+        }, {
+            "aTargets": [2],
+            "mData": "start",
+            "sTitle": "起始题",
+            "sWidth": "100px",
+            "mRender": function(data, type, full) {
+                return "<span>第" + data + "题</span>";
+            }
+        }, {
+            "aTargets": [3],
+            "mData": "end",
+            "sTitle": "结束题",
+            "sWidth": "100px",
+            "mRender": function(data, type, full) {
+                return "<span>第" + data + "题</span>";
+            }
+        }, {
+            "aTargets": [4],
+            "mData": "",
+            "sTitle": "操作",
+            "sWidth": "60px",
+            "mRender": function() {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-pencil-square-o "></span><span class="action-update">编辑</span></a><span class="text-divider">|</span>' +
+                    '<a href="#"><span class="fa fa-exclamation-triangle fa-undo text-danger"></span><span class="action-delete text-danger">回收</span></a>' +
+                    '</span>';
+            }
+        }];
+
+        var theRuleTableOption = {
+            aButtons: ["add"],
+            bToolButton: false,
+            preDrawCallback: null,
+            rowCallback: null,
+            drawCallback: null,
+            onCreate: function() {
+                var modal = new Modal($("#merge_modal"), null, null, function(data) {
+                    data.merageruleID = id;
+                    AjaxPost2(myapp.apiHost2 + "wesurvey.meragerule.do?op=add", data, null, function(data) {
+                        int();
+                    }, function(errot) {});
+
+                }, {
+                    Entity: "规则"
+                });
+                modal.show();
+            },
+            onUpdate: function(data, tr) {
+                var modal = new Modal($("#merge_modal"), data, tr, function(data) {
+                    data.merageruleID = id;
+                    AjaxPost2(myapp.apiHost2 + "wesurvey.meragerule.do?op=update", data, null, function(data) {
+                        int();
+                    }, function(errot) {});
+                }, {
+                    Entity: "规则"
+                });
+                modal.show();
+            },
+            onDelete: function(data, tr) {
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function() {
+                    AjaxPost2(myapp.apiHost2 + "wesurvey.meragerule.do?op=delete", data, null, function(data) {
+                        int();
+                    }, function(errot) {});
+                }).error();
+            }
+        };
+        var int = function() {
+            var messageData = linkApiData(197);
+            messageData.cnd_mergeruleID = id;
+            messageData.selCndIDs = "mergeruleID";
+            AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", messageData, null, function(data) {
+                Core.fillDataTable(theRuleTable, data.objs);
+            }, function(errot) {});
+        }
+        int();
+        $('.mergerule-back').unbind('click').bind('click', function() {
+            window.location = "#project/sample.html";
+        });
+
+        // Manually activate tab page
+        var activateTabPage = function(index) {
+            if (index == 1) {
+                Core.initDataTable(theRuleTable, theRuleTableColums, theRuleTableOption);
+            }
+        };
+
+        // trigger
+        initTabs(activateTabPage);
+
+        //@ sourceURL=dynamicScript-Project-mergerule.js
+    });
+</script>

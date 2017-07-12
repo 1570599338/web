@@ -1,0 +1,602 @@
+<!--<div class="animated fadeIn">-->
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="bs-component">
+            <div class="panel" id="tab_panel">
+                <div class="panel-heading">
+                    <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                        <li class="" style="display:none;">
+                            <a href="#sample" data-toggle="tab"><span class="fa fa-stack-exchange"></span>问卷管理</a>
+                        </li>
+                        <li class="" style="display:none;">
+                            <a id="ceshi" href="#sample_merge" data-toggle="tab"><span class="fa fa-stack-exchange"></span>问卷导出</a>
+                        </li>
+                        <li class="" style="display:none;">
+                            <a href="#rule" data-toggle="tab"><span class="fa fa-stack-exchange"></span>合并规则</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content pn br-n">
+                        <!--sample start-->
+                        <div id="sample" class="tab-pane pn" style="display: none;" tabindex="1">
+                            <!--cnd start-->
+                            <div class="row">
+                                <div class="panel panel-visible" id="cnd">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form weui-form">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_projectID" class="field prepend-icon">
+                                                        <select id="cnd_projectid"  data-id="cnd_projectID" name="cnd_projectID" class="form-control cnd_project">
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">答卷状态：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label for="cnd_state" class="field prepend-icon">
+                                                        <select data-id="cnd_state" name="state" class="form-control cnd_state">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">进行中</option>
+                                                            <option value="2">已完成</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_beginTime" class="col-lg-4 col-md-4 col-sm-6 control-label ">起始日期：</label>
+
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" id="cnd_begintime" data-id="cnd_beginTime" name="cnd_beginTime" class="form-control cnd-begin weui-datepicker weui-datebegin" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_endTime" class="col-lg-4 col-md-4 col-sm-6 control-label">终止时间：</label>
+
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" id="cnd_endtime" data-id="cnd_endTime" name="cnd_endTime" class="form-control cnd-end weui-datepicker weui-dateend" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--cnd end-->
+                            <!--data start-->
+                            <div class="row">
+                                <div class="panel panel-visible" id="dat">
+                                    <div class="panel-body pn">
+                                        <table class="table table-striped table-hover" id="datatable_sample">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--data end-->
+                        </div>
+                        <!--sample-end-->
+                        <!--mergerule start-->
+                        <div id="sample_merge" class="tab-pane pn" style="display: none;" tabindex="2">
+                            <!--cnd start-->
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <form action="" class="weui-valide" method="post">
+                                        <div class="panel-body">
+                                            <div class="form-horizontal admin-form weui-form">
+                                                <div class="row">
+                                                    <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                                    <select data-id="projectid" name="projectname" class="form-control col_projectname gui-input cnd_project" required>
+                                                                    </select>                                       
+                                                                     <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">合并规则：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                                    <select data-id="mergeruleid" name="col_merger_rule" class="form-control col_merger_rule gui-input" required>
+                                                                    </select>                                       
+                                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">答卷开始时间：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                                    <input data-id="begintime" name="tplName" class="form-control weui-datepicker weui-datebegin" />
+                                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">答卷结束时间：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                                    <input data-id="endtime" type="text"  name="phone" class="form-control weui-datepicker weui-dateend">                                      
+                                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right "><i class="fa fa-search"></i>导出</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--cnd end-->
+                            </div>
+                        </div>
+                        <!--mergerule-end-->
+                        <div id="rule" class="tab-pane" style="display: none;" tabindex="3">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_projectID" class="field prepend-icon">
+                                                        <select id="project_rule"  data-id="cnd_projectID" name="" class="form-control cnd_project">
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-visible" id="rules">
+                                    <div class="panel-body pn">
+                                        <table class="table table-striped table-hover" id="datatable_rule">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--List Modal-->
+    <div class="modal fade" id="merage_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span>
+                    </h4>
+                </div>
+                <div class="form-horizontal admin-form">
+                    <form id="project_form" method="post" class="weui-form">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                        <label class="field prepend-icon">
+                                           <select type="text" name="projectName" id="project_name"  class="form-control col_name gui-input cnd_project" weuifieldname="projectName" maxlength="50" weuifieldclass="col_name" required></select>
+                                            <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">规则名称：</label>
+                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                        <label class="field prepend-icon">
+                                           <input type="text" name="mergeName" class="form-control col_name gui-input" weuifieldname="mergeName" maxlength="50" weuifieldclass="col_mergeName" required/>
+                                            <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <label for="col_list_description" class="col-lg-4 col-md-4 col-sm-6 control-label">备注：</label>
+                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                        <label class="field prepend-icon">
+                                           <textarea type="text" rows="6" name="remark" class="form-control col_remark gui-input pt5" weuifieldname="remark" weuifieldclass="col_remark" />
+                                            <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                            <button type="submit" class="btn btn-primary btn-sm accept submit"><i class="fa fa-save"></i><span class="caption"></span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--List Modal-end-->
+</div>
+
+<script type="text/javascript">
+    var theSampleTable = null,
+        theSampleColumns = null,
+        theSampleCount = 0,
+        theSampleDummy = false,
+        theSampleOption = null;
+
+    var theRuleTable = null,
+        theRuleColumns = null,
+        theRuleOption = null,
+        theRuleDummy = false,
+        theRuleCount = 0;
+
+    $(function() {
+        Core.runWeUIElements();
+        theSampleTable = $('#datatable_sample');
+        theSampleColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "projectName",
+            "sTitle": "项目",
+            "sClass": "text-align-left",
+            "sWidth": "58px"
+        }, {
+            "aTargets": [2],
+            "mData": "templateName",
+            "sTitle": "问卷名称",
+            "sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "shortName",
+            "sTitle": "名称",
+            "sWidth": "58px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "createdAt",
+            "sTitle": "答卷开始时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "completedAt",
+            "sTitle": "答卷结束时间",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "state",
+            "sTitle": "答卷状态",
+            "sWidth": "58px",
+            "mRender": null
+        }, {
+            "aTargets": [7],
+            "mData": "genderName",
+            "sTitle": "性别",
+            "sWidth": "28px",
+            "mRender": null
+        }, {
+            "aTargets": [8],
+            "mData": "mobileNumber",
+            "sTitle": "手机号码",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [9],
+            "mData": "provinceName",
+            "sTitle": "省份",
+            "sWidth": "38px",
+            "mRender": null
+        }, {
+            "aTargets": [10],
+            "mData": "cityName",
+            "sTitle": "城市",
+            "sWidth": "38px",
+            "mRender": null
+        }, {
+            "aTargets": [11],
+            "mData": "modelName",
+            "sTitle": "车型",
+            "sWidth": "38px",
+            "mRender": null
+        }, {
+            "aTargets": [12],
+            "mData": "plateNumber",
+            "sTitle": "车牌号",
+            "sWidth": "68px",
+            "mRender": null
+        }, {
+            "aTargets": [13],
+            "mData": "id",
+            "sTitle": "操作",
+            "sWidth": "150px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#project/sample_detail.html?id=' + full.id + '"><span class="fa fa-edit fa-default"></span><span class="action-view">查看</span></a><span class="text-divider">|</span> ' +
+                    '<a href="#"><span class="fa fa-chain-broken fa-default"></span><span class="action-delete">废除</span></a> ' +
+                    '</span>';
+            }
+        }];
+
+        theSampleOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theSampleDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {
+                var url = myapp.apiHost2 + "wesurvey.deleteTemplate.do?id=" + data.id;
+                new MessageModal($("#message-modal"), "确定要废除该问卷吗？", null, function(tmpdata) {
+                    AjaxPost2(url, {}, null, function(data) {
+                        Core.deleteRow(theSampleTable, tr);
+                    }, function(erro) {
+                        alert(erro);
+                    })
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            serverMethod: "GET",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 88, theSampleCount, "#sample");
+            },
+            setCountCallback: function(count) {
+                theSampleCount = count;
+            }
+        };
+        $("#sample .action-query").unbind("click").bind("click", function() {
+            theSampleDummy = true;
+            theSampleTable.dataTable().fnDraw();
+        });
+    });
+
+    $(function() {
+        Core.runWeUIElements();
+        $('.col_projectname').change(function() {
+            var data = linkApiData(199);
+            data.cnd_projectID = $(this).val();
+            data.selCndIDs = 'projectID';
+            AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", data, null, function(data) {
+                var html = "";
+                if (data.objs.length > 0) {
+                    for (var i = 0; i < data.objs.length; i++) {
+                        html += '<option value=' + data.objs[i].id + '>' + data.objs[i].name + '</option>'
+                    }
+                } else {
+                    html = '<option value="">请选择</option>'
+                }
+                $(".col_merger_rule").html('').append(html);
+            }, function(error) {});
+        });
+
+        Core.runWeUIValidate(function(form) {
+            var projectID = $('#sample_merge [data-id=projectid]').val(),
+                mergeruleid = $('#sample_merge [data-id=mergeruleid]').val(),
+                beginTime = $('#sample_merge [data-id=begintime]').val(),
+                endTime = $('#sample_merge [data-id=endtime]').val();
+            var url = myapp.apiHost + "survey/export?projectid=" + projectID + "&mergeruleid" + mergeruleid + "&begintime=" + beginTime + "&endtime=" + endTime;
+            window.location = url;
+        });
+
+    });
+    //合并规则
+    $(function() {
+        theRuleTable = $('#datatable_rule');
+        theRuleColums = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "projectName",
+            "sTitle": "项目名称",
+            "sWidth": "60px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "name",
+            "sTitle": "合并名称",
+            "sWidth": "60px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "name",
+            "sTitle": "合并规则",
+            "sClass": "text-align-left",
+            "sWidth": "160px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "createdAt",
+            "sTitle": "创建时间",
+            "sWidth": "60px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "remark",
+            "sTitle": "描述",
+            "sClass": "text-align-left"
+                //"sWidth": "100px"
+        }, {
+            "aTargets": [6],
+            "mData": "projectID",
+            "sTitle": "操作",
+            "bSortable": false,
+            "sWidth": "80px",
+            "mRender": function(data, type, full) {
+                return '<span class="action-update inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-pencil-square-o"></span><span class="action-update">编辑</span></a><span class="text-divider">|</span>' +
+                    '<a href="#"><span class="fa fa-minus-circle fa-undo text-danger"></span><span class="action-delete text-danger">删除</span></a>' +
+                    '</span>';
+            }
+        }];
+
+        theRuleOption = {
+            aButtons: ["add"],
+            //bToolButton: false,
+            preDrawCallback: function() {
+                return theRuleDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                var modal = new Modal($("#merage_modal"), null, null, function(projectdata) {
+                    var rowData = projectdata;
+                    $('textarea').val('');
+                    var url = myapp.apiHost2 + "wesurvey.addmerage.do?op=update";
+                    AjaxGet2(url, "json", "post", rowData, function(data) {
+                        theRuleTable.dataTable().fnDraw();
+                    }, function(error) {
+
+                    });
+
+                }, {
+                    Entity: "规则"
+                });
+                modal.show();
+            },
+            onUpdate: function(data, tr) {
+                storage();
+                window.location = '#project/mergerule.html?projectid=' + data.projectID + "&projectname=" + data.projectName + "&mergename=" + data.name + "&id=" + data.id;
+            },
+            onDelete: function(data, tr) {
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function(mergedata) {
+                    var url = myapp.apiHost2 + "wesurvey.addmerage.do?op=delete";
+                    AjaxGet2(url, "json", "post", data, function(data) {
+                        theRuleTable.dataTable().fnDraw();
+                    }, function(error) {
+
+                    });
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 125, theRuleCount, "#rule");
+            },
+            setCountCallback: function(count) {
+                theRuleCount = count;
+            }
+        };
+        //查询操作
+        $('#rule .action-query').off('click').on('click', function() {
+            theRuleDummy = true;
+            theRuleTable.dataTable().fnDraw();
+        })
+    });
+
+    $(function() {
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            if (index == 1) {
+                $('table tbody').html(tr);
+                Core.initDataTable(theSampleTable, theSampleColumns, theSampleOption);
+            } else if (index == 2) {
+
+            } else if (index == 3) {
+                Core.initDataTable(theRuleTable, theRuleColums, theRuleOption);
+                theRuleDummy = true;
+            }
+        }
+
+        // trigger
+        initTabs(activateTabPage);
+        //项目名称
+        refreshProjects(".cnd_project", 13);
+
+    });
+
+    //@ sourceURL=dynamicScript-project-sample.js
+</script>

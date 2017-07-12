@@ -1,0 +1,654 @@
+<div class="panel">
+    <div class="panel-heading">
+        <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+            <li class="active"><a href="#tag_member" data-toggle="tab">会员信息</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content pn br-n">
+            <div id="tag_member" class="tab-pane active">
+                <div class="row">
+                    <div class="admin-form">
+                        <div class="panel car-list">
+                            <div class="panel-body bg-light">
+                                <div class="section-divider mb40">
+                                    <span class="member-title">会员详细信息</span>
+                                </div>
+                                <div class="member">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">类型：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control type">
+                                                            <!--<option value="0">请选择</option>-->
+                                                            <option value="1">车主</option>
+                                                            <option value="2">评估员</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-eye-slash"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control name" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">出生日期：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control weui-datepicker weui-datebegin birthdate" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">性别：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control gender">
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">男</option>
+                                                            <option value="2">女</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-anchor"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!--<div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">固定电话：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control homenumber" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>-->
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">电话号码1：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control mobilenumber1" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">电话号码2：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control mobilenumber2" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">电子邮件：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" class="form-control email" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-envelope"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control province">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-bookmark"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control city">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-bookmark"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">婚姻状况：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control marriage">
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">未婚</option>
+                                                            <option value="2">已婚</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-random"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">子女个数：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control kidsnumber">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">1个子女</option>
+                                                            <option value="2">2个子女</option>
+                                                            <option value="3">3个子女</option>
+                                                            <option value="4">4个子女</option>
+                                                            <option value="5">5个子女</option>
+                                                            <option value="6">5个以上子女</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-group"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">家庭收入：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control income">
+                                                            <option value="">请选择</option>
+                                                            <option value="1000~2000">1000~2000</option>
+                                                            <option value="2000~3000">2000~3000</option>
+                                                            <option value="3000~4000">3000~4000</option>
+                                                            <option value="4000~5000">4000~5000</option>
+                                                            <option value="5000~6000">5000~6000</option>
+                                                            <option value="6000~7000">6000~7000</option>
+                                                            <option value="7000~8000">7000~8000</option>
+                                                            <option value="8000~9000">8000~9000</option>
+                                                            <option value="9000~10000">9000~10000</option>
+                                                            <option value="10000~20000">10000~20000</option>
+                                                            <option value="20000~30000">20000~30000</option>
+                                                            <option value="30000~-1">30000及以上</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-rmb"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">行业：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control industry">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-legal"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">职业：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select class="form-control profession">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-wrench"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">家庭住址：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <textarea rows="4" class="form-control address1"></textarea>
+                                                        <label class="field-icon"><i class="fa fa-map-marker"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">备注：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <textarea rows="4" class="form-control remark"></textarea>
+                                                        <label class="field-icon"><i class="fa fa-comment"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <button type="" class="btn btn-primary btn-sm pull-right save">
+                                                        <i class="fa fa-save"></i><span>更新</span>                                               
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-car" style="display:none;">
+                                    <div class="section-divider mb40">
+                                        <span class="vehicle1-title1">我的第一辆车</span>
+                                    </div>
+                                    <div class="vehicle vehicle1">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">品牌：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control brand">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-crosshairs"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control model">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-dot-circle-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车牌号：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control platenumber" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车架号：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control vinnumber" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车身颜色：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control color">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">红色</option>
+                                                            <option value="2">黄色</option>
+                                                            <option value="3">绿色</option>
+                                                            <option value="4">蓝色</option>
+                                                            <option value="5">紫色</option>
+                                                            <option value="6">黑色</option>
+                                                            <option value="7">白色</option>
+                                                            <option value="8">银色</option>
+                                                            <option value="9">金色</option>
+                                                            <option value="10">灰色</option>
+                                                            <option value="11">青色</option>
+                                                            <option value="12">棕色</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-tint"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">购买日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control weui-datepicker weui-datebegin boughtdate" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">保养日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control weui-datepicker weui-datebegin maintaintime" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">保养经销商：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control maintaindealer" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-shield"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">审核状态：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control state"  disabled>
+                                                            <option value="">请选择</option>
+                                                            <option value="1">通过</option>
+                                                            <option value="2">未通过</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row action-container">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <button type="" class="btn btn-primary btn-sm pull-right save">
+                                                        <i class="fa fa-save"></i><span>更新</span>
+                                                    </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-car" style="display:none;">
+                                    <div class="section-divider mb40">
+                                        <span class="vehicle1-title2">我的第二辆车</span>
+                                    </div>
+                                    <div class="row vehicle vehicle2">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">品牌：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control brand">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-crosshairs"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control model">
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-dot-circle-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车牌号：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control platenumber" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车架号：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control vinnumber" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">车身颜色：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control color">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">红色</option>
+                                                            <option value="2">黄色</option>
+                                                            <option value="3">绿色</option>
+                                                            <option value="4">蓝色</option>
+                                                            <option value="5">紫色</option>
+                                                            <option value="6">黑色</option>
+                                                            <option value="7">白色</option>
+                                                            <option value="8">银色</option>
+                                                            <option value="9">金色</option>
+                                                            <option value="10">灰色</option>
+                                                            <option value="11">青色</option>
+                                                            <option value="12">棕色</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-tint"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">购买日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control weui-datepicker weui-datebegin boughtdate" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">保养日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control weui-datepicker weui-datebegin maintaintime" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">保养经销商：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <input type="text" class="form-control maintaindealer" placeholder="">
+                                                        <label class="field-icon"><i class="fa fa-shield"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">审核状态：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                        <select class="form-control state"  disabled>
+                                                            <option value="">请选择</option>
+                                                            <option value="1">通过</option>
+                                                            <option value="2">未通过</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row action-container">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputSelect" class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <button type="" class="btn btn-primary btn-sm pull-right save">
+                                                        <i class="fa fa-save"></i><span>更新</span>
+                                                    </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var memberid = getParameterByName("memberid", window.location);
+    var memberName = getParameterByName("membername", window.location);
+    var edit = getParameterByName("edit", window.location);
+
+    Core.runWeUIElements();
+    /*
+     *   会员详细信息
+     */
+    $(function() {
+
+        var industries = null,
+            professions = null,
+            locations = null,
+            brochures = null,
+            member = null,
+            vehicles = null;
+
+        if (edit == 'true' || edit == true) {
+            $('input').attr('disabled', false);
+            $('select').attr('disabled', false);
+            $('textarea').attr('disabled', false);
+            $('.save').show();
+        } else {
+            $('input').attr('disabled', true);
+            $('select').attr('disabled', true);
+            $('textarea').attr('disabled', true);
+            $('.save').hide();
+        }
+
+        var updateControl = function() {
+            initLocationLink('.member', '.province', '.city', locations);
+            initSelect($('.member .industry'), 'id', 'nameCn', industries);
+            initSelect($('.member .profession'), 'id', 'nameCn', professions);
+            $('.member .type').val(member.type);
+            $('.member .name').val(member.shortName);
+            $('.member .birthdate').val(member.birthDate);
+            $('.member .gender').val(member.genderCode);
+            $('.member .homenumber').val(member.homeNumber);
+            $('.member .mobilenumber1').val(member.mobileNumber1);
+            $('.member .mobilenumber2').val(member.mobileNumber2);
+            $('.member .email').val(member.email);
+            $('.member .province').val(member.provinceCode);
+            $('.member .province').trigger('change');
+            $('.member .city').val(member.cityCode);
+            $('.member .marriage').val(member.marriageCode);
+            $('.member .kidsnumber').val(member.kidsNumber);
+            $('.member .income').val(member.incomeMin + '~' + member.incomeMax);
+            $('.member .industry').val(member.industryCode);
+            $('.member .profession').val(member.professionCode);
+            $('.member .address1').val(member.address1);
+            $('.member .remark').val(member.remark);
+            $('.vehicle .save span').text('添加');
+            for (var i = 0; i < vehicles.length; ++i) {
+                if (vehicles[i]) {
+                    $('.member-car').eq(i).show();
+                }
+                var context = '.vehicle' + (i + 1);
+                initBrochureLink(context, '.brand', '.model', brochures);
+                $('.brand', context).val(vehicles[i].brandID);
+                $('.brand', context).trigger('change');
+                $('.model', context).val(vehicles[i].modelID);
+                $('.platenumber', context).val(vehicles[i].plateNumber);
+                $('.vinnumber', context).val(vehicles[i].vinNumber);
+                $('.boughtdate', context).val(vehicles[i].boughtDate);
+                $('.color', context).val(vehicles[i].colorID);
+                $('.maintaintime', context).val(vehicles[i].lastMaintainTime);
+                $('.maintaindealer', context).val(vehicles[i].lastMaintainDealer);
+                $('.state', context).val(vehicles[i].stateCode).attr('disabled', 'disabled');
+                $('.save span', context).text('更新');
+                $(context).data('model', vehicles[i]);
+            }
+        }
+
+        //保存会员信息
+        $('.member .save').off('click').on('click', function() {
+            member.type = $('.member .type').val();
+            member.shortName = $('.member .name').val();
+            member.birthDate = $('.member .birthdate').val();
+            member.genderCode = $('.member .gender').val();
+            member.homeNumber = $('.member .homenumber').val();
+            member.mobileNumber1 = $('.member .mobilenumber1').val();
+            member.mobileNumber2 = $('.member .mobilenumber2').val();
+            member.email = $('.member .email').val();
+            member.provinceCode = $('.member .province').val();
+            member.cityCode = $('.member .city').val();
+            member.marriageCode = $('.member .marriage').val();
+            member.kidsNumber = $('.member .kidsnumber').val() == "" ? ("-1") : $('.member .kidsnumber').val();
+            if ($('.member .income').val() != null) {
+                var income = $('.member .income').val().split('~');
+                member.incomeMin = income.length > 0 ? parseInt(income[0]) : 0;
+                member.incomeMax = income.length > 1 ? parseInt(income[1]) : 0;
+            } else {
+                member.incomeMin = "0";
+                member.incomeMax = "0";
+            }
+            member.industryCode = $('.member .industry').val();
+            member.professionCode = $('.member .profession').val();
+            member.address1 = $('.member .address1').val();
+            member.remark = $('.member .remark').val();
+            updateMember(member, function(data) {
+                var messageModel = new MessageModal($("#message-modal"), "更新成功！", null, function(tmpdata) {}).error();
+            });
+        });
+
+        //保存车辆信息
+        $('.vehicle .save').off('click').on('click', function() {
+            var context = $(this).parents('.vehicle').hasClass('vehicle1') ? '.vehicle1' : '.vehicle2';
+            var vehicle = $(context).data('model');
+            var create = vehicle == null;
+            vehicle == null ? vehicle = {
+                id: -1
+            } : 'blah';
+            vehicle.brandCode = $('.brand', context).val();
+            vehicle.modelCode = $('.model', context).val();
+            vehicle.plateNumber = $('.platenumber', context).val();
+            vehicle.vinNumber = $('.vinnumber', context).val();
+            vehicle.boughtDate = $('.boughtdate', context).val();
+            vehicle.colorID = $('.color', context).val();
+            vehicle.lastMaintainTime = $('.maintaintime', context).val();
+            vehicle.lastMaintainDealer = $('.maintaindealer', context).val();
+            if (create) {
+                updateVehicle(vehicle, function(data) {
+                    var messageModel = new MessageModal($("#message-modal"), "更新成功！", null, function(tmpdata) {}).error();
+                });
+            } else {
+                updateVehicle(vehicle, function(data) {
+                    console.log('create vehicle success');
+                    var messageModel = new MessageModal($("#message-modal"), "更新成功！", null, function(tmpdata) {}).error();
+                });
+            }
+        });
+
+        getIndustries(function(data) {
+            industries = data;
+            getProfessions(function(data) {
+                professions = data;
+                getLocations(function(data) {
+                    locations = data;
+                    getBrochures(function(data) {
+                        brochures = data;
+                        getMember(memberid, function(data) {
+                            member = data;
+                            getVehicles(memberid, function(data) {
+                                vehicles = data;
+                                updateControl();
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    })
+
+    //@ sourceURL=dynamicScript-member_detail.js
+</script>

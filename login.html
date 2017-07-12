@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <!-- Font CSS -->
+    <link rel="stylesheet" href="design/static/css/iconfont/myfont.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="text/css" href="../assets/img/logo.fw.png">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/login.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <p class="title"><span class="login-img"></span><span>在线调研平台</span></p>
+            <div class="section user">
+                <label>
+                    <label class="field-icon">
+                        <i class="iconfont">&#xe60d;</i>
+                    </label>
+                    <input type="text" name="userid" id="userid" placeholder="用户名" autocomplete="off">
+                </label>
+            </div>
+            <div class="section">
+                <label>
+                    <label class="field-icon">
+                        <i class="iconfont">&#xe60c;</i>
+                    </label>
+                    <input type="password" name="password" id="password" placeholder="密码" autocomplete="off">
+                </label>
+            </div>
+            <div class="footer">
+                <div class="intro">
+                    <input type="checkbox" id="remember" />
+                    <label for="remember">记住密码</label>
+                    <p><a href="forgotpwd.html">忘记密码？</a></p>
+                </div>
+
+                <button class="login" type="button">登录</button>
+            </div>
+        </div>
+
+        <!-- Message modal -->
+        <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" style="display: none;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><i class="fa fa-question"></i>提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modal-message"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close" style="margin-right: 4px;"></i>取消</button>
+                        <button type="button" class="btn btn-primary btn-sm accept"><i class="fa fa-save" style="margin-right: 4px;"></i>确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Message modal-->
+    </div>
+
+    <script src="assets/jquery/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/utility/bootstrap/source/modal.js"></script>
+    <script src="assets/js/config.js"></script>
+
+    <script>
+
+        $(function () {
+
+            var prevent_autofill_userid = false;
+            var prevent_autofill_password = true;
+
+            $('input').on('focus', function () {
+                $(this).parent().find('.iconfont').css('color', '#14A6EC');
+            }).on('blur', function () {
+                $(this).parent().find('.iconfont').css('color', '#999');
+            });
+
+            $('.login').off('click').on('click', function () {
+                login($("#userid").val(), $("#password").val());
+            });
+
+            $('#remember').off('change').on('change', function (e) {
+                setCookie('weremember', ($('#remember')[0].checked ? 'yes' : 'no'), 360 * 24 * 60);
+            });
+
+            var login = function (userID, password) {
+                var credential = {
+                    userID: userID,
+                    password: password
+                };
+                // login
+                $.ajax({
+                    url: myapp.apiHost2 + "sysmng.ajaxLogon.do",
+                    dataType: "json",
+                    type: "post",
+                    data: credential,
+                    success: function (data, status, xhr) {
+                        if (data.errors.length <= 0) {
+                            var ticket = data.token;
+                            setCookie('ticket', ticket, 2 * 60); // 2 hours
+                            setCookie('userid', credential.userID, 2 * 60); // 2 hours
+                            setCookie('weuserid', credential.userID, 14 * 24 * 60);
+                            setCookie('wepassword', ($('#remember')[0].checked ? credential.password : ''), 14 * 24 * 60);
+                            // get permission to show default page
+                            $.ajax({
+                                url: myapp.apiHost2 + "modNav1.jsp",
+                                dataType: "json",
+                                type: "post",
+                                data: {},
+                                beforeSend: function (request) {
+                                    request.setRequestHeader("ticket", ticket);
+                                },
+                                success: function (data, status, xhr) {
+                                    if (data.errors.length > 0 && data.errors[0] == 0) {
+                                        location.href = "login.html";
+                                    } else {
+                                        if (data.objs.length > 0) {
+                                            window.location.href = "index.html#" + data.objs[0].children[0].url;
+                                        } else {
+                                            location.href = "login.html";
+                                        }
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    console.log(error);
+                                }
+                            });
+                        } else {
+                            new MessageModal($("#message-modal"), "用户名或用户密码错误!", null, function () { }).error();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        new MessageModal($("#message-modal"), error, null, function () { }).error();
+                    }
+                });
+            }
+
+            var weuserid = getCookie('weuserid');
+            var wepassword = getCookie('wepassword');
+            var weremember = getCookie('weremember');
+
+            $('#remember')[0].checked = weremember == 'yes' ? true : false;
+
+            if (wepassword) {
+                login(weuserid, wepassword);
+            } else {
+                //
+                $('#userid').val(weuserid);
+                $("#password").val('')
+                //
+                $(document).keyup(function (event) {
+                    if (event.keyCode == 13) {
+                        login($("#userid").val(), $("#password").val());
+                    }
+                });
+            }
+        });
+
+        //
+        var getCookie = function (key) {
+            if (window.document.cookie.length > 0) {
+                var begin = document.cookie.indexOf(key + "=");
+                if (begin != -1) {
+                    begin = begin + key.length + 1;
+                    var end = document.cookie.indexOf(';', begin);
+                    if (end == -1)
+                        end = document.cookie.length;
+                    return unescape(document.cookie.substring(begin, end));
+                }
+            }
+            return "";
+        }
+
+        //
+        var setCookie = function (key, value, expires) {
+            var index = -1;
+            if (window.document.cookie != document.cookie)
+                index = window.document.cookie.indexOf(key);
+            if (index == -1) {
+                var _date = new Date();
+                _date.setMinutes(_date.getMinutes() + expires);
+                window.document.cookie = key + "=" + value + ";expires=" + _date.toGMTString();
+            }
+        }
+
+        // Message modal
+        var MessageModal = function (view, message, tr, accpet) {
+            // Cache
+            var theView = $(view);
+            var theTr = tr;
+            var theAccept = accpet;
+            // Initialize
+            var init = function () {
+                //
+                theView.find('.modal-message').text(message);
+                //
+                theView.find(".accept").unbind("click").click(function () {
+                    if (theAccept) {
+                        theAccept(theTr);
+                        theView.modal("hide");
+                    } else {
+                        theView.modal("hide");
+                    }
+                });
+            }
+            // Show info
+            var showInfo = function () {
+                theView.find(".modal-title>i").removeClass().addClass("fa fa-info");
+                theView.modal("show");
+            }
+            // Show warning
+            var showWarning = function () {
+                theView.find(".modal-title>i").removeClass().addClass("fa fa-warning");
+                theView.modal("show");
+            }
+            // Show error
+            var showError = function () {
+                theView.find(".modal-title>i").removeClass().addClass("fa fa-close");
+                theView.modal("show");
+            }
+            // Show confirm
+            var showConfirm = function () {
+                theView.find(".modal-title>i").removeClass().addClass("fa fa-question");
+                theView.modal("show");
+            }
+            // Hide modal
+            var hideModal = function () {
+                theView.modal("hide");
+            }
+            // Initialize 
+            init();
+            // Export
+            return {
+                info: showInfo,
+                warn: showWarning,
+                error: showError,
+                confirm: showConfirm,
+                hide: hideModal,
+            };
+        };
+
+        //@ sourceURL=dynamicScr-login.js
+    </script>
+</body>
+
+</html>

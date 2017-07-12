@@ -1,0 +1,206 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab_accounts" data-toggle="tab"><span class="fa fa-sitemap"></span>授权管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="tab_accounts" class="tab-pane pn active" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <form id="grant_form" method="post" action="" class="weui-valide">
+                                    <!-- Condition panel -->
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="cnd_userName" class="col-lg-2 col-md-4 col-sm-6 control-label">用户名：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+		                                                <input type="text" id="cnd_userName" name="cnd_userName" class="form-control cnd-userName">
+		                                                <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-2 col-md-2 col-sm-2 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <div id="treePerGrant" class="jstree" style="height:300px;border:1px solid #ddd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Control panel -->
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <!--<a href="#system/role.html?activeNo=2" id="reply" class="btn btn-primary btn-sm pull-right"><i class="fa fa-reply"></i>返回</a>-->
+                                                <button type="submit" class="btn btn-primary btn-sm pull-right action-save"><i class="fa fa-save"></i>保存</button>
+                                                <a class="btn btn-primary btn-sm pull-right permission-back"><i class="fa fa-reply"></i>返回</a>
+                                                <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加用户</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <!-- 						<div class="row">
+							<div class="panel panel-visible">
+								<div class="panel-body pn">
+									<table class="table table-striped table-hover" id="datatable_accounts">
+										<thead>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div> -->
+                        <!--data end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        var initTree = function(id, data) {
+            $(id).jstree({
+                'plugins': ["wholerow", "checkbox"],
+                'core': {
+                    'data': data
+                }
+            });
+
+        };
+        //提交时获得选中的userid
+        var getTreeRoleIdArr = function() {
+            var json = $("#treeFn").jstree(true).get_json()[0];
+            var setId = [];
+            for (var i = 0; i < json.children.length; ++i) {
+                if (json.children[i].state.selected) {
+                    setId.push(json.children[i]["id"]);
+                }
+            }
+            console.log(setId);
+            return setId;
+        };
+        var getAccount = function() {
+            var userName = $("#cnd_userName").val();
+            var ref = $("#treePerGrant").jstree(true);
+            var json = $("#treePerGrant").jstree(true).get_json()[0];
+            ref.show_all();
+            var meter = {
+                get_node: 0
+            };
+            var start = new Date().getTime();
+            for (var i = 0; i < json.children.length; ++i) {
+                for (var j = 0; j < json.children[i].children.length; ++j) {
+                    if (json.children[i].children[j]["text"].indexOf(userName) < 0 && userName != "") {
+                        ref.hide_node(json.children[i].children[j], false, meter);
+                    }
+                }
+            }
+            console.log("get_node - " + meter.get_node.toString());
+            console.log("hide - " + (new Date().getTime() - start).toString());
+            start = new Date().getTime();
+            console.log("init - " + (new Date().getTime() - start).toString());
+        };
+        //提交时获得选中的userid
+        var getTreeUserIdArr = function() {
+            var json = $("#treePerGrant").jstree(true).get_json()[0];
+            var setId = [];
+            for (var i = 0; i < json.children.length; ++i) {
+                for (var j = 0; j < json.children[i].children.length; ++j) {
+                    if (json.children[i].children[j].state.selected) {
+                        setId.push(json.children[i].children[j]["id"]);
+                    }
+                }
+            }
+            console.log(setId);
+            return setId;
+        };
+        //initTree('#tree_pergrant', treePerGrantData);
+        $("#cnd_userName").keyup(function() {
+            getAccount();
+            /*            for(var i=0;i<treePerGrantData.length;++1){
+                    	for(var j=0;j<treePerGrantData[i].children.length;++j){
+                    		if(username!=treePerGrantData[i].children[j].text){
+                    			alert(11);	
+                    		}
+                    	}
+                    }*/
+        });
+        //save
+        //$(".action-save").unbind("click").bind("click",function(){
+        Core.runWeUIValidate(function(form) {
+            var useridArr = getTreeUserIdArr();
+            //"survey.grantrole.do?roleid="+roleid,"text","post","userid="+useridArr.join("&userid=")
+            var url = myapp.apiHost2 + "survey.grantrole.do?roleID=" + roleID;
+            AjaxGet2(url, "text", "post", "userID=" + useridArr.join("&userID="), function(data) {
+                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+            }, function(error) {
+                alert(error);
+            });
+
+        })
+
+        //编辑时初始化数据
+        var roleID = getParameterByName("roleID", window.location.href);
+        AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=101", "json", "get", [], function(data) {
+            treeData = data;
+            treeData.text = "全部";
+            AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=93&roleID=" + roleID, "json", "get", [], function(data) {
+                useridData = data.objs[0];
+                //
+                for (var i in treeData.children) {
+                    for (var j in treeData.children[i].children) {
+                        var exist = false;
+                        for (var k in useridData.roleUser) {
+                            if (treeData.children[i].children[j].id == useridData.roleUser[k]) {
+                                exist = true;
+                                break;
+                            }
+                        }
+                        treeData.children[i].children[j]["state"] = {
+                            opended: true,
+                            selected: exist
+                        }
+                    }
+                }
+                $("#treePerGrant").jstree('destroy');
+                initTree('#treePerGrant', [treeData]);
+            }, function(error) {
+                // error
+            });
+        }, function(error) {
+            // error
+        });
+        //返回
+        $('.permission-back').unbind('click').bind('click', function() {
+            window.location = "#system/role.html";
+        });
+        //@ sourceURL=dynamicScript-system-permission_grant.js
+    })
+</script>

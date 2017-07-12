@@ -1,0 +1,696 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display: none;">
+                        <a href="#logonlog" data-toggle="tab"><span class="fa fa-align-justify"></span>登录日志</a>
+                    </li>
+                    <li style="display: none;">
+                        <a href="#errlog" data-toggle="tab"><span class="fa fa-align-justify"></span>错误日志</a>
+                    </li>
+                    <li style="display: none;">
+                        <a href="#dboplog" data-toggle="tab"><span class="fa fa-align-justify"></span>操作日志</a>
+                    </li>
+                    <li style="display:none;">
+                        <a href="#alllog" data-toggle="tab"><span class="fa fa-align-justify"></span>全部日志</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="logonlog" class="tab-pane pn" tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd_logon">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">用户名：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_userID" name="cnd_userID" class="form-control cnd_userID" >
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logonTime" class="col-lg-4 col-md-4 col-sm-6 control-label">起始时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_logonTime" name="cnd_logonTime" class="form-control weui-datepicker weui-dateTimebegin">
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logTimeEnd" class="col-lg-4 col-md-4 col-sm-6 control-label">结束时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_logTimeEnd" name="cnd_logTimeEnd" class="form-control weui-datepicker weui-dateTimeend" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_logonlog">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <div id="errlog" class="tab-pane pn" tabindex="2" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd_err">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">用户名：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_userID" name="cnd_userID" class="form-control cnd_userID" >
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_errTime" class="col-lg-4 col-md-4 col-sm-6 control-label">起始时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_errTime" name="cnd_errTime" class="form-control weui-datepicker weui-dateTimebegin" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_errTimeEnd" class="col-lg-4 col-md-4 col-sm-6 control-label">结束时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_errTimeEnd" name="cnd_errTimeEnd" class="form-control weui-datepicker weui-dateTimeend" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_errlog">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <div id="dboplog" class="tab-pane pn" tabindex="3" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd_dbop">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">操作员：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_userID" name="cnd_userID" class="form-control cnd_userID" >
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logTime" class="col-lg-4 col-md-4 col-sm-6 control-label">起始时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_logTime" name="cnd_logTime" class="form-control weui-datepicker weui-dateTimebegin" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logTimeEnd" class="col-lg-4 col-md-4 col-sm-6 control-label">结束时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_logTimeEnd" name="cnd_logTimeEnd" class="form-control weui-datepicker weui-dateTimeend" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_dboplog">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <div id="alllog" class="tab-pane pn" tabindex="4" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd_all">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <!--<div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">操作员：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_userID" name="cnd_userID" class="form-control cnd_userID" >
+                                                    <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>-->
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logTime" class="col-lg-4 col-md-4 col-sm-6 control-label">起始时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_logTime" name="cnd_logTime" class="form-control weui-datepicker weui-dateTimebegin" >
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_logTimeEnd" class="col-lg-4 col-md-4 col-sm-6 control-label">结束时间：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" data-id="cnd_logTimeEnd" name="cnd_logTimeEnd" class="form-control weui-datepicker weui-dateTimeend" >
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_alllog">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theLogonLogTable = null,
+        theLogonLogColumns = null,
+        theLogonCount = 0,
+        theLogonDummy = false,
+        theLogonLogOption = null;
+
+    var theErrLogTable = null,
+        theErrLogColumns = null,
+        theErrLogOption = null,
+        theErrorDummy = false,
+        theErrorCount = 0;
+
+    var theDbopLogTable = null,
+        theDbopLogColumns = null,
+        theDbopLogCount = 0,
+        theDbopLogDummy = false,
+        theDbopLogOption = null;
+
+    var theAllLogTable = null,
+        theAllLogColumns = null,
+        theAllLogCount = 0,
+        theAllLogDummy = false,
+        theAllLogOption = null;
+
+
+    //登录日志Table,Columns,Option
+    $(function() {
+        theLogonLogTable = $('#datatable_logonlog');
+        theLogonLogColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "userID",
+            "sTitle": "用户名",
+            "sWidth": "58px"
+        }, {
+            "aTargets": [2],
+            "mData": "logonTime",
+            "sTitle": "登录时间",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "logid",
+            "sTitle": "ID",
+            // "sWidth":"58px",
+            "mRender": null
+        }];
+
+        theLogonLogOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theLogonDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            onCreate: function() {},
+            onUpdate: function() {},
+            onDelete: function(data, tr) {
+                Core.deleteRow(theLogonLogTable, tr);
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 239, theLogonCount, "#logonlog");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                theLogonCount = count;
+            }
+        };
+        //登录日志查询
+        $("#logonlog .action-query").unbind("click").bind("click", function() {
+            theLogonDummy = true;
+            theLogonLogTable.dataTable().fnDraw();
+
+        });
+    })
+
+    // 错误日志Table,Columns,Option
+    $(function() {
+        theErrLogTable = $('#datatable_errlog');
+        theErrLogColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "logTime",
+            "sTitle": "日志时间",
+            "sWidth": "100px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "description",
+            "sTitle": "操作内容",
+            //"sWidth": "200px"
+        }];
+
+        theErrLogOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theErrorDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+                $(nRow).children('td').eq(2).attr('style', 'text-align: left;');
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            onCreate: function() {},
+            onUpdate: function() {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 240, theErrorCount, "#errlog");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                theErrorCount = count;
+            }
+        };
+
+        //错误日志查询
+        $("#errlog .action-query").unbind("click").bind("click", function() {
+            theErrorDummy = true;
+            theErrLogTable.dataTable().fnDraw();
+        });
+    });
+
+    //数据操作日志Table,Columns,Option
+    $(function() {
+        theDbopLogTable = $('#datatable_dboplog');
+        theDbopLogColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "logTime",
+            "sTitle": "日志时间",
+            "sWidth": "100px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "description",
+            "sTitle": "操作内容",
+            //"sWidth": "200px"
+        }];
+
+        theDbopLogOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theDbopLogDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+                $(nRow).children('td').eq(2).attr('style', 'text-align: left;');
+            },
+            onCreate: function() {},
+            onUpdate: function() {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 241, theDbopLogCount, "#dboplog");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                theDbopLogCount = count;
+            }
+        };
+        //数据操作日志查询
+        $("#dboplog .action-query").unbind("click").bind("click", function() {
+            theDbopLogDummy = true;
+            theDbopLogTable.dataTable().fnDraw();
+
+        });
+
+        // //包总样例日志Table,Columns,Option
+        // var theLogTable = $('#datatable_log');
+        // var theLogColumns = [{
+        //     "aTargets": [0],
+        //     "mData": "id",
+        //     "sTitle": "#",
+        //     "sWidth": "12px",
+        //     "bSortable": false,
+        //     "mRender": function(data, type, full) {
+        //         return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+        //     }
+        // }, {
+        //     "aTargets": [1],
+        //     "mData": "writeDate",
+        //     "sTitle": "时间",
+        //     "sWidth": "58px"
+        // }, {
+        //     "aTargets": [2],
+        //     "mData": "logType",
+        //     "sTitle": "类型",
+        //     "sWidth": "58px",
+        //     "mRender": null
+        // }, {
+        //     "aTargets": [3],
+        //     "mData": "system",
+        //     "sTitle": "系统",
+        //     "sWidth": "68px",
+        //     "mRender": null
+        // }, {
+        //     "aTargets": [4],
+        //     "mData": "module",
+        //     "sTitle": "模块",
+        //     "sWidth": "68px",
+        //     "mRender": null
+        // }, {
+        //     "aTargets": [5],
+        //     "mData": "happenCase",
+        //     "sTitle": "事件",
+        //     "sWidth": "128px",
+        //     "mRender": null
+        // }, {
+        //     "aTargets": [6],
+        //     "mData": "describe",
+        //     "sTitle": "描述",
+        //     // "sWidth":"80px",
+        //     "mRender": null
+        // }];
+        // var theLogOption = {
+        //      aButtons: [{                 "sButtonText": "csv",                 "sExtends": "xls",             }],
+        //     preDrawCallback: null,
+        //     rowCallback: null,
+        //     drawCallback: null,
+        //     onCreate: function() {},
+        //     onUpdate: function() {},
+        //     onDelete: function(data, tr) {
+        //         Core.deleteRow(theSampleTable, tr);
+        //     }
+        // };
+        // var url = myapp.apiHost2 + "sysmng.jsonreport.do?";
+        // var data = {
+        //     subSys: 'survey',
+        //     repID: '241',
+        //     isQuery: '1',
+        //     dispType: '12',
+        //     perRows: '2000'
+        // };
+        // var selCndIDs = [];
+        // $('#cnd_dbop .form-control').each(function() {
+        //     var cnd = $(this);
+        //     if (cnd.val() != '') {
+        //         selCndIDs.push(cnd.attr('id').split("_")[1]);
+        //         data[cnd.attr('id')] = cnd.val();
+        //     }
+        // });
+        // data.selCndIDs = selCndIDs.join("|");
+        // AjaxGet2(url, "json", "post", data, function(data) {
+        //     Core.fillDataTable(theDbopLogTable, data.objs);
+        // }, function(error) {});
+    });
+
+    // //包总样例日志查询
+    // $("#tab_log .action-query").unbind("click").bind("click", function() {
+    //     Core.fillDataTable(theLogTable, pagestoreLog.data);
+    // });
+
+    //全部日志
+    $(function() {
+        theAllLogTable = $('#datatable_alllog');
+        theAllLogColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "logTime",
+            "sTitle": "日志时间",
+            "sWidth": "100px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "description",
+            "sTitle": "操作内容",
+            // "sWidth": "200px"
+        }];
+
+        theAllLogOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theAllLogDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+                $(nRow).children('td').eq(2).attr('style', 'text-align: left;');
+            },
+            onCreate: function() {},
+            onUpdate: function() {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 122, theAllLogCount, "#alllog");
+            },
+            setCountCallback: function(count) {
+                theAllLogCount = count;
+            }
+        };
+        //查看全部日志查询
+        $("#alllog .action-query").unbind("click").bind("click", function() {
+            theAllLogDummy = true;
+            theAllLogTable.dataTable().fnDraw();
+
+        });
+    });
+
+    $(function() {
+        var activateTabPage = function(index) {
+                var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+                var container = $('.tab-pane[tabindex=' + index + ']');
+                if (index == 1) {
+                    $('table tbody', container).html("").html(tr);
+                    Core.initDataTable(theLogonLogTable, theLogonLogColumns, theLogonLogOption);
+                } else if (index == 2) {
+                    $('table tbody', container).html(tr);
+                    Core.initDataTable(theErrLogTable, theErrLogColumns, theErrLogOption);
+                } else if (index == 3) {
+                    $('table tbody', container).html(tr);
+                    Core.initDataTable(theDbopLogTable, theDbopLogColumns, theDbopLogOption);
+                } else if (index == 4) {
+                    $('table tbody', container).html(tr);
+                    Core.initDataTable(theAllLogTable, theAllLogColumns, theAllLogOption);
+                }
+            }
+            // Event handler for activate
+        initTabs(activateTabPage);
+        Core.runWeUIElements();
+    })
+
+    //@ sourceURL=dynamicScript-System-log.js
+</script>

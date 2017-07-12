@@ -1,0 +1,147 @@
+.popupCover {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute;
+}
+.popupComponent {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: absolute;
+}
+.popupComponent {
+	left: 0px; top: 0px; position: fixed; z-index: 1000;
+}
+.popupIframe {
+	display: none; _display: block;
+}
+.popupCover {
+	background: rgb(0, 0, 0); opacity: 0.3; -moz-opacity: 0.3;
+}
+.jsbox {
+	margin: 0px; padding: 0px; border-radius: 5px; display: none; border-collapse: collapse; position: absolute; z-index: 1300; box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+}
+.jsboxContent {
+	background: rgb(255, 255, 255); border-radius: 2px; float: left; position: relative; -ms-overflow-x: hidden; -ms-overflow-y: hidden;
+}
+.jsboxTitle {
+	margin: -1px -1px 0px; padding: 10px 20px; color: rgb(53, 53, 53); font-size: 16px; font-weight: bold; border-bottom-color: rgb(236, 236, 236); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.jsboxFooter {
+	padding: 6px 10px; text-align: right; border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid; display: none; background-color: rgb(242, 242, 242);
+}
+.jsboxAn_Cancel {
+	padding: 0px 6px; border: 1px solid rgb(153, 153, 153); height: 24px; text-align: center; line-height: normal !important; font-size: 13px; font-weight: bold; margin-left: 3px; vertical-align: top; display: inline-block; white-space: nowrap; cursor: pointer; background-image: url("images_jsbox/button.png");
+}
+.jsboxAn_save {
+	padding: 0px 6px; border: 1px solid rgb(153, 153, 153); height: 24px; text-align: center; line-height: normal !important; font-size: 13px; font-weight: bold; margin-left: 3px; vertical-align: top; display: inline-block; white-space: nowrap; cursor: pointer; background-image: url("images_jsbox/button.png");
+}
+.jsboxAn_ok {
+	padding: 0px 6px; border: 1px solid rgb(153, 153, 153); height: 24px; text-align: center; line-height: normal !important; font-size: 13px; font-weight: bold; margin-left: 3px; vertical-align: top; display: inline-block; white-space: nowrap; cursor: pointer; background-image: url("images_jsbox/button.png");
+}
+.jsboxAn_Cancel {
+	
+}
+.jsboxAn_save {
+	background-position: 0px -96px; border-color: rgb(59, 110, 34) rgb(59, 110, 34) rgb(44, 81, 21);
+}
+.jsboxAn_ok {
+	background-position: 0px -48px; border-color: rgb(41, 68, 126) rgb(41, 68, 126) rgb(26, 53, 110);
+}
+.jsboxAn_Cancel input {
+	margin: 0px; padding: 1px 0px 2px; border: 0px currentColor !important; text-align: center; color: rgb(102, 102, 102); text-indent: 0px; font-family: "Lucida Grande",Tahoma,Verdana,Arial,sans-serif; font-size: 13px; font-weight: bold; display: inline-block; white-space: nowrap; cursor: pointer; text-shadow: none;
+}
+.jsboxAn_save input {
+	margin: 0px; padding: 1px 0px 2px; border: 0px currentColor !important; text-align: center; color: rgb(102, 102, 102); text-indent: 0px; font-family: "Lucida Grande",Tahoma,Verdana,Arial,sans-serif; font-size: 13px; font-weight: bold; display: inline-block; white-space: nowrap; cursor: pointer; text-shadow: none;
+}
+.jsboxAn_ok input {
+	margin: 0px; padding: 1px 0px 2px; border: 0px currentColor !important; text-align: center; color: rgb(102, 102, 102); text-indent: 0px; font-family: "Lucida Grande",Tahoma,Verdana,Arial,sans-serif; font-size: 13px; font-weight: bold; display: inline-block; white-space: nowrap; cursor: pointer; text-shadow: none;
+}
+.jsboxAn_save input {
+	color: rgb(255, 255, 255);
+}
+.jsboxAn_ok input {
+	color: rgb(255, 255, 255);
+}
+.topLeft {
+	width: 10px; height: 10px; background-repeat: no-repeat;
+}
+.topRight {
+	width: 10px; height: 10px; background-repeat: no-repeat;
+}
+bottomLeft {
+	width: 10px; height: 10px; background-repeat: no-repeat;
+}
+bottomRight {
+	width: 10px; height: 10px; background-repeat: no-repeat;
+}
+.topLeft {
+	background-image: url("images_jsbox/tl.png");
+}
+.topRight {
+	background-position: right top; background-image: url("images_jsbox/tr.png");
+}
+.bottomLeft {
+	background-position: left bottom; background-image: url("images_jsbox/bl.png");
+}
+.bottomRight {
+	background-position: right bottom; background-image: url("images_jsbox/br.png");
+}
+.topCenter {
+	width: auto; height: 10px; background-image: url("images_jsbox/b.png"); background-repeat: repeat-x;
+}
+.bottomCenter {
+	width: auto; height: 10px; background-image: url("images_jsbox/b.png"); background-repeat: repeat-x;
+}
+.centerLeft {
+	width: 10px; height: auto; background-image: url("images_jsbox/b.png"); background-repeat: repeat-y;
+}
+.centerRight {
+	width: 10px; height: auto; background-image: url("images_jsbox/b.png"); background-repeat: repeat-y;
+}
+.loading {
+	background: url("images_jsbox/loading.gif") no-repeat center; margin: 0px auto; width: 100%; height: 100%; min-height: 100px;
+}
+.iframebox {
+	border: 0px currentColor !important; overflow: auto;
+}
+.jsbox-close {
+	background: url("images_jsbox/jsbox_close.png") no-repeat -3px -5px; top: 12px; width: 19px; height: 18px; text-align: center; right: 20px; color: rgb(239, 239, 239) !important; font-size: 14px !important; font-weight: bold !important; position: absolute;
+}
+.recycle_close {
+	background: url("images_jsbox/jsbox_close.png") no-repeat -3px -5px; top: 12px; width: 19px; height: 18px; text-align: center; right: 20px; color: rgb(239, 239, 239) !important; font-size: 14px !important; font-weight: bold !important; position: absolute;
+}
+.tabs {
+	margin-top: 16px; margin-left: 10px;
+}
+.tabs ul {
+	margin: auto; height: 31px; text-align: center; line-height: 30px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; display: block; position: relative;
+}
+.tab-nav {
+	margin: 0px; padding: 0px; color: rgb(174, 174, 174); display: inline; cursor: pointer;
+}
+.tab-nav-action {
+	margin: 0px; padding: 0px; height: 20px; border-top-color: rgb(9, 153, 206); border-right-color: rgb(204, 204, 204); border-left-color: rgb(204, 204, 204); border-top-width: 2px; border-right-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-left-style: solid; display: inline; cursor: pointer; background-color: rgb(255, 255, 255);
+}
+.tabs ul li {
+	width: 107px; line-height: 20px; padding-top: 5px; float: left;
+}
+.tabs-body {
+	padding: 5px 0px 0px; clear: both; min-height: 130px; min-width: 490px;
+}
+.tabs-body div {
+	padding: 10px;
+}
+.tccCon p {
+	
+}
+.tccCon_t {
+	margin: 10px 0px; padding: 10px 20px; font-size: 16px;
+}
+.tccCon_a {
+	padding: 0px 20px 10px 10px; text-align: right;
+}
+.tccCon .WJButton {
+	background: rgb(0, 153, 255); margin: 0px 2px; padding: 0.3em 1em; border-radius: 0.2em; text-align: center; color: rgb(247, 247, 247); line-height: normal; font-size: 16px; font-weight: normal; text-decoration: none; vertical-align: baseline; display: inline-block; cursor: pointer;
+}
+.uniteC {
+	background: rgb(201, 201, 201) !important;
+}
+.uniteC:hover {
+	background-color: rgb(220, 220, 220);
+}

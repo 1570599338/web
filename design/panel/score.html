@@ -1,0 +1,239 @@
+<div class="topicset" style="width: 487px; height: ; overflow: hidden;">
+    <form action="#" id="op_form" method="post" onsubmit="return false;">
+        <div class="poplayer">
+            <dl class="way">
+                <!--<dt>题型</dt>-->
+                <dd class="clear choose-way">
+                    <label for="number">编号：</label>
+                    <input type="text" class="number" placeholder="请输入题目编号" style="padding-left:4px;" />
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear choose-way">
+                    <a href="javascript:;" class="score star active" val="star">星星</a>
+                    <a href="javascript:;" class="score square " val="square">矩形</a>
+                </dd>
+            </dl>
+            <dl class="way">
+                <dd class="clear">
+                    <a href="javascript:;" class="chart pie active" val="">饼图</a>
+                    <a href="javascript:;" class="chart line" val="">折线</a>
+                    <a href="javascript:;" class="chart histogram" val="">柱状</a>
+                </dd>
+            </dl>
+            <!--<dl class="way">
+                <dd class="choose">
+                    最低分<input class="min" type="number" min="0" name="selection_min" id="min_answer_num" value="">
+                    <p class="options-tip"></p>
+                </dd>
+                <dd class="choose">
+                    最高分<input class="max" type="number" name="selection_max" id="max_answer_num" value="">
+                    <p class="options-tip"></p>
+                </dd>
+            </dl>-->
+            <dl class="way">
+                <dd class="clear">
+                    <input type="checkbox" name="optional" class="optional" id="optional" />
+                    <label for="optional">该题可跳过不回答</label>
+                </dd>
+                <!--<dd class="clear">
+                    <input type="checkbox" name="disordered" class="disordered" id="disordered" />
+                    <label for="disordered">选项随机排列</label>
+                </dd>-->
+                <dd style="padding-left: 20px; display: none;">
+                    <input type="checkbox" name="last-fixed" class="last-fixed" id="last_fixed">
+                    <label for="last_fixed">固定最后一个选项</label>
+                </dd>
+            </dl>
+        </div>
+    </form>
+    <input type="hidden" name="change_qtype" value="" id="change_qtype">
+</div>
+
+<script type="text/javascript">
+
+    function validate() {
+        /*if (parseInt($("#max_answer_num").val()) > 10) {
+            $("#max_answer_num").parent().find(".options_tip").show().text("只能填写0-10分");
+            $("#max_answer_num").focus();
+            return false;
+        } else if (parseInt($("#min_answer_num").val()) < 0) {
+            $("#min_answer_num").parent().find(".options_tip").show().text("只能填写0-10分");
+            $("#min_answer_num").focus();
+            return false;
+        } else if ($("#min_answer_num").val() == '') {
+            $("#min_answer_num").parent().find(".options_tip").show().text("只能填写0-10分");
+            $("#min_answer_num").focus();
+            $("#max_answer_num").parent().find(".options_tip").text("").hide();
+            return false;
+        } else if ($("#max_answer_num").val() == '') {
+            $("#max_answer_num").parent().find(".options_tip").show().text("只能填写0-10分");
+            $("#max_answer_num").focus();
+            $("#min_answer_num").parent().find(".options_tip").text("").hide();
+            return false;
+        } else {
+            $("#min_answer_num").parent().find(".options_tip").text("").hide();
+            $("#min_answer_num").parent().find(".options_tip").text("").hide();
+        }
+        if (parseInt($("#min_answer_num").val()) >= parseInt($("#max_answer_num").val())) {
+            $("#min_answer_num").parent().find(".options_tip").show().text("最低分不等大于或等于最高分");
+            $("#min_answer_num").focus();
+            return false;
+        } else {
+            $("#min_answer_num").parent().find(".options_tip").text("").hide();
+        }
+        if (parseInt($("#max_answer_num").val()) < 1) {
+            $("#max_answer_num").parent().find(".options_tip").show().text("不能填写0或负数");
+            return false;
+        }*/
+        return true;
+    }
+
+    //
+    function saveForm() {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新对象
+        updateObject(context, question);
+        //调用扩展信息
+        updateQuestionEx(question, function(data) {
+            console.log("update question extension success");
+        });
+        //更新逻辑
+        //var logic = context.data('logic');
+        //if (logic != null && logic != undefined && logic.changed == true) {
+        //    var data = [];
+        //    data = data.concat(logic.simple);
+        //    data = data.concat(logic.complex);
+        //    data = data.concat(logic.count);
+        //    data = data.concat(logic.uncond);
+        //    //
+        //    submitLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, question.id, data, function (data) {
+        //        console.log("submit logics success");
+        //    });
+        //}
+    }
+
+    var updateObject = function(context, question) {
+        //题目编号
+        question.number = $('.number', context).val();
+        question.optional = $('.optional', context)[0].checked;
+        //评分类型
+        var scoreType = $('.score.active', context);
+        if(scoreType.hasClass('star')) {
+            question.scoreType = QUESTION_SCORE_TYPE_STAR;
+        } else if (scoreType.hasClass('square')) {
+            question.scoreType = QUESTION_SCORE_TYPE_SQUARE;
+        }
+        //question.rowDisordered = $('.disordered', context)[0].checked;
+        //固定最后一个选项
+//        if (question.rowDisordered) {
+//            question.rowLastFixed = $('.last-fixed', context)[0].checked;
+//        } else {
+//            question.rowLastFixed = false;
+//        }
+        //最低分最高分
+//        question.selectionMin = $('#min_answer_num', context).val();
+//        question.selectionMax = $('#max_answer_num', context).val();
+        //题图形选择
+        var chartType = $('.chart.active', context);
+        if (chartType.hasClass('pie')) {
+            question.chartType = QUESTION_CHART_PIE;
+        } else if (chartType.hasClass('histogram')) {
+            question.chartType = QUESTION_CHART_HISTOGRAM;
+        } else if (chartType.hasClass('line')) {
+            question.chartType = QUESTION_CHART_LINE;
+        }
+    }
+
+    jQuery(document).ready(function ($) {
+
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+
+        //评分样式切换
+        $('.score', context).off('click').on('click', function () {
+            $(this).addClass('active');
+            $('.score', context).not($(this)).removeClass('active');
+        });
+        //题图形切换
+        $('.chart', context).off('click').on('click', function () {
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+        });
+        //更新界面
+        var updateControl = function(context, question) {
+            $('.number', context).val(question.number || '');
+            //该题可跳过不回答
+            $('.optional', context)[0].checked = question.optional;
+            //评分类型
+            $('.score', context).removeClass('active');
+            if (question.scoreType == QUESTION_SCORE_TYPE_STAR)
+                $('.star', context).addClass('active');
+            else if(question.scoreType == QUESTION_SCORE_TYPE_SQUARE)
+                $('.square', context).addClass('active');
+            //题形显示图
+            $('.chart', context).removeClass('active');
+            if (question.chartType == QUESTION_CHART_HISTOGRAM)
+                $('.histogram', context).addClass('active');
+            else if (question.chartType == QUESTION_CHART_LINE)
+                $('.line', context).addClass('active');
+            else if (question.chartType == QUESTION_CHART_PIE)
+                $('.pie', context).addClass('active');
+            //选项随机排列
+            //$('.disordered', context)[0].checked = question.rowDisordered;
+            //固定最后一个选项
+//            if ($('.disordered', context)[0].checked) {
+//                $('.last-fixed', context).parent().show();
+//                $('.last-fixed', context)[0].checked = question.rowLastFixed;
+//            } else {
+//                $('.last-fixed', context).parent().hide();
+//                $('.last-fixed', context)[0].checked = 'false';
+//            }
+            //最高分&最低分
+//            $('#min_answer_num', context).val(question.selectionMin);
+//            $('#max_answer_num', context).val(question.selectionMax);
+            //取得逻辑后的个数渲染到小tip上
+            var renderLogics = function(logicType, data) {
+                if(data.length>0){
+                    var logic = $(".right-operate").data('logic');
+                    if (logic == null || logic == undefined) {
+                        logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                        $(".right-operate").data('logic', logic);
+                    }
+                    //添加逻辑
+                    logic[logicType].splice(0, logic[logicType].length);
+                    logic[logicType] = logic[logicType].concat(data);
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','block').html(logic[logicType].length);
+                }else{
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','none');
+                }
+            }
+            //获取无条件跳转
+            searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, function (data) {
+                renderLogics('uncond', data);
+            });
+        }
+
+        //点击“随机排列”后出现“固定最后一个选项”
+//        $(".disordered", context).off('change').on('change', function () {
+//            if ($(this).attr("checked")) {
+//                $(".last-fixed", context).parent().show();
+//            } else {
+//                $(".last-fixed", context).parent().hide();
+//            }
+//        });
+
+        //最高分最低分只能填数字
+//        $("#min_answer_num, #max_answer_num").keyup(function() {
+//            $(this).val($(this).val().replace(/\D/g, ""));
+//        });
+
+        //刷新界面元素
+        updateControl(context, question);
+    });
+
+    //@ sourceURL=score.js
+</script>

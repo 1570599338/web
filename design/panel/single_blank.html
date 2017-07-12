@@ -1,0 +1,104 @@
+<div class="topicset" style="width: 487px; height: ; overflow: hidden;">
+    <form action="/edit/q_options/57342dfba320fc49ee63bb0d/" id="op_form" method="post" onsubmit="return false;">
+        <div class="poplayer">
+            <!--<dl class="way">
+                <dt>题型</dt>
+                <dd class="clear choose-way">
+                    <a href="javascript:;" val="to_single" class="active q-type-option">单选</a>
+                    <a href="javascript:;" val="to_multiple" class=" q-type-option cq-dx">多选</a>
+                </dd>
+            </dl>-->
+            <dl class="way">
+                <!--<dt>题型</dt>-->
+                <dd class="clear choose-way">
+                    <label for="number">编号：</label>
+                    <input type="text" class="number" placeholder="请输入题目编号" style="padding-left:4px;" />
+                </dd>
+            </dl>
+            <!--<dl class="way">
+                <dd class="clear">
+                    <input type="checkbox" name="optional" class="optional" id="optional" />
+                    <label for="optional">该题可跳过不回答</label>
+                </dd>
+            </dl>-->
+        </div>
+    </form>
+    <input type="hidden" name="change_qtype" value="" id="change_qtype">
+</div>
+
+<script type="text/javascript">
+
+    function validate() {
+        return true;
+    }
+
+    function saveForm() {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新对象
+        updateObject(context, question);
+        //调用API
+        updateQuestionEx(question, function(data) {
+            console.log("update question extension success");
+        });
+        //更新逻辑
+        //var logic = context.data('logic');
+        //if (logic != null && logic != undefined && logic.changed == true) {
+        //    var data = [];
+        //    data = data.concat(logic.simple);
+        //    data = data.concat(logic.complex);
+        //    data = data.concat(logic.count);
+        //    data = data.concat(logic.uncond);
+        //    //
+        //    submitLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, question.id, data, function (data) {
+        //        console.log("submit logics success");
+        //    });
+        //}
+    }
+
+    var updateObject = function(context, question) {
+        //更新题目编号
+        question.number = $('.number', context).val();
+        //该题可跳过不回答
+        //question.optional = $('.optional', context)[0].checked;
+    };
+
+    jQuery(document).ready(function ($) {
+
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+
+        var updateControl = function (context, question) {
+            //题目编号
+            $('.number', context).val(question.number || '');
+            //$('.optional', context)[0].checked = question.optional;
+            //取得逻辑后的个数渲染到小tip上
+            var renderLogics = function(logicType, data) {
+                if(data.length>0){
+                    var logic = $(".right-operate").data('logic');
+                    if (logic == null || logic == undefined) {
+                        logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                        $(".right-operate").data('logic', logic);
+                    }
+                    //添加逻辑
+                    logic[logicType].splice(0, logic[logicType].length);
+                    logic[logicType] = logic[logicType].concat(data);
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','block').html(logic[logicType].length);
+                }else{
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','none');
+                }
+            }
+            //获取无条件跳转
+            searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_UNCONDITIONAL, question.id, function (data) {
+                renderLogics('uncond', data);
+            });
+        };
+
+        //更新界面
+        updateControl(context, question);
+    });
+
+    //@ sourceURL=single-blank.js
+</script>

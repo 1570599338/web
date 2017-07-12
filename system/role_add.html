@@ -1,0 +1,179 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab_accounts" data-toggle="tab"><span class="fa fa-group"></span>角色管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="tab_accounts" class="tab-pane pn active" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <div class="form-horizontal admin-form">
+                                    <form id="role_form" method="post" action="" class="weui-valide">
+                                        <!-- Condition panel -->
+                                        <div class="panel-body">
+
+                                            <div class="row">
+                                                <input type="hidden" id="col_roleID" class="form-control col_roleid  gui-input" value="">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_roleName" class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+					                                    <input type="text" id="col_roleName" name="col_roleName" class="form-control col_roleName  gui-input" required>
+					                                    <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="col_roleDesc" class="col-lg-4 col-md-4 col-sm-6 control-label">描述：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+					                                    <input type="text" id="col_roleDesc" name="col_roleDesc" class="form-control col-roleDesc" required>
+					                                    <label class="field-icon"><i class="fa fa-edit"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">功能权限：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <div id="treeFn" class="jstree" style="height:200px;border:1px solid #ddd">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Control panel -->
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<a href="#system/role.html?operateState=2" id="reply" class="btn btn-primary btn-sm pull-right"><i class="fa fa-reply"></i>返回</a>-->
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right action-query submit"><i class="fa fa-save"></i>保存</button>
+                                                    <a type="" class="btn btn-primary btn-sm pull-right role-add-back"><i class="fa fa-reply"></i>返回</a>
+                                                    <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加用户</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        var operateState = getParameterByName("operateState", window.location.href);
+        var roleID = getParameterByName("roleID", window.location.href);
+        var initTree = function(id, data) {
+            $(id).jstree({
+                'plugins': ["wholerow", "checkbox"],
+                'core': {
+                    'data': data
+                }
+            });
+        };
+        //提交时获得选中的linkpid
+        var getTreeLinkPidArr = function() {
+            var json = $("#treeFn").jstree(true).get_json()[0];
+            var setId = [];
+            for (var i = 0; i < json.children.length; ++i) {
+                for (var j = 0; j < json.children[i].children.length; ++j) {
+                    for (var k = 0; k < json.children[i].children[j].children.length; ++k) {
+                        if (json.children[i].children[j].children[k].state.selected) {
+                            if($.isNumeric(treeData.children[i].children[j].children[k]["pid"])){
+                                setId.push(treeData.children[i].children[j].children[k]["pid"]);
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(setId);
+            return setId;
+        };
+
+        Core.runWeUIValidate(function(form) {
+            var roleID = getParameterByName("roleID", window.location.href);
+            var dataform = $(form);
+            var saveData = "";
+            dataform.find('.form-control').each(function(i) {
+                var input = $(this);
+                //data[input.attr('id')] = input.val();
+                saveData += input.attr('id') + "=" + input.val() + "&";
+            });
+            var linkPidArr = getTreeLinkPidArr();
+            AjaxGet2(myapp.apiHost2 + "survey.addrole.do?operateState=" + operateState + "&roleID=" + roleID, "text", "post", saveData + "linkpid=" + linkPidArr.join("&linkpid="), function(data) {
+                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+            }, function(error) {
+
+            });
+        });
+        //编辑时初始化数据
+        AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=98", "json", "get", [], function(data) {
+            treeData = data;
+            treeData.text = "全部";
+            AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=94&roleID=" + roleID, "json", "get", [], function(data) {
+                userData = data;
+                //
+                for (var i in treeData.children) {
+                    for (var j in treeData.children[i].children) {
+                        var exist = false;
+                        for (var k in treeData.children[i].children[j].children) {
+                            for (var key in userData.rolePermission) {
+                                if (treeData.children[i].children[j].children[k].pid == userData.rolePermission[key]) {
+                                    // exi
+                                    treeData.children[i].children[j].children[k]["state"] = {
+                                        opended: true,
+                                        selected: true
+                                    }
+                                    break;
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+                var forms = $('#role_form .form-control');
+                var id;
+                for (var i = 0; i < forms.length; i++) {
+                    id = forms[i].id.substr(4);
+                    forms[i].value = userData[id];
+                }
+                $("#treeFn").jstree('destroy');
+                initTree('#treeFn', [treeData]);
+            }, function(error) {
+                // error
+            });
+        }, function(error) {
+            // error
+        });
+        //返回
+        $('.role-add-back').unbind('click').bind('click', function() {
+            window.location = "#system/role.html";
+        });
+        //@ sourceURL=dynamicScript-system-role_add.js
+    })
+</script>

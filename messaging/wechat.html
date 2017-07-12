@@ -1,0 +1,563 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#wechats" data-toggle="tab"><span class="fa fa-comments"></span>微信推送</a></li>
+                    <li style="display:none;"><a href="#status" data-toggle="tab"><span class="fa fa-files-o" style="padding-right:6px;"></span>发送状态</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="wechats" class="tab-pane pn" tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <!-- Condition panel -->
+                                <div class="panel-body push-wechats">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">姓名：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input data-id="cnd_name" data-val="m_shortname" id="cnd_name" type="text"  name="username" class="form-control cnd-user str">
+                                                        <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">性别：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <select data-val="m_gender" data-id="cnd_gender" name="gender" class="form-control cnd-source">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">男</option>
+                                                            <option value="2">女</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">电话：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                        <input data-val="m_mobileNumber1" data-id="cnd_phoneNumber" type="text"  name="phone" class="form-control cnd-phone str">
+                                                        <label class="field-icon"><i class="fa fa-phone"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_province" class="field prepend-icon">
+                                                        <select data-val="p_postcode" data-id="cnd_provinceCode" id="cnd_provincecode" name="select2" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_city" class="field prepend-icon">
+                                                        <select  data-val="c_postcode" data-id="cnd_cityCode" id="cnd_citycode" name="select3" class="form-control">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">品牌：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_province" class="field prepend-icon">
+                                                        <select data-id="cnd_brand" data-val="b_id" id="cnd_brand" name="select2" class="form-control car-brand">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_city" class="field prepend-icon">
+                                                        <select data-id="cnd_modelID" data-val="mo_id" id="cnd_cartype" name="select3" class="form-control car-type">
+                                                        	<option value="">请选择</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <button type="button" class="btn btn-primary btn-sm pull-right push-message"><i class="fa fa-location-arrow"></i>推送</button>
+                                            <!--                                             <button type="button" class="btn btn-default btn-sm pull-right create-account">短信推送</button>
+                                            <button type="button" class="btn btn-default btn-sm pull-right create-account">批量推送</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_wechat">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd">
+                                                <td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="status" class="tab-pane pn" tabindex="2" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="panel panel-visible">
+                                            <div class="panel-body">
+                                                <div class="form-horizontal admin-form weui-form">
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label">发送状态：</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                            <select data-id="cnd_sent" type="text" name="start_time" class="form-control" placeholder="">
+                                                                <option value="">请选择</option>
+                                                                <option value="0">未发送</option>
+                                                                <option value="1">已发送</option>
+                                                            </select>
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row panel-footer action-container">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="panel">
+                                            <div class="panel-body pn">
+                                                <table class="table table-striped table-hover" id="datatable_status">
+                                                    <thead>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="wechat_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span></h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <div class="modal-body">
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="projectname" class="form-control col_projectName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">问卷名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="col_questionName" class="form-control col_questionName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">模板名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <select name="tplName" class="form-control col_tplName gui-input" required>
+                                        </select>                                       
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">推送名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                        <input type="text"  name="phone" class="form-control col_title">                                      
+                                         <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                    <button type="submit" class="btn btn-primary btn-sm get-push"><i class="fa fa-save"></i><span class="">推送</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theWechatTable = null,
+        theWechatColumns = null,
+        theWechatCount = 0,
+        theWechatDummy = false,
+        theWechatOption = null;
+
+    var theStatusTable = null,
+        theStatusColumns = null,
+        theStatusDummy = false,
+        theStatusCount = 0,
+        theStatusOption = null;
+
+    $(function() {
+        theWechatTable = $('#datatable_wechat');
+        // Model Modal
+        theWechatColumns = [{
+            "aTargets": [0],
+            "mData": "ID",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "姓名",
+            "sWidth": "128px",
+        }, {
+            "aTargets": [2],
+            "mData": "gender",
+            "sTitle": "性别",
+            "sWidth": "68px",
+        }, {
+            "aTargets": [3],
+            "mData": "phoneNumber1",
+            "sTitle": "手机号码1",
+            "sWidth": "68px",
+        }, {
+            "aTargets": [4],
+            "mData": "phoneNumber2",
+            "sTitle": "手机号码2",
+            // "sWidth": "68px"
+
+        }];
+        theWechatOption = {
+            // aButtons: ["sall", "asel", "add"],
+            aButtons: ["csv"],
+            preDrawCallback: function() {
+                return theWechatDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                var modal = new Modal($("#wechat_modal"), null, null, function(data) {
+                    var url = myapp.apiHost2 + "wesurvey.gifcardadd.do?";
+                    AjaxGet2(url, "json", "post", data, function(result) {
+                        console.log(data)
+                        Core.insertRow(theImportTable, data);
+                    }, function(error) {
+
+                    });
+
+                }, {
+                    Entity: "项目"
+                });
+                modal.show();
+            },
+            onUpdate: function(data, tr) {
+                new ModelModal($("#wechat_modal"), data, tr, function(data) {
+                    Core.updateRow(theWechatTable, data, tr);
+                }).show();
+            },
+            onDelete: function(data, tr) {
+                new MessageModal($("#message_modal"), "确定要删除选中的微信吗？", tr, function(data) {
+                    Core.deleteRow(theWechatTable, tr);
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 198, theWechatCount, "#wechats");
+            },
+            setCountCallback: function(count) {
+                theWechatCount = count;
+            }
+        };
+        $("#wechats .action-query").unbind("click").bind("click", function() {
+            theWechatDummy = true;
+            theWechatTable.dataTable().fnDraw();
+        });
+    });
+    //发送状态
+    $(function() {
+        theStatusTable = $('#datatable_status');
+        theStatusColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "name",
+            "sTitle": "姓名",
+            "sWidth": "88px",
+            "mRender": function(mData, type, full) {
+                return '<a href="javascript:;"> ' + mData + '</a>';
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "phoneNumber1",
+            "sTitle": "联系电话",
+            "sWidth": "160px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "createdAt",
+            "sTitle": "发送时间",
+            "sWidth": "108px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "sent",
+            "sTitle": "发送状态",
+            "sWidth": "108px",
+            "mRender": function(data, type, full) {
+                return '<span>' + (full.sent == "true" ? "已发送" : "未发送") + '</span>'
+            }
+        }, {
+            "aTargets": [5],
+            "mData": "content",
+            "sTitle": "发送内容",
+            "sClass": "text-align-left",
+            //"sWidth": "128px",
+            "mRender": null
+        }];
+
+        theStatusOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theStatusDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                aoData.push({
+                    name: 'selCndID',
+                    value: 'type'
+                });
+                aoData.push({
+                    name: 'cnd_type',
+                    value: 2
+                });
+                basicData(aoData, 200, theStatusCount, "#status");
+            },
+            setCountCallback: function(count) {
+                theStatusCount = count;
+            }
+        };
+        //发送状态查询
+        $("#status .action_query").click(function() {
+            theStatusDummy = true;
+            theStatusTable.dataTable().fnDraw();
+        })
+    });
+
+    //信息推送
+    $(function() {
+        var wechatModal = new Modal($("#wechat_modal"), null, null, function(data) {}, {
+            Entity: "推送"
+        });
+        $("#wechats .push-message").off("click").on("click", function() {
+            wechatModal.show();
+        });
+
+        //modal推送设置
+        $("#wechat_modal .get-push").unbind("click").bind("click", function() {
+            var data = {};
+            var condition = [];
+            $('.push-wechats .form-control').each(function(i, ele) {
+                var cnd = $(this);
+                if (cnd.val() != '') {
+                    if (cnd.hasClass('str')) {
+                        var val = cnd.val();
+                    } else {
+                        var val = "'" + cnd.val() + "'";
+                    }
+                    var strSql = '';
+                    var key = cnd.attr('data-val').split("_").join('.');
+                    if (cnd.attr('data-val') == "m_shortname") {
+                        strSql = key + ' like ' + "'%" + val + "%'";
+                    } else {
+                        strSql = key + '=' + val;
+                    }
+                    condition.push(strSql);
+                }
+                data.source = 3;
+            })
+            data.condition = condition.join(',');
+            var projectID = $('.col_projectName').val();
+            var projectName = $('.col_projectName option:selected').text();
+            //模板
+            var messagingTemplateID = $('.col_tplName').val();
+            //问卷
+            var templateID = $('.col_questionName').val();
+            //推送名称
+            var title = $('.col_title').val();
+            data.projectID = projectID;
+            data.projectName = projectName;
+            data.templateID = templateID;
+            data.messagingTemplateID = messagingTemplateID;
+            data.title = title;
+            var url = myapp.apiHost2 + "wesurvey.messagetask.do?";
+            AjaxGet2(url, 'json', 'post', data, function(data) {
+                wechatModal.hide();
+            }, function(error) {
+                alert(error)
+            });
+        });
+        $('.col_projectName').change(function() {
+            var projectid = $(this).val();
+            AjaxGet(myapp.apiHost + 'template/search?projectID=' + projectid, function(data) {
+                var html = "";
+                for (var i = 0; i < data.objs.length; i++) {
+                    html += '<option value=' + data.objs[i].id + '>' + data.objs[i].name + '</option>'
+                }
+                $(".col_questionName").html('').append(html)
+            }, function(error) {});
+        });
+
+        // trigger  
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theWechatTable, theWechatColumns, theWechatOption);
+                $('table tbody', container).html(tr);
+            } else if (index == 2) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theStatusTable, theStatusColumns, theStatusOption);
+            }
+        };
+        $("#tab_panel").tabs({
+            activate: function(event, ui) {
+                var initialized = ui.newPanel.attr('initialized');
+                if (!initialized) {
+                    ui.newPanel.attr('initialized', 'initialized');
+                    // Automatically activate
+                    activateTabPage(ui.newPanel.attr("tabindex"));
+                }
+            }
+        });
+        initTabs(function(index) {
+            activateTabPage(index);
+        });
+        // $('#cnd_writedate').datepicker($.datepicker.regional["zh-CN"]);
+        Core.runWeUIElements();
+        //初始化项目
+        refreshProjects(".col_projectName", 13);
+        //初始化模板列表
+        refreshtemplates(".col_tplName", 82, 2);
+        //初始化城市列表
+        city("#cnd_provincecode", "#cnd_citycode");
+        //车辆品牌
+        car(".car-brand", ".car-type");
+    });
+    //@ sourceURL=dynamicScript-messaging-wechat.js
+</script>

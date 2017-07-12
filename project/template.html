@@ -1,0 +1,299 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="bs-component">
+            <div class="panel" id="tab_panel">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                            <li class="" style="display: none;">
+                                <a href="#tab_sms" data-toggle="tab"></span>问卷设计</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content pn br-n">
+                            <div id="tab_sms" class="tab-pane pn" style="display: none;" tabindex="1">
+                                <div class="row">
+                                    <div class="panel temp-panel panel-visible" id="cnd">
+                                        <!-- Condition panel -->
+                                        <div class="panel-body">
+                                            <div class="form-horizontal admin-form">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                        <label for="project" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称</label>
+                                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                                            <label class="field prepend-icon">
+                                                                <select name="project" class="form-control project"></select>
+                                                                <label class="field-icon"><i class="fa fa-file-text"></i></label>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Control panel -->
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row bg-panel">
+                                    <div class="panel template-box" style="display: none;">
+                                        <div class="panel-body text-center">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 template" alias="A">
+                                                    <a href="#" class="temp-style p12" data-steps-style="steps-right;">
+                                                        <h1>
+                                                            <span class="action">新建</span>
+                                                        </h1>
+                                                        <div class="operation">
+                                                            <span class="fa fa-plus-circle new action-icon"></span>
+                                                            <span class="fa fa-trash delete"></span>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="row p15">
+                                                            <span class="col-sm-9 state text-left" style="padding:0;">点击新建按钮新建问卷</span>
+                                                            <span class="col-sm-3 fa fa-cloud-upload release release-icon"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4 template" alias="B">
+                                                    <a href="#" class="temp-style p12" data-steps-style="steps-right">
+                                                        <h1>
+                                                            <span class="action">新建</span>
+                                                        </h1>
+                                                        <div class="operation">
+                                                            <span class="fa fa-plus-circle new action-icon"></span>
+                                                            <span class="fa fa-trash delete"></span>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="row p15">
+                                                            <span class="col-sm-9 state text-left" style="padding:0;">点击新建按钮创建问卷</span>
+                                                            <span class="col-sm-3 fa fa-cloud-upload release release-icon"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4 template" alias="C">
+                                                    <a href="#" class="temp-style p15" data-steps-style="steps-bg">
+                                                        <h1>
+                                                            <span class="action">新建</span>
+                                                        </h1>
+                                                        <div class="operation">
+                                                            <span class="fa fa-plus-circle new action-icon"></span>
+                                                            <span class="fa fa-trash delete"></span>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="row p15">
+                                                            <span class="col-sm-9 state text-left" style="padding:0;">点击新建按钮创建问卷</span>
+                                                            <span class="col-sm-3 fa fa-cloud-upload release release-icon"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="design/static/js/base_utils.js"></script>-->
+<script>
+    $(function () {
+        //
+        var delTemplate = function (_this, template) {
+            new MessageModal($("#message-modal"), "确定要删除此问卷吗？", null, function(tmpdata) {
+                AjaxPost(myapp.apiHost + 'template/delete?templateid=' + template.id, null, null, function (data) {
+                    _this.parents('.template').data('object','');
+                    _this.parents('.template').find(".state").html("点击新建按钮创建问卷");
+                    _this.parents('.template').find(".release-icon").hide();
+                    _this.parents('.template').find(".action").html("新建");
+                    _this.parents('.template').find(".action-icon").removeClass('fa-plus-circle').removeClass('fa-pencil').addClass('fa-plus-circle');
+                    _this.parents('.template').find('a').removeClass("temp-active");
+                    _this.parents('.template').find('.delete').hide();
+                }, function (error) {
+                    alert(error);
+                });
+            }).error();
+
+        }
+        //
+        var release = function(_this, template){
+            AjaxGet(myapp.apiHost + 'question/search?templateid=' + template.id, function (data) {
+                var templateQuestions = data.objs;
+                if (templateQuestions.length > 0){
+                    new MessageModal($("#message-modal"),'问卷将处于编辑状态时将停止问卷收集，确定要继续吗？', null, function () {
+                        template.state = 2; // released
+                        AjaxPost(myapp.apiHost + 'template/update', template, null, function (data) {
+                            _this.parents('.template').find(".state").html("已发布");
+                            _this.parents('.template').find(".release-icon").hide();
+                        }, function (error) {
+                            alert(error);
+                        })
+                    }).error();
+                } else {
+                    new MessageModal($("#message-modal"),'此问卷是空问卷，暂时不能发布！', null, function(){}).error();
+                }
+            },function(error){
+                alert(error);
+            });
+        }
+        //SEARCH
+        $('#cnd .action-query').unbind("click").bind("click", function (e) {
+            var val = $(".project").val();
+            if (val == null) {
+                $(".project").addClass('temp-erro');
+            } else {
+                $(".project").removeClass('temp-erro');
+                search(val);
+            }
+        });
+
+        //新建&更新
+        $(".template .action-icon").unbind("click").bind("click", function (e) {
+            var template = $(this).parents('.template').data('object');
+            var projectName = $('.project option:selected').html();
+            if (!template) {
+                template = {
+                    ID: -1,
+                    projectID: $(".project").val(),
+                    name: "问卷",
+                    alias: $(this).parents('.template').attr("alias"),
+                    state: 1, // pending release
+                    remark: null
+                };
+                AjaxPost(myapp.apiHost + 'template/create', template, null, function (data) {
+                    template = data.objs[0];
+                    var statements = [{
+                        id: -1,
+                        type: 1,
+                        subType: 1,
+                        number: 'welcome',
+                        templateID: template.id,
+                        title: "欢迎参加本次答题",
+                    }, {
+                        id: -1,
+                        type: 2,
+                        subType: 1,
+                        number: 'complete',
+                        templateID: template.id,
+                        title: "您已完成本次问卷，感谢您的帮助与支持",
+                    }, {
+                        id: -1,
+                        type: 2,
+                        subType: 2,
+                        number: 'exception',
+                        templateID: template.id,
+                        title: "您不太适合本次调查，谢谢您的参与",
+                    }];
+                    AjaxPost(myapp.apiHost + 'statement/create', statements, null, function (data) {
+                        window.location = "#project/detail/template-detail.html?templateid=" + template.id + "&projectname=" + projectName;
+                    }, function (error) {
+                        alert(error);
+                    });
+                }, function (error) {
+                    alert(error);
+                })
+            } else {
+                // confirm
+                template.state = 1; // pending release
+                //更新状态
+                AjaxPost(myapp.apiHost + 'template/update', template, null, function (data) {
+                    template = data.objs[0];
+                    window.location = "#project/detail/template-detail.html?templateid=" + template.id + "&projectname=" + projectName;
+                }, function (error) {
+                    alert(error);
+                })
+            }
+        });
+
+        //删除
+        $(".template .delete").unbind('click').bind('click', function (e) {
+            var template = $(this).parents('.template').data('object');
+            delTemplate($(this), template);
+        });
+        //发布
+        $(".release").on("click", function (e) {
+            var _this = $(this);
+            var template = _this.parents('.template').data('object');
+            release(_this, template);
+            return false;
+        })
+
+        //search
+        function search(val) {
+            //
+            var projectId = $('.project').val();
+            //
+            if (projectId != "") {
+                AjaxGet(myapp.apiHost + 'template/search?projectID=' + projectId, function (data) {
+                    //显示问卷列表
+                    $('.template-box').show();
+                    //构造alias数据
+                    var templates = data.objs;
+                    var alias_array = [];
+                    for (var i = 0; i < templates.length; ++i) {
+                        alias_array.push(templates[i].alias);
+                    }
+                    //遍历问卷面板
+                    $('.template').each(function (i, e) {
+                        var alias = $(this).attr('alias');
+                        var index = alias_array.indexOf(alias);
+                        if (index >= 0) {
+                            if (templates[index].state == 1) {
+                                $(this).find(".state").html("点击右侧发布按钮发布问卷");
+                                $(this).find(".release-icon").show();
+                            } else {
+                                $(this).find(".state").html("已发布");
+                                $(this).find(".release-icon").hide();
+                            }
+                            $(this).find(".action").html(templates[index].name);
+                            $(this).find(".action-icon").removeClass('fa-plus-circle').removeClass('fa-pencil').addClass('fa-pencil');
+                            $(this).find('a').removeClass("temp-active").addClass("temp-active");
+                            $(this).data("object", templates[index]);
+                            $(this).find('.delete').show();
+                        } else {
+                            $(this).find(".state").html("点击新建按钮创建问卷");
+                            $(this).find(".release-icon").hide();
+                            $(this).find(".action").html("新建");
+                            $(this).find(".action-icon").removeClass('fa-plus-circle').removeClass('fa-pencil').addClass('fa-plus-circle');
+                            $(this).find('a').removeClass("temp-active");
+                        }
+                    });
+                }, function (error) {
+                    alert(error)
+                });
+            } else {
+                $('.template-box').hide();
+            }
+
+        }
+
+        var activateTabPage = function (index) {
+            if (index == 1)
+                $('.panel-tabs li:first-child').css('display', 'block').addClass('active');
+        }
+
+        initTabs(
+                activateTabPage
+        );
+
+        //初始化项目名称
+        refreshProjects(".project", 13);
+    });
+        //@ sourceURL=dynamicScript-project-template.js
+</script>

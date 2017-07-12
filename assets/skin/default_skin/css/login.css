@@ -1,0 +1,183 @@
+﻿*{
+    margin:0;
+    padding:0;
+    font-family:'microsoft yahei';
+}
+label{
+    font-weight:normal;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    background: url(../../../img/stock/login_bg.jpg) no-repeat center center;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.container{
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    padding:0 !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+/*������*/
+.container:after{
+    display: block;
+    content:'';
+    height: 10px;
+    margin-top:95px;
+    background-size:20px 26px;
+    background-image:linear-gradient(45deg, #fff 25%, transparent 25%, transparent),
+    linear-gradient(-45deg, #fff 25%, transparent 25%, transparent),
+    linear-gradient(45deg, transparent 75%, #fff 75%),
+    linear-gradient(-45deg, transparent 75%, #fff 75%)
+}
+.container .title{
+    text-align: center;
+    font-size:20px;
+    height: 62px;
+    line-height: 62px;
+    border-bottom:1px dashed #999;
+    position: relative;
+    overflow: hidden;
+    -webkit-animation: fontScale 4s ease 1;
+}
+@-webkit-keyframes fontScale {
+    0%{
+        display:none;
+        font-size:50px;
+        color:#14A6EC;
+    }
+    100%{
+        display:inline-block;
+        font-size:20px;
+        color:#333;
+    }
+}
+.container .title span:last-child{
+    position: absolute;
+    right:100px;
+}
+.container .title .login-img{
+    width: 50px;
+    height: 24px;
+    background: url(../../../img/stock/login_car.png) no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    top:22px;
+    left:118px;
+    -webkit-animation: move 2s ease 1;
+    -o-animation: move 2s ease 1;
+
+    -webkit-animation-name:move;
+    -webkit-animation-duration:2s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-timing-function:ease;
+
+    -moz-animation-name:move;
+    -moz-animation-duration:2s;
+    -moz-animation-iteration-count:1;
+    -moz-animation-timing-function:ease;
+
+    -ms-animation-name:move;
+    -ms-animation-duration:2s;
+    -ms-animation-iteration-count:1;
+    -ms-animation-timing-function:ease;
+
+    animation-name:move;
+    animation-duration:2s;
+    animation-iteration-count:1;
+    animation-timing-function:ease;
+}
+@-webkit-keyframes move{
+    0%{
+        left:400px;
+    }
+    100%{
+        left:118px;
+    }
+}
+.section{
+    width: 300px;
+    height: 45px;
+    border-radius: 4px;
+    border:1px solid #999;
+    margin:0 auto;
+    position: relative;
+}
+.section:hover{
+    border:1px solid #14A6EC;
+}
+.section input{
+    line-height: 42px;
+    outline:none;
+    border:none;
+    border-radius:4px;
+    font-size:14px;
+    color:#999;
+    border-color:#999;
+    width: 258px;
+}
+.section label i{
+    color:#999;
+}
+.user{
+    margin-top:35px;
+    margin-bottom:15px;
+}
+/*�ײ�*/
+.footer{
+    background-color: pink;
+    margin:21px 49px 0;
+}
+.footer .intro{
+    float: left;
+}
+.footer .intro input{
+    margin:0 !important;
+    vertical-align: middle;
+}
+.footer label,
+.footer p a{
+    font-size:12px;
+    color:#999;
+    text-decoration: none;
+}
+.footer p a:hover{
+    color:#14A6EC;
+    text-decoration: underline;
+}
+.footer .login{
+    float: right;
+}
+.footer .login{
+    width: 100px;
+    height: 45px;
+    border-radius: 4px;
+    background-color: #14A6EC;
+    border:1px;
+    color:#fff;
+    text-align: center;
+    line-height: 45px;
+    font-size:14px;
+    cursor: pointer;
+}
+/**/
+.field-icon{
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    top:0;
+    left:0;
+}

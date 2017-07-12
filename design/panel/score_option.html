@@ -1,0 +1,321 @@
+﻿<form action="#" id="option_set_form">
+    <div class="poplayer">
+        <dl class="way">
+            <ul>
+                <li style="display:none;">
+                    <span>编号：</span>
+                    <input type="text" class="code"/>
+                </li>
+                <li style="display: none;" class="value-box">
+                    <span>分值：</span>
+                    <input type="text" class="value"/>
+                </li>
+                <li style="display: none;" class="open-box">
+                    <input type="checkbox" name="open" class="open"/>
+                    <label for="open">在选项后增加填空框</label>
+                </li>
+                <li style="display: none;" class="type-box">
+                    <div>
+                        <span style="padding-left: 20px;">类型：</span>
+                        <select class="type-value" style="width:84px !important;">
+                            <option value="1">文本</option>
+                            <option value="2">数字</option>
+                            <option value="3">字母</option>
+                            <option value="4">邮件</option>
+                            <option value="5">手机号码</option>
+                            <option value="6">日期</option>
+                            <option value="7">时间</option>
+                        </select>
+                    </div>
+                </li>
+                <li style="display: none;" class="limit-box limit-text-box">
+                    <input type="checkbox" style="margin-left: 20px !important;" name="limit_text_flag"
+                           class="limit-text-flag" id="limit_text_flag"/>
+                    <label for="limit_text_flag">字数限制</label>
+                    <span class="limit-text-value-box" style="display: none;">
+                        <input type="number" class="limit-text-max" style="width: 35px; text-align: center;" value="">字内
+                    </span>
+                </li>
+                <li style="display: none;" class="limit-box limit-number-box">
+                    <input type="checkbox" style="margin-left: 20px !important;" name="limit_number_flag"
+                           class="limit-number-flag" id="limit_number_flag"/>
+                    <label for="limit_number_flag">区间限制</label>
+                    <span class="limit-number-value-box" style="display: none;">
+                        <input type="number" class="limit-number-min" style="width: 35px; text-align: center;" value="">
+                        - 
+                        <input type="number" class="limit-number-max" style="width: 35px; text-align: center;" value="">
+                    </span>
+                </li>
+                <li style="display: none;" class="optional-box">
+                    <input type="checkbox" name="optional" style="margin-left: 20px !important;" class="optional"
+                           id="optional"/>
+                    <label for="optional">该空可不填</label>
+                </li>
+            </ul>
+        </dl>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    var issue = $('.right-operate').attr('issue');
+
+    function validate() {
+        return true;
+    }
+
+    function saveForm() {
+        //上下文
+        var context = $('.right-operate');
+        var option = context.data('model');
+        //更新对象
+        updateObject(option, context);
+        //更新扩展信息
+        updateOptionEx(option, function (data) {
+            console.log("update option extension success");
+        });
+        //更新逻辑
+        //var logic = context.data('logic');
+        //if (logic != null && logic != undefined && logic.changed == true) {
+        //    var data = [];
+        //    data = data.concat(logic.simple);
+        //    data = data.concat(logic.complex);
+        //    data = data.concat(logic.count);
+        //    data = data.concat(logic.uncond);
+        //    //
+        //    submitLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_OPTION, option.id, data, function (data) {
+        //        console.log("submit logics success");
+        //    });
+        //}
+    }
+
+    //
+    var updateObject = function (option, context) {
+        //编号
+        option.code = $(".code", context).val();
+        //分值
+        if (issue == QUESTION_TYPE_SCORE || (issue == QUESTION_TYPE_MATRIX_SCORE && option.orientation == 2)) {
+            option.value = $(".value", context).val();
+        } else {
+            option.value = 0;
+        }
+        //开放选项
+        if (issue == QUESTION_TYPE_MATRIX_SCORE && option.orientation == 1) {
+            option.open = $(".open", context)[0].checked;
+            if (option.open) {
+                option.blankType = $(".type-value", context).val(); //类型
+                if (option.blankType == BLANK_TYPE_TEXT) {
+                    if ($(".limit-text-flag", context)[0].checked) { //字数限制
+                        option.blankMax = $(".limit-text-max", context).val();
+                        option.blankMin = 0;
+                    } else {
+                        option.blankMin = 0;
+                        option.blankMax = 0;
+                    }
+                } else if (option.blankType == BLANK_TYPE_NUMBER) {
+                    if ($(".limit-number-flag", context)[0].checked) { //区间限制
+                        option.blankMin = $(".limit-number-min", context).val();
+                        option.blankMax = $(".limit-number-max", context).val();
+                    } else {
+                        option.blankMin = 0;
+                        option.blankMax = 0;
+                    }
+                } else {
+                    if ($(".limit-text-flag", context)[0].checked) { //字数限制
+                        option.blankMax = $(".limit-text-max", context).val();
+                        option.blankMin = 0;
+                    } else {
+                        option.blankMin = 0;
+                        option.blankMax = 0;
+                    }
+                }
+                option.blankOptional = $(".optional", context)[0].checked; //该空可不填
+            } else {
+                option.blankType = null; //类型
+                option.blankMax = null;
+                option.blankMin = null
+                option.blankOptional = null; //该空可不填
+            }
+        } else {
+            option.open = false;
+            option.blankType = null; //类型
+            option.blankMax = null;
+            option.blankMin = null
+            option.blankOptional = null; //该空可不填
+        }
+    }
+
+    jQuery(document).ready(function ($) {
+
+        //上下文
+        var context = $('.right-operate');
+        var option = context.data('model');
+
+        //开放选项事件
+        $(".open", context).off('change').on('change', function () {
+            if ($(this).attr("checked")) {
+                $(".type-box", context).show();
+                $(".type-value", context).val(option.blankType || BLANK_TYPE_TEXT);
+                if (option.blankType == BLANK_TYPE_TEXT) {
+                    $(".limit-text-box", context).show();
+                    $(".limit-number-box", context).hide();
+                } else if (option.blankType == BLANK_TYPE_NUMBER) {
+                    $(".limit-text-box", context).hide();
+                    $(".limit-number-box", context).show();
+                } else {
+                    $(".limit-text-box", context).show();
+                    $(".limit-number-box", context).hide();
+                }
+                $(".optional-box", context).show();
+            } else {
+                $(".type-box", context).hide();
+                $(".limit-box", context).hide();
+                $(".optional-box", context).hide();
+            }
+        });
+
+        //类型选择变化
+        $(".type-value", context).off('change').on('change', function () {
+            var type = $(".type-value", context).val();
+            if (type == BLANK_TYPE_TEXT) {
+                $(".limit-text-box", context).show();
+                $(".limit-number-box", context).hide();
+            } else if (type == BLANK_TYPE_NUMBER) {
+                $(".limit-text-box", context).hide();
+                $(".limit-number-box", context).show();
+            } else {
+                $(".limit-text-box", context).hide();
+                $(".limit-number-box", context).hide();
+            }
+        });
+
+        //文本类型 - 字数限制
+        $(".limit-text-flag", context).off('change').on('change', function () {
+            if ($(".limit-text-flag", context)[0].checked) {
+                $(".limit-text-value-box", context).show();
+                $(".limit-text-max", context).val(option.blankMax || 50);
+            } else {
+                $(".limit-text-value-box", context).hide();
+            }
+        });
+
+        //数字类型 - 区域限制
+        $(".limit-number-flag", context).off('change').on('change', function () {
+            if ($(".limit-number-flag", context)[0].checked) {
+                $(".limit-number-value-box", context).show();
+                $(".limit-number-min", context).val(option.blankMin || 0);
+                $(".limit-number-max", context).val(option.blankMax || 10);
+            } else {
+                $(".limit-number-value-box", context).hide();
+                //$(".limit-number-min", context).val(option.blankMin || 0);
+                //$(".limit-number-max", context).val(option.blankMax || 10);
+            }
+        });
+
+        //更新界面
+        var updateControl = function (option, context) {
+            $('.code', context).val(option.code);
+            if (issue == QUESTION_TYPE_SCORE || (issue == QUESTION_TYPE_MATRIX_SCORE && option.orientation == 2)) {
+                $(".value-box", context).show();
+                $('.value', context).val(option.value);
+            } else {
+                $(".value-box", context).hide();
+                //$('.value', context).val(option.value);
+            }
+            if (issue == QUESTION_TYPE_MATRIX_SCORE && option.orientation == 1) {
+                $(".open-box", context).show();
+                $(".open", context)[0].checked = option.open; //在选项后增加填空框
+                if (option.open) {
+                    $(".type-box", context).show(); //类型
+                    $(".type-value", context).val(option.blankType || BLANK_TYPE_TEXT);
+                    if (option.blankType == BLANK_TYPE_TEXT) {
+                        $(".limit-text-box", context).show();
+                        $(".limit-number-box", context).hide();
+                        if (option.blankMax > 0) {
+                            $(".limit-text-flag", context)[0].checked = true;
+                            $(".limit-text-max", context).val(option.blankMax || 50);
+                            $(".limit-text-value-box", context).show();
+                        } else {
+                            $(".limit-text-flag", context)[0].checked = false;
+                            //$(".limit-text-max", context).val(option.blankMax || 50);
+                            $(".limit-text-value-box", context).hide();
+                        }
+                    } else if (option.blankType == BLANK_TYPE_NUMBER) {
+                        $(".limit-text-box", context).hide();
+                        $(".limit-number-box", context).show();
+                        if (option.blankMin > 0 && option.blankMax > 0) {
+                            $(".limit-number-flag", context)[0].checked = true;
+                            $(".limit-number-min", context).val(option.blankMin || 0);
+                            $(".limit-number-max", context).val(option.blankMax || 10);
+                            $(".limit-number-value-box", context).show();
+                        } else {
+                            $(".limit-number-flag", context)[0].checked = false;
+                            //$(".limit-number-min", context).val(option.blankMin || 0);
+                            //$(".limit-number-max", context).val(option.blankMax || 10);
+                            $(".limit-number-value-box", context).hide();
+                        }
+                    } else if (option.blankType == BLANK_TYPE_ALPHABET || option.blankType == BLANK_TYPE_EMAIL || option.blankType == BLANK_TYPE_PHONENUMBER || option.blankType == BLANK_TYPE_DATE || option.blankType == BLANK_TYPE_TIME) {
+                        $(".limit-text-box", context).hide();
+                        $(".limit-number-box", context).hide();
+                    } else { // default is BLANK_TYPE_TEXT
+                        $(".limit-text-box", context).show();
+                        $(".limit-number-box", context).hide();
+                        if (option.blankMax > 0) {
+                            $(".limit-text-flag", context)[0].checked = true;
+                            $(".limit-text-max", context).val(option.blankMax || 50);
+                            $(".limit-text-value-box", context).show();
+                        } else {
+                            $(".limit-text-flag", context)[0].checked = false;
+                            //$(".limit-text-max", context).val(option.blankMax || 50);
+                            $(".limit-text-value-box", context).hide();
+                        }
+                    }
+                    $(".optional-box", context).show(); //该空可不填
+                    $(".optional", context)[0].checked = option.blankOptional || false;
+                } else {
+                    $(".type-box", context).hide(); //类型
+                    //$(".type-value", context).val('');
+                    $(".limit-box", context).hide();
+                    //$(".limit-text-flag", context)[0].checked = false;
+                    //$(".limit-text-max.value", context).val(0);
+                    $(".optional-box", context).hide();
+                    //$(".optional", context)[0].checked = false;//该空可不填
+                }
+            } else {
+                $(".open-box", context).hide();
+                $(".type-box", context).hide(); //类型
+                //$(".type-value", context).val('');
+                $(".limit-box", context).hide();
+                //$(".limit-text-flag", context)[0].checked = false;
+                //$(".limit-text-max.value", context).val(0);
+                $(".optional-box", context).hide();
+                //$(".optional", context)[0].checked = false;//该空可不填
+            }
+            //取得逻辑后的个数渲染到小tip上
+            var renderLogics = function(logicType, data) {
+                if(data.length>0){
+                    var logic = $(".right-operate").data('logic');
+                    if (logic == null || logic == undefined) {
+                        logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                        $(".right-operate").data('logic', logic);
+                    }
+                    //添加逻辑
+                    logic[logicType].splice(0, logic[logicType].length);
+                    logic[logicType] = logic[logicType].concat(data);
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','block').html(logic[logicType].length);
+                }else{
+                    $(".right-operate .logic-box ."+logicType+" i").css('display','none');
+                }
+            }
+            //简单跳转逻辑
+            searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_OPTION, LOGIC_EXP_TYPE_SIMPLE, option.id, function (data){
+                renderLogics('simple', data);
+            });
+        }
+
+        //更新界面
+        updateControl(option, context);
+    });
+
+    //@ sourceURL=score-option.js
+</script>

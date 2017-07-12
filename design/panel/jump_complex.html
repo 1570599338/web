@@ -1,0 +1,328 @@
+<form>
+    <div class="logicsset" style="min-height: 200px;">
+        <div class="poplayer">
+            <div class="loaddiv" style="display: block;" id="loaddiv">
+                <div class="logics-box">
+                    <table width="100%;">
+                        <thead>
+                            <tr>
+                                <th style="width: 68px;">关系</th>
+                                <th style="width: 58%">选项</th>
+                                <th style="width: 105px;">跳转</th>
+                                <th style="width: 60px;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="add"></div>
+                    <div class="detail" style="display: none;">
+                        <div class="box relation-box">
+                            <span class="relation-box-title">关系：</span>
+                            <select class="relation">
+                                <option value="AND">同时选中</option>
+                                <option value="OR">任选其一</option>
+                            </select>
+                            <label class="relation-tip"></label>
+                        </div>
+                        <div class="box option-box">
+                            <span class="option-box-title">选项：</span>
+                            <ul class="option"></ul>
+                        </div>
+                        <div class="box target-box">
+                            <span class="target-box-title">跳转：</span>
+                            <select class="target"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mtop alignr">
+                <div class="smallfontsize iconfont accept new" style="display: none;">&#xe626;</div>
+                <div class="WJButton wj_blue smallfontsize" id="save">保存</div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        //上下文
+        var context = $('.logicsset')
+        var question = $(".right-operate").data("model");
+
+        //tip提示框
+        $('.relation', context).off('change').on('change', function () {
+            var relation = $('.relation option:selected', context).val();
+            if (relation == 'AND') {
+                $('.relation-tip').show().html('例如：选中A选项，并且选中B选项，则跳转至XX题');
+                $('.relation-tip').css('margin-right', '254px');
+            } else {
+                $('.relation-tip').show().html('例如：选中A选项或者B选项或者两者中的任意一个，则跳转至XX题');
+                $('.relation-tip').css('margin-right', '140px');
+            }
+            $('.option-box', context).css('margin-top', '2px');
+        });
+        //添加行
+        $('.add', context).off('click').on('click', function () {
+            //关系
+            $('.relation', context).val('AND');
+            //跳转
+            $('.target', context).val('');
+            //选项
+            $('.option', context).each(function () {
+                $(this)[0].checked = false;
+            });
+            //
+            $('.detail', context).show();
+            $('.accept', context).show();
+            $('.accept', context).removeClass('new').removeClass('edit').addClass('new').html('&#xe626;');
+        });
+        //添加或更新行
+        $('.accept', context).off('click').on('click', function () {
+            //
+            var count = $('.option:checked', context).length;
+            var val = $('.relation option:selected', context).val();
+            if (count <= 1 && val == 'AND') {
+                alert('请选择二个或多个选项！');
+                return;
+            }
+            //关系
+            var relation = $('.relation option:selected', context).html();
+            //跳转
+            var target = $('.target option:selected', context).val();
+            if (target == '' || target == undefined) {
+                alert('请选择跳转到第几题');
+                return;
+            }
+            //选项
+            var options = [];
+            $('.option:checked', context).each(function () {
+                options.push($(this).siblings('.option-title').text());
+            });
+            //创建表达式 OP1.selected=true AND OP2.selected=true
+            var codes = [];
+            $('.option:checked', context).each(function () {
+                codes.push(question.number + '.' + $(this).attr('code') + '.selected=true');
+            });
+            var expression = codes.join(' ' + $('.relation', context).val() + " ");
+            //
+            if ($(this).hasClass("new")) {
+                //添加行
+                var html =
+                    '<tr>' +
+                        '<td>' + relation + '</td>' +
+                        '<td>' + options.join('，') + '</td>' +
+                        '<td>' + target + '</td>' +
+                        '<td>' +
+                            '<div class="delete"></div>' +
+                            '<div class="edit"></div>' +
+                        '</td>'
+                '</tr>';
+                $('.logics-box tbody', context).append(html);
+                //创建对象并附加到行上
+                var logic = {
+                    id: -1,
+                    type: LOGIC_TYPE_JUMP,
+                    subjectType: LOGIC_SUBJECT_TYPE_QUESTION,
+                    expType: LOGIC_EXP_TYPE_COMPLEX,
+                    templateID: question.templateID,
+                    questionID: question.id,
+                    optionID: null,
+                    expression: expression,
+                    target: target,
+                };
+                $('.logics-box tbody tr:last', context).data('logic', logic);
+            } else if ($(this).hasClass("edit")) {
+                //获取上下文
+                var tr = $('.accept', context).data('tr');
+                var logic = $('.accept', context).data('logic');
+                //更新行
+                var tds = tr.find("td");
+                $(tds[0]).text(relation);
+                $(tds[1]).text(options.join('，'));
+                $(tds[2]).text(target);
+                //更新对象
+                logic.expression = expression;
+                logic.target = $('.target', context).val();
+                //修改状态
+                //$('.action', context).removeClass('add').removeClass('save').addClass('add');
+            }
+            //更新状态
+            $(".right-operate").data("logic").changed = true;
+            //
+            $('.detail', context).hide();
+            $('.accept', context).hide();
+        });
+
+        //编辑行
+        $(context).off('click', 'tbody tr .edit').on('click', 'tbody tr .edit', function () {
+            console.log('jump complex edit logic');
+            //
+            var logic = $(this).parents("tr").data('logic');
+            //关系
+            var relation = logic.expression.indexOf('AND') >= 0 ? "AND" : "OR";
+            $('.relation', context).val(relation);
+            //选项列表
+            var options = parseOptions2(logic.expression, relation);
+            $('input.option', context).each(function (i, e) {
+                var code = $(this).attr('code');
+                $(this)[0].checked = options.indexOf(code) >= 0;
+            });
+            //跳转
+            $('.target', context).val(logic.target);
+            //修改状态
+            $('.detail', context).show();
+            $('.accept', context).show();
+            $('.accept', context).removeClass('new').removeClass('edit').addClass('edit').html('&#xe625;');
+            //附加上下文
+            $('.accept', context).data('tr', $(this).parents("tr"));
+            $('.accept', context).data('logic', logic);
+        });
+
+        //删除行
+        $(context).off('click', 'tbody tr .delete').on('click', 'tbody tr .delete', function () {
+            console.log('jump complex delete logic');
+            //删除选中行
+            $(this).parent().parent().remove();
+            //更新状态
+            $(".right-operate").data("logic").changed = true;
+        });
+
+        //确定并关闭对话框
+        $('#save', context).off('click').on('click', function () {
+            //获取逻辑对象
+            var logic = $(".right-operate").data('logic');
+
+            //如果有修改，则附加数据到.right-operate
+            if (logic.changed == true) {
+                //清除
+                logic.complex.splice(0, logic.complex.length);
+                //附加逻辑对象
+                $('.logics-box tbody tr', context).each(function (index, element) {
+                    logic.complex.push($(this).data('logic'));
+                    $(".right-operate .logic-box .complex i").html(logic.complex.length);
+                });
+                //更新逻辑
+                submitLogics2(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_COMPLEX, question.id, logic.complex, function (data) {
+                    console.log('');
+                });
+                //本身上的提示
+                if(logic.complex.length>0){
+                    $(".right-operate .logic-box .complex i").css('display','block');
+                }else{
+                    $(".right-operate .logic-box .complex i").css('display','none');
+                }
+                $(".right-operate .logic-box .complex i").html(logic.complex.length);
+                //给题目逻辑设置提示框设值
+                $('li[oid="' + question.id + '"] .tip-box').css('display', 'block');
+                var tip_count = logic.complex.length + logic.uncond.length + logic.count.length;
+                if(tip_count == 0){
+                    $('li[oid="' + question.id + '"] .tip-box').css('display','none');
+                }else{
+                    $('li[oid="' + question.id + '"] .tip-box span').html(tip_count);
+                }
+            }
+        });
+
+        //刷新界面
+        var updateControl = function (context, question, logics) {
+            /*if(logics.length > 0){
+                $(".right-operate .logic-box .complex i").html(logics.complex.length);
+            }*/
+
+            var html = '';
+            //选项列表            
+            for (var i = 0; i < question.options.length; ++i) {
+                var option = question.options[i];
+                html +=
+                    '<li>' +
+                        '<input type="checkbox" name="option" class="option" code="' + option.code + '" />' +
+                        '<label for="' + option.id + '" class="option-title">' + option.title + '</label>' +
+                    '</li>';
+            }
+            $('.option', context).html('').append(html).show();
+            //题目列表
+            html = '';
+            $(".dragwen .question").each(function (index, element) {
+                var temp = $(element).data('model');
+                html += '<option value="' + temp.number + '">' + temp.number + ' - ' + temp.title + '</option>'
+            });
+            //结束语
+            var complete = $('#closing_type option[value="complete"]').data('model');
+            if (complete != null)
+                html += '<option value="' + complete.number + '">' + complete.title + '</option>'
+            var exception = $('#closing_type option[value="exception"]').data('model');
+            if (exception != null)
+                html += '<option value="' + exception.number + '">' + exception.title + '</option>'
+            $('.target', context).html('').append(html);
+            //逻辑列表
+            var html = '';
+            for (var i = 0; i < logics.length; ++i) {
+                var logic = logics[i];
+                var relation = logic.expression.indexOf('AND') >= 0 ? '同时选中' : '任选其一';
+                var options = parseOptions(logic.expression, question.options);
+                //添加行
+                html +=
+                    '<tr>' +
+                        '<td>' + relation + '</td>' +
+                        '<td>' + options + '</td>' +
+                        '<td>' + logic.target + '</td>' +
+                        '<td>' +
+                            '<div class="delete"></div>' +
+                            '<div class="edit"></div>' +
+                        '</td>'
+                '</tr>';
+            }
+            $('.logics-box tbody', context).html('').append(html);
+            //附加对象到行上
+            $('.logics-box tbody tr').each(function (index, element) {
+                $(this).data('logic', logics[index]);
+            });
+        }
+
+        //
+        var parseOptions2 = function (expression, relation) {
+            var exps = expression.split(relation);
+            var options = [];
+            for (var i = 0; i < exps.length; ++i)
+                options.push(exps[i].trim().split('.')[1]);
+            return options;
+        }
+
+        //
+        var parseOptions = function (expression, options) {
+            var relation = expression.indexOf('AND') >= 0 ? 'AND' : 'OR';
+            var exps = expression.split(relation);
+            var temp = [];
+            for (var i = 0; i < exps.length; ++i) {
+                var code = exps[i].trim().split('.')[1];
+                for (var j = 0; j < options.length; ++j) {
+                    if (options[j].code == code) {
+                        temp.push(options[j].title);
+                        break;
+                    }
+                }
+            }
+            return temp;
+        }
+
+        //获取逻辑
+        searchLogics(LOGIC_TYPE_JUMP, LOGIC_SUBJECT_TYPE_QUESTION, LOGIC_EXP_TYPE_COMPLEX, question.id, function (data) {
+            //如果还没有附加逻辑，则构造对象并附加
+            var logic = $(".right-operate").data('logic');
+            if (logic == null || logic == undefined) {
+                logic = { simple: [], complex: [], count: [], uncond: [], changed: false };
+                $(".right-operate").data('logic', logic);
+            }
+            //添加逻辑
+            logic.complex.splice(0, logic.complex.length);
+            logic.complex = logic.complex.concat(data);
+            //刷新界面
+            updateControl(context, question, logic.complex);
+        });
+    });
+
+    //@ sourceURL=jump-complex.js
+</script>

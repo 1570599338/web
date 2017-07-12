@@ -1,0 +1,790 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#domesticate" data-toggle="tab">驯养坐骑</a></li>
+                    <li class="" style="display:none;"><a href="#choiceness" data-toggle="tab">精选坐骑</a></li>
+                    <li class="" style="display:none;"><a href="#change" data-toggle="tab">坐骑易主</a></li>
+                    <li class="" style="display:none;"><a href="#survey" data-toggle="tab">调研发布</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="domesticate" class="tab-pane pn" style="display:none;" tabindex="1">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="row">
+                                    <div class="panel panel-visible">
+                                        <div class="panel-body">
+                                            <div class="form-horizontal admin-form weui-form">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">内容标题：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label for="cnd_project" class="field prepend-icon">
+                                                    <input data-id="cnd_title" name="cnd-project" class="form-control cnd-project"/>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12" style="display:none">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">发布类型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_type" type="text" name="cnd_type" class="form-control" value="1" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel">
+                                        <div class="panel-body pn">
+                                            <table class="table table-striped table-hover" id="domesticate_table">
+                                                <thead>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="choiceness" class="tab-pane pn" style="display:none;" tabindex="2">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="row">
+                                    <div class="panel panel-visible">
+                                        <div class="panel-body">
+                                            <div class="form-horizontal admin-form weui-form">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">内容标题：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label for="cnd_project" class="field prepend-icon">
+                                                    <input data-id="cnd_title" name="cnd-project" class="form-control cnd-project"/>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12" style="display:none">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">发布类型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_type" type="text" name="cnd_type" class="form-control" value="2" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel">
+                                        <div class="panel-body pn">
+                                            <table class="table table-striped table-hover" id="choiceness_table">
+                                                <thead>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="change" class="tab-pane pn" style="display:none;" tabindex="3">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="row">
+                                    <div class="panel panel-visible">
+                                        <div class="panel-body">
+                                            <div class="form-horizontal admin-form weui-form">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">内容标题：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label for="cnd_project" class="field prepend-icon">
+                                                    <input data-id="cnd_title" name="cnd-project" class="form-control cnd-project"/>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12" style="display:none">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">发布类型：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <input data-id="cnd_type" type="text" name="cnd_type" class="form-control" value="3" placeholder="">
+                                                            <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row panel-footer action-container">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel">
+                                        <div class="panel-body pn">
+                                            <table class="table table-striped table-hover" id="change_table">
+                                                <thead>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="survey" class="tab-pane pn" style="display:none;" tabindex="4">
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form weui-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">用户名：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_project" class="field prepend-icon">
+                                                    <input data-id="cnd_name" name="cnd-project" class="form-control cnd-project"/>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">查看状态：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_project" class="field prepend-icon">
+                                                    <select data-id="cnd_state" class="form-control">
+                                                        <option value="1">请选择</option>
+                                                        <option value="1">未处理</option>
+                                                        <option value="2">已处理</option>
+                                                    </select>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input data-id="cnd_beginTime" type="text" name="start_time" class="form-control weui-datepicker weui-datebegin cnd-start-time" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束日期：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input data-id="cnd_endTime" type="text" name="end_time" class="form-control weui-datepicker weui-dateend cnd-end-time" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="submit" class="btn btn-primary btn-sm pull-right action_query"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="survey_datatable">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theDomesticateTable = null,
+        theDomesticateColums = null,
+        theDomesticateOption = null,
+        theDomesticateCount = 0,
+        theDomesticateDummy = false;
+
+    var theChoicenessTable = null,
+        theChoicenessColums = null,
+        theChoicenessOption = null,
+        theChoicenessCount = 0,
+        theChoicenessDummy = false;
+
+    var theChageTable = null,
+        theChangeColums = null,
+        theChangeOption = null,
+        theChangeCount = 0,
+        theChangeDummy = false;
+
+
+    var theWithdrawTable = null,
+        theWithdrawColumns = null,
+        theWithdrawlCount = 0,
+        theWithdrawDummy = false;
+
+    /*****驯养坐骑******/
+    $(function() {
+        theDomesticateTable = $('#domesticate_table');
+        theDomesticateColums = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            },
+        }, {
+            "aTargets": [1],
+            "mData": "title",
+            "sTitle": "内容标题",
+            //"sWidth": "168px",
+            "sClass": "text-align-left",
+            "mRender": null
+
+        }, {
+            "aTargets": [2],
+            "mData": "createdAt",
+            "sTitle": "发布日期",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [3],
+            "mData": "dislikeCount",
+            "sTitle": "查看人数",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [4],
+            "mData": "likeCount",
+            "sTitle": "点赞人数",
+            "sWidth": "168px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "id",
+            "sTitle": "操作",
+            "sWidth": "88px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-check text-success"></span><span class="action-update text-success">编辑</span></a>' +
+                    '<span class="text-divider"> | </span>' +
+                    '<a href="#"><span class="fa fa-minus-circle text-danger"></span><span class="action-delete text-danger">删除</span></a>' +
+                    '</span>';
+            }
+        }]
+
+        theDomesticateOption = {
+            aButtons: ["csv", "add"],
+            preDrawCallback: function() {
+                return theDomesticateDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                window.location = "#project/detail/panel-edit.html?type=1&articleid=-1"
+            },
+            onUpdate: function(data, tr) {
+                window.location = "#project/detail/panel-edit.html?type=1&articleid=" + data.id;
+            },
+            onDelete: function(data, tr) {
+                var url = myapp.apiHost2 + "wesurvey.paneldelete.do?id=" + data.id;
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function(data) {
+                    AjaxPost2(url, [], null, function(data) {
+                        theDomesticateTable.dataTable().fnDraw();
+                    }, function(error) {
+                        alert(error)
+                    })
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            stateSave: true, //获取状态 根据状态设置值
+            stateSaveCallback: function(settings, data) {},
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 115, theDomesticateCount, "#domesticate");
+            },
+            setCountCallback: function(count) {
+                theDomesticateCount = count;
+            },
+        };
+
+        $("#domesticate .action_query").unbind("click").bind("click", function() {
+            theDomesticateDummy = true;
+            theDomesticateTable.dataTable().fnDraw();
+        });
+    });
+
+    /****精选坐骑****/
+    $(function() {
+        theChoicenessTable = $('#choiceness_table');
+        theChoicenessColums = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            },
+        }, {
+            "aTargets": [1],
+            "mData": "title",
+            "sTitle": "内容标题",
+            //"sWidth": "168px",
+            "sClass": "text-align-left",
+            "mRender": null
+
+        }, {
+            "aTargets": [2],
+            "mData": "createdAt",
+            "sTitle": "发布日期",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [3],
+            "mData": "dislikeCount",
+            "sTitle": "查看人数",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [4],
+            "mData": "likeCount",
+            "sTitle": "点赞人数",
+            "sWidth": "168px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "id",
+            "sTitle": "操作",
+            "sWidth": "88px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-check text-success"></span><span class="action-update text-success">编辑</span></a>' +
+                    '<span class="text-divider"> | </span>' +
+                    '<a href="#"><span class="fa fa-minus-circle text-danger"></span><span class="action-delete text-danger">删除</span></a>' +
+                    '</span>';
+            }
+        }]
+
+        //
+        theChoicenessOption = {
+            aButtons: ["csv", "add"],
+            preDrawCallback: function() {
+                return theChoicenessDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                window.location = "#project/detail/panel-edit.html?type=2&articleid=-1"
+            },
+            onUpdate: function(data, tr) {
+                window.location = "#project/detail/panel-edit.html?type=2&articleid=" + data.id;
+            },
+            onDelete: function(data, tr) {
+                var url = myapp.apiHost2 + "wesurvey.paneldelete.do?id=" + data.id;
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function(data) {
+                    AjaxPost2(url, [], null, function(data) {
+                        theChoicenessTable.dataTable().fnDraw();
+                    }, function(error) {
+                        alert(error)
+                    })
+
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            stateSave: true, //获取状态 根据状态设置值
+            stateSaveCallback: function(settings, data) {},
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 115, theChoicenessCount, "#choiceness");
+            },
+            setCountCallback: function(count) {
+                theChoicenessCount = count;
+            },
+
+        };
+        $("#choiceness .action_query").unbind("click").bind("click", function() {
+            theChoicenessDummy = true;
+            theChoicenessTable.dataTable().fnDraw();
+        });
+
+    });
+
+    /*****坐骑易主****/
+    $(function() {
+        theChangeTable = $('#change_table');
+        theChangeColums = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            },
+        }, {
+            "aTargets": [1],
+            "mData": "title",
+            "sTitle": "内容标题",
+            //"sWidth": "168px",
+            "sClass": "text-align-left",
+            "mRender": null
+
+        }, {
+            "aTargets": [2],
+            "mData": "createdAt",
+            "sTitle": "发布日期",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [3],
+            "mData": "dislikeCount",
+            "sTitle": "查看人数",
+            "sWidth": "168px",
+            "mRender": null
+
+        }, {
+            "aTargets": [4],
+            "mData": "likeCount",
+            "sTitle": "点赞人数",
+            "sWidth": "168px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "id",
+            "sTitle": "操作",
+            "sWidth": "88px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-check text-success"></span><span class="action-update text-success">编辑</span></a>' +
+                    '<span class="text-divider"> | </span>' +
+                    '<a href="#"><span class="fa fa-minus-circle text-danger"></span><span class="action-delete text-danger">删除</span></a>' +
+                    '</span>';
+            }
+        }]
+
+        theChangeOption = {
+            aButtons: ["csv", "add"],
+            preDrawCallback: function() {
+                return theChangeDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                window.location = "#project/detail/panel-edit.html?type=3&articleid=-1"
+            },
+            onUpdate: function(data, tr) {
+                window.location = "#project/detail/panel-edit.html?type=3&articleid=" + data.id;
+            },
+            onDelete: function(data, tr) {
+                var url = myapp.apiHost2 + "wesurvey.paneldelete.do?id=" + data.id;
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function(data) {
+                    AjaxPost2(url, [], null, function(data) {
+                        theChangeTable.dataTable().fnDraw();
+                    }, function(error) {
+                        alert(error)
+                    })
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            stateSave: true, //获取状态 根据状态设置值
+            stateSaveCallback: function(settings, data) {},
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 115, theChangeCount, "#change");
+            },
+            setCountCallback: function(count) {
+                theChangeCount = count;
+            },
+        };
+        $("#change .action_query").unbind("click").bind("click", function() {
+            theChangeDummy = true;
+            theChangeTable.dataTable().fnDraw();
+        });
+    });
+
+    /*****调研发布****/
+    $(function() {
+        theWithdrawTable = $('#survey_datatable');
+        theWithdrawColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "shortName",
+            "sTitle": "用户名",
+            "sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": function(mData, type, full) {
+                return '<a href="javascript:;"> ' + mData + '</a>';
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "createdAt",
+            "sTitle": "发布时间",
+            "sWidth": "92px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "phoneNumber",
+            "sTitle": "联系电话",
+            "sWidth": "96px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "email",
+            "sTitle": "email",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "remark",
+            "sTitle": "备注",
+            "sClass": "text-align-left",
+            //"sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "state",
+            "sTitle": "状态",
+            "sWidth": "42px",
+            "mRender": function(data, type, full) {
+                return '<span class="state">' + (full.state == 1 ? "未处理" : "已处理") + '</span>'
+            }
+        }, {
+            "aTargets": [7],
+            "mData": "state",
+            "sTitle": "操作",
+            "bSortable": false,
+            "sWidth": "42px",
+            "mRender": function(data, type, full) {
+                if (data == 1)
+                    return '<span class="inline-action-container"><a href="#"><span class="fa fa-edit"><span class="action-freeze">处理</span></a></span>';
+                else
+                    return '';
+            }
+        }];
+
+        theWithdrawOption = {
+            aButtons: ["csv"],
+            preDrawCallback: function() {
+                return theWithdrawDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            stateSave: true, //获取状态 根据状态设置值
+            stateSaveCallback: function(settings, data) {},
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 76, theWithdrawlCount, "#survey");
+            },
+            setCountCallback: function(count) {
+                theWithdrawlCount = count;
+            }
+        };
+        $("#survey .action_query").unbind("click").bind("click", function() {
+            theWithdrawDummy = true;
+            theWithdrawTable.dataTable().fnDraw();
+        });
+        //status
+        $('#survey_datatable').unbind('click').bind('click', function(e) {
+            var cur = $(e.target);
+            if (cur.hasClass("action-freeze")) {
+                var theTrs = $(e.target).parents("tr");
+                var memberdata = theTrs.data();
+                new MessageModal($("#message-modal"), "确定要修改查看状态吗？", null, function(tmpdata) {
+                    AjaxPost2(myapp.apiHost2 + 'wesurvey.contact.do?op=check', memberdata, null, function(data) {
+                        theWithdrawTable.dataTable().fnDraw();
+                    }, function(error) {
+                        alert(error)
+                    })
+                }).error();
+            }
+        });
+    });
+
+    /**/
+    $(function() {
+        Core.runWeUIElements();
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theDomesticateTable, theDomesticateColums, theDomesticateOption);
+            } else if (index == 2) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theChoicenessTable, theChoicenessColums, theChoicenessOption);
+            } else if (index == 3) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theChangeTable, theChangeColums, theChangeOption);
+            } else if (index == 4) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theWithdrawTable, theWithdrawColumns, theWithdrawOption);
+            }
+        };
+
+        // trigger
+        initTabs(activateTabPage);
+    });
+    //@ sourceURL=dynamicScript-project-panel.js
+</script>

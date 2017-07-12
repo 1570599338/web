@@ -1,0 +1,252 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#accounts" data-toggle="tab" num="1"><span class="fa fa-user"></span>用户管理</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <!-- tab tab_roles start -->
+                    <div id="accounts" class="tab-pane pn " tabindex="1" style="display:none;">
+                        <!--cnd start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_userType" class="col-lg-4 col-md-4 col-sm-6 control-label">类型：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id="cnd_userType" name="cnd_userType" class="form-control cnd_userType">
+                                                            <option value="" selected="selected">请选择</option>
+                                                            <option value="1">系统用户</option>
+                                                            <option value="2">业务用户</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label for="cnd_userID" class="col-lg-4 col-md-4 col-sm-6 control-label">用户名：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" data-id="cnd_userID" name="cnd_userID" class="form-control cnd_userID">
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Control panel -->
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+
+                                            <button type="submit" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                            <!-- <button type="button" class="btn btn-default btn-sm pull-right create-account">添加用户</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_accounts">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                    <!-- tab end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theAccountTable = null,
+        theAccountColumns = null,
+        theAccountCount = 0,
+        theAccountDummy = false,
+        theAccountOption = null;
+    $(function() {
+        theAccountTable = $('#datatable_accounts');
+        theAccountColumns = [{
+            "aTargets": [0],
+            "mData": "userID",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "userType",
+            "sTitle": "类型",
+            "sWidth": "58px"
+        }, {
+            "aTargets": [2],
+            "mData": "userID",
+            "sTitle": "用户名",
+            "sClass": "text-align-left",
+            "sWidth": "128px"
+        }, {
+            "aTargets": [3],
+            "mData": "userName",
+            "sClass": "text-align-left",
+            "sTitle": "名称",
+            "sWidth": "128px"
+        }, {
+            "aTargets": [4],
+            "mData": "full_Name_En",
+            "sTitle": "全名（英文）",
+            "sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "remark",
+            "sTitle": "备注",
+            "sClass": "text-align-left",
+            //"sWidth": "80px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            // "mData": "userID",
+            "sTitle": "操作",
+            "sWidth": "80px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-default"></span><span class="action-update">编辑</span></a><span class="text-divider">|</span> ' +
+                    '<a href="#"><span class="fa fa-exclamation-triangle fa-danger"></span><span class="action-delete">删除</span></a> ' +
+                    '</span>';
+            }
+        }];
+
+        theAccountOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }, "add"],
+            preDrawCallback: function() {
+                return theAccountDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function() {
+                // var pageCache = {};
+                // pageCache.tabIndex = $("#tab_panel .active a").attr("num");
+                // condition();
+                // data.selCndIDs = selCndIDs.join("|");
+                // pageCache.cnds = data;
+                // var key = location.href;
+                // Core.putPageCache(key.split("?")[0], pageCache);
+                window.location = "#system/account_add.html?operateState=0";
+            },
+            onUpdate: function(tableData, tr) {
+                // var pageCache = {};
+                // pageCache.tabIndex = $("#tab_panel .active a").attr("num");
+                // condition();
+                // data.selCndIDs = selCndIDs.join("|");
+                // pageCache.cnds = data;
+                // var key = location.href;
+                // Core.putPageCache(key.split("?")[0], pageCache);
+                window.location = "#system/account_add.html?operateState=1&userID=" + tableData.userID;
+            },
+            onDelete: function(data, tr) {
+                var accountData = {
+                    userID: data.userID
+                }
+                var url = myapp.apiHost2 + "survey.deluser.do";
+                new MessageModal($("#message-modal"), "确定要删除选中的用户吗？", tr, function(projectdata) {
+                    AjaxPost2(url, accountData, null, function(data) {
+                        Core.deleteRow(theAccountTable, tr);
+                    }, function(error) {
+                        alert(error)
+                    })
+
+                }).error();
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 236, theAccountCount, "#accounts");
+                for (var key in aoData) {
+                    if (aoData[key].name == "subSys") {
+                        aoData[key].value = 'survey';
+                    }
+                }
+            },
+            setCountCallback: function(count) {
+                theAccountCount = count;
+            }
+        };
+
+        $("#accounts .action-query").unbind("click").bind("click", function() {
+            theAccountDummy = true;
+            theAccountTable.dataTable().fnDraw();
+        });
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theAccountTable, theAccountColumns, theAccountOption);
+                $('table tbody', container).html(tr);
+            }
+
+        }
+
+        initTabs(activateTabPage);
+
+        // (function() {
+        //     var getlocal = location.href.split("?");
+        //     if (getlocal.length > 1) {
+        //         var operateState = getlocal[1].split("&")[0].split("=")[1];
+        //         var sel = function() {
+        //                 AjaxGet2(myapp.apiHost2 + "sysmng.jsonreport.do?", "json", "post", Core.getPageCache(getlocal[0]).cnds, function(data) {
+        //                     Core.fillDataTable(theAccountTable, data.objs);
+        //                 }, function(error) {});
+        //             }
+        //             //添加操作
+        //         if (operateState == "0") {
+        //             sel();
+        //         }
+        //         //返回操作
+        //         else if (operateState == "1") {
+        //             sel();
+        //         }
+        //         //编辑操作
+        //         else if (operateState == "2") {
+        //             sel();
+        //         }
+        //     }
+        // })();
+
+        //@ sourceURL=dynamicScript-system-account.js
+    });
+</script>

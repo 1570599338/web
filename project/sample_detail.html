@@ -1,0 +1,397 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="active">
+                        <a href="#tab_sample_detail" data-toggle="tab"><span class="fa fa-align-justify"></span>查看问卷</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <div id="tab_sample_detail" class="tab-pane pn active">
+                        <!--cnd start-->
+                        <!--<div class="row">
+							<div class="panel panel-visible" id="cnd">
+								<div class="panel-body">
+									<div class="form-horizontal admin-form">
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_sample_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_sample_name" name="col_sample_name" class="form-control col-sample-name" >
+                                                        <label class="field-icon"><i class="fa fa-cubes"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_anwser_date" class="col-lg-4 col-md-4 col-sm-6 control-label">答卷时间：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_anwser_date" name="col_anwser_date" class="form-control col-anwser-date" >
+                                                        <label class="field-icon"><i class="fa fa-calendar-o"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_question_name" class="col-lg-4 col-md-4 col-sm-6 control-label">问卷名称：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_question_name" name="col_question_name" class="form-control col-question-name" >
+                                                        <label class="field-icon"><i class="fa fa-file-text-o"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_username" class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_username" name="col_username" class="form-control col-username" >
+                                                        <label class="field-icon"><i class="fa fa-user"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_sex" class="col-lg-4 col-md-4 col-sm-6 control-label">性别：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_sex" name="col_sex" class="form-control col-sex" >
+                                                        <label class="field-icon"><i class="fa fa-female"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_mobile" class="col-lg-4 col-md-4 col-sm-6 control-label">手机号码：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_mobile" name="col_mobile" class="form-control col-mobile" >
+                                                        <label class="field-icon"><i class="fa fa-mobile"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_province" class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_province" name="col_province" class="form-control col-province" >
+                                                        <label class="field-icon"><i class="fa fa-th"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_city" class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_city" name="col_city" class="form-control col-city" >
+                                                        <label class="field-icon"><i class="fa fa-th"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_cycle_type" class="col-lg-4 col-md-4 col-sm-6 control-label">车型：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_cycle_type" name="col_cycle_type" class="form-control col-cycle-type" >
+                                                        <label class="field-icon"><i class="fa fa-dashboard"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_licence_num" class="col-lg-4 col-md-4 col-sm-6 control-label">车牌号：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_licence_num" name="col_licence_num" class="form-control col-licence-num" >
+                                                        <label class="field-icon"><i class="fa fa-credit-card"></i></label>
+												</label>
+											</div>
+										</div>
+										<div class="form-group col-lg-6 col-md-6 col-sm-12">
+											<label for="col_frame_num" class="col-lg-4 col-md-4 col-sm-6 control-label">车架号：</label>
+											<div class="col-lg-8 col-md-8 col-sm-6">
+												<label class="field prepend-icon">
+                                                        <input type="text" id="col_frame_num" name="col_frame_num" class="form-control col-frame-num" >
+                                                        <label class="field-icon"><i class="fa fa-credit-card"></i></label>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row panel-footer action-container">
+									<div class="form-group col-lg-6 col-md-6 col-sm-12">
+										<label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+										<div class="col-lg-8 col-md-8 col-sm-6">
+											&lt;!&ndash;<button type="submit" class="btn btn-default btn-block">提交</button>&ndash;&gt;
+										</div>
+									</div>
+									<div class="form-group col-lg-6 col-md-6 col-sm-12">
+										<label for="inputSelect" class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+										<div class="col-lg-8 col-md-8 col-sm-6">
+											<button id="reply" class="btn btn-primary btn-sm pull-right"><i class="fa fa-reply"></i>返回</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>-->
+                        <!--cnd end-->
+                        <!--data start-->
+                        <div class="row">
+                            <div class="panel panel-visible" id="dat">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_sample_detail">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--data end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var sampleID = getParameterByName("id", window.location); //1000465658
+
+    $(function() {
+
+        var theSampleDetailTable = $('#datatable_sample_detail');
+        var theSampleDetailColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "id",
+            "sTitle": "题目编号",
+            "sWidth": "50px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "typeName",
+            "sTitle": "类型",
+            "sWidth": "58px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "title",
+            "sTitle": "题干",
+            //"sWidth":"68px",
+            "mRender": null,
+            "sClass": "text-align-left",
+        }, {
+            "aTargets": [4],
+            "mData": "id",
+            "sTitle": "答案",
+            "sClass": "text-align-left",
+            //"sWidth":"68px",
+            "mRender": function(data, type, full) {
+                if (full.rows == null) {
+                    return full.answers.map(function(elem) {
+                        if (elem.title == "" && elem.text == "") {
+                            return "";
+                        } else {
+                            if (elem.title == "") {
+                                return elem.text;
+                            } else {
+                                return "[" + elem.title.replace(/&amp;nbsp;/g, '') + (elem.text == "" ? "" : ("," + elem.text)) + "]";
+                            }
+                        }
+                    }).join('，');
+                } else {
+                    var html = '';
+                    for (var i = 0; i < full.rows.length; ++i) {
+                        html += full.rows[i].answers.map(function(elem) {
+                            if (elem.title == "" && elem.text == "") {
+                                return "";
+                            } else if (elem.title != "" && elem.text != "") {
+                                return "[" + elem.title.replace(/&amp;nbsp;/g, '') + "," + elem.text + "]";
+                            } else if (elem.title == "") {
+                                return elem.text;
+                            } else {
+                                return elem.title.replace(/&amp;nbsp;/g, '');
+                            }
+                        }).join('，');
+                        html += '<br />';
+                    }
+                    return html;
+                }
+            }
+        }];
+        var theSampleDetailOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: null,
+            rowCallback: null,
+            drawCallback: null,
+            /*onCreate: function() {
+             //Core.loadURL('#system/role_add.html');
+             window.location = "#system/sample_view.html";
+             },*/
+            onUpdate: function() {
+                window.location = "#system/sample.html";
+            },
+            onDelete: function(data, tr) {
+                Core.deleteRow(theSampleDetailTable, tr);
+            }
+        };
+
+        var activateTabPage = function(index) {
+            if (index == 1) {
+                Core.initDataTable(theSampleDetailTable, theSampleDetailColumns, theSampleDetailOption);
+                var criteria = linkApiData(89);
+                var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+                criteria["cnd_sampleID"] = sampleID;
+                criteria.selCndIDs = "sampleID";
+                //
+                AjaxPost2(url, criteria, null, function(data) {
+                    var questions = [],
+                        qid = -1,
+                        rid = -1;
+                    for (var i = 0; i < data.objs.length; ++i) {
+                        var answer = data.objs[i];
+                        if (answer.questionID != qid) {
+                            if (answer.rowOptionID > 0) {
+                                //矩阵题型
+                                questions.push({
+                                    id: answer.questionNumber,
+                                    title: answer.questionTitle,
+                                    typeCode: answer.questionTypeCode,
+                                    typeName: answer.questionTypeName,
+                                    rows: [{
+                                        id: answer.rowOptionID,
+                                        title: answer.rowOptionTitle,
+                                        code: answer.rowOptionCode,
+                                        answers: [{
+                                            id: answer.colOptionID,
+                                            title: answer.colOptionTitle,
+                                            code: answer.colOptionCode,
+                                            text: answer.text
+                                        }]
+                                    }]
+                                });
+                                //
+                                rid = answer.rowOptionID;
+                            } else {
+                                //非矩阵题型
+                                questions.push({
+                                    id: answer.questionNumber,
+                                    title: answer.questionTitle,
+                                    typeCode: answer.questionTypeCode,
+                                    typeName: answer.questionTypeName,
+                                    answers: [{
+                                        id: answer.colOptionID,
+                                        title: answer.colOptionTitle,
+                                        code: answer.colOptionCode,
+                                        text: answer.text,
+                                        answers: []
+                                    }]
+                                });
+                            }
+                            //更新
+                            qid = answer.questionID;
+                        } else {
+                            if (answer.rowOptionID > 0) {
+                                //矩阵题型
+                                var question = questions[questions.length - 1];
+                                //
+                                if (answer.rowOptionID != rid) {
+                                    //插入列选项答案
+                                    question.rows.push({
+                                        id: answer.rowOptionID,
+                                        title: answer.rowOptionTitle,
+                                        code: answer.rowOptionCode,
+                                        answers: [{
+                                            id: answer.colOptionID,
+                                            title: answer.colOptionTitle,
+                                            code: answer.colOptionCode,
+                                            text: answer.text
+                                        }]
+                                    });
+                                    //更新
+                                    rid = answer.rowOptionID;
+                                } else {
+                                    //插入列选项答案
+                                    question.rows[question.rows.length - 1].answers.push({
+                                        id: answer.colOptionID,
+                                        title: answer.colOptionTitle,
+                                        code: answer.colOptionCode,
+                                        text: answer.text,
+                                    });
+                                }
+                            } else {
+                                //非矩阵题型
+                                questions[questions.length - 1].answers.push({
+                                    id: answer.colOptionID,
+                                    title: answer.colOptionTitle,
+                                    code: answer.colOptionCode,
+                                    text: answer.text,
+                                    answers: []
+                                });
+                            }
+                        }
+                    }
+                    //questions.push(data.objs[0]);
+                    //questions.rows = [];
+                    //questions.rows.options = [];
+                    //for(var i = 0;i<data.objs.length;i++) {
+                    //    if(data.objs[i].questionTypeCode == 5){//矩阵多选
+                    //        for(var j = 0;j<questions.length;j++) {
+                    //            if(data.objs[i].questionID != questions[i].questionID) {
+                    //                questions.push(data.objs[i]);
+                    //            }else{
+                    //                for(var k = 0;k<questions.length;k++) {
+                    //                    if(data.objs[i].rowOptionID != questions[k].rows){
+                    //                        questions[k].rows.push(data.objs[i].rowOptionID,data.objs[i].colOptionTitle);
+                    //                    }
+                    //                }
+                    //            }
+
+                    //        }
+                    //    }else if(data.objs[i].questionTypeCode == 2){
+                    //        questions[i].push(data.objs[i]);
+                    //    }else if(data.objs[i].questionTypeCode == )
+
+                    //}
+                    Core.fillDataTable(theSampleDetailTable, questions);
+                }, function(error) {
+                    alert(error);
+                });
+            }
+        };
+
+        // Event handler for activate
+        $("#tab_panel").tabs({
+            activate: function(event, ui) {
+                var initialized = ui.newPanel.attr('initialized');
+                if (!initialized) {
+                    ui.newPanel.attr('initialized', 'initialized');
+                    // Automatically activate
+                    activateTabPage(ui.newPanel.attr("tabindex"));
+                }
+            }
+        });
+
+        // trigger 
+        activateTabPage(1);
+
+        $("#reply").click(function() {
+            window.location = "#project/sample.html";
+        });
+
+        //@ sourceURL=dynamicScript-project-sample-detail.js
+    })
+</script>

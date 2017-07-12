@@ -1,0 +1,302 @@
+<!--<div class="animated fadeIn">-->
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display:none;"><a href="#manage" data-toggle="tab">会员管理</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <!-- tab start -->
+                    <div id="manage" class="tab-pane" tabindex="1" style="display:none;">
+                        <div class="row">
+                            <div class="panel panel-visible" id="cnd">
+                                <div class="panel-body">
+                                    <div class="form-horizontal admin-form">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">名称：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label class="field prepend-icon">
+                                                    <input data-id="cnd_shortname" type="text" class="form-control shortname" placeholder="">
+                                                    <label class="field-icon"><i class="fa fa-user-md"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="inputStandard" class="col-lg-4 col-md-4 col-sm-6 control-label">审核状态：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="datepicker1" class="field prepend-icon">
+                                                     <select data-id="cnd_state" class="form-control">
+                                                         <option value="">请选择</option>
+                                                          <option value="0">待审核</option>
+                                                          <option value="1">审核通过</option>
+                                                          <option value="2">审核失败</option>
+                                                    </select>
+                                                <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_province" class="col-lg-4 col-md-4 col-sm-6 control-label">省份：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_province" class="field prepend-icon">
+                                                    <select data-id="cnd_provincecode" class="form-control province">
+                                                        <option value="">请选择</option>
+                                                    </select>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label for="cnd_city" class="col-lg-4 col-md-4 col-sm-6 control-label">城市：</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                <label for="cnd_city" class="field prepend-icon">
+                                                    <select data-id="cnd_citycode" class="form-control city">
+                                                        <option value="">请选择</option>
+                                                    </select>
+                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row panel-footer action-container">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <!--<button type="submit" class="btn btn-default btn-block">提交</button>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                        <div class="col-lg-8 col-md-8 col-sm-6">
+                                            <button type="submit" class="btn btn-primary action-query btn-sm pull-right"><i class="fa fa-search"></i>查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-visible" id="spy1">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover" id="datatable_manage" cellspacing="0" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab end -->
+                    <!-- tab start -->
+                    <div id="tab-reserved" class="tab-pane active" tabindex="2" style="display:none;">
+                    </div>
+                    <!-- tab end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var theManageTable = null,
+        theManageColumns = null,
+        theManageCount = 0,
+        theManageDummy = false,
+        theManageOption = null;
+
+    /*
+     *  会员管理
+     */
+    $(function() {
+
+        var locations = null;
+
+        // datatable
+        theManageTable = $('#datatable_manage');
+        // columns
+        theManageColumns = [{
+                "aTargets": [0],
+                "mData": "id",
+                "sTitle": "#",
+                "sWidth": "12px",
+                "bSortable": false,
+                "mRender": function(data, type, full) {
+                    return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+                }
+            }, {
+                "aTargets": [1],
+                "mData": "typeName",
+                "sTitle": "类型",
+                "sWidth": "58px",
+                "mRender": null
+            }, {
+                "aTargets": [2],
+                "mData": "shortName",
+                "sTitle": "姓名",
+                "sClass": "text-align-left",
+                "sWidth": "108px",
+                "mRender": null
+            }, {
+                "aTargets": [3],
+                "mData": "gender",
+                "sTitle": "性别",
+                "sWidth": "58px",
+                "mRender": null
+            }, {
+                "aTargets": [4],
+                "mData": "birthDate",
+                "sTitle": "出生日期",
+                "sWidth": "108px",
+                "mRender": null
+            }, {
+                "aTargets": [5],
+                "mData": "mobileNumber1",
+                "sTitle": "联系电话",
+                "sWidth": "140px",
+                "mRender": null
+            }, {
+                "aTargets": [6],
+                "mData": "mobileNumber2",
+                "sTitle": "联系电话",
+                "sWidth": "140px",
+                "mRender": null
+            }, {
+                "aTargets": [7],
+                "mData": "email",
+                "sTitle": "邮箱",
+                "sWidth": "128px",
+                "sClass": "text-align-left",
+                "mRender": null
+            }, {
+                "aTargets": [8],
+                "mData": "provinceName",
+                "sTitle": "省份",
+                "sWidth": "128px",
+                "mRender": null
+            }, {
+                "aTargets": [9],
+                "mData": "cityName",
+                "sTitle": "城市",
+                "sWidth": "128px",
+                "mRender": null
+            },
+            /*{
+                       "aTargets": [10],
+                       "mData": "marriageCode",
+                       "sTitle": "婚姻状况",
+                       "sWidth": "128px",
+                       "mRender": function (data, type, full) {
+                           return data == 0 ? "" : (data == 1 ? "未婚" : "已婚");
+                       }
+                   }, {
+                       "aTargets": [11],
+                       "mData": "kidsNumber",
+                       "sTitle": "子女个数",
+                       "sWidth": "128px",
+                       "mRender": null
+                   }, {
+                       "aTargets": [12],
+                       "mData": "incomeMin",
+                       "sTitle": "家庭收入",
+                       "sWidth": "128px",
+                       "mRender": function (data, type, full) {
+                           if (data > 0)
+                               return incomeMin + '~' + incomeMax;
+                           else
+                               return "";
+                       }
+                   }, */
+            {
+                "aTargets": [10],
+                "mData": "industryName",
+                "sTitle": "行业",
+                "sClass": "text-align-left",
+                "sWidth": "128px",
+                "mRender": null
+            }, {
+                "aTargets": [11],
+                "mData": "professionName",
+                "sTitle": "职业",
+                //"sWidth": "128px",
+                "mRender": null
+            }, {
+                "aTargets": [12],
+                "mData": "id",
+                "sTitle": "操作",
+                "bSortable": false,
+                "sWidth": "140px",
+                "mRender": function(data, type, full) {
+                    return '<span class="inline-action-container">' +
+                        '<a href="#membership/member_detail.html?memberid=' + (full.id) + '&membername=' + (full.shortName) + '&edit=true"><span class="fa fa-edit">编辑</span></a><span class="text-divider">' +
+                        '<a href="#membership/member_detail.html?memberid=' + (full.id) + '&membername=' + (full.shortName) + '&edit=false"><span class="fa fa-edit">查看</span></a>' +
+                        '</span>';
+                }
+            }
+        ];
+        // option
+        theManageOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theManageDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            onCreate: function(data, tr) {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 51, theManageCount, "#manage");
+            },
+            setCountCallback: function(count) {
+                theManageCount = count;
+            }
+        };
+
+        //查询
+        $('#manage .action-query').unbind("click").bind("click", function() {
+            theManageDummy = true;
+            theManageTable.dataTable().fnDraw();
+        });
+
+        //
+        getLocations(function(data) {
+            locations = data;
+            initLocationLink('#manage', '.province', '.city', locations);
+        });
+
+    });
+
+    /*
+     *  
+     */
+    $(function() {
+        Core.runWeUIElements();
+        // Manually activate tab page
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                Core.initDataTable(theManageTable, theManageColumns, theManageOption);
+                $('table tbody', container).html(tr);
+            }
+        }
+
+        // trigger
+        initTabs(activateTabPage);
+    });
+
+    //@ sourceURL=dynamicScript-membership-member.js
+</script>

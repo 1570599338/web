@@ -1,0 +1,491 @@
+form { margin:0;}
+
+.fL { float:left;}
+
+.fR { float:right;}
+
+.WJcontent .smallfontsize { font-size:16px!important;}
+
+.smallerfontsize { font-size:16px; padding: 0.1em 2em .1em !important; cursor:progress;}
+
+.mtop { margin-top:10px;}
+
+.maxtop { margin-top:20px;}
+
+.mleft { margin-left:36px;} 
+
+.inputborder, select { border:1px #77a5b4 solid; padding:2px;vertical-align: middle;}
+
+.poplayer select {width:160px; height:30px;}
+
+.poplayer { padding:10px 20px; background:#fff;}
+
+.poplayer .WJButton { padding:.5em 2em !important}
+
+.poplayer table { width:100%;}
+
+.poplayer table tr td input {margin-bottom:5px;}
+
+.styleselect { width:255px; position:relative; z-index: 4000;}
+
+.logoupload { width:200px;}
+
+.answerinput { width:433px;; padding-left:5px;}
+
+.active { color:#1c658b;}
+
+.spanlh { line-height: 31px; *line-height:21px; line-height:31px \0;}
+
+.bulkadd { width:443px; height:258px;border:1px #77a5b4 solid; resize:none; }
+
+.postiondiv { position:relative; display: inline-block; width:100%;}
+
+.postionbtn { position:absolute; right:0;}
+
+.fR { float:right;}
+
+.fL  { float:left;}
+
+.alignr { text-align:right;}
+
+.reduce {
+	background: url(../images/wjsj_toolico.png) no-repeat; 
+	background-position:-80px -218px;
+	width: 19px;
+	height: 22px;
+	float: left;
+	vertical-align: middle; 
+	margin-right: 4px;
+	margin-top:5px;
+}
+.trActive .reduce {
+	float:right;
+	}
+
+.textgray { color:#858585;}
+
+.file-box{ position:relative;padding:5px 0;margin-top:5px;} 
+.txt{ height:22px; border:1px solid #cdcdcd; width:180px;} 
+.uploadimg { position:absolute; top:0; left:0; display:none;}
+.uploadbtn{ background-color:#FFF; border:1px #77a5b4 solid; height:25px; width:110px; cursor:pointer;} 
+.file{ position:absolute; top:0; left:0; height:24px; filter:alpha(opacity:0);opacity: 0;width:110px; } 
+
+.surveypreview { width:804px; margin:0 auto; overflow:hidden; position:relative;}
+
+.motallayer { display: none; position:absolute; top:0; left:0; width:100%; height:393px; background-color:#cccccd; opacity:0.1; filter:alpha(opacity=10);}
+
+.totallogicset select { width:235px;}
+
+.disableselect { border:1px #dfdfdf solid; color:#c9c9c9;}
+
+.ans table td { color:#858585; padding-top:6px;}
+ 
+.ans table caption { text-align:left;} 
+
+.numberinput {width:35px; margin-left:5px !important; margin-right:5px;}
+
+.timeinput {width:100px; margin-left:1px !important;}
+
+#time_tip { margin-left:-15px;}
+
+.textinput {width:50px; margin-left:1px !important;}
+
+.perfect {
+	background: #FDF9CD;
+	border: 1px #DBDBDB solid;
+	padding: 1px 1px 1px 8px;
+	margin-left: 15px;
+	display: inline-block;
+	color: #828282;
+	line-height: 20px;
+}
+
+.enable input {width:110px;margin-left:5px !important;}
+
+
+.add-div {
+	width: 120px; 
+	padding:4px 0; 
+	border:1px #77a5b4 solid; 
+	cursor:pointer;
+	height: 21px;
+	background-color:#fff;
+	color:#808080;
+	padding-left:5px;
+	position: absolute;
+	top: 0px;
+	left: 65px;
+}
+.addtoaddress{ vertical-align:middle;}
+.addressselect label{ vertical-align:middle;}
+.colordiv{ display:inline-block;}
+
+.colordiv .colorname { margin-left:35px; margin-top:-20px; width:42px; text-align:center;}
+
+.hide { display:none;}
+
+.add-div .arrowup {
+	display: inline-block;
+	font-size: 30px!important;
+	z-index: 1000;
+	padding: 0 0 0 5px;
+	width: 10px;
+	margin: 8px 0 0 50px;
+	*margin: 12px 0 0 9px;
+	vertical-align: middle;
+	border-bottom: none!important;
+}
+.styleselect .add-div {width: 100px;}
+.styleselect .add-div .arrowup {
+	font-size: 30px!important;
+	z-index: 1000;
+	padding: 0 0 0 5px;
+	width: 10px;
+	margin:0 0 0 5px;
+	*margin: 12px 0 0 9px;
+	vertical-align: middle;
+	border-bottom: none!important;
+}
+
+.arrowupt {
+	border-width: 5px 5px 0px;
+	border-style: solid dashed dashed;
+	border-color: #9d9d9d transparent transparent;
+	z-index: 3;
+	color: inherit;
+	font: 0px/9999px serif;
+	height: 0;
+	overflow: hidden;
+	width: 0;
+	z-index: 1;
+	padding: 0px!important;
+}
+
+.color_box { width:19px; height:19px; border:1px #99999b solid;}
+
+.boxborder {border:1px #77a5b4 solid;}
+
+.default {
+	border-top:1px #dbdbdb solid;
+	border-left:1px #dbdbdb solid;
+	border-right:1px #dbdbdb solid;
+	background-color:#fff;
+	position:absolute;
+	display:none;
+	width: 132px;
+	z-index:4000;
+	top:33px;
+	left:64px;
+}
+
+.default li {
+	display:block;
+	border-bottom:1px #dbdbdb solid;
+	cursor:pointer;
+	display:inline;
+	float:left;
+	padding:6px 6px 3px 6px;
+}
+
+.default li:hover {
+	color:#1c6b85;
+}
+
+.progress,.Serial{
+	float: left;
+	margin:8px 0 0 0;
+}
+
+
+/**********wjcontent***********/
+.content {
+	background: #fff;
+	padding: 20px 40px 30px 40px;
+	margin: 0px auto;
+	border: 4px #dbdbdb solid;
+}
+
+.wjlogo {
+	border:1px #dbdbdb dashed;
+	width:160px;
+	height:70px;
+}
+
+.wjtitle h3 { 
+    text-align:center;
+	color:#4c4c4c;
+}
+
+.wjintro p {
+	text-align:center;
+}
+
+.wjerror p {
+	 color:red;
+	 text-align:center;
+}
+
+.wjques div { margin-bottom:5px;}
+.cols_li{ display: inline-block;}
+
+.wjques label {
+	display: block;
+	margin-bottom: 5px;
+	display: block;
+}
+
+.radio, .checkbox {
+	min-height: 20px;
+	padding-left: 10px;
+	vertical-align: bottom;
+}
+.progress .checkbox ,.Serial .checkbox{
+    padding-left: 0;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+	float: left;
+	margin-left: -20px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 4px 0 0;
+	margin-top: 1px \9;
+	line-height: normal;
+	cursor:pointer;
+
+}
+
+.wjtable { border-top:1px #dbdbdb solid;border-left:1px #dbdbdb solid; width:550px; text-align:center;}
+
+.wjtable tr td { border-right:1px #dbdbdb solid;border-bottom:1px #dbdbdb solid;}
+
+.layercolor_form input{ margin:3px 0 0 9px;}
+
+
+
+/*-------------按钮----------------------*/
+.wj_color {
+	color: #f3f3f3;
+	background: #cccccd;/*按钮样式*/
+}
+.wj_color:hover {
+	background: #707070;/*按钮悬浮样式*/
+}
+.wj_color:active {
+	color: #999;/*按钮点击样式*/
+}
+
+.btns {
+	height:30px;
+}
+
+.wjprogress {
+	text-align: center;
+	width: 210px;
+	float: right;
+}
+
+.bar {
+	width:208px;
+	height:7px;
+	border:1px #dbdbdb solid;
+	text-align:left;
+}
+
+.barbox {
+	width:20%;
+	background-color:#cccccd;/*进度条样式*/
+	height: 7px;
+}
+
+.wjhr {
+	width:100%;
+	height:3px;
+	background-color:#cccccd;/*分割线样式*/
+}
+
+/*颜色样式*/
+/*.color_black { background-color:#606060;}
+.color_darkblue { background-color:#013c80;}
+.color_blue { background-color:#009de0;}
+.color_pink { background-color:#e2017b;}
+.color_gray { background-color:#cccccd;}
+.color_green { background-color:#009136;}
+.color_orange { background-color:#fcc300;}
+.color_red { background-color:#e3001b;}
+#color_black { background-color:#606060;}
+#color_darkblue { background-color:#013c80;}
+#color_blue { background-color:#009de0;}
+#color_pink { background-color:#e2017b;}
+#color_gray { background-color:#cccccd;}
+#color_green { background-color:#009136;}
+#color_orange { background-color:#fcc300;}
+#color_red { background-color:#e3001b;}*/
+
+
+
+.color_black {background-color: #99999a;}
+.color_darkblue {background-color: #55a1e3;}
+.color_blue {background-color: #73d2e6;}
+.color_pink {background-color: #e2017b;}
+.color_gray {background-color: #cccccd;}
+.color_green {background-color: #00cccb;}
+.color_orange {background-color: #f29400;}
+.color_red {background-color: #ff7f66;}
+#color_black {background-color: #99999a;}
+#color_darkblue {background-color: #55a1e3;}
+#color_blue {background-color: #73d2e6;}
+#color_pink {background-color: #e2017b;}
+#color_gray {background-color: #cccccd;}
+#color_green {background-color: #00cccb;}
+#color_orange {background-color: #f29400;}
+#color_red {background-color: #ff7f66;}
+
+#color_black_progress .bar {border-color: #99999a;}
+#color_darkblue_progress .bar {border-color: #55a1e3;}
+#color_blue_progress .bar {border-color: #73d2e6;}
+#color_pink_progress .bar {border-color: #e2017b;}
+#color_gray_progress .bar {border-color: #cccccd;}
+#color_green_progress .bar {border-color: #00cccb;}
+#color_orange_progress .bar {border-color: #f29400;}
+#color_red_progress .bar {border-color: #ff7f66;}
+
+#color_black_progress span {color: #99999a;}
+#color_darkblue_progress span {color: #55a1e3;}
+#color_blue_progress span {color: #73d2e6;}
+#color_pink_progress span {color: #e2017b;}
+#color_gray_progress span {color: #cccccd;}
+#color_green_progress span {color: #00cccb;}
+#color_orange_progress span {color: #f29400;}
+#color_red_progress span {color: #ff7f66;}
+
+
+/*--FCK---*/
+.mtop_d{
+    border: 1px solid #CCCCCC;
+    height: 145px;
+    overflow: hidden;
+    width: 445px;
+	margin-top:20px;
+	}
+#Add_quote{
+	 margin-top:-75px;
+	}	
+/*.cke_bottom{display:none!important;}
+.cke_top{display:none!important;}
+.cke_chrome{
+	border:1px solid #ccc!important;
+	box-shadow:none!important;
+	}*/
+
+
+.options-tip{
+  color: red;
+  font-size: 12px;
+  padding: 0 5px;
+}
+
+#time_tip {
+	margin-left:-15px;
+}
+
+.poplayer ul li {
+	padding-bottom:5px;
+}
+
+#jump_table td{ padding:2px 0;}
+
+.editTcc{
+    /*background-color: #EEEEEE;*/
+    /*border-top: 1px solid #C6C6C6;*/
+    bottom: 0;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 99999;
+	}	
+.editTcc .editTcc_an{
+	font-size: 14px;
+	margin-right: 20px;
+	}	
+.editTcc_an{
+	float:right;
+	margin:8px 15px 0 0;
+	}	
+	
+.poplayer input[type="radio"],.poplayer input[type="checkbox"]{
+	margin:2px!important;
+	margin:4px 0 0 0\0!important;
+	*margin:4px 0 0 0!important;
+	}
+.min_zs{
+	color:#999999;
+	font-size:12px;
+	padding:0 0 0 5px;
+	}
+/*------------------外观设置-----------------*/
+.FontSet{
+	float: right;
+	width: 320px;
+	z-index:1000;
+	position: relative;
+}
+.FontSetCon{ display:none; float: left; margin-top: 5px; position: relative;}
+.styleSelect { position: absolute; top:0px; left:97px; height: 26px!important;}
+.FontSet h3{
+	float: left;
+	font-size:14px;
+	width: 100%;
+	color: #1C658B;
+	line-height: 24px;
+	padding:0 0 5px 0;
+}
+.cke_panel_block{
+	top: 70px;
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 200px;
+    z-index: 10005;
+    border-color: #B6B6B6 #B6B6B6 #999999;
+    border-image: none;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+.cke_button .cke_button_icon{
+background-image:url('../images/icons.png');	
+}
+.cke_panel_block{ display: none;}
+.cke_combo__font .cke_combo_text{
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.color_t{
+position: absolute;
+height: 2px;
+width: 17px;
+top: 20px;
+background:#000;	
+}
+
+
+.layercolor_form input {
+    cursor: pointer;
+    left: -35px;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.bg_mark{
+	width: 100%;height: 100%;position: fixed; left: 0px; top: 0px; z-index: 1000;background: url(../images/plugin_center/bg_30.png);
+}

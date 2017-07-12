@@ -1,0 +1,1412 @@
+<div class="row">
+    <div class="bs-component">
+        <div class="panel" id="tab_panel">
+            <div class="panel-heading">
+                <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                    <li class="" style="display: none;"><a class="" href="#reward" data-toggle="tab">奖励设置</a></li>
+                    <li class="" style="display: none;"><a class="" href="#audit" data-toggle="tab">审核设置</a></li>
+                    <li class="" style="display: none;"><a class="" href="#contact" data-toggle="tab">调研发布设置</a></li>
+                    <li class="" style="display: none;"><a class="" href="#quota" data-toggle="tab">配额设置</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content pn br-n">
+                    <!-- tab start -->
+                    <div id="reward" class="tab-pane" style="display: none;" tabindex="1">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <div class="admin-form">
+                                        <div class="panel">
+                                            <div class="panel-body bg-light">
+                                                <div class="section-divider mb40" id="spy1">
+                                                    <span>项目奖励</span>
+                                                </div>
+                                                <div class="row project-reward">
+                                                    <div class="form-horizontal admin-form">
+                                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                            <label for="inputStandard" class=" col-lg-1 col-md-1 col-sm-6 control-label">项目：</label>
+                                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                                <label class="field prepend-icon">
+                                                                    <select class="form-control cnd-project project w135" style="width: 270px;"></select>
+                                                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row answer-reward set-reward">
+                                                    <!--<label class="block mt15 switch switch-primary">
+                                                        <span style="vertical-align: super; font-size: 12px;">答卷奖励：</span>
+                                                        <input type="checkbox" name="features" id="f4" data-eventtype="1" value="popups" class="mt20">
+                                                        <label for="f4" data-on="启用" data-off="禁用"></label>
+                                                    </label>-->
+                                                    <div class="row emoney rewards">
+                                                        <div class="col-md-1 ml30 mt10">
+                                                            <label>
+                                                                <input type="radio" id="" name="answer" data-type="1" value="option1" aria-label="..." class="p10">
+                                                                <span class="ml10">礼金</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-2 mt10">
+                                                            <input type="number" name="amount" value="" style="height: 15px;" min='1' placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row point rewards">
+                                                        <div class="col-md-1 ml30 mt10">
+                                                            <label>
+                                                                <input type="radio" id="" name="answer" data-type="2" value="option1" aria-label="..." class="p10">
+                                                                <span class="ml10">积分</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-2 mt10">
+                                                            <input type="number" name="amount" value="" min='1' style="height: 15px;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row giftcard rewards">
+                                                        <div class="">
+                                                            <div class="col-md-1 ml30 mt10">
+                                                                <label>
+                                                                    <input type="radio" id="" name="answer" data-type="3" value="option1" aria-label="..." class="p10">
+                                                                    <span class="ml10">礼品卡</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-2 mt10">
+                                                                <select class="w135 amount" name="partype">
+                                                                    <option value="0">请选择卡类型</option>
+                                                                    <option value="1">移动充值卡</option>
+                                                                    <option value="2">联通充值卡</option>
+                                                                    <option value="3">电信充值卡</option>
+                                                                    <option value="4">中石化加油卡</option>
+                                                                    <option value="5">中石油加油卡</option>
+                                                                    <option value="6">京东购物卡</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <div class="col-md-1  mt20">
+                                                                <label>
+                                                                    <span class="ml10">面额</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-2 mt10">
+                                                                <select class="w135" name="amount">
+                                                                    <option value="0">请选择卡面额</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="20">20</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-bottom: 12px;">
+                                                    <button type="submit" class="btn btn-primary btn-sm  pull-right project-reward-save">
+                                                        <i class="fa fa-save pr10"></i>保存
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="section-divider mb40 mt20">
+                                                        <span>通用奖励</span>
+                                                    </div>
+                                                    <div class="row universal-reward">
+                                                        <div class="col-md-6  set-reward">
+                                                            <div class="row share-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">分享奖励：</span>
+                                                                    <input type="checkbox" id="f5" name="features" data-eventtype="2" value="popups" class="mt20">
+                                                                    <label for="f5" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="share" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" value="" min='1' style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="share" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6  set-reward">
+                                                            <div class="row sign-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">签到奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f6" data-eventtype="3" value="popups" class="mt20">
+                                                                    <label for="f6" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="sign" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="sign" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6  set-reward">
+                                                            <div class="row invite-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">邀请奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f7" data-eventtype="4" value="popups" class="mt20">
+                                                                    <label for="f7" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="invite" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="invite" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--<div class="col-md-6 set-reward">
+                                                            <div class="row birthdate-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">生日奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f8" data-eventtype="5" value="popups" class="mt20">
+                                                                    <label for="f8" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="birthdate" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="birthdate" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                                                        <div class="col-md-6 set-reward ">
+                                                            <div class="row infor-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">完善信息奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f9" data-eventtype="6" value="popups" class="mt20">
+                                                                    <label for="f9" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="infor" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="infor" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--<div class="col-md-6 set-reward">
+                                                            <div class="row join-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">参与项目次数奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f10" data-eventtype="7" value="popups" class="mt20">
+                                                                    <label for="f10" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="join" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="join" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                                                        <div class="col-md-6  set-reward">
+                                                            <div class="row register-reward common-reward">
+                                                                <label class="block mt15 switch switch-primary">
+                                                                    <span style="vertical-align: super; font-size: 12px;">注册奖励：</span>
+                                                                    <input type="checkbox" name="features" id="f11" data-eventtype="8" value="popups" class="mt20">
+                                                                    <label for="f11" data-on="启用" data-off="禁用"></label>
+                                                                </label>
+                                                                <div class="row emoney rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="register" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">礼金</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row point rewards">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="register" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">积分</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-md-2 mt10">
+                                                                        <input type="number" name="amount" min='1' value="" style="height: 15px;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---->
+                                                <div class="row" style="margin-bottom: 12px;">
+                                                    <button type="submit" class="btn btn-primary btn-sm  pull-right common-reward-save">
+                                                        <i class="fa fa-save pr10"></i>保存                                           
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab end -->
+                    <!-- tab start -->
+                    <div id="audit" class="tab-pane" style="display: none;" tabindex="2">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <div class="admin-form">
+                                        <div class="panel">
+                                            <div class="panel-body bg-light">
+                                                <div class="row set-audit">
+                                                    <div class="section-divider reward-audit mb40">
+                                                        <span>奖励审核</span>
+                                                    </div>
+                                                    <div class="row project-audit">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                                <label for="inputStandard" class=" col-lg-1 col-md-1 col-sm-6 control-label">项目：</label>
+                                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                                    <label class="field prepend-icon">
+                                                                        <select class="form-control cnd-project project w135" style="width: 270px;"></select>
+                                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row audits emoney">
+                                                        <div>
+                                                            <div class="col-md-1  mt20">
+                                                                <label>
+                                                                    <span class="ml10">礼金</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-2 mt10">
+                                                                <select class="w135" name="audit-type">
+                                                                    <option value="1">自动审核</option>
+                                                                    <option value="2">人工审核</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row audits point">
+                                                        <div class="">
+                                                            <div class="col-md-1  mt20">
+                                                                <label>
+                                                                    <span class="ml10">积分</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-2 mt10">
+                                                                <select class="w135" name="audit-type">
+                                                                    <option value="1">自动审核</option>
+                                                                    <option value="2">人工审核</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row audits giftcard">
+                                                        <div class="">
+                                                            <div class="col-md-1  mt20">
+                                                                <label>
+                                                                    <span class="ml10">礼品卡</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-2 mt10">
+                                                                <select class="w135" name="audit-type">
+                                                                    <option value="1">自动审核</option>
+                                                                    <option value="2">人工审核</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-bottom: 12px;">
+                                                    <button type="submit" class="btn btn-primary btn-sm  pull-right project-audit-save">
+                                                        <i class="fa fa-save pr10"></i>保存
+                                                    </button>
+                                                </div>
+                                                <div class="row set-audit">
+                                                    <div class="section-divider common-audit mb40 mt20">
+                                                        <span>通用审核</span>
+                                                    </div>
+                                                    <!--<span>提现审核：</span>
+                                                    <div class="row audits withdrawal">
+                                                        <div class="col-md-6">
+                                                            <div class="row audit-type">
+                                                                <div class="row automatic">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="consume" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">自动审核</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    &lt;!&ndash;<div class="col-md-12 ml30 mt10 condition">
+                                                                        <label style="margin-left: 27px;">当金额大于</label>
+                                                                        <input type="number" style="width: 60px; text-align: center; height: 26px !important;" />
+                                                                        <label>时需要人工审核</label>
+                                                                    </div>&ndash;&gt;
+                                                                </div>
+                                                                <div class="row artificial">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="consume" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">人工审核</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                                <div class="row set-audit mt30">
+                                                    <span>兑换审核：</span>
+                                                    <div class="row audits exchange">
+                                                        <div class="col-md-6">
+                                                            <div class="row audit-type">
+                                                                <div class="row automatic">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="exchange" value="option1" aria-label="..." data-type="1">
+                                                                            <span class="ml10">自动审核</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <!--<div class="col-md-12 ml30 mt10 condition">
+                                                                        <label style="margin-left: 27px;">当兑换额度大于</label>
+                                                                        <input type="number" style="width: 60px; text-align: center; height: 26px !important;" />
+                                                                        <label>时需要人工审核</label>
+                                                                    </div>-->
+                                                                </div>
+                                                                <div class="row artificial">
+                                                                    <div class="col-md-2 ml30 mt10">
+                                                                        <label>
+                                                                            <input type="radio" id="" name="exchange" value="option1" aria-label="..." data-type="2">
+                                                                            <span class="ml10">人工审核</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-bottom: 12px;">
+                                                    <button type="submit" class="btn btn-primary btn-sm  pull-right common-audit-save">
+                                                        <i class="fa fa-save pr10"></i>保存
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab end -->
+                    <!-- tab start -->
+                    <div id="contact" class="tab-pane" style="display: none;" tabindex="3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <div class="admin-form">
+                                        <div class="panel">
+                                            <div class="panel-body bg-light">
+                                                <div class="row">
+                                                    <div class="row">
+                                                        <div>
+                                                            <div class="col-md-2 mt20" style="text-align: center;">
+                                                                <label>
+                                                                    <span class="ml10">客户服务经理邮箱</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-3 mt10">
+                                                                <input type="email" name="email" style="width:100%;height: 26px !important;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-bottom: 12px;">
+                                                    <button type="submit" class="btn btn-primary btn-sm  pull-right research-published-save">
+                                                        <i class="fa fa-save pr10"></i>保存
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab end -->
+                    <!-- tab start-->
+                    <div id="quota" class="tab-pane" style="display: none;" tabindex="4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <div class="admin-form">
+                                        <form action="" class="weui-valide" method="post">
+                                            <div class="panel">
+                                                <div class="panel-body bg-light">
+                                                    <div class="row quota">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">项目：</label>
+                                                                <div style="display:inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <select  data-id="projectID" class="form-control cnd-project project w135 gui-input" name="cnd_project" required style="width: 270px;"></select>
+                                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label" style="vertical-align: middle;">邮箱：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <input data-id="ProjectManagerEmail"  type="email" class="form-control email w135 gui-input" name="email" required style="width: 270px;"></input>
+                                                                        <label class="field-icon"><i class="fa fa-envelope"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group" style="display: inline-block;margin-right:0;">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">邮箱模板：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <select data-id="emailTemplate" name="cnd_sentType" required class="form-control cnd-sentType email-template gui-input" style="width: 270px;"></select>
+                                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group" style="display: inline-block;margin:0;">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">报警邮件收件人邮箱：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <input data-id="ProjectManagerEmail"  type="email" class="form-control email w135 gui-input" name="email" required style="width: 270px;"></input>
+                                                                        <label class="field-icon"><i class="fa fa-envelope"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">短信模板选择：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <!--<select data-id="WexinTemplate" name="cnd_sentType2" class="form-control w135 wexin gui-input" required style="width: 270px;"></select>-->
+                                                                        <select data-id="SmsTemplate" name="cnd_sentType1" class="form-control w135 sms gui-input"  required style="width: 270px;"></select>
+                                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">微信模板选择：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <select data-id="WexinTemplate" name="cnd_sentType2" class="form-control w135 wexin gui-input" required style="width: 270px;"></select>
+                                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">问卷回收延时小时：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <input data-id="CollectingDelayHours" type="number" class="form-control w135 gui-input" name="delay" required style="width: 270px;"></input>
+                                                                        <label class="field-icon"><i class="fa fa-clock-o"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">配额推送倍数：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <input data-id="quotaTimes" type="number" class="form-control w135 gui-input" required name="quotaTimes" style="width: 270px;"></input>
+                                                                        <label class="field-icon"><i class="fa fa-glass"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-horizontal admin-form">
+                                                            <div class="form-group">
+                                                                <label for="" class="control-label fl" style="vertical-align: middle;">短信/微信/重复发送次数：</label>
+                                                                <div style="display: inline-block;">
+                                                                    <label class="field prepend-icon">
+                                                                        <input data-id="templateTimes" type="number" class="form-control w135 gui-input" name="templateTimes" required style="width: 270px;"></input>
+                                                                        <label class="field-icon"><i class="fa fa-paper-plane"></i></label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-bottom: 12px;">
+                                                        <button type="submit" class="btn btn-primary btn-sm  pull-right quota-save">
+                                                            <i class="fa fa-save pr10"></i>保存
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    /*
+     *    奖励设置
+     */
+    $(function() {
+
+        /*
+         *    切换选中清空对应的input
+         */
+
+        //答卷
+        $("input:radio[name='answer']").change(function() {
+            $(".answer-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(".answer-reward select").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[name="amount"],select[name="amount"],select[name="partype"]').removeAttr('disabled');
+            $(".answer-reward select.amount").val("0");
+            $(".answer-reward select[name='amount']").val("0");
+        });
+
+        //分享
+        $("input:radio[name='share']").change(function() {
+            $(".share-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //签到
+        $("input:radio[name='sign']").change(function() {
+            $(".sign-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //邀请
+        $("input:radio[name='invite']").change(function() {
+            $(".invite-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //生日
+        $("input:radio[name='birthdate']").change(function() {
+            $(".birthdate-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //完善信息
+        $("input:radio[name='infor']").change(function() {
+            $(".infor-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //参与项目次数
+        $("input:radio[name='join']").change(function() {
+            $(".join-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //注册
+        $("input:radio[name='register']").change(function() {
+            $(".register-reward input[type='number']").val("").attr('disabled', 'disabled');
+            $(this).parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+        });
+
+        //开关初始化
+        $("[name=features]").each(function(index, ele) {
+            if (!$(ele).prop("checked")) {
+                $(ele).parents(".set-reward ").find('.rewards input,.rewards select').attr('disabled', 'disabled');
+                //$(ele).parents(".set-reward ").find('.rewards select').css('background-color','#EBEBE4');
+            }
+        });
+
+        //答卷初始化时
+        $('.answer-reward input,.answer-reward select').attr('disabled', 'disabled');
+        //$('.answer-reward select').css('background-color','#EBEBE4');
+
+        $("[name=features]").on('change', function() {
+            if ($(this).prop("checked") == true) {
+                $(this).parents(".set-reward").find('.rewards  input[type="radio"]').removeAttr('disabled');
+                $(this).parents(".set-reward").find('.rewards input:checked').parents('.rewards').find('input[type="number"]').removeAttr('disabled');
+                $(this).parents(".answer-reward").find('.emoney input[type="radio"]').prop('checked', 'checked'); //答卷奖励默认为礼金
+                $(this).parents(".answer-reward").find('.emoney input[type="number"]').removeAttr('disabled').val('50'); //答卷奖励默认为礼金50
+            }
+            if ($(this).prop("checked") == false) {
+                $(this).parents(".set-reward ").find('.rewards input,.rewards select').attr('disabled', 'disabled');
+            }
+        });
+
+        //文本框验证
+        function inputValidate(amount) {
+            var flag = true;
+            if (amount <= 0 || amount == '') {
+                flag = false;
+                return false;
+            }
+            return flag;
+        }
+
+        var linkApiData = function(repID) {
+            data = {
+                subSys: 'wesurvey',
+                repID: repID,
+                isQuery: '1',
+                dispType: '12',
+                perRows: '2000'
+
+            }
+            return data;
+        };
+        //获取答卷奖励
+        $("#reward .cnd-project").on("change", function() {
+            $(".answer-reward").find('.rewards input[type="number"],.rewards select').attr('disabled', 'disabled');
+            $(".answer-reward").find('.rewards input[type="radio"]').removeAttr('disabled');
+            //$(".answer-reward input[type='number'],.answer-reward select").removeAttr("checked").val("");
+            var answerdata = linkApiData(75);
+            answerdata.cnd_projectID = $('.cnd-project').val();
+            answerdata.selCndIDs = "projectID";
+            AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", answerdata, null, function(data) {
+                var answerdata = data.objs[0];
+                if (data.objs.length > 0) {
+                    $(".answer-reward").attr("data-state", "update");
+                    if (answerdata.enable == "true") {
+                        $("[data-eventType=" + answerdata.eventType + "]").prop("checked", "true");
+                        $("[data-eventType=" + answerdata.eventType + "]").parents(".set-reward").find('.rewards input,.rewards select').removeAttr('disabled');
+                    }
+                    $('.answer-reward input[type="number"],.answer-reward select').val('');
+                    $('.answer-reward select').val('0');
+                    if (answerdata.type == 1) {
+                        $(".answer-reward input[type='number'],.answer-reward select").attr('disabled', 'disabled');
+                        $(".answer-reward .emoney [name=answer]").prop("checked", "true");
+                        $(".answer-reward .emoney [name=amount]").val(answerdata.amount).removeAttr('disabled');
+                        $(".answer-reward .giftcard select").val(0);
+                    } else if (answerdata.type == 2) {
+                        $(".answer-reward input[type='number'],.answer-reward select").attr('disabled', 'disabled');
+                        $(".answer-reward .point [name=answer]").prop("checked", "true");
+                        $(".answer-reward .point [name=amount]").val(answerdata.amount).removeAttr('disabled');
+                        $(".answer-reward .giftcard select").val(0);
+                    } else if (answerdata.type == 3) {
+                        $(".answer-reward input[type='number']").attr('disabled', 'disabled');
+                        $(".answer-reward .giftcard [name=answer]").prop("checked", "true");
+                        $(".answer-reward .giftcard [name=amount]").val(answerdata.amount).removeAttr('disabled') || 0;
+                        $(".answer-reward .giftcard [name=partype]").val(answerdata.giftCardType).removeAttr('disabled') || 0;
+                    }
+                } else {
+                    $(".answer-reward").attr("data-state", "create");
+                }
+            }, function(error) {
+                console.log(error);
+            });
+        });
+
+        //获取通用奖励
+        var depositsdata = linkApiData(74);
+        AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", depositsdata, null, function(data) {
+            for (var i = 0; i < data.objs.length; i++) {
+                var enableBtn = data.objs[i].enable;
+                enableBtn == "true" ? $("[data-eventType=" + data.objs[i].eventType + "]").prop("checked", "true") : "";
+                if (data.objs[i].eventType == 2) {
+                    if (enableBtn == "true") {
+                        $(".share-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".share-reward .emoney [name=share]").prop("checked", "true");
+                            $(".share-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".share-reward .point [name=share]").prop("checked", "true");
+                            $(".share-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".share-reward .emoney [name=share]").prop("checked", "true");
+                            $(".share-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".share-reward .point [name=share]").prop("checked", "true");
+                            $(".share-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 3) {
+                    if (enableBtn == "true") {
+                        $(".sign-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".sign-reward .emoney [name=sign]").prop("checked", "true");
+                            $(".sign-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".sign-reward .point [name=sign]").prop("checked", "true");
+                            $(".sign-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".sign-reward .emoney [name=sign]").prop("checked", "true");
+                            $(".sign-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".sign-reward .point [name=sign]").prop("checked", "true");
+                            $(".sign-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 4) {
+                    if (enableBtn == 'true') {
+                        $(".invite-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".invite-reward .emoney [name=invite]").prop("checked", "true");
+                            $(".invite-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".invite-reward .point [name=invite]").prop("checked", "true");
+                            $(".invite-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".invite-reward .emoney [name=invite]").prop("checked", "true");
+                            $(".invite-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".invite-reward .point [name=invite]").prop("checked", "true");
+                            $(".invite-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 5) {
+                    if (enableBtn == 'true') {
+                        $(".birthdate-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".birthdate-reward .emoney [name=birthdate]").prop("checked", "true");
+                            $(".birthdate-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".birthdate-reward .point [name=birthdate]").prop("checked", "true");
+                            $(".birthdate-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".birthdate-reward .emoney [name=birthdate]").prop("checked", "true");
+                            $(".birthdate-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".birthdate-reward .point [name=birthdate]").prop("checked", "true");
+                            $(".birthdate-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 6) {
+                    if (enableBtn == 'true') {
+                        $(".infor-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".infor-reward .emoney [name=infor]").prop("checked", "true");
+                            $(".infor-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".infor-reward .point [name=infor]").prop("checked", "true");
+                            $(".infor-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".infor-reward .emoney [name=infor]").prop("checked", "true");
+                            $(".infor-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".infor-reward .point [name=infor]").prop("checked", "true");
+                            $(".infor-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 7) {
+                    if (enableBtn == 'true') {
+                        $(".join-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".join-reward .emoney [name=join]").prop("checked", "true");
+                            $(".join-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".join-reward .point [name=infor]").prop("checked", "true");
+                            $(".join-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".join-reward .emoney [name=join]").prop("checked", "true");
+                            $(".join-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".join-reward .point [name=infor]").prop("checked", "true");
+                            $(".join-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                } else if (data.objs[i].eventType == 8) {
+                    if (enableBtn == 'true') {
+                        $(".register-reward input[type='radio']").removeAttr('disabled');
+                        if (data.objs[i].type == 1) {
+                            $(".register-reward .emoney [name=register]").prop("checked", "true");
+                            $(".register-reward .emoney [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".register-reward .point [name=register]").prop("checked", "true");
+                            $(".register-reward .point [name=amount]").val(data.objs[i].amount).removeAttr('disabled');
+                        }
+                    } else {
+                        if (data.objs[i].type == 1) {
+                            $(".register-reward .emoney [name=register]").prop("checked", "true");
+                            $(".register-reward .emoney [name=amount]").val(data.objs[i].amount);
+                        }
+                        if (data.objs[i].type == 2) {
+                            $(".register-reward .point [name=register]").prop("checked", "true");
+                            $(".register-reward .point [name=amount]").val(data.objs[i].amount);
+                        }
+                    }
+                }
+            }
+        }, function(error) {
+            alert(error);
+        });
+
+        //格式化数值对象传送给后台
+        function convertData(dataEx) {
+            var objsArr = [];
+            for (var i = 0; i < dataEx.length; i++) {
+                for (var key in dataEx[i]) {
+                    var objs = {};
+                    objs.name = key;
+                    objs.value = dataEx[i][key];
+                    objsArr.push(objs);
+                }
+            }
+            return objsArr;
+        }
+
+        //项目奖励设置－保存
+        $(".project-reward-save").click(function() {
+            var enable;
+            var projectID = $(".cnd-project").val();
+            //var enable1 = $("[data-eventType=1]").prop("checked") == true ? enable = 1 : enable = 0;
+            //开关打开验证值
+            var dataEx = [{
+                amount: $("[name=answer]:checked").parents(".rewards").find("[name=amount]").val() || 0,
+                giftCardType: $("[name=answer]:checked").parents(".rewards").find("[name=partype]").val() || 0,
+                enable: 1, //开关为“开”
+                eventType: 1,
+                type: $("[name=answer]:checked").attr('data-type'),
+            }];
+            var flag = inputValidate(dataEx[0].amount);
+            if (flag) {
+                //如果选中为礼品卡且该项目礼品卡不为空
+                if ($(".answer-reward .giftcard [name=answer]").prop("checked")) {
+                    AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=152&projectID=" + projectID, [], null, function(data) {
+                        if (data.objs[0].count > 0) {
+                            AjaxPost2(myapp.apiHost2 + "wesurvey.reward.do?projectID=" + projectID, convertData(dataEx), null, function(data) {
+                                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                            }, function(error) {
+                                alert(error);
+                            });
+                        } else {
+                            new MessageModal($("#message-modal"), "该项目没有礼品卡请上传礼品卡或选择其他奖励方式", null, function(tmpdata) {}).error();
+                        }
+
+                    }, function(error) {
+                        alert(error);
+                    });
+                } else {
+                    AjaxPost2(myapp.apiHost2 + "wesurvey.reward.do?projectID=" + projectID, convertData(dataEx), null, function(data) {
+                        new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                    }, function(error) {
+                        alert(error);
+                    });
+                }
+            } else {
+                new MessageModal($("#message-modal"), "请选择正确的奖励值", null, function(tmpdata) {}).error();
+            }
+        });
+
+        //通用奖励设置－保存
+        $(".common-reward-save").click(function() {
+            var enable;
+            //通用奖励设置
+            var enable2 = $("[data-eventType=2]").prop("checked") == true ? enable = 1 : enable = 0;
+            var enable3 = $("[data-eventType=3]").prop("checked") == true ? enable = 1 : enable = 0;
+            var enable4 = $("[data-eventType=4]").prop("checked") == true ? enable = 1 : enable = 0;
+            //var enable5 = $("[data-eventType=5]").prop("checked") == true ? enable = 1 : enable = 0;
+            var enable6 = $("[data-eventType=6]").prop("checked") == true ? enable = 1 : enable = 0;
+            //var enable7 = $("[data-eventType=7]").prop("checked") == true ? enable = 1 : enable = 0;
+            var enable8 = $("[data-eventType=8]").prop("checked") == true ? enable = 1 : enable = 0;
+            var dataEx = [{
+                    pubAmount: $("[name=share]:checked").parents(".rewards").find("[name=amount]").val(),
+                    pubEnable: enable2,
+                    pubEventType: 2,
+                    pubType: $("[name=share]:checked").attr('data-type')
+                }, {
+                    pubAmount: $("[name=sign]:checked").parents(".rewards").find("[name=amount]").val(),
+                    pubEnable: enable3,
+                    pubEventType: 3,
+                    pubType: $("[name=sign]:checked").attr('data-type')
+                }, {
+                    pubAmount: $("[name=invite]:checked").parents(".rewards").find("[name=amount]").val(),
+                    pubEnable: enable4,
+                    pubEventType: 4,
+                    pubType: $("[name=invite]:checked").attr('data-type')
+                },
+                /* {
+                                pubAmount: $("[name=birthdate]:checked").parents(".rewards").find("[name=amount]").val(),
+                                pubEnable: enable5,
+                                pubEventType: 5,
+                                pubType: $("[name=birthdate]:checked").attr('data-type')
+                            }, */
+                {
+                    pubAmount: $("[name=infor]:checked").parents(".rewards").find("[name=amount]").val(),
+                    pubEnable: enable6,
+                    pubEventType: 6,
+                    pubType: $("[name=infor]:checked").attr('data-type')
+                },
+                /*{
+                               pubAmount: $("[name=join]:checked").parents(".rewards").find("[name=amount]").val(),
+                               pubEnable: enable7,
+                               pubEventType: 7,
+                               pubType: $("[name=join]:checked").attr('data-type')
+                           },*/
+                {
+                    pubAmount: $("[name=register]:checked").parents(".rewards").find("[name=amount]").val(),
+                    pubEnable: enable8,
+                    pubEventType: 8,
+                    pubType: $("[name=register]:checked").attr('data-type')
+                }
+            ];
+            //开关打开的判断其值是否有0
+            var flag = true;
+            for (var i = 0; i < dataEx.length; i++) {
+                if (dataEx[i].pubEnable == 1) {
+                    var flags = inputValidate(dataEx[i].pubAmount);
+                    flag = flags && flag;
+                }
+            }
+            //提交
+            if (flag) {
+                AjaxPost2(myapp.apiHost2 + "wesurvey.reward.do?projectID=0", convertData(dataEx), null, function(data) {
+                    new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                    //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>保存成功</p>", function() {});
+                }, function(error) {
+                    alert(error);
+                });
+            } else {
+                new MessageModal($("#message-modal"), "礼金或积分不能小于等于0", null, function(tmpdata) {}).error();
+                //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>礼金或积分不能小于等于0</p>", function() {});
+            }
+        });
+        //refreshProjects(".cnd-project", 11)
+    });
+
+    /*
+     *    审核设置
+     */
+    $(function() {
+
+        $('.audits .automatic input').on('click', function() {
+            $(this).parents('.audit-type').find('.condition').show();
+        });
+
+        $('.audits .artificial input').on('click', function() {
+            $(this).parents('.audit-type').find('.condition').hide();
+        });
+
+        $('#audit .audits select').val('1').attr('disabled', 'disabled');
+
+        //获取数据
+        function getAudit(projectID) {
+            AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=148&projectID=" + projectID, null, null, function(data) {
+                var auditSetting = data.objs[0];
+                $('#audit .audits select').val('1').attr('disabled', 'disabled');
+                //奖励审核
+                if (projectID != 0) {
+                    if (auditSetting.Type == 1) {
+                        $('.emoney select').val((auditSetting.EmoneyRewardAudit || 1)).removeAttr('disabled'); //礼金
+                    } else if (auditSetting.Type == 2) {
+                        $('.point select').val((auditSetting.PointRewardAudit || 1)).removeAttr('disabled'); //积分
+                    } else if (auditSetting.Type == 3) {
+                        $('.giftcard select').val((auditSetting.GiftCardRewardAudit || 1)).removeAttr('disabled'); //礼品卡
+                    }
+                }
+                //提现审核
+                if (auditSetting.EmoneyConsumeAudit == 1) {
+                    $('.withdrawal .automatic input[type="radio"]').attr('checked', 'checked');
+                    if (auditSetting.EmoneyConsumeAuditThreshold) {
+                        var EmoneyConsumeAuditThreshold = auditSetting.EmoneyConsumeAuditThreshold == 999999 ? '' : auditSetting.EmoneyConsumeAuditThreshold;
+                        $('.withdrawal .automatic .condition').show().find('input').val(EmoneyConsumeAuditThreshold);
+                    }
+                } else if (auditSetting.EmoneyConsumeAudit == 2) {
+                    $('.withdrawal .artificial input[type="radio"]').attr('checked', 'checked');
+                }
+                //兑换审核
+                if (auditSetting.PointConsumeAudit == 1) {
+                    $('.exchange .automatic input[type="radio"]').attr('checked', 'checked');
+                    /*if (auditSetting.PointConsumeAuditThreshold) {
+                        var PointConsumeAuditThreshold = auditSetting.PointConsumeAuditThreshold == 999999 ? '' : auditSetting.PointConsumeAuditThreshold;
+                        $('.exchange .automatic .condition').show().find('input').val(PointConsumeAuditThreshold);
+                    }*/
+                } else if (auditSetting.PointConsumeAudit == 2) {
+                    $('.exchange .artificial input[type="radio"]').attr('checked', 'checked');
+                }
+            }, function(error) {
+                alert(error);
+            });
+        }
+
+        getAudit(0);
+
+        $('#audit .cnd-project').on('change', function() {
+            var projectID = $(this).val();
+            getAudit(projectID);
+        });
+
+        //格式化数值对象传送给后台
+        function convertData(dataEx) {
+            var objsArr = [];
+            for (var i = 0; i < dataEx.length; i++) {
+                for (var key in dataEx[i]) {
+                    var objs = {};
+                    objs.name = key;
+                    objs.value = dataEx[i][key];
+                    objsArr.push(objs);
+                }
+            }
+            return objsArr;
+        }
+
+        //项目审核设置－保存
+        $('.project-audit-save').on('click', function() {
+            var projectID = $('#audit .cnd-project').val();
+            var postData = [{
+                name: 'EmoneyRewardAudit',
+                value: $('.emoney select option:checked').val()
+            }, {
+                name: 'PointRewardAudit',
+                value: $('.point select option:checked').val()
+            }, {
+                name: 'GiftCardRewardAudit',
+                value: $('#audit .giftcard select option:checked').val()
+            }];
+            AjaxPost2(myapp.apiHost2 + "wesurvey.config.do?projectID=" + projectID, convertData(postData), null, function(data) {
+                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>保存成功</p>", function() {});
+            }, function(error) {
+                //
+            });
+        });
+
+        //通用审核－保存
+        $('.common-audit-save').on('click', function() {
+            var postData = [{
+                    pubName: 'EmoneyConsumeAudit',
+                    pubValue: $('[name=consume]:checked').attr('data-type')
+                }, {
+                    pubName: 'EmoneyConsumeAuditThreshold',
+                    pubValue: $('.withdrawal .condition input[type="number"]').val() || 500
+                }, {
+                    pubName: 'PointConsumeAudit',
+                    pubValue: $('[name=exchange]:checked').data('type')
+                }
+                /*, {
+                 pubName: 'PointConsumeAuditThreshold',
+                 pubValue: $('.exchange .condition input[type="number"]').val() || 999999
+                 }*/
+            ];
+            AjaxPost2(myapp.apiHost2 + "wesurvey.config.do?projectID=0", convertData(postData), null, function(data) {
+                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>保存成功</p>", function() {});
+            }, function(error) {
+                //
+            });
+        });
+    });
+
+    /*
+     * 调研发布设置
+     */
+    $(function() {
+        //格式化数值对象传送给后台
+        function convertData(dataEx) {
+            var objsArr = [];
+            for (var i = 0; i < dataEx.length; i++) {
+                for (var key in dataEx[i]) {
+                    var objs = {};
+                    objs.name = key;
+                    objs.value = dataEx[i][key];
+                    objsArr.push(objs);
+                }
+            }
+            return objsArr;
+        }
+        //验证邮箱格式
+        var checkEmail = function(email) {
+            //var rule = /[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?/;
+            var rule = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+            return rule.test(email);
+        }
+
+        //保存
+        $('.research-published-save').on('click', function() {
+            var email = $('input[name=email]').val();
+            var postData = [{
+                pubName: 'CustomerManagerEmail',
+                pubValue: email
+            }];
+            if (checkEmail(email)) {
+                AjaxPost2(myapp.apiHost2 + "wesurvey.config.do?projectID=0", convertData(postData), null, function(data) {
+                    new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+                    //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>保存成功</p>", function() {});
+                    var data = data.objs;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].name == "CustomerManagerEmail") {
+                            $('#contact input[name="email"]').val(data[i].value);
+                        }
+                    }
+                }, function(error) {
+                    //
+                });
+            } else {
+                new MessageModal($("#message-modal"), "请输入正确的邮箱", null, function(tmpdata) {}).error();
+                //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>请输入正确的邮箱</p>", function() {});
+            }
+        });
+
+    });
+
+    /*
+     * 配额设置
+     */
+    $(function() {
+        //短信模板
+        refreshtemplates(".sms", 82, 1); //短信
+        refreshtemplates(".wexin", 82, 2); //微信
+        refreshtemplates(".email-template", 82, 3); //邮件
+        //格式化数值对象传送给后台
+        function convertData(dataEx) {
+            var objsArr = [];
+            for (var i = 0; i < dataEx.length; i++) {
+                for (var key in dataEx[i]) {
+                    var objs = {};
+                    objs.name = key;
+                    objs.value = dataEx[i][key];
+                    objsArr.push(objs);
+                }
+            }
+            return objsArr;
+        }
+        //获取
+        $('#quota .cnd-project').on('change', function() {
+            var projectID = $(this).val();
+            AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=151&projectID=" + projectID, null, null, function(data) {
+                if (data.objs.length > 0) {
+                    var data = data.objs;
+                    for (var i in data) {
+                        $('[data-id=' + data[i].name + ']').val(data[i].value);
+                    }
+                } else {
+                    $('#quota input').val('');
+                }
+
+            }, function(error) {
+                console.log(error);
+            });
+        });
+
+        //保存
+        Core.runWeUIValidate(function(form) {
+            var projectID = $('#quota .cnd-project').val();
+            var email = $('#quota input[name=email]').val();
+            var emailtemplate = $('#quota .email-template').val();
+            var smstemplate = $('#quota .sms').val();
+            var wexintemplate = $('#quota .wexin').val();
+            var collectingDelayHours = $('#quota input[name=delay]').val();
+            var quotatimes = $('#quota input[name=quotaTimes]').val();
+            var templatetimes = $('#quota input[name=templateTimes]').val();
+            var postData = [{
+                name: 'ProjectManagerEmail',
+                value: email
+            }, {
+                name: 'emailTemplate',
+                value: emailtemplate
+            }, {
+                name: 'SmsTemplate',
+                value: smstemplate
+            }, {
+                name: 'WexinTemplate',
+                value: wexintemplate
+            }, {
+                name: 'CollectingDelayHours',
+                value: collectingDelayHours
+            }, {
+                name: 'quotaTimes',
+                value: quotatimes
+            }, {
+                name: 'templateTimes',
+                value: templatetimes
+            }];
+            AjaxPost2(myapp.apiHost2 + "wesurvey.config.do?projectID=" + projectID, convertData(postData), null, function(data) {
+                //bootbox.alert("<p style='border-bottom:1px solid #F2F2F2;line-height: 40px;'>提示信息</p><p style='line-height:40px;text-indent:2em;'>保存成功</p>", function() {});
+                new MessageModal($("#message-modal"), "保存成功", null, function(tmpdata) {}).error();
+            }, function(error) {});
+        });
+    });
+    /*
+     *
+     */
+    $(function() {
+
+        //
+        Core.runWeUIElements();
+        // trigger
+        var activateTabPage = function(index) {
+                if (index == 1) {
+                    console.log('1');
+                } else if (index == 2) {
+                    console.log('2');
+                } else if (index == 3) {
+                    getEmail();
+                } else if (index == 4) {
+                    console.log('4');
+                }
+            }
+            // Event handler for activate
+            //初始化
+        function getEmail() {
+            AjaxPost2(myapp.apiHost2 + "wesurvey.config.do?projectID=0", null, null, function(data) {
+                var data = data.objs;
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].name == "CustomerManagerEmail") {
+                        $('#contact input[name="email"]').val(data[i].value);
+                    }
+                }
+            }, function(error) {
+                //
+            });
+        }
+
+        // trigger
+        initTabs(activateTabPage);
+        //项目列表
+        refreshProjects(".project", 13);
+
+    });
+    //@ sourceURL=dynamicScript-project-seeting.js
+</script>

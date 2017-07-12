@@ -1,0 +1,203 @@
+<div class="topicset" style="width: 487px; overflow: hidden;">
+    <form action="#" id="op_form" method="post" onsubmit="return false;">
+        <div class="poplayer">
+            <dl class="way" style="width:300px;">
+                <dd class="clear choose-way">
+                    <label for="rank">优先级</label>
+                    <input type="number" class="rank" id="rank" min="1" max="255" style="width:44px;" />
+                    <label for="rank">（1-255，1优先级最低）</label>
+                </dd>
+                <dd class="clear choose-way">
+                    <input type="checkbox" class="second"/>
+                    <label for="wait">每道题停留秒数</label>
+                    <input type="number" min="0" id="wait" style="width:62px;display: none;vertical-align: middle;"/>
+                </dd>
+                <dd class="clear choose-way">
+                    <input type="checkbox" id="sign_agreement" class="sign-agreement"/>
+                    <label for="sign_agreement">答卷前提示用户同意条款</label>
+                </dd>
+                <dd class="clear choose-way">
+                    <input type="checkbox" id="goback" class="goback"/>
+                    <label for="goback">答题时可以返回上一题</label>
+                </dd>
+                <dd class="clear choose-way">
+                    <input type="checkbox" id="enable_evaluator" class="participant-mask" />
+                    <label for="enable_evaluator">评估员答卷</label>
+                    <table class="designation property" style="max-height:230px;min-height:0;overflow-y:auto;width: 224px; margin-top: 6px; margin-left: 24px; display: none;">
+                        <thead>
+                            <tr>
+                                <th style="width: 118px;">评估员</th>
+                                <th style="width: 80px;">答卷次数</th>
+                                <th style="width: 26px;"></th>
+                            </tr>                            
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="evaluators" style="margin-left:19px;margin-top:12px;margin-bottom:2px;display:none;">
+                        <select style="width:160px !important;border:1px solid #e9e9e9;">
+                        </select>
+                        <button class="add">添加</button>
+                    </div>
+                </dd>
+                <dd class="clear choose-way" style="border-top:1px solid #e9e9e9;margin-top:10px;">
+                    <a href="javascript:;" style="padding:0;font-size:14px;font-family:'microsoft yahei';" class="jump-btn batch-delete">批量删除</a>
+                    <a href="javascript:;" style="padding:0;font-size:14px;font-family:'microsoft yahei';" class="jump-btn batch-copy">批量复制</a>
+                    <a href="javascript:;" style="padding:0;font-size:14px;font-family:'microsoft yahei';" class="jump-btn question-disordered">题目乱序</a>
+                </dd>
+            </dl>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    function validate() {
+        return true;
+    }
+
+    function saveForm() {
+        //更新对象
+        var designations = updateObject();
+        //更新问卷参数
+        updateTemplate(myapp.template, function () {
+            $('.template-rank').html($('.rank').val());
+        });
+        //更新指定评估员答卷
+        submitDesignations(myapp.template.id, designations, function () {
+            //
+        });
+    }
+
+    var updateObject = function () {
+        var context = $('.right-operate');
+        // template
+        if ($('.second')[0].checked == false){
+            myapp.template.waitBeforeNext = 0;
+        }else{
+            myapp.template.waitBeforeNext = $('#wait').val();
+        }
+        myapp.template.rank = $('.rank').val();
+        myapp.template.signAgreement = $('.sign-agreement')[0].checked;
+        myapp.template.goBack = $('.goback')[0].checked;
+        myapp.template.participantMask = $('.participant-mask')[0].checked ? 2 : 1; //
+        // designations
+        var designations = [];
+        var trs = $('.designation tbody tr', context);
+        for (var i = 0; i < trs.length; ++i) {
+            var ntr = $(trs[i]);
+            designations.push({
+                id: -1,
+                templateID: myapp.template.id,
+                memberID: ntr.find('.name').attr('eid'),
+                count: ntr.find('.count input').val(),
+            });
+        }
+        return designations;
+    }
+
+    var updateControl = function (evalautors, designations) {
+        var context = $('.right-operate');
+        if(myapp.template.waitBeforeNext){
+            $('.second',context)[0].checked = true;
+            $('#wait', context).show().val(myapp.template.waitBeforeNext);//每道题停留秒数
+        }
+        $('.rank', context).val(myapp.template.rank);
+        $('.sign-agreement', context)[0].checked = myapp.template.signAgreement || false;
+        $('.goback', context)[0].checked = myapp.template.goBack || true;
+        $('.participant-mask', context)[0].checked = myapp.template.participantMask > 1; // 允许评估员答卷
+        if ($('.participant-mask', context)[0].checked) {
+            $(".designation", context).show();
+            $(".evaluators", context).show();
+        } else {
+            $(".designation", context).hide();
+            $(".evaluators", context).hide();
+        }
+        var html = '<option val="xyz" disabled>请选择</option>';
+        for (var i = 0; i < evalautors.length; ++i)
+            html += '<option val=' + evalautors[i].id + '>' + evalautors[i].shortName + '</option>';
+        $('.evaluators select', context).empty().html(html);
+        html = '';
+        for (var i = 0; i < designations.length; ++i) {
+            html += '<tr>' +
+                        '<td class="name" eid="' + designations[i].memberID + '">' + designations[i].memberName + '</td>' +
+                        '<td class="count"><input type="number" min="1" value="'+designations[i].count+'" /></td>' +
+                        '<td class="action"><span></span></td>' +
+                    '</tr>';
+            $('.evaluators option[val="' + designations[i].memberID + '"]', context).hide();
+        }
+        $('.designation tbody', context).empty().html(html);
+        $('.evaluators select', context).val('xyz');
+    }
+
+    jQuery(document).ready(function ($) {
+
+        var context = $('.right-operate');
+
+        //评估员答卷
+        $('.participant-mask', context).off('change').on('change', function (e) {
+            if ($(this).attr("checked")) {
+                $(".designation", context).show();
+                $(".evaluators", context).show();
+            } else {
+                $(".designation", context).hide();
+                $(".evaluators", context).hide();
+            }
+        });
+
+        //删除
+        $('.designation', context).off('click').on('click', function (e) {
+            var td = $(e.target).parent();
+            if (td.hasClass('action')) {
+                var id = td.siblings('.name').attr('eid');
+                td.parents('tr').remove();
+                $('.evaluators option[val="' + id + '"]', context).show();
+            }
+        });
+
+        //添加
+        $('.evaluators .add', context).off('click').on('click', function (e) {
+            var option = $('.evaluators option:selected', context);
+            if (option.length > 0) {
+                $('.designation tbody', context).append(
+                    '<tr>' +
+                        '<td class="name" eid="' + option.attr('val') + '">' + option.html() + '</td>' +
+                        '<td class="count"><input type="number" min="1" value="3" /></td>' +
+                        '<td class="action"><span></span></td>' +
+                    '</tr>');
+                $('.evaluators option:selected', context).hide();
+                $('.evaluators select', context).val('xyz');
+            }
+        });
+
+        //批量删除
+        $('.batch-delete').off('click').on('click', function(){
+            modalDialog($(this).html(), './panel/batch_delete.html', null, null, null);
+        });
+        //批量复制
+        $('.batch-copy').off('click').on('click', function(){
+            modalDialog($(this).html(), './panel/batch_copy.html', null, null, null);
+        });
+        //题目乱序
+        $('.question-disordered').off('click').on('click', function(){
+            modalDialog($(this).html(), './panel/question_disordered.html', null, null, null);
+        });
+        //每道题停留秒数
+        $('.second').off('click').on('click', function(){
+            if($(this).attr('checked')){
+                $('#wait').show();
+            }else{
+                $('#wait').hide();
+            }
+        });
+
+        //获取评估员/指定评估员答卷对象
+        searchMembers(2, function (evaluators) {
+            searchDesignations(myapp.template.id, function (designations) {
+                updateControl(evaluators, designations);
+            });
+        });
+    });
+
+    //@ sourceURL=template.js
+</script>

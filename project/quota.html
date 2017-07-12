@@ -1,0 +1,1217 @@
+﻿<!--  -->
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="bs-component">
+            <div class="panel" id="tab_panel">
+                <div class="panel-heading">
+                    <ul class="nav panel-tabs-border panel-tabs panel-tabs-left">
+                        <li class="" style="display: none;"><a href="#quota_control" data-toggle="tab">配额管理</a></li>
+                        <li class="" style="display: none;"><a href="#quota_set" data-toggle="tab">配额字段</a></li>
+                        <li class="" style="display: none;"><a href="#quota_view" data-toggle="tab">交叉配额</a></li>
+                        <li class="" style="display: none;"><a href="#quota_log" data-toggle="tab">推送记录</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content pn br-n">
+                        <!-- tab start -->
+                        <div id="quota_control" class="tab-pane pn" style="display: none;" tabindex="1">
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <select data-id="cnd_projectID" name="cnd_project" class="form-control cnd_project"> </select>
+                                                            <label class="field-icon">
+                                                                <i class="fa fa-check-square-o"></i>
+                                                            </label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button type="submit" class="btn btn-primary btn-sm pull-right action-query">
+                                                    <i class="fa fa-search"></i>查询                                               
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-visible" id="dat">
+                                    <div class="panel-body pn">
+                                        <table class="table table-striped table-hover" id="datatable">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab end -->
+                        <!-- tab start -->
+                        <div id="quota_set" class="tab-pane pn quota-quotas" style="display: none;" tabindex="2">
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <select data-id="cnd_projectID" name="cnd_project" class="form-control cnd_project"></select>
+                                                            <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <button type="submit" class="btn btn-primary btn-sm pull-right action-save" style="padding: 5px 10px"><i class="fa fa-save p5"></i>保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-6 admin-grid" id="grid-2">
+                                    <div class="panel panel-default" data-panel-color="panel-info" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                        <div class="panel-heading ui-sortable-handle">
+                                            <span class="panel-title"><i class="imoon imoon-office"></i>省份/城市</span>
+                                            <span class="panel-controls"><a class="panel-control-loader"></a></span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id="tree_area" class="jstree" style="border: 0px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 admin-grid" id="grid">
+                                    <div class="panel panel-default" data-panel-color="panel-warning" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                        <div class="panel-heading ui-sortable-handle">
+                                            <span class="panel-title"><i class="glyphicons glyphicons-car"></i>汽车品牌</span>
+                                            <span class="panel-controls"><a href="#" class="panel-control-loader"></a></span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id="tree_brand" class="jstree"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 admin-grid">
+                                    <div id="car_level" class="panel panel-default" data-panel-color="panel-alert" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                        <div class="panel-heading ui-sortable-handle">
+                                            <span class="panel-title"><i class="glyphicons glyphicons-podium"></i>汽车级别</span>
+                                            <span class="panel-controls"><a href="#" class="panel-control-loader"></a></span>
+                                        </div>
+                                        <div class="panel-body color-e">
+                                            <div class="jstree"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pull-right">
+                                    <div class="panel panel-default" data-panel-color="panel-alert" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                        <div class="panel-heading ui-sortable-handle">
+                                            <span class="panel-title"><i class="glyphicons glyphicons-parents"></i>性别</span>
+                                            <span class="panel-controls"><a href="#" class="panel-control-loader"></a></span>
+                                        </div>
+                                        <div class="panel-body color-e" id="sex">
+                                            <div class="checkbox-custom checkbox-primary mb5 pull-left" style="padding: 0 20px 0 40px">
+                                                <input type="checkbox" id="sex_man">
+                                                <label for="sex_man">男</label>
+                                            </div>
+                                            <div class="checkbox-custom checkbox-primary mb5">
+                                                <input type="checkbox" id="sex_woman">
+                                                <label for="sex_woman">女</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="panel panel-default" data-panel-color="panel-primary" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                        <div class="panel-heading ui-sortable-handle">
+                                            <span class="panel-title"><i class="imoon imoon-stats"></i>年龄段</span>
+                                            <span class="panel-controls"><a href="#" class="panel-control-loader"></a></span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row form-horizontal admin-form">
+                                                <form method="post" class="col-age">
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-5 col-md-5 col-sm-12">
+                                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">起始年龄：</label>
+
+                                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                                                <label class="field prepend-icon">
+                                                                    <input type="number" name="begin_age" class="form-control begin_age gui-input digits" required>
+                                                                    <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-lg-5 col-md-5 col-sm-12">
+                                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label">结束年龄：</label>
+                                                            <div class="col-lg-8  col-md-8 col-sm-6">
+                                                                <label class="field prepend-icon">
+                                                                    <input type="number" name="end_age" class="form-control end_age gui-input digits" required>
+                                                                    <label class="field-icon"><i class="fa fa-pencil-square-o"></i></label>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-sm-2">
+                                                            <button type="button" class="btn btn-sm sub-age pull-right age-save" style="margin-top: 1px">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-lg-12 age-erro hide text-danger text-center">结束年龄必须大于开始年龄</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row" style="margin-top: 10px"></div>
+                                            <table class="table table-striped table-hover col-md-12" id="age_table" style="border: 1px solid #C7C7C7;">
+                                                <thead>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab end -->
+                        <!-- tab start -->
+                        <div id="quota_view" class="tab-pane pn" style="display: none;" tabindex="3">
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                    <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                    <div class="col-lg-8 col-md-8 col-sm-6">
+                                                        <label class="field prepend-icon">
+                                                            <select name="cnd_project" class="form-control cnd_project"></select>
+                                                            <label class="field-icon">
+                                                                <i class="fa fa-check-square-o"></i>
+                                                            </label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button type="submit" class="btn btn-primary btn-sm pull-right action-query">
+                                                    <i
+                                                        class="fa fa-search"></i>查询
+                                               
+                                                </button>
+                                                <!--<button type="submit" class="btn btn-primary btn-sm pull-right action-save"><i
+                                                        class="fa fa-save"></i>保存
+                                                </button>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--<div class="panel panel-visible">
+                                    <div class="panel-body pn">
+                                        <div id="treeQuotaDetail" class="jstree"></div>
+                                    </div>
+                                </div>-->
+                                <div class="panel panel-default" data-panel-color="panel-info" data-panel-fullscreen="false" data-panel-title="false" data-panel-remove="false" data-panel-collapse="false">
+                                    <div class="panel-heading ui-sortable-handle">
+                                        <span class="panel-title"><i class="fa fa-pencil"></i>配额展示树</span>
+                                        <span class="panel-controls"><a class="panel-control-loader"></a></span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="treeQuotaDetail" class="jstree jstree-47 jstree-default jstree-checkbox-selection jstree-closed" style="border: 0px" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="0" aria-busy="false" aria-selected="false">
+                                            <ul class="jstree-container-ul jstree-children jstree-no-icons jstree-wholerow-ul jstree-no-dots" role="group">
+                                                <li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="0_anchor" aria-expanded="false" id="0" class="jstree-node  jstree-closed jstree-last">
+                                                    <div unselectable="on" role="presentation" class="jstree-wholerow">&nbsp;</div>
+                                                    <i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="0_anchor"><i class="jstree-icon jstree-checkbox" role="presentation"></i><i class="jstree-icon jstree-themeicon '' jstree-themeicon-custom" role="presentation"></i>省份/城市</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab end-->
+                        <!-- tab start-->
+                        <div id="quota_log" class="tab-pane pn" style="display: none;" tabindex="4">
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body">
+                                        <div class="form-horizontal admin-form">
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">项目：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id="cnd_projectID" name="cnd_project" class="form-control cnd_project"></select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">是否答卷：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id="cnd_answer" name="cnd_submit_sample" class="form-control">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">已答卷</option>
+                                                            <option value="2">未答卷</option>
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                <label class="col-lg-4 col-md-4 col-sm-6 control-label">推送方式：</label>
+                                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                                    <label class="field prepend-icon">
+                                                        <select data-id="cnd_sentType" name="cnd_messaging_type" class="form-control">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">短信</option>
+                                                            <option value="2">微信</option>
+                                                            
+                                                        </select>
+                                                        <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row panel-footer action-container">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
+                                            <div class="col-lg-8 col-md-8 col-sm-6"></div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="col-lg-0 col-md-0 col-sm-0 control-label"></label>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button type="button" class="btn btn-primary btn-sm pull-right action-query"><i class="fa fa-search"></i>查询</button>
+                                                <button type="button" class="btn btn-primary btn-sm pull-right push-message"><i class="fa fa-location-arrow"></i>推送</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="panel panel-visible">
+                                    <div class="panel-body pn">
+                                        <table class="table table-striped table-hover" id="log_datatable">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Model Modal -->
+<div class="modal fade" id="quota_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-edit"></span><span class="caption"></span></h4>
+            </div>
+            <div class="form-horizontal admin-form">
+                <div class="modal-body">
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_name" class="col-lg-4 col-md-4 col-sm-6 control-label">项目名称：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <select name="projectname" class="form-control cnd_project gui-input">
+                                    </select>
+                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_type" class="col-lg-4 col-md-4 col-sm-6 control-label">答卷状态：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <select type="text" name="type" class="form-control question-state gui-input">
+                                        <option value="0">请选择</option>
+                                        <option value="1">已答卷</option>
+                                        <option value="2">未答卷</option>
+                                    </select>
+                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--<input type="hidden" id="col_subsys" class="gui-input" value="wenjuan">-->
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                            <label for="col_type" class="col-lg-4 col-md-4 col-sm-6 control-label">类型：</label>
+                            <div class="col-lg-8 col-md-8 col-sm-6">
+                                <label class="field prepend-icon">
+                                    <select type="text" name="type" class="form-control message-type type gui-input">
+                                        <option value="1" selected="selected">短信推送</option>
+                                        <option value="2">微信推送</option>
+                                    </select>
+                                    <label class="field-icon"><i class="fa fa-check-square-o"></i></label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal"><i class="fa fa-close"></i>关闭</button>
+                    <button type="button" class="btn btn-primary btn-sm quota-push"><i class="fa fa-save"></i><span class="">推送</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //
+    var theQuotaTable = null,
+        theQuotaColumns = null,
+        theQuotaCount = 0,
+        theQuotaDummy = false,
+        theQuotaOption = null;
+    var theLogTable = null,
+        theLogColumns = null,
+        theLogCount = 0,
+        theLogDummy = false,
+        theLogOption = null;
+    var initQUotaTree = null,
+        theAgeTable = null,
+        theAgeColumns = null,
+        initTree = null,
+        theAgeOption = null;
+
+    //配额管理
+    $(function() {
+        // datatable
+        theQuotaTable = $("#datatable");
+        // columns
+        theQuotaColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "projectName",
+            "sTitle": "项目",
+            "sWidth": "88px",
+            "sClass": "text-align-left",
+            "mRender": function(mData, type, full) {
+                return '<a href="javascript:;"> ' + mData + '</a>';
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "name",
+            "sTitle": "配额",
+            "sWidth": "228px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "remark",
+            "sTitle": "描述",
+            "sClass": "text-align-left",
+            //"sWidth": "128px",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "id",
+            "sTitle": "操作",
+            "bSortable": false,
+            "sWidth": "82px",
+
+            "mRender": function(data, type, full) {
+                return '<span class="inline-action-container">' +
+                    '<a href="#"><span class="fa fa-edit fa-dollar "></span><span class="action-update">编辑</span></a><span class="text-divider">|</span>' +
+                    '<a href="javascript:;"><span class="fa fa-exclamation-triangle fa-undo text-danger"></span><span class="action-delete text-danger">删除</span></a>' +
+                    '</span>';
+            }
+        }];
+        // option
+        theQuotaOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }, "add"],
+            preDrawCallback: function() {
+                return theQuotaDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 31, theQuotaCount, "#quota_control");
+            },
+            setCountCallback: function(count) {
+                theQuotaCount = count;
+            },
+            onCreate: function() {
+                var projectid = $('#quota_control .cnd_project').find("option:selected").val();
+                if (projectid != "") {
+                    window.location.href = "#project/quota-detail.html?projectid=" + projectid;
+                } else {
+                    new MessageModal($("#message_modal"), "请选择项目！", tr, function(data) {}).error();
+                }
+            },
+            onUpdate: function(data, tr) {
+                window.location.href = '#project/quota-detail.html?quotaid=' + data.id + '&projectid=' + data.projectID;
+            },
+            onDelete: function(data, tr) {
+                var url = myapp.apiHost2 + "wesurvey.removequota.do?id=" + data.id;
+                new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", null, function(data) {
+                    AjaxPost2(url, [], null, function(data) {
+                        Core.deleteRow(theQuotaTable, tr);
+                    }, function(error) {
+                        alert(error)
+                    })
+
+                }).error();
+            }
+        };
+
+        // 查询配额
+        $('#quota_control .action-query').unbind("click").bind("click", function() {
+            theQuotaDummy = true;
+            theQuotaTable.dataTable().fnDraw();
+        });
+    });
+
+    //配额字段
+    $(function() {
+        // datatable
+        theAgeTable = $('#age_table');
+        // columns
+        theAgeColumns = [{
+            "aTargets": [0],
+            "mData": "begin",
+            "sTitle": "起始年龄",
+            "sWidth": "228px"
+        }, {
+            "aTargets": [1],
+            "mData": "end",
+            "sTitle": "结束年龄",
+            "sWidth": "228px",
+            "mRender": null
+        }, {
+            "aTargets": [2],
+            "mData": "id",
+            "sTitle": "",
+            "sWidth": "82px",
+            "mRender": function(data, type, full) {
+                return '<a href="#" class="inline-action-container"><span class="fa fa-exclamation-triangle fa-danger "></span><span class="action-delete">删除</span></a>'
+            }
+        }];
+        // option
+        theAgeOption = {
+            aButtons: [],
+            preDrawCallback: null,
+            rowCallback: null,
+            drawCallback: null,
+            bLengthChange: false,
+            info: false,
+            // paging: false,
+            ordering: false,
+            searching: false,
+            tabletools: false,
+            onDelete: function(data, tr) {
+                Core.deleteRow(theAgeTable, tr);
+            }
+        };
+
+        //年龄段验证
+        $(".begin_age , .end_age").focus(function(event) {
+            $(".age-erro").addClass('hide');
+        });
+
+        // 保存
+        $(".age-save").unbind("click").bind("click", function() {
+            var begin = $(".begin_age").val();
+            var end = $(".end_age").val();
+            var filed = {
+                begin: begin,
+                end: end
+            };
+            if (parseInt(begin) < parseInt(end)) {
+                Core.insertRow($("#age_table"), filed);
+            } else {
+                $(".age-erro").removeClass('hide');
+            }
+        });
+
+        var metaDatas = [{
+            type: 1,
+            remark: "省份",
+            children: []
+        }, {
+            type: 2,
+            remark: "城市",
+            children: []
+        }, {
+            type: 3,
+            remark: "品牌",
+            children: []
+        }, {
+            type: 4,
+            remark: "车型",
+            children: []
+        }, {
+            type: 5,
+            remark: "年龄段",
+            children: []
+        }, {
+            type: 6,
+            remark: "汽车级别",
+            children: []
+        }, {
+            type: 7,
+            remark: "性别",
+            children: []
+        }, {
+            type: 8,
+            remark: "教育程度",
+            children: []
+        }];
+        var setCity = [];
+        var setProvince = [];
+        var setBrand = [];
+        var setModel = [];
+
+        //提交时获得选中的省份/城市
+        var setTreeIdArr = function() {
+            var jsonArea = $("#tree_area").jstree(true).get_json()[0];
+            var jsonBrand = $("#tree_brand").jstree(true).get_json()[0];
+            for (var i = 0; i < jsonArea.children.length; i++) {
+                for (var j = 0; j < jsonArea.children[i].children.length; j++) {
+                    if (jsonArea.children[i].children[j].state.selected) {
+                        //metaDatas[1].children
+                        //setCity.push(jsonArea.children[i].children[j]["id"]);
+                        var cityDataChildren = {};
+                        cityDataChildren.value = jsonArea.children[i].children[j]["id"];
+                        cityDataChildren.title = jsonArea.children[i].children[j]["text"];
+                        setCity.push(cityDataChildren);
+                        var tmp = [];
+                        for (var k = 0; k < setProvince.length; k++) {
+                            tmp.push(setProvince[k].value);
+                        }
+                        if (tmp.indexOf(jsonArea.children[i]["id"]) == -1) {
+                            // setProvince.push(jsonArea.children[i]["id"]);
+                            var provinceDataChildren = {};
+                            provinceDataChildren.value = jsonArea.children[i]["id"];
+                            provinceDataChildren.title = jsonArea.children[i]["text"];
+                            setProvince.push(provinceDataChildren);
+                        }
+                    }
+                }
+            }
+            for (var i = 0; i < jsonBrand.children.length; i++) {
+                for (var j = 0; j < jsonBrand.children[i].children.length; j++) {
+                    if (jsonBrand.children[i].children[j].state.selected) {
+                        //setModel.push(jsonBrand.children[i].children[j]["id"]);
+                        var modelDataChildren = {};
+                        modelDataChildren.value = jsonBrand.children[i].children[j]["id"];
+                        modelDataChildren.title = jsonBrand.children[i].children[j]["text"];
+                        setModel.push(modelDataChildren);
+                        var tmp = [];
+                        for (var k = 0; k < setBrand.length; k++) {
+                            tmp.push(setBrand[k].value);
+                        }
+                        if (tmp.indexOf(jsonBrand.children[i]["id"]) == -1) {
+                            //setBrand.push(jsonBrand.children[i]["id"]);
+                            var brandDataChildren = {};
+                            brandDataChildren.value = jsonBrand.children[i]["id"];
+                            brandDataChildren.title = jsonBrand.children[i]["text"];
+                            setBrand.push(brandDataChildren);
+                        }
+
+                    }
+                }
+            }
+            return setCity, setProvince, setBrand, setModel;
+        };
+
+        //选择项目加载数据
+        var setTreeData = function(treeData, data, t) {
+            for (var x = 0; x < data.objs.length; x++) {
+                if (data.objs[x].type == t) {
+                    for (var i in treeData.children) {
+                        for (var j in treeData.children[i].children) {
+                            var exist = false;
+                            for (var k in data.objs[x].children) {
+                                if (treeData.children[i].children[j].id == data.objs[x].children[k].value) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            treeData.children[i].children[j]["state"] = {
+                                opended: false,
+                                selected: exist
+                            }
+                        }
+                    }
+                }
+            }
+            return treeData;
+        }
+
+        //
+        $('#quota_set .cnd_project').change(function() {
+            $(".begin_age,.end_age").val("");
+            var projectid = $(this).find("option:selected").val();
+            var url = myapp.apiHost + "metafield/search?projectid=" + projectid;
+            AjaxGet(url, function(data) {
+                if (data.objs.length > 0) {
+                    var jsonAreaData = $("#tree_area").jstree(true).get_json()[0];
+                    var jsonBrandData = $("#tree_brand").jstree(true).get_json()[0];
+                    setTreeData(jsonAreaData, data, 2);
+                    setTreeData(jsonBrandData, data, 4);
+                    $("#tree_area").jstree('destroy');
+                    initTree('#tree_area', [jsonAreaData]);
+                    $("#tree_brand").jstree('destroy');
+                    initTree('#tree_brand', [jsonBrandData]);
+                    //年龄数据初始化
+                    //Core.fillDataTable(theAgeTable, '');
+                    //初始化车级别
+                    $('#car_level input').prop('checked', false);
+                    //初始性别
+                    $('#sex input').prop('checked', false);
+                    for (var i = 0; i < data.objs.length; i++) {
+                        if (data.objs[i].type == 5) {
+                            Core.fillDataTable(theAgeTable, data.objs[i].children);
+                        }
+                        if (data.objs[i].type == 6) {
+                            for (var j = 0; j < data.objs[i].children.length; j++) {
+                                $('#car_level input[id=' + data.objs[i].children[j].value + ']').prop('checked', 'true');
+                            }
+                        }
+                        if (data.objs[i].type == 7) {
+                            for (var j = 0; j < data.objs[i].children.length; j++) {
+                                var gender;
+                                if (data.objs[i].children[j].value == 1) {
+                                    gender = 'sex_man';
+                                } else {
+                                    gender = 'sex_woman';
+                                }
+                                $('#sex input[id=' + gender + ']').prop('checked', 'true');
+                            }
+                        }
+                    }
+                    metaDatas = data.objs;
+                } else {
+                    metaDatas = [{
+                        type: 1,
+                        remark: "省份",
+                        children: []
+                    }, {
+                        type: 2,
+                        remark: "城市",
+                        children: []
+                    }, {
+                        type: 3,
+                        remark: "品牌",
+                        children: []
+                    }, {
+                        type: 4,
+                        remark: "车型",
+                        children: []
+                    }, {
+                        type: 5,
+                        remark: "年龄段",
+                        children: []
+                    }, {
+                        type: 6,
+                        remark: "汽车级别",
+                        children: []
+                    }, {
+                        type: 7,
+                        remark: "性别",
+                        children: []
+                    }];
+                    //初始化省份/城市tree
+                    AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=111", "json", "get", [], function(data) {
+                        treeDataArea = data;
+                        treeDataArea.text = "省份/城市";
+                        $("#tree_area").jstree('destroy');
+                        initTree('#tree_area', [treeDataArea]);
+                    }, function(error) {});
+                    //初始化品牌/车型tree
+                    AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=114", "json", "get", [], function(data) {
+                        treeDataBrand = data;
+                        treeDataBrand.text = "品牌/车型";
+                        $("#tree_brand").jstree('destroy');
+                        initTree('#tree_brand', [treeDataBrand]);
+
+                    }, function(error) {});
+                    //初始化车级别
+                    $('#car_level input').prop('checked', false);
+                    //初始化年龄数据
+                    var attr = [];
+                    Core.fillDataTable(theAgeTable, attr);
+                    //初始性别
+                    $('#sex input').prop('checked', false);
+                }
+            }, function(error) {});
+        });
+
+        //往提交后台的json放jstree的数据
+        var setChildrenData = function(data, t) {
+            for (var i = 0; i < data.length; i++) {
+                for (var k = 0; k < metaDatas.length; k++) {
+                    if (metaDatas[k].type == t && metaDatas[k].children) {
+                        for (var j = 0; j < metaDatas[k].children.length; j++) {
+                            if (metaDatas[k].children[j].value == data[i].value) {
+                                data[i].id = metaDatas[k].children[j].id;
+                                data[i].metaFieldID = metaDatas[k].children[j].metaFieldID;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //往提交后台的json放age的数据
+        var setAgeData = function() {
+            var isAge = $('#age_table tbody').find('.dataTables_empty').length;
+            if (isAge == 0) {
+                var tr = $('#age_table tbody').find('tr');
+                var tmp = [];
+                for (var i = 0; i < tr.length; i++) {
+                    var setData = tr.eq(i).data();
+                    setData.title = "年龄区间";
+                    tmp.push(setData);
+                }
+                metaDatas[4].children = tmp;
+            } else {
+                metaDatas[4].children = [];
+            }
+        }
+
+        //往提交后台的json放carLevel的数据
+        var setCarLevelData = function() {
+            var carDataChecked = $('#car_level input:checked');
+            var carData = [];
+            for (var i = 0; i < carDataChecked.length; i++) {
+                var carDataChildren = {};
+                carDataChildren.value = carDataChecked[i].id;
+                carDataChildren.title = carDataChecked.siblings('label').eq(i).html();
+                carData.push(carDataChildren);
+            }
+            metaDatas[5].children = carData;
+        }
+
+        //往提交后台的json放sex的数据
+        var setSexData = function() {
+            var sexData = $('#sex input');
+            var tmp = [];
+            for (var i = 0; i < sexData.length; i++) {
+                if (sexData[i].checked == true) {
+                    var sexDataChildren = {};
+                    sexDataChildren.value = sexData[i].id;
+                    if (sexData[i].id == 'sex_man') {
+                        sexDataChildren.value = 1;
+                        sexDataChildren.title = "男";
+                    } else {
+                        sexDataChildren.value = 2;
+                        sexDataChildren.title = "女";
+                    }
+                    tmp.push(sexDataChildren);
+                }
+            }
+            metaDatas[6].children = tmp;
+        }
+
+        //提交数据
+        $('#quota_set .action-save').unbind("click").bind("click", function() {
+            $('#ajax-loader').show();
+            setCity = [];
+            setProvince = [];
+            setBrand = [];
+            setModel = [];
+            setTreeIdArr();
+            //往提交后台的json放省份数据
+            setChildrenData(setProvince, 1);
+            //往提交后台的json放城市数据
+            setChildrenData(setCity, 2);
+            //往提交后台的json放车型数据
+            setChildrenData(setBrand, 3);
+            //往提交后台的json放车系数据
+            setChildrenData(setModel, 4);
+            //往提交后台的json放project数据
+            var projectMeta = $('#quota_set .cnd_project').val();
+            for (var i = 0; i < metaDatas.length; i++) {
+                metaDatas[i].projectID = projectMeta;
+            }
+            metaDatas[0].children = setProvince;
+            metaDatas[1].children = setCity;
+            metaDatas[2].children = setBrand;
+            metaDatas[3].children = setModel;
+            setAgeData();
+            setCarLevelData();
+            setSexData();
+            console.log(metaDatas);
+            var projectid = $('#quota_set .cnd_project').find("option:selected").val();
+            AjaxPost(myapp.apiHost + 'metafield/submit?projectid=' + projectid, metaDatas, null, function(data) {
+                if (data.errors.length > 0) {
+                    bootbox.alert("已设置配额，不允许修改！", function() {
+                        $('#ajax-loader').hide();
+                    });
+                }
+            }, function(error) {
+                console.log(error);
+            });
+        });
+    });
+
+    //交叉配额
+    $(function() {
+
+        initQUotaTree = function(data) {
+            function setOpened(data) {
+                data.state = {
+                    opened: true
+                }
+                if (data.level < 1) {
+                    for (var i in data.children) {
+                        setOpened(data.children[i]);
+                    }
+                }
+            };
+            setOpened(data);
+            $("#treeQuotaDetail").jstree({
+                plugins: ["wholerow", "state"],
+                core: {
+                    opended: true,
+                    data: data,
+                    themes: {
+                        "icons": false
+                    }
+                },
+            }).bind("loaded.jstree", function(e, data) {
+                var setOpen = function(data) {
+                    for (var i in data.children) {
+                        data.children[i].state = {
+                            opened: true,
+                            selected: false
+                        }
+                        var setdata = data.children;
+                    }
+                    setOpen(setdata);
+                }
+
+            }).bind("click.jstree", function(e) {
+                //如果该元素check为true增加input框
+                // if ($(e.target).hasClass("jstree-clicked") && $(e.target).parents("li").hasClass("jstree-leaf") && $(e.target).next('input').length < 1) {
+                //     $(e.target).after('<input class="quota-number" type="number" style="height:24px;width:60px;">');
+                // } else {
+                //     // if ($(e.target).next('input').length > 0)
+                //     //     $(e.target).next('input').remove();
+                // }
+            })
+        };
+
+        $('#quota_view .action-query').unbind("click").bind("click", function() {
+            var projectid = $('#quota_view .cnd_project').val();
+            AjaxGet2(myapp.apiHost + "quota/quotatree/get?projectid=" + projectid, "json", "get", [], function(result) {
+                if (result.objs[0]) {
+                    $("#treeQuotaDetail").jstree('destroy');
+                    var result = result.objs[0];
+                    initQUotaTree(result);
+                } else {
+                    console.log(result);
+                };
+            }, function(error) {});
+        });
+
+        var quotaNumber = [];
+
+        $("#treeQuotaDetail").on('blur', '.quota-number', function() {
+            var id = $(this).parents("li").eq(0).attr("id");
+            quotaNumber[id] = {
+                projectID: $("#quota_view .cnd_project").val(),
+                id: id,
+                quotaValue: $(this).val(),
+                children: [],
+                parentID: "",
+                level: "",
+                state: "",
+                icon: "",
+                sendCount: "",
+                text: "",
+                leaf: ""
+            };
+        });
+
+        // 保存树信息
+        $('#quota_view .action-save').unbind("click").bind("click", function() {
+            var quotaDataList = [];
+            for (var i in quotaNumber) {
+                quotaDataList.push(quotaNumber[i]);
+            };
+            $('#treeQuotaDetail').jstree('destroy');
+            // url, data, tag, onsuccess, onerror
+            AjaxPost(myapp.apiHost + "quota/quotatree/update", quotaDataList, null, function(data) {
+                var data = data.objs[0];
+                initQUotaTree(data)
+            }, function(error) {
+                //
+            });
+        });
+    });
+
+    //推送记录
+    $(function() {
+        theLogTable = $("#log_datatable");
+        // columns
+        theLogColumns = [{
+            "aTargets": [0],
+            "mData": "id",
+            "sTitle": "#",
+            "sWidth": "12px",
+            "bSortable": false,
+            "mRender": function(data, type, full) {
+                return "<input type='checkbox' name='selector' checked='checked' style='margin-left:8px;' />";
+            }
+        }, {
+            "aTargets": [1],
+            "mData": "userName",
+            "sTitle": "姓名",
+            "sWidth": "88px",
+            "sClass": "text-align-left",
+            "mRender": function(mData, type, full) {
+                return '<a href="javascript:;"> ' + mData + '</a>';
+            }
+        }, {
+            "aTargets": [2],
+            "mData": "gender",
+            "sTitle": "性别",
+            "sWidth": "58px",
+            "mRender": null
+        }, {
+            "aTargets": [3],
+            "mData": "matchedCnd",
+            "sTitle": "推送条件",
+            //"sWidth": "128px",
+            "sClass": "text-align-left",
+            "mRender": null
+        }, {
+            "aTargets": [4],
+            "mData": "sendTime",
+            "sTitle": "推送时间",
+            "bSortable": false,
+            "sWidth": "88px",
+            "mRender": null
+        }, {
+            "aTargets": [5],
+            "mData": "sentType",
+            "sTitle": "推送类型",
+            "sWidth": "88px",
+            "mRender": null
+        }, {
+            "aTargets": [6],
+            "mData": "completedAt",
+            "sTitle": "答卷时间",
+            "sWidth": "88px",
+            "mRender": null
+        }];
+
+        // option
+        theLogOption = {
+            aButtons: [{
+                "sButtonText": "csv",
+                "sExtends": "xls",
+            }],
+            preDrawCallback: function() {
+                return theLogDummy;
+            },
+            rowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $(nRow).data(aData);
+            },
+            processing: true,
+            serverSide: true,
+            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+            ajaxDataProp: "objs",
+            basicDataCallback: function(aoData) {
+                basicData(aoData, 193, theLogCount, "#quota_log");
+            },
+            setCountCallback: function(count) {
+                theLogCount = count;
+            },
+            onCreate: function() {},
+            onUpdate: function(data, tr) {},
+            onDelete: function(data, tr) {},
+        };
+
+        // 推送
+        var quotaMessageModal = new Modal($("#quota_modal"), null, null, function(data) {}, {
+            Entity: "推送"
+        });
+
+        //
+        $('#quota_log .action-query').unbind("click").bind("click", function() {
+            theLogDummy = true;
+            theLogTable.dataTable().fnDraw();
+        });
+
+        //
+        $('.push-message').unbind("click").bind("click", function() {
+            quotaMessageModal.show();
+        });
+
+        //
+        $('.quota-push').unbind('click').bind('click', function() {
+            var context = $('#quota_modal');
+            var projectID = $('.cnd_project', context).val();
+            var answerState = $('.question-state', context).val();
+            var sendType = $('.message-type', context).val();
+            if (projectID != '') {
+                var data = {};
+                data.projectID = projectID;
+                data.answer = answerState;
+                data.snedType = sendType;
+                AjaxPost2(myapp.apiHost2 + "wesurvey.quota_push.do", data, null, function() {
+                    quotaMessageModal.hide();
+                }, function(error) {
+                    console.log(error);
+                });
+            } else {
+                $('#quota_modal .cnd_project').addClass('input-error');
+            }
+        });
+
+        //
+        $('#quota_modal .cnd_project').focus(function() {
+            $(this).removeClass('input-error');
+        });
+    });
+
+    //
+    $(function() {
+
+        $('.jstree').css("border", "0px");
+
+        initTree = function(id, data, option) {
+            $(id).jstree({
+                'plugins': ["wholerow", "checkbox"],
+                'core': {
+                    'data': data,
+                    "themes": {
+                        "icons": false
+                    }
+                },
+            });
+        };
+
+        var activateTabPage = function(index) {
+            var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';
+            var container = $('.tab-pane[tabindex=' + index + ']');
+            if (index == 1) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theQuotaTable, theQuotaColumns, theQuotaOption);
+            } else if (index == 2) {
+                $(".begin_age,.end_age").val("");
+                $('#sex input').removeAttr('checked');
+                //初始化年龄数据
+                Core.initDataTable(theAgeTable, theAgeColumns, theAgeOption);
+                var treeDataArea = null;
+                //省份/城市初始化
+                AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=111", "json", "get", [], function(data) {
+                        treeDataArea = data;
+                        treeDataArea.text = "省份/城市";
+                        $("#tree_area").jstree('destroy');
+                        initTree('#tree_area', [treeDataArea]);
+                    }, function(error) {})
+                    //车型/车系初始化
+                AjaxGet2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=wesurvey&tplID=114", "json", "get", [], function(data) {
+                    treeDataBrand = data;
+                    treeDataBrand.text = "品牌/车型";
+                    $("#tree_brand").jstree('destroy');
+                    initTree('#tree_brand', [treeDataBrand]);
+                }, function(error) {});
+                //车级别初始化
+                AjaxGet2(myapp.apiHost2 + "sysmng.jsonreport.do?", "json", "post", "subSys=wesurvey&repID=33&isQuery=1", function(data) {
+                    var carLevel = $('#car_level .panel-body');
+                    var html = '';
+                    for (var i = 0; i < data.objs.length; i++) {
+                        html += '<div class="checkbox-custom checkbox-primary mb5"> ' +
+                            '<input type="checkbox"  id="' + data.objs[i].id + '">' +
+                            '<label for="' + data.objs[i].id + '">' + data.objs[i].carLevel + '</label>' +
+                            '</div>';
+                    }
+                    carLevel.empty();
+                    carLevel.append(html);
+                }, function(error) {});
+            } else if (index == 3) {
+                var data = {
+                    children: "",
+                    icon: "",
+                    id: "10000",
+                    leaf: false,
+                    parentID: "-1",
+                    quotaValue: 90,
+                    sendCount: 0,
+                    text: "配额选项"
+                }
+                initTree('#treeQuotaDetail', data);
+                quotaNumber = [];
+            } else if (index == 4) {
+                $('table tbody', container).html(tr);
+                Core.initDataTable(theLogTable, theLogColumns, theLogOption);
+            }
+        };
+
+        // trigger
+        initTabs(activateTabPage);
+
+        //刷新项目列表
+        refreshProjects(".cnd_project", 13);
+
+    });
+
+    //@ sourceURL=dynamicScript-quota-quota.js
+</script>

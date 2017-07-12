@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        body, #upload_form, #upload_file {
+            width: 110px;
+            height: 25px;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+            #upload_file:hover {
+                cursor: pointer;
+            }
+    </style>
+
+</head>
+<body class="zh_CN">
+
+    <form action="#" enctype="multipart/form-data" method="post" id="upload_form">
+        <input style="cursor: pointer;" type="file" class="upload_file" name="file" id="upload_file" />
+        <input type="hidden" name="callback" value="textEdit.addImg" />
+        <!--<input type="hidden" name="token" value="-S3u1w3JrmFKSFNKh6j5JQkPKMGLqf-aPDDdDxY6:sVN70lbDBAF80Pb8w_1vxLpnaOI=:eyJmc2l6ZUxpbWl0IjoxMDQ4NTc2MCwic2NvcGUiOiJ3ZW5qdWFuLWNvbTo1NzMzZTQ5ZGEzMjBmYzNhOWQ4MDY3OWMvODBhNWJmODItMThlMi0xMWU2LWFiMmUtNDRhODQyMGMyOWYzIiwicmV0dXJuQm9keSI6IntcIm5hbWVcIjogJChmbmFtZSksIFwidHlwZVwiOiAkKG1pbWVUeXBlKSwgXCJrZXlcIjogJChrZXkpfSIsImRlYWRsaW5lIjoyOTI2MjU0NjU2LCJyZXR1cm5VcmwiOiJodHRwczovL3d3dy53ZW5qdWFuLmNvbS9lZGl0L3VwbG9hZF9pbWdfZm9yX2NrP3JldD1odHRwcyUzQSUyRiUyRmRuLXdlbmp1YW4tY29tLnFib3gubWUlMkY1NzMzZTQ5ZGEzMjBmYzNhOWQ4MDY3OWMlMkY4MGE1YmY4Mi0xOGUyLTExZTYtYWIyZS00NGE4NDIwYzI5ZjMlM0ZpbWFnZVZpZXcyJTJGMiUyRnclMkY4MTUlMkYmZnVuPXRleHRFZGl0LmFkZEltZyJ9" />
+        <input type="hidden" name="key" value="5733e49da320fc3a9d80679c/80a5bf82-18e2-11e6-ab2e-44a8420c29f3" />
+        <input type="hidden" name="_xsrf" value="d5833e2e59464ef2ac92e874bd60b29b" />-->
+    </form>
+
+    <script type="text/javascript" src="/design/static/js/jquery.js?v=b8e88e87301643b74f0df01461582202"></script>
+
+    <link type="text/css" rel="stylesheet" href="/design/static/js/plug-in/load/load.css?v=bf1fb60788943f2da66cad2f1a021043" />
+
+    <script type="text/javascript">
+
+        $(function () {
+            //
+            $('form').attr('action', myapp.apiHost + 'image/upload/');
+            //
+            $("#upload_file").change(function () {
+                var filename = $(this).val();
+                if (filename == "") {
+                    loadMack({ off: 'on', Limg: 0, text: '请选择上传图片', set: 1500 });
+                    return;
+                }
+                var reg = /\.(jpg|png|gif)$/i;
+                if (!reg.test(filename)) {
+                    window.parent.textEdit.addImg('文件格式不正确（必须为.jpg/.gif/.png文件）');
+                    return false;
+                }
+                //
+                $("#upload_form").submit();
+            });
+        })
+        //@ sourceURL=upload-image.js
+    </script>
+</body>
+</html>

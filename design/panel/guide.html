@@ -1,0 +1,47 @@
+<div class="topicset" style="width: 487px; height: ; overflow: hidden;">
+    <form action="#" id="op_form" method="post" onsubmit="return false;">
+        <dl class="way">
+            <!--<dt>题型</dt>-->
+            <dd class="clear choose-way">
+                <label for="number">编号：</label>
+                <input type="text" class="number" placeholder="请输入题目编号" style="padding-left:4px;" />
+            </dd>
+        </dl>
+    </form>
+    <input type="hidden" name="change_qtype" value="" id="change_qtype">
+</div>
+
+<script type="text/javascript">
+
+    function validate() {
+        return true;
+    }
+
+    function saveForm() {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新对象
+        updateObject(context, question);
+    }
+
+    //更新对象
+    var updateObject = function(context, question) {
+        //题目编号
+        question.number = $('.number', context).val();
+    }
+
+    jQuery(document).ready(function ($) {
+        //上下文
+        var context = $('.right-operate');
+        var question = context.data('model');
+        //更新界面
+        var updateControl = function(context, question) {
+            //题目编号
+            $('.number', context).val(question.number || '');
+        }
+        //刷新界面元素
+        updateControl(context, question);
+    });
+    //@ sourceURL=description.js
+</script>
