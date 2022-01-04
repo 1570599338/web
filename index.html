@@ -683,7 +683,8 @@
         //刷新项目列表
         var refreshProjects = function(ui, repID, state) {
 			debugger;
-            var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+            //var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+             var url = myapp.apiHost2 + "project/sysmngJsonreport";
             var projectName = {
                 subSys: 'wesurvey',
                 repID: repID,
@@ -697,6 +698,7 @@
                 projectName.cnd_state = state;
                 projectName.selCndIDs = "active|state";
             }
+            debugger;
             AjaxPost2(url, projectName, null, function(data) {
                 Core.fillSelect($(ui), data.objs);
             }, function(error) {
@@ -706,7 +708,8 @@
 
         var refreshtemplates = function(ui, repID, state) {
 			debugger;
-            var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+            //var url = myapp.apiHost2 + "sysmng.jsonreport.do";
+             var url = myapp.apiHost2 + "project/sysmngJsonreport";
             var projectName = {
                 subSys: 'wesurvey',
                 repID: repID,
@@ -718,6 +721,7 @@
             };
             AjaxPost2(url, projectName, null, function(data) {
                 Core.fillSelect($(ui), data.objs);
+                
             }, function(error) {
                 alert(error);
             })
