@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div>
-            <p class="title"><span class="login-img"></span><span>在线调研平台</span></p>
+            <p class="title"><span class="login-img"></span><span><!-- 在线调研平台 -->哈哈哈</span></p>
             <div class="section user">
                 <label>
                     <label class="field-icon">
@@ -96,7 +96,8 @@
                 };
                 // login
                 $.ajax({
-                    url: myapp.apiHost2 + "sysmng.ajaxLogon.do",
+                  //  url: myapp.apiHost2 + "sysmng.ajaxLogon.do",
+				    url: myapp.apiHost2 + "user/login",
                     dataType: "json",
                     type: "post",
                     data: credential,
@@ -109,7 +110,8 @@
                             setCookie('wepassword', ($('#remember')[0].checked ? credential.password : ''), 14 * 24 * 60);
                             // get permission to show default page
                             $.ajax({
-                                url: myapp.apiHost2 + "modNav1.jsp",
+                              //  url: myapp.apiHost2 + "modNav1.jsp", 
+								url: myapp.apiHost2 + "user/modNav1jsp",
                                 dataType: "json",
                                 type: "post",
                                 data: {},
@@ -117,12 +119,16 @@
                                     request.setRequestHeader("ticket", ticket);
                                 },
                                 success: function (data, status, xhr) {
+									debugger;
                                     if (data.errors.length > 0 && data.errors[0] == 0) {
-                                        location.href = "login.html";
+                                       debugger;
+										location.href = "login.html";
                                     } else {
                                         if (data.objs.length > 0) {
                                             window.location.href = "index.html#" + data.objs[0].children[0].url;
+										
                                         } else {
+											debugger;
                                             location.href = "login.html";
                                         }
                                     }

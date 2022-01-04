@@ -98,7 +98,7 @@
                 <p class="navbar-brand" href="javascript:;">
                     <span style="display: inline-block; height: 20px; width: 20px;">
                         <img src="assets/img/logo.fw.png" style="width: 100%;" /></span>
-                    <b>在线调研平台</b>
+                    <b><!-- 在线调研平台 -->哈哈哈</b>
                 </p>
                 <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
             </div>
@@ -674,13 +674,15 @@
     <script type="text/javascript">
         myapp.ticket = getCookie("ticket");
         myapp.userID = getCookie("userid");
+		debugger;
 
-        if (myapp.ticket == "") {
+        if (myapp.ticket == "" || myapp.ticket=="undefined") {
             window.location = 'login.html';
         }
 
         //刷新项目列表
         var refreshProjects = function(ui, repID, state) {
+			debugger;
             var url = myapp.apiHost2 + "sysmng.jsonreport.do";
             var projectName = {
                 subSys: 'wesurvey',
@@ -703,6 +705,7 @@
         };
 
         var refreshtemplates = function(ui, repID, state) {
+			debugger;
             var url = myapp.apiHost2 + "sysmng.jsonreport.do";
             var projectName = {
                 subSys: 'wesurvey',
@@ -722,6 +725,7 @@
 
         //检查tab是否符合规范
         var checkTabs = function() {
+			debugger;
             var container = $('#tab_panel');
             if (container.find('.panel-heading li.active').length > 0) {
                 alert('Hi dude, two many active itmes');
@@ -758,12 +762,17 @@
 
         //初始化Tab（显示有权访问的tab，设置默认tab），完成后调用callback
         var initTabs = function(callback) {
+			debugger;
             var navurl = location.hash.replace(/^#/, '');
             var tabindex = '1';
             for (var i = 0; i < myapp.permissions.length; ++i) {
+				debugger;
                 for (var j = 0; j < myapp.permissions[i].children.length; ++j) {
+					debugger;
                     if (navurl == myapp.permissions[i].children[j].url) {
+						debugger;
                         for (var k = 0; k < myapp.permissions[i].children[j].children.length; ++k) {
+							debugger;
                             var tid = myapp.permissions[i].children[j].children[k].url;
                             $('#tab_panel li a[href="#' + tid + '"]').parent().show();
                             //$('#tab_panel #' + tid).show();
@@ -798,6 +807,7 @@
 
         //
         var setStorage = function(name, val) {
+			debugger;
             localStorage.setItem(name, val)
         };
 
@@ -818,13 +828,16 @@
         function reSetContainerHeight() {
             var winH = $(window).outerHeight();
             $('#content-container').css("height", winH - 60);
+			debugger;
         }
 
         //
         jQuery(document).ready(function() {
+			debugger;
 
             //根据当前登录用户的权限初始化菜单
             var initMenu = function(features) {
+				debugger;
                 var container = $('#sidebar_menu');
                 for (var i in features) {
                     var html = '';
@@ -1009,10 +1022,11 @@
                     Core.loadURL(url + window.location.search, $('#content-container'));
                 }
             };
-
+debugger;
             //获取当前登录用户权限
             $.ajax({
-                url: myapp.apiHost2 + "modNav1.jsp",
+               // url: myapp.apiHost2 + "modNav1.jsp",
+				 url: myapp.apiHost2 + "user/modNav1jsp",
                 dataType: "json",
                 type: "post",
                 data: {},
@@ -1020,32 +1034,42 @@
                     request.setRequestHeader("ticket", myapp.ticket);
                 },
                 success: function(data, status, xhr) {
+					debugger;
                     if (data.errors.length > 0 && data.errors[0].code == 0) {
                         location.href = "login.html";
                     } else {
+						debugger;
                         data.objs[0].open = true;
                         myapp.permissions = data.objs;
+						debugger;
                         initMenu(data.objs);
+						debugger;
                         //window.location.hash = data.objs[0].children[0].url;
                         checkUrl();
+						debugger;
                         Core.init(); // important! call this after menu is initialized
+						debugger;
                     }
                 },
                 error: function(xhr, status, error) {
                     window.location = 'index.html';
+					debugger;
                 }
+				
             });
-
+debugger;
             //获取当前登录用户详细信息
-            AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=93&userID=" + myapp.userID, null, null, function(data) {
-                myapp.userName = data.objs[0].userName;
+            //AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=93&userID=" + myapp.userID, null, null, function(data) {
+            AjaxPost2(myapp.apiHost2 + "user/sysmngInitTemplate?subSys=survey&tplID=93&userID=" + myapp.userID, null, null, function(data) {
+             
+				myapp.userName = data.objs[0].userName;
                 myapp.imageUrl = data.objs[0].imageUrl.length > 5 ? data.objs[0].imageUrl : 'user/placeholder.png';
                 $(".profile .image").attr('src', myapp.resHost + myapp.imageUrl);
                 $(".profile .username").html(myapp.userName);
             }, function(error) {
                 window.location = 'index.html';
             });
-
+debugger;
             //
             reSetContainerHeight();
         });
