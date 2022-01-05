@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/extensions/Editor/css/dataTables.editor.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/fancytree/skin-win8/ui.fancytree.min.css" />
+    <!--iconfont CSS-->
+    <link rel="stylesheet" type="text/css" href="design/static/css/iconfont/myfont.css">
     <!-- Select 2 CSS -->
     <link rel="stylesheet" type="text/css" href="assets/plugins/select2/css/core.css">
     <!-- Theme CSS -->
@@ -674,7 +676,7 @@
     <script type="text/javascript">
         myapp.ticket = getCookie("ticket");
         myapp.userID = getCookie("userid");
-		debugger;
+		//debugger;
 
         if (myapp.ticket == "" || myapp.ticket=="undefined") {
             window.location = 'login.html';
@@ -682,7 +684,7 @@
 
         //刷新项目列表
         var refreshProjects = function(ui, repID, state) {
-			debugger;
+			//debugger;
             //var url = myapp.apiHost2 + "sysmng.jsonreport.do";
              var url = myapp.apiHost2 + "project/sysmngJsonreport";
             var projectName = {
@@ -698,7 +700,7 @@
                 projectName.cnd_state = state;
                 projectName.selCndIDs = "active|state";
             }
-            debugger;
+            //debugger;
             AjaxPost2(url, projectName, null, function(data) {
                 Core.fillSelect($(ui), data.objs);
             }, function(error) {
@@ -707,7 +709,7 @@
         };
 
         var refreshtemplates = function(ui, repID, state) {
-			debugger;
+			//debugger;
             //var url = myapp.apiHost2 + "sysmng.jsonreport.do";
              var url = myapp.apiHost2 + "project/sysmngJsonreport";
             var projectName = {
@@ -729,7 +731,7 @@
 
         //检查tab是否符合规范
         var checkTabs = function() {
-			debugger;
+			//debugger;
             var container = $('#tab_panel');
             if (container.find('.panel-heading li.active').length > 0) {
                 alert('Hi dude, two many active itmes');
@@ -766,17 +768,17 @@
 
         //初始化Tab（显示有权访问的tab，设置默认tab），完成后调用callback
         var initTabs = function(callback) {
-			debugger;
+			//debugger;
             var navurl = location.hash.replace(/^#/, '');
             var tabindex = '1';
             for (var i = 0; i < myapp.permissions.length; ++i) {
-				debugger;
+				//debugger;
                 for (var j = 0; j < myapp.permissions[i].children.length; ++j) {
-					debugger;
+					//debugger;
                     if (navurl == myapp.permissions[i].children[j].url) {
-						debugger;
+						//debugger;
                         for (var k = 0; k < myapp.permissions[i].children[j].children.length; ++k) {
-							debugger;
+							//debugger;
                             var tid = myapp.permissions[i].children[j].children[k].url;
                             $('#tab_panel li a[href="#' + tid + '"]').parent().show();
                             //$('#tab_panel #' + tid).show();
@@ -811,7 +813,7 @@
 
         //
         var setStorage = function(name, val) {
-			debugger;
+			//debugger;
             localStorage.setItem(name, val)
         };
 
@@ -832,16 +834,16 @@
         function reSetContainerHeight() {
             var winH = $(window).outerHeight();
             $('#content-container').css("height", winH - 60);
-			debugger;
+			//debugger;
         }
 
         //
         jQuery(document).ready(function() {
-			debugger;
+			//debugger;
 
             //根据当前登录用户的权限初始化菜单
             var initMenu = function(features) {
-				debugger;
+				//debugger;
                 var container = $('#sidebar_menu');
                 for (var i in features) {
                     var html = '';
@@ -1026,7 +1028,7 @@
                     Core.loadURL(url + window.location.search, $('#content-container'));
                 }
             };
-debugger;
+//debugger;
             //获取当前登录用户权限
             $.ajax({
                // url: myapp.apiHost2 + "modNav1.jsp",
@@ -1038,30 +1040,30 @@ debugger;
                     request.setRequestHeader("ticket", myapp.ticket);
                 },
                 success: function(data, status, xhr) {
-					debugger;
+					//debugger;
                     if (data.errors.length > 0 && data.errors[0].code == 0) {
                         location.href = "login.html";
                     } else {
-						debugger;
+						//debugger;
                         data.objs[0].open = true;
                         myapp.permissions = data.objs;
-						debugger;
+						//debugger;
                         initMenu(data.objs);
-						debugger;
+						//debugger;
                         //window.location.hash = data.objs[0].children[0].url;
                         checkUrl();
-						debugger;
+						//debugger;
                         Core.init(); // important! call this after menu is initialized
-						debugger;
+						//debugger;
                     }
                 },
                 error: function(xhr, status, error) {
                     window.location = 'index.html';
-					debugger;
+					//debugger;
                 }
 				
             });
-debugger;
+//debugger;
             //获取当前登录用户详细信息
             //AjaxPost2(myapp.apiHost2 + "sysmng.initTemplate.do?subSys=survey&tplID=93&userID=" + myapp.userID, null, null, function(data) {
             AjaxPost2(myapp.apiHost2 + "user/sysmngInitTemplate?subSys=survey&tplID=93&userID=" + myapp.userID, null, null, function(data) {
@@ -1073,7 +1075,7 @@ debugger;
             }, function(error) {
                 window.location = 'index.html';
             });
-debugger;
+//debugger;
             //
             reSetContainerHeight();
         });

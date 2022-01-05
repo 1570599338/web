@@ -1139,6 +1139,7 @@ var Core = function(options) {
                     // when the right sidebar is closed
             };
 
+debugger;
             // Extend Default Options.
             var options = $.extend({}, defaults, options);
 

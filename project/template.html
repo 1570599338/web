@@ -14,9 +14,9 @@
                         <div class="tab-content pn br-n">
                             <div id="tab_sms" class="tab-pane pn" style="display: none;" tabindex="1">
                                 <div class="row">
-                                    <div class="panel temp-panel panel-visible" id="cnd">
+                                    <div class="panel temp-panel panel-visible" id="cnd" >
                                         <!-- Condition panel -->
-                                        <div class="panel-body">
+                                        <div class="panel-body" style="float:left">
                                             <div class="form-horizontal admin-form">
                                                 <div class="row">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                         <!-- Control panel -->
-                                        <div class="row panel-footer action-container">
+                                        <div class="row panel-footer action-container"  style="float:left">
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                 <label class="col-lg-4 col-md-4 col-sm-6 control-label"></label>
                                                 <div class="col-lg-8 col-md-8 col-sm-6">
@@ -154,6 +154,7 @@
         }
         //SEARCH
         $('#cnd .action-query').unbind("click").bind("click", function (e) {
+			debugger;
             var val = $(".project").val();
             if (val == null) {
                 $(".project").addClass('temp-erro');
@@ -165,6 +166,7 @@
 
         //新建&更新
         $(".template .action-icon").unbind("click").bind("click", function (e) {
+			debugger;
             var template = $(this).parents('.template').data('object');
             var projectName = $('.project option:selected').html();
             if (!template) {
@@ -209,6 +211,7 @@
                     alert(error);
                 })
             } else {
+				debugger;
                 // confirm
                 template.state = 1; // pending release
                 //更新状态
@@ -223,11 +226,13 @@
 
         //删除
         $(".template .delete").unbind('click').bind('click', function (e) {
+			debugger;
             var template = $(this).parents('.template').data('object');
             delTemplate($(this), template);
         });
         //发布
         $(".release").on("click", function (e) {
+			debugger;
             var _this = $(this);
             var template = _this.parents('.template').data('object');
             release(_this, template);
@@ -236,6 +241,7 @@
 
         //search
         function search(val) {
+			debugger;
             //
             var projectId = $('.project').val();
             //
@@ -249,8 +255,10 @@
                     for (var i = 0; i < templates.length; ++i) {
                         alias_array.push(templates[i].alias);
                     }
+					debugger;
                     //遍历问卷面板
                     $('.template').each(function (i, e) {
+						debugger;
                         var alias = $(this).attr('alias');
                         var index = alias_array.indexOf(alias);
                         if (index >= 0) {
@@ -278,22 +286,27 @@
                     alert(error)
                 });
             } else {
+				debugger;
                 $('.template-box').hide();
             }
 
         }
 
         var activateTabPage = function (index) {
+			debugger;
             if (index == 1)
                 $('.panel-tabs li:first-child').css('display', 'block').addClass('active');
+			else
+				$('.panel-tabs li:first-child').css('display', 'block').addClass('active');
+				$('#tab_sms').css('display', 'block').addClass('active');
         }
 
-        initTabs(
-                activateTabPage
-        );
+        initTabs(activateTabPage);
 
         //初始化项目名称
         refreshProjects(".project", 13);
+        
+		
     });
         //@ sourceURL=dynamicScript-project-template.js
 </script>

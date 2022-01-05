@@ -3926,6 +3926,9 @@ tr.shown td.details-control {
   text-align: center;
   left: 0;
 }
+#import .dropzone .dz-default.dz-message{
+  margin-top:0;
+}
 .dropzone .dz-default.dz-message span {
   display: inline-block;
   text-align: center;
@@ -18658,7 +18661,7 @@ body.sb-top #toggle_sidemenu_t {
 .tray-bin {
   min-height: 65px;
   padding: 7px;
-  margin: 0 -15px 15px;
+  /*margin: 0 -15px 15px;*/
   border: 1px dashed #CCC;
   background: #eee;
 }
@@ -20548,7 +20551,7 @@ body.sb-r-o #toggle_sidemenu_r span.glyphicons {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 44px;
+  height: 40px;
   padding: 12px 15px;
   background-color: #f8f8f8;
   border-top: 1px solid #DDD;
@@ -24835,6 +24838,16 @@ body.timeline-page .panel-clone {
   .invoice-page #invoice-info > .col-md-4 .panel-body {
     padding: 10px;
   }
+}
+.standard{
+  margin-bottom:0!important;
+}
+.standard .panel{
+  margin-bottom:0 !important;
+  background-color: #eee!important;
+}
+.standard .panel-body{
+  padding-bottom: 0 !important;
 }
 /* ==============================================
     RESPONSIVE STYLES

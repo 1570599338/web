@@ -119,16 +119,16 @@
                                     request.setRequestHeader("ticket", ticket);
                                 },
                                 success: function (data, status, xhr) {
-									debugger;
+									////debugger;
                                     if (data.errors.length > 0 && data.errors[0] == 0) {
-                                       debugger;
+                                       ////debugger;
 										location.href = "login.html";
                                     } else {
                                         if (data.objs.length > 0) {
                                             window.location.href = "index.html#" + data.objs[0].children[0].url;
 										
                                         } else {
-											debugger;
+											//debugger;
                                             location.href = "login.html";
                                         }
                                     }
