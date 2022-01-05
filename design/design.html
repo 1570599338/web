@@ -330,15 +330,16 @@
     <script type="text/javascript" src="static/js/plug-in/date/javascript/zebra_datepicker.js?v=7774bd0c8db8c364764d10de89666558"></script>
     <!--  -->
     <script type="text/javascript">
-      /*  var myappx = {
+        /* var myappx = {
             apiHost: parent.myapp.apiHost,
             apiHost2: parent.myapp.apiHost2,
             resHost: parent.myapp.resHost,
             ticket: parent.myapp.ticket,
             template: null,
             questions: []
-        }*/
-         var myapp = {
+        }
+        http://127.0.0.1:8080/
+        var myapp = {
 
             apiHost: "http://101.200.128.84:80/api/api/",
             apiHost2: "http://101.200.128.84:80/wesurvey/",
@@ -351,7 +352,25 @@
             /// ticket: parent.myapp.ticket,
             template: null,
             questions: []
+        }*/
+        /*var myapp = {
+            apiHost: "http://127.0.0.1:8080/",
+            apiHost2: "http://127.0.0.1:8080/",
+            resHost: "http://127.0.0.1:8080/",
+            ticket: parent.myapp.ticket,
+            template: null,
+            questions: []
+        }*/
+       
+       var myapp = {
+            apiHost: parent.myapp.apiHost,
+            apiHost2: parent.myapp.apiHost2,
+            resHost: parent.myapp.resHost,
+            ticket: parent.myapp.ticket,
+            template: null,
+            questions: []
         }
+        
         var debug_mode = false;
 
         $(function () {
@@ -628,10 +647,10 @@
         $("a img[src='http://eiv.baidu.com/hmt/icon/21.gif']").hide();
     });
 
-    //var templateId = getParameterByName('templateid', window.parent.location.href) || 1000000157;
-	var templateId = 1004609606;
-   // $('.project-name').text(getParameterByName('projectname', window.parent.location.href));
-   $('.project-name').text("模拟测试001");
+    var templateId = getParameterByName('templateid', window.parent.location.href) || 1000000157;
+	//var templateId = 1004609606;
+    $('.project-name').text(getParameterByName('projectname', window.parent.location.href));
+   //$('.project-name').text("模拟测试001");
 
     //结束语切换事件
     $("#closing_type").change(function () {
@@ -642,11 +661,14 @@
 
     console.log("*********开始加载***********");
     //获取template
+    debugger;
     if (debug_mode == false) {
         AjaxGet(myapp.apiHost + 'template/get?id=' + templateId, function (data) {
+        	debugger;
             myapp.template = data.objs[0];
             //获取题目列表
-            AjaxGet(myapp.myweb + 'question1/search?templateid=' + myapp.template.id, function (data) {
+            AjaxGet(myapp.apiHost + 'question/search?templateid=' + myapp.template.id, function (data) {
+            	debugger;
                 initQuestionPanel(data.objs);
                 $('.template').html(myapp.template.name || ("问卷" + myapp.template.alias));
                 $('.guide').html(myapp.template.guide);
@@ -656,6 +678,7 @@
             });
             //获取欢迎语/结束语
             AjaxGet(myapp.apiHost + 'statement/search?templateid=' + myapp.template.id, function (data) {
+            	debugger;
                 myapp.statements = data.objs;
                 //附加数据
                 for (var i = 0; i < myapp.statements.length; i++) {
