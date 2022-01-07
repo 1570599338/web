@@ -209,6 +209,7 @@
 </div>
 <script type="text/javascript">
     $(function() {
+    	debugger;
         //datepick
         var theManageTable = null,
             theManageColumns = null,
@@ -478,6 +479,9 @@
                 var container = $('.tab-pane[tabindex=' + index + ']');
                 if (index == 1) {
                     $('table tbody', container).html(tr);
+                    Core.initDataTable(theProjectTable, theProjectColumns, theProjectOption);
+                }else{
+                	 $('table tbody', container).html(tr);
                     Core.initDataTable(theProjectTable, theProjectColumns, theProjectOption);
                 }
             };
