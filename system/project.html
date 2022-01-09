@@ -246,13 +246,15 @@
             }
         }, {
             "aTargets": [3],
-            "mData": "beginDate",
+           // "mData": "beginDate",
+             "mData": "begindate",
             "sTitle": "开始日期",
             "sWidth": "72px",
             "mRender": null
         }, {
             "aTargets": [4],
-            "mData": "endDate",
+            //"mData": "endDate",
+            "mData": "enddate",
             "sTitle": "结束日期",
             "sWidth": "72px",
             "mRender": null
@@ -270,7 +272,7 @@
             "sClass": "text-align-left",
             "sWidth": "150px",
             "mRender": null
-        }, {
+        }, /*{
             "aTargets": [7],
             "mData": "quotaServiceState",
             "sTitle": "配额服务状态",
@@ -300,8 +302,9 @@
                     '<a href="#"><span class="fa fa-gear"></span><span class="action-quotaState">' + quotaServiceName + '</span></a>' +
                     '</span>';
             }
-        }, {
-            "aTargets": [9],
+        },*/ {
+           // "aTargets": [9],
+            "aTargets": [7],
             "mData": "state",
             "sTitle": "项目状态",
             "sWidth": "68px",
@@ -317,14 +320,16 @@
                 }
             }
         }, {
-            "aTargets": [10],
+           // "aTargets": [10],
+            "aTargets": [8],
             "mData": "remark",
             "sTitle": "备注",
             "sClass": "text-align-left",
             //"sWidth": "150px",
             "mRender": null
         }, {
-            "aTargets": [11],
+            //"aTargets": [11],
+            "aTargets": [9],
             "mData": "id",
             "sTitle": "操作",
             "sWidth": "395px",
@@ -359,11 +364,13 @@
             onCreate: function() {
                 testing();
                 var modal = new Modal($("#project_modal"), null, null, function(projectdata) {
+                	debugger
                     var rowData = projectdata;
                     projectdata.quotaServiceState = 1;
                     projectdata.type = 1;
                     $('textarea').val('');
-                    var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=1";
+                    //var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=1";
+                     var url = myapp.apiHost2 + "project/operate?operateState=1";
                     AjaxGet2(url, "json", "post", projectdata, function(data) {
                         theProjectTable.dataTable().fnDraw();
                     }, function(error) {
@@ -378,7 +385,8 @@
             onUpdate: function(data, tr) {
                 var modal = new Modal($("#project_modal"), data, tr, function(projectdata) {
                     $('#project_name').focus();
-                    var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=2";
+                    //var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=2";
+                    var url = myapp.apiHost2 + "project/operate?operateState=2";
                     AjaxGet2(url, "json", "post", projectdata, function(data) {
                         theProjectTable.dataTable().fnDraw();
                     }, function(error) {
@@ -390,7 +398,9 @@
                 modal.show();
             },
             onDelete: function(data, tr) {
-                var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=3&id=" + data.id;
+               // var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=3&id=" + data.id;
+                var url = myapp.apiHost2 + "project/operate?operateState=3&id=" + data.id;
+                
                 new MessageModal($("#message-modal"), "确定要删除选中的项目吗？", tr, function(tmpdata) {
                     AjaxGet2(url, "json", "post", null, function(data) {
                         Core.deleteRow(theProjectTable, tr);
@@ -403,12 +413,16 @@
             processing: true,
             serverSide: true,
             scrollX: true,
-            ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+           // ajaxSource: myapp.apiHost2 + "sysmng.jsonreport.do",
+           ajaxSource: myapp.apiHost2 + "project/sysmngJsonreport",   
+
             ajaxDataProp: "objs",
             basicDataCallback: function(aoData) {
+            	debugger;
                 basicData(aoData, 1, theProjectCount, "#project");
             },
             setCountCallback: function(count) {
+            	debugger;
                 theProjectCount = count;
             }
         };
@@ -453,7 +467,9 @@
                     var data = linkApiData(124);
                     data.cnd_projectName = projectName;
                     data.selCndIDs = "projectName";
-                    AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", data, null, function(data) {
+                    //AjaxPost2(myapp.apiHost2 + "sysmng.jsonreport.do", data, null, function(data) {
+                    AjaxPost2(myapp.apiHost2 + "project/sysmngJsonreport", data, null, function(data) {
+                    	debugger;
                         if (data.objs[0].name > 0) {
                             _this.addClass('input-error');
                             $('.accept').attr('disabled', 'disabled');
@@ -472,7 +488,9 @@
         }
 
         $(function() {
+        	debugger;
             Core.runWeUIElements();
+            debugger;
             //
             var activateTabPage = function(index) {
                 var tr = '<tr class="odd"><td valign="top" colspan="6" class="dataTables_empty">没有匹配结果</td> </tr>';

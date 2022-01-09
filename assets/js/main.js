@@ -938,6 +938,7 @@ var Core = function(options) {
     /*
      */
     var initDataTable = function(datatable, columns, option) {
+    	debugger;
         var sdom = (option && option.tabletools == false) ?
             '<"dt-panelmenu clearfix hidden"lfr>t<"dt-panelfooter clearfix hidden"ip>' :
             '<"dt-panelmenu clearfix"lfrT>t<"dt-panelfooter clearfix"ip>';
@@ -958,7 +959,7 @@ var Core = function(options) {
             "oTableTools": {
                 // ["csv", "xls", "pdf", "copy", "print", "sall", "asel"],
                 "aButtons": option.aButtons,
-                "sSwfPath": "assets/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+                "sSwfPath": "assets/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
             },
             "oLanguage": {
                 "sProcessing": "处理中...",
@@ -991,7 +992,9 @@ var Core = function(options) {
             "fnServerParams": option.serverParams,
             "stateSaveCallback": option.stateSaveCallback,
             "fnServerData": function serverData(url, aoData, fnCallback) {
+            	debugger;
                 option.basicDataCallback(aoData);
+                debugger;
                 $.ajax({
                     url: url,
                     data: aoData,
@@ -1014,7 +1017,7 @@ var Core = function(options) {
                 });
             }
         };
-
+debugger;
         //
         datatable.dataTable(params);
         //
