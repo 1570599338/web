@@ -124,7 +124,8 @@
                                 <label for="col_type" class="col-lg-4 col-md-4 col-sm-6 control-label">类型：</label>
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <label class="field prepend-icon">
-                                        <select type="text" name="type" class="form-control col_type gui-input"  weuifieldcode="typeCode" weuifieldname="typeName" weuifieldclass="type" required>
+                                        <!--<select type="text" name="type" class="form-control col_type gui-input"  weuifieldcode="typeCode" weuifieldname="typeName" weuifieldclass="type" required>-->
+                                        	<select type="text" name="type" class="form-control col_type gui-input"  weuifieldcode="typeCode" weuifieldname="typeName" weuifieldclass="type" required>
                                             <option value="xyz" disabled="disabled">请选择</option>
                                             <option value="1">渠道</option>
                                             <option value="2">个案</option>
@@ -246,15 +247,15 @@
             }
         }, {
             "aTargets": [3],
-           // "mData": "beginDate",
-             "mData": "begindate",
+            "mData": "beginDate",
+            // "mData": "begindate",
             "sTitle": "开始日期",
             "sWidth": "72px",
             "mRender": null
         }, {
             "aTargets": [4],
-            //"mData": "endDate",
-            "mData": "enddate",
+            "mData": "endDate",
+            //"mData": "enddate",
             "sTitle": "结束日期",
             "sWidth": "72px",
             "mRender": null
@@ -370,7 +371,7 @@
                     projectdata.type = 1;
                     $('textarea').val('');
                     //var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=1";
-                     var url = myapp.apiHost2 + "project/operate?operateState=1";
+                    var url = myapp.apiHost2 + "project/operate?operateState=1";
                     AjaxGet2(url, "json", "post", projectdata, function(data) {
                         theProjectTable.dataTable().fnDraw();
                     }, function(error) {
@@ -498,10 +499,10 @@
                 if (index == 1) {
                     $('table tbody', container).html(tr);
                     Core.initDataTable(theProjectTable, theProjectColumns, theProjectOption);
-                }else{
+                }/*else{
                 	 $('table tbody', container).html(tr);
                     Core.initDataTable(theProjectTable, theProjectColumns, theProjectOption);
-                }
+                }*/
             };
 
             initTabs(activateTabPage);

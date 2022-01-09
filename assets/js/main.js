@@ -959,7 +959,7 @@ var Core = function(options) {
             "oTableTools": {
                 // ["csv", "xls", "pdf", "copy", "print", "sall", "asel"],
                 "aButtons": option.aButtons,
-                "sSwfPath": "assets/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+                "sSwfPath": "assets/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
             },
             "oLanguage": {
                 "sProcessing": "处理中...",
