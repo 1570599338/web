@@ -369,6 +369,7 @@
                     var rowData = projectdata;
                     projectdata.quotaServiceState = 1;
                     projectdata.type = 1;
+					  projectdata.typeCode=projectdata.typeName
                     $('textarea').val('');
                     //var url = myapp.apiHost2 + "wesurvey.addproject.do?operateState=1";
                     var url = myapp.apiHost2 + "project/operate?operateState=1";
